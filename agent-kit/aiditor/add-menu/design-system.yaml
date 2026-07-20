@@ -1,0 +1,43 @@
+items:
+  - id: design-system:color-palette
+    title: Color palette
+    category: Design System
+    subCategory: Colors
+    prompt: >-
+      Apply colors from the project design system.
+
+      Available color tokens: primary: #2563eb, primary-hover: #1d4ed8, secondary: #64748b, text: #0f172a, text-muted:
+      #64748b, background: #ffffff, surface: #f8fafc, border: #e2e8f0, error: #dc2626, success: #16a34a.
+
+      Use the exact token values from DESIGN.md. Do not use hardcoded colors outside this palette.
+  - id: design-system:typography
+    title: Typography presets
+    category: Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography from the project design system.
+
+      Available presets: headline-lg: system-ui, sans-serif 2.5rem weight 700; headline-md: system-ui, sans-serif 2rem
+      weight 600; body-md: system-ui, sans-serif 1rem weight 400; label-sm: system-ui, sans-serif 0.875rem weight 500.
+
+      Use font-size, font-weight, line-height, and font-family values from these presets. Do not introduce typography
+      values outside the design system.
+  - id: design-system:spacing
+    title: Spacing scale
+    category: Design System
+    subCategory: Layout
+    prompt: >-
+      Apply spacing from the project design system.
+
+      Spacing scale: xs: 0.25rem, sm: 0.5rem, md: 1rem, lg: 1.5rem, xl: 2rem, 2xl: 3rem.
+
+      Use these values for padding, margin, and gap. Add /* design-system: allow */ comment to exempt intentional
+      one-off values.
+  - id: design-system:rounded
+    title: Border radius
+    category: Design System
+    subCategory: Shapes
+    prompt: |-
+      Apply border-radius from the project design system.
+      Rounded scale: none: 0, sm: 0.25rem, md: 0.5rem, lg: 0.75rem, full: 9999px.
+      Use these values for border-radius. Do not use arbitrary radius values.

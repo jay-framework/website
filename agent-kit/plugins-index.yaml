@@ -1,0 +1,178 @@
+plugins:
+  - name: ui-kit
+    path: ./node_modules/@jay-framework/ui-kit
+    contracts:
+      - name: popover-menu
+        description: Hover-triggered popover using the Popover API — adds showPopover()
+          on mouseenter
+        type: static
+        path: ./node_modules/@jay-framework/ui-kit/dist/popover-menu.jay-contract
+      - name: scroll-carousel
+        description: Prev/next scroll buttons for CSS scroll-snap containers — tracks
+          atStart/atEnd
+        type: static
+        path: ./node_modules/@jay-framework/ui-kit/dist/scroll-carousel.jay-contract
+      - name: clipboard-copy
+        description: Copy text to clipboard with visual feedback — toggles copied state
+          for 2 seconds
+        type: static
+        path: ./node_modules/@jay-framework/ui-kit/dist/clipboard-copy.jay-contract
+      - name: word-split
+        description: Splits text into a span per word for individual word styling
+        type: static
+        path: ./node_modules/@jay-framework/ui-kit/dist/word-split.jay-contract
+      - name: letter-split
+        description: Splits text into a span per letter for individual letter styling
+        type: static
+        path: ./node_modules/@jay-framework/ui-kit/dist/letter-split.jay-contract
+  - name: wix-deploy
+    path: ./node_modules/@jay-framework/wix-deploy
+    contracts: []
+    commands:
+      - name: deploy
+      - name: build-entry
+      - name: upload-backend
+      - name: deploy-baas
+  - name: wix-server-client
+    path: ./node_modules/@jay-framework/wix-server-client
+    contracts: []
+    services:
+      - name: wix-client
+        marker: WIX_CLIENT_SERVICE
+        description: Core Wix SDK client with API key authentication
+    contexts:
+      - name: wix-client
+        marker: WIX_CLIENT_CONTEXT
+        description: Client-side OAuth authentication and token management
+  - name: a11y-validator
+    path: ./node_modules/@jay-framework/a11y-validator
+    contracts: []
+  - name: aiditor
+    path: ./node_modules/@jay-framework/aiditor
+    contracts:
+      - name: aiditor-shell
+        description: AIditor shell — editor chrome banner
+        type: static
+        path: ./node_modules/@jay-framework/aiditor/dist/aiditor-shell.jay-contract
+    actions:
+      - name: getAiditorBootstrap
+        description: One-shot bootstrap returning project directory and dev server base URL
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-aiditor-bootstrap.jay-action
+      - name: getProjectInfoAction
+        description: List all page routes in the project via dev server
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-project-info.jay-action
+      - name: getPageParamsAction
+        description: Stream dynamic route parameter combinations from dev server
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-page-params.jay-action
+      - name: listFreezesAction
+        description: List frozen page states for a given route
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-freezes.jay-action
+      - name: submitTaskAction
+        description: Submit a visual annotation task to the AI agent (Agent SDK) with
+          file uploads
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/submit-task.jay-action
+      - name: cancelAgentTaskAction
+        description: Cancel the in-flight AI agent task for a page route
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/cancel-agent-task.jay-action
+      - name: readFileAction
+        description: Read a file from the project filesystem (text or image as base64)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/read-file.jay-action
+      - name: checkAddPageRouteAction
+        description: Validate and normalize an Add Page route; check if it already exists
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/check-add-page-route.jay-action
+      - name: startAddPageRequestAction
+        description: Mint an Add Page request folder under .aiditor/page-requests/
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/start-add-page-request.jay-action
+      - name: saveAddPageDraftAction
+        description: Persist Add Page composer markdown to the request folder
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/save-add-page-draft.jay-action
+      - name: uploadAddPageAssetAction
+        description: Upload a reference or asset file for an Add Page request
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/upload-add-page-asset.jay-action
+      - name: reclassifyAddPageAssetAction
+        description: Move an attachment between references/ and assets/ for an Add Page
+          request
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/reclassify-add-page-asset.jay-action
+      - name: submitAddPageAction
+        description: Run the Add Page implementation agent and validate the result
+          (streaming)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/submit-add-page.jay-action
+      - name: checkPageAddPageBriefAction
+        description: Check whether a Jay page has saved Add Page brief files next to its
+          jay-html
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/check-page-add-page-brief.jay-action
+      - name: openAddPageFromBriefAction
+        description: Load a page's saved Add Page brief into a new page request with a
+          unique copy route
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/open-add-page-from-brief.jay-action
+      - name: generateAddPageBriefFromImageAction
+        description: Generate Add Page Content or Design markdown from screenshot(s) via
+          vision AI
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/generate-add-page-brief-from-image.jay-action
+      - name: checkPluginUpdateAction
+        description: Compare installed plugin version with latest on npm
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/check-plugin-update.jay-action
+      - name: listJayPluginsAction
+        description: List Jay plugin catalog with install and setup status
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-jay-plugins.jay-action
+      - name: listPluginContractsAction
+        description: List contracts for an installed plugin
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-plugin-contracts.jay-action
+      - name: ensureProjectPluginAction
+        description: Install plugin package, run setup and agent-kit (stream)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/ensure-project-plugin.jay-action
+      - name: getPluginSetupStatusAction
+        description: Query plugin setup status from cache or refresh
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-plugin-setup-status.jay-action
+      - name: rerunPluginSetupAction
+        description: Re-run jay-stack setup for a plugin
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/rerun-plugin-setup.jay-action
+      - name: syncAddPagePluginManifestAction
+        description: Sync selected plugins to content.md managed section and request.json
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/sync-add-page-plugin-manifest.jay-action
+      - name: listAddMenuItemsAction
+        description: List Add Menu catalog items from agent-kit/aiditor/add-menu/
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-add-menu-items.jay-action
+      - name: syncAddMenuAttachmentsAction
+        description: Persist Add Menu attachments to request.json (content.md unchanged
+          unless contentMd is passed)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/sync-add-menu-attachments.jay-action
+      - name: resolveAddMenuContractParamsAction
+        description: Resolve URL params from a materialized contract for Add Menu Q8 helpers
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/resolve-add-menu-contract-params.jay-action
+      - name: getPageMetaAction
+        description: Load page meta (route migration) for an agent context key
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-page-meta.jay-action
+      - name: savePageMetaAction
+        description: Save page meta (route migration) for an agent context key
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/save-page-meta.jay-action
+      - name: getContractInspectorTagsAction
+        description: Resolve contract tags for Page Info component explorer
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-contract-inspector-tags.jay-action
+      - name: getPageAssetsAction
+        description: Load page assets registry for an agent context key
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-page-assets.jay-action
+      - name: savePageAssetsAction
+        description: Persist page assets registry for an agent context key
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/save-page-assets.jay-action
+      - name: syncDetectedPageAssetsAction
+        description: Merge auto-detected page components into page assets registry
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/sync-detected-page-assets.jay-action
+      - name: writePluginSourceAction
+        description: Add or update a local plugin source in .aiditor/plugin-sources.yaml
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/write-plugin-source.jay-action
+      - name: checkAiditorPublishAction
+        description: Check whether the Jay project defines an aiditor:publish npm script
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/check-aiditor-publish.jay-action
+      - name: runAiditorPublishAction
+        description: Run the Jay project's aiditor:publish npm script (stream)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/run-aiditor-publish.jay-action
+    routes:
+      - path: /aiditor
+        description: AIditor — visual AI-driven code editor
+  - name: design-system-validator
+    path: ./node_modules/@jay-framework/design-system-validator
+    contracts: []
+  - name: seo-validator
+    path: ./node_modules/@jay-framework/seo-validator
+    contracts: []
