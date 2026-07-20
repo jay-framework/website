@@ -1,183 +1,1079 @@
 <html lang="en">
   <head>
-    <title>Welcome to jay-website</title>
-    <meta name="description" content="Your Jay Stack project is ready — edit pages with the AIditor, a coding agent, or by hand.">
+    <title>{title}</title>
+    <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <script
-      type="application/jay-headless"
-      plugin="@jay-framework/ui-kit"
-      contract="letter-split"
-    ></script>
     <link rel="stylesheet" href="../styles/theme.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
-      /* ── Hero ── */
-      .hero {
+      /* ── Shared ── */
+      .section { padding: 96px 0; }
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        color: var(--color-primary);
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+      }
+      .text-muted { color: var(--color-text-muted); }
+      .text-primary { color: var(--color-primary); }
+      .text-center { text-align: center; }
+
+      .glass-panel {
+        background: rgba(10, 15, 30, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 210, 255, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .glass-panel:hover {
+        border-color: rgba(0, 210, 255, 0.3);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+      }
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+      .header-inner {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        min-height: 50vh;
-        text-align: center;
-        padding: 3rem 2rem 2rem;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
       }
-
-      .hero-title {
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        line-height: 1.15;
-        white-space: pre;
+      @media (min-width: 768px) {
+        .header-inner { padding: 16px var(--margin-desktop); }
       }
-
-      /* Letter-split wave animation */
-      .letter {
-        display: inline-block;
-        animation: wave 2.2s ease-in-out infinite;
-        animation-delay: calc(var(--i) * 0.07s);
+      .header-brand {
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--color-primary);
+        text-decoration: none;
       }
-      @keyframes wave {
-        0%, 100% { transform: translateY(0); }
-        30%      { transform: translateY(-0.25em); }
-        50%      { transform: translateY(0); }
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
       }
-
-      .hero-subtitle {
-        font-size: 1.2rem;
+      @media (min-width: 768px) {
+        .header-nav { display: flex; }
+      }
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
         color: var(--color-text-muted);
-        max-width: 520px;
-        margin-bottom: 2rem;
+        text-decoration: none;
+        transition: color 0.3s;
       }
-
-      /* ── CTA button ── */
-      .cta-btn {
+      .header-nav a:hover { color: var(--color-primary); text-decoration: none; }
+      .header-actions { display: flex; align-items: center; gap: 16px; }
+      .btn-get-started {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.85rem 2rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #fff;
-        background: var(--color-primary);
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
         border: none;
-        border-radius: 0.6rem;
-        text-decoration: none;
+        border-radius: var(--radius-default);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 700;
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        transition: transform 0.2s, box-shadow 0.2s;
         text-decoration: none;
       }
-      .cta-btn:active {
-        transform: translateY(0);
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
       }
 
-      /* ── Steps section ── */
-      .steps {
+      /* ── Hero ── */
+      .hero {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 96px;
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        max-width: 640px;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 900px;
         margin: 0 auto;
-        padding: 2rem 2rem 4rem;
+        gap: 48px;
+        padding: 48px 0;
       }
-
-      .step {
+      .hero-logo-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+      }
+      .hero-logo-glow {
+        position: absolute;
+        inset: -16px;
+        background: rgba(165, 231, 255, 0.2);
+        filter: blur(100px);
+        border-radius: 50%;
+      }
+      .hero-logo {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        filter: brightness(1.1) drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
+      }
+      .hero-headline {
+        font-family: var(--font-display);
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-primary);
+        text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+      }
+      .hero-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--color-text-muted);
+        max-width: 700px;
+      }
+      .hero-buttons {
         display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1.25rem 1.5rem;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: 0.75rem;
-        opacity: 0;
-        transform: translateY(12px);
-        animation: fadeUp 0.5s ease forwards;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
       }
-      .step:nth-child(1) { animation-delay: 0.2s; }
-      .step:nth-child(2) { animation-delay: 0.4s; }
-      .step:nth-child(3) { animation-delay: 0.6s; }
-
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 16px 32px;
+        border: none;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: box-shadow 0.3s, transform 0.2s;
+        text-decoration: none;
       }
-
-      .step-number {
-        flex-shrink: 0;
-        width: 2rem;
-        height: 2rem;
+      .btn-primary:hover {
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        text-decoration: none;
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(165, 231, 255, 0.3);
+        background: rgba(165, 231, 255, 0.05);
+        color: var(--color-text);
+        padding: 16px 32px;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-decoration: none;
+      }
+      .btn-secondary:hover {
+        background: rgba(165, 231, 255, 0.1);
+        text-decoration: none;
+      }
+      .hero-stats {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: var(--color-primary);
-        background: rgba(37, 99, 235, 0.1);
-        border-radius: 50%;
+        gap: 24px;
+        padding-top: 16px;
       }
-
-      .step-body h2 {
-        font-size: 1rem;
+      .stat-item { display: flex; flex-direction: column; align-items: center; }
+      .stat-value {
+        font-family: var(--font-display);
+        font-size: 24px;
+        line-height: 32px;
         font-weight: 600;
-        margin-bottom: 0.2rem;
+        color: var(--color-primary);
       }
-      .step-body p {
-        font-size: 0.9rem;
-        color: var(--color-text-muted);
-        line-height: 1.5;
+      .stat-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--color-outline);
+      }
+      .stat-divider {
+        width: 1px;
+        height: 40px;
+        background: rgba(133, 147, 153, 0.2);
       }
 
-      .step-body code {
-        font-size: 0.85rem;
-        background: var(--color-border);
-        padding: 0.1em 0.4em;
-        border-radius: 0.3rem;
+      /* ── Feedback Loop ── */
+      .feedback-section { background: var(--color-surface); }
+      .feedback-image-frame {
+        max-width: 900px;
+        margin: 48px auto 0;
+        border-radius: var(--radius-3xl);
+        overflow: hidden;
+        padding: 16px;
       }
+      .feedback-image-frame img {
+        width: 100%;
+        border-radius: var(--radius-xl);
+      }
+
+      /* ── Feedback Steps ── */
+      .feedback-steps {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 64px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (min-width: 768px) {
+        .feedback-steps { grid-template-columns: 1fr 1fr; }
+      }
+      .feedback-step {
+        padding: 32px;
+        border-radius: var(--radius-2xl);
+      }
+      .feedback-step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(0, 210, 255, 0.15);
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .feedback-step h4 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .feedback-step p {
+        color: var(--color-text-muted);
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      /* ── Agent Roles ── */
+      .roles-section { background: var(--color-surface-lowest); position: relative; }
+      .roles-grid-bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .roles-grid-bg-inner {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        height: 100%;
+      }
+      .roles-grid-bg-inner > div { border-right: 1px solid rgba(133, 147, 153, 0.2); }
+      .roles-image-frame {
+        position: relative;
+        border-radius: var(--radius-3xl);
+        overflow: hidden;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        margin-bottom: 64px;
+      }
+      .roles-image-frame img { width: 100%; }
+      .roles-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(9, 14, 28, 0.8), transparent);
+        pointer-events: none;
+      }
+      .roles-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+      @media (min-width: 768px) {
+        .roles-cards { grid-template-columns: 1fr 1fr; }
+      }
+      @media (min-width: 1024px) {
+        .roles-cards { grid-template-columns: repeat(4, 1fr); }
+      }
+      .role-card {
+        padding: 32px;
+        border-radius: var(--radius-2xl);
+        display: flex;
+        flex-direction: column;
+      }
+      .role-card--designer { border-top: 2px solid var(--color-primary-container); }
+      .role-card--developer { border-top: 2px solid var(--color-secondary-container); }
+      .role-card--plugin { border-top: 2px solid var(--color-tertiary-container); }
+      .role-card--devops { border-top: 2px solid var(--color-error); }
+      .role-icon {
+        font-size: 40px;
+        margin-bottom: 24px;
+      }
+      .role-card h4 {
+        font-family: var(--font-display);
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .role-card p {
+        color: var(--color-text-muted);
+      }
+
+      /* ── Plugins ── */
+      .plugins-section { background: var(--color-surface); }
+      .plugins-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .plugins-layout { grid-template-columns: 1fr 1fr; }
+      }
+      .plugins-image-frame {
+        border-radius: var(--radius-3xl);
+        overflow: hidden;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+      }
+      .plugins-image-frame img { width: 100%; }
+      .plugins-text h2 { margin-bottom: 24px; }
+      .plugins-tagline {
+        font-style: italic;
+        color: var(--color-text-muted);
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 24px;
+      }
+      .plugins-body {
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 32px;
+      }
+      .plugins-features { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+      .plugins-features li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .plugins-features li .material-symbols-outlined {
+        color: var(--color-primary);
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .plugins-features li strong { color: var(--color-text); }
+
+      /* ── Contract ── */
+      .contract-section { }
+      .contract-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .contract-layout { grid-template-columns: 1fr 1fr; }
+      }
+      .contract-badge {
+        display: inline-block;
+        background: rgba(165, 231, 255, 0.1);
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        margin-bottom: 24px;
+      }
+      .contract-text h2 { margin-bottom: 24px; }
+      .contract-text p {
+        color: var(--color-text-muted);
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 32px;
+      }
+      .contract-checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+      .contract-checklist li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .contract-checklist li .material-symbols-outlined {
+        color: var(--color-primary);
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      /* Code tabs */
+      .code-panel {
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        border: 1px solid rgba(60, 73, 78, 0.3);
+        display: flex;
+        flex-direction: column;
+        height: 480px;
+      }
+      .code-tabs {
+        display: flex;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.3);
+        background: var(--color-surface-low);
+      }
+      .code-tab {
+        padding: 16px 24px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        border: none;
+        background: none;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s;
+      }
+      .code-tab:hover { color: var(--color-primary); }
+      .code-tab.active {
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
+      }
+      .code-content {
+        flex: 1;
+        padding: 24px;
+        background: var(--color-surface-lowest);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        line-height: 20px;
+        overflow: auto;
+        color: var(--color-secondary-dim);
+      }
+      .code-content pre { white-space: pre-wrap; word-break: break-word; }
+
+      /* ── Full Stack ── */
+      .fullstack-section {
+        background: #0A0F1E;
+        position: relative;
+        overflow: hidden;
+      }
+      .fullstack-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .fullstack-layout { grid-template-columns: 1fr 1fr 1fr; }
+      }
+      .fullstack-col { display: flex; flex-direction: column; gap: 48px; }
+      @media (min-width: 1024px) {
+        .fullstack-col-left { text-align: right; }
+      }
+      .fullstack-layer h4 {
+        font-family: var(--font-display);
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 600;
+        color: var(--color-primary);
+      }
+      .fullstack-layer p {
+        color: var(--color-text-muted);
+        margin-top: 8px;
+      }
+      .fullstack-image-col {
+        display: flex;
+        justify-content: center;
+      }
+      .fullstack-image-col img {
+        width: 100%;
+        max-width: 400px;
+        filter: drop-shadow(0 0 50px rgba(255, 170, 0, 0.2));
+      }
+
+      /* ── Real-World Value (Bento Grid) ── */
+      .value-section { }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      @media (min-width: 768px) {
+        .bento-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: auto auto;
+          min-height: 600px;
+        }
+        .bento-wide { grid-column: span 2; }
+        .bento-tall { grid-row: span 2; }
+      }
+      .bento-card {
+        padding: 40px;
+        border-radius: var(--radius-3xl);
+        display: flex;
+        flex-direction: column;
+      }
+      .bento-card--performance {
+        position: relative;
+        overflow: hidden;
+        justify-content: flex-end;
+      }
+      .bento-card--performance .bento-icon-corner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 32px;
+      }
+      .bento-card--visual-editor {
+        justify-content: space-between;
+        border-bottom: 4px solid var(--color-secondary-container);
+      }
+      .bento-card--risk {
+        gap: 16px;
+        border-left: 4px solid var(--color-tertiary-container);
+      }
+      .bento-card--assembly {
+        gap: 16px;
+        border-left: 4px solid var(--color-primary-dim);
+      }
+      .bento-icon { font-size: 48px; margin-bottom: 32px; }
+      .bento-card h3 { margin-bottom: 16px; }
+
+      /* ── CTA ── */
+      .cta-section { padding: 96px 0; }
+      .cta-box {
+        padding: 64px;
+        border-radius: 2rem;
+        border: 2px solid rgba(165, 231, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .cta-glow-tl {
+        position: absolute;
+        top: -96px; left: -96px;
+        width: 256px; height: 256px;
+        background: rgba(165, 231, 255, 0.2);
+        border-radius: 50%;
+        filter: blur(48px);
+        pointer-events: none;
+      }
+      .cta-glow-br {
+        position: absolute;
+        bottom: -96px; right: -96px;
+        width: 256px; height: 256px;
+        background: rgba(0, 244, 254, 0.1);
+        border-radius: 50%;
+        filter: blur(48px);
+        pointer-events: none;
+      }
+      .cta-box h2 { margin-bottom: 32px; position: relative; z-index: 1; }
+      .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      @media (min-width: 640px) {
+        .cta-buttons { flex-direction: row; }
+      }
+      .btn-cta-primary {
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 20px 40px;
+        border: none;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        text-decoration: none;
+      }
+      .btn-cta-primary:hover { transform: scale(1.05); text-decoration: none; }
+      .btn-cta-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--color-text);
+        padding: 20px 40px;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-decoration: none;
+      }
+      .btn-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+      }
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+      @media (min-width: 768px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (min-width: 1024px) {
+        .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+      }
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+      .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+      .footer-links a:hover { color: var(--color-secondary-dim); text-decoration: none; }
     </style>
   </head>
   <body>
+    <div class="page-root">
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- Header                                      -->
+    <!-- ════════════════════════════════════════════ -->
+    <header class="site-header">
+      <nav class="header-inner">
+        <a href="/" class="header-brand">Jay Framework</a>
+        <div class="header-nav">
+          <a href="#feedback-loop">Ecosystem</a>
+          <a href="#agent-roles">Agents</a>
+          <a href="#contract">The Contract</a>
+          <a href="#full-stack">Full Stack</a>
+          <a href="#value">Performance</a>
+        </div>
+        <div class="header-actions">
+          <a class="btn-get-started" href="#cta">Get Started</a>
+        </div>
+      </nav>
+    </header>
+
     <main>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Hero                                        -->
+      <!-- ════════════════════════════════════════════ -->
       <section class="hero">
-        <jay:letter-split text="{title}">
-          <h1 class="hero-title" aria-label="Welcome to jay-website">
-            <span forEach="letters" trackBy="index" class="letter" aria-hidden="true" style="--i: {index}">{text}</span>
-          </h1>
-        </jay:letter-split>
-
-        <p class="hero-subtitle">{description}</p>
-
-        <a class="cta-btn" href="/aiditor">Open the AIditor &#10132;</a>
-      </section>
-
-      <section class="steps">
-        <div class="step">
-          <span class="step-number">1</span>
-          <div class="step-body">
-            <h2>Use the AIditor</h2>
-            <p>Open the visual editor at <a href="/aiditor">/aiditor</a> to design and tweak pages with AI assistance.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <span class="step-number">2</span>
-          <div class="step-body">
-            <h2>Use any coding agent</h2>
-            <p>Work with your favorite AI coding tool — Cursor, Claude Code, or any agent that can edit files.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <span class="step-number">3</span>
-          <div class="step-body">
-            <h2>Edit the source directly</h2>
-            <p>Pages live in <code>src/pages/</code> — open the jay-html files in any editor and start building.</p>
+        <div class="hero-grid"></div>
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-logo-wrapper">
+              <div class="hero-logo-glow"></div>
+              <img class="hero-logo" src="/Jay Logo 2.png" alt="Jay Framework Logo">
+            </div>
+            <div>
+              <h1 class="hero-headline">The self-correcting visual ecosystem for AI-native web development.</h1>
+              <p class="hero-subtitle" style="margin-top: 32px;">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards. Through Jay's development-time feedback loop and the visual AIditor, the platform immediately validates agent actions, promotes smart code reuse, and enables seamless visual editing to ensure code is 100% production-ready before deployment.</p>
+              <div class="hero-buttons" style="margin-top: 32px;">
+                <a class="btn-primary" href="#cta">Initialize Project</a>
+                <a class="btn-secondary" href="https://github.com/nicenathapong/jay-framework">View on GitHub</a>
+              </div>
+              <div class="hero-stats" style="margin-top: 32px;">
+                <div class="stat-item">
+                  <span class="stat-value">60 FPS</span>
+                  <span class="stat-label">Target Performance</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                  <span class="stat-value">Zero</span>
+                  <span class="stat-label">Runtime Regressions</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- The Jay Feedback Loop                       -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="feedback-loop" class="section feedback-section">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">Core Architecture</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">The Jay Feedback Loop</h2>
+          </div>
+          <div class="feedback-image-frame glass-panel">
+            <img src="/feedback loop.jpeg" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback">
+          </div>
+
+          <div class="feedback-steps">
+            <div class="feedback-step glass-panel">
+              <div class="feedback-step-number">1</div>
+              <h4>The AI Agent</h4>
+              <p>Specialized AI roles read explicitly defined contracts and instructions. Because the boundaries are clear, the agent knows exactly what data it has to work with.</p>
+            </div>
+            <div class="feedback-step glass-panel">
+              <div class="feedback-step-number">2</div>
+              <h4>Declarative Code</h4>
+              <p>The AI outputs code adhering to Jay's strict separation of design and logic. The Designer generates visual templates while the Developer outputs application logic.</p>
+            </div>
+            <div class="feedback-step glass-panel">
+              <div class="feedback-step-number">3</div>
+              <h4>Validation Engine</h4>
+              <p>Jay automatically inspects every output using jay-stack validate, tag coverage reports, TypeScript compilers, and plugin validation to ensure correctness.</p>
+            </div>
+            <div class="feedback-step glass-panel">
+              <div class="feedback-step-number">4</div>
+              <h4>Feedback &amp; Self-Correction</h4>
+              <p>Failed validations provide explicit paths forward, referencing the Agent-Kit's ground truth so AI can self-correct with exact context.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Agent Roles                                 -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="agent-roles" class="section roles-section">
+        <div class="roles-grid-bg">
+          <div class="roles-grid-bg-inner">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+          <div style="margin-bottom: 64px;">
+            <h2 class="headline-lg">Defined Agent Roles</h2>
+            <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
+          </div>
+          <div class="roles-image-frame glass-panel">
+            <img src="/AI Roles 3.png" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps">
+            <div class="roles-image-overlay"></div>
+          </div>
+          <div class="roles-cards">
+            <div class="role-card glass-panel role-card--designer">
+              <span class="material-symbols-outlined text-primary role-icon">brush</span>
+              <h4>Designer</h4>
+              <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
+            </div>
+            <div class="role-card glass-panel role-card--developer">
+              <span class="material-symbols-outlined role-icon" style="color: var(--color-secondary-container);">code</span>
+              <h4>Developer</h4>
+              <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
+            </div>
+            <div class="role-card glass-panel role-card--plugin">
+              <span class="material-symbols-outlined role-icon" style="color: var(--color-tertiary-container);">extension</span>
+              <h4>Plugin Developer</h4>
+              <p>Packages extensible, reusable business logic and headless components into installable plugins that execute securely within an isolated sandbox.</p>
+            </div>
+            <div class="role-card glass-panel role-card--devops">
+              <span class="material-symbols-outlined role-icon" style="color: var(--color-error);">settings_ethernet</span>
+              <h4>DevOps</h4>
+              <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Plugins                                     -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="plugins" class="section plugins-section">
+        <div class="container">
+          <div class="plugins-layout">
+            <div class="plugins-image-frame glass-panel">
+              <img src="/Jay Framework Plugins.png" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts">
+            </div>
+            <div class="plugins-text">
+              <span class="section-label">Ecosystem</span>
+              <h2 class="headline-lg" style="margin-top: 16px;">Plugins</h2>
+              <p class="plugins-tagline">Why force AI to hallucinate complex business logic from scratch? Just like human developers, AI agents favor reusing code.</p>
+              <p class="plugins-body">By leveraging battle-tested, pre-packaged capabilities, AI agents can significantly reduce the risk of bugs, improve generation accuracy, reduce token costs, and drastically reduce long-term maintenance overhead.</p>
+              <ul class="plugins-features">
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</span>
+                </li>
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</span>
+                </li>
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- The Contract                                -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="contract" class="section contract-section">
+        <div class="container">
+          <div class="contract-layout">
+            <div class="contract-text">
+              <span class="contract-badge">THE .JAY-CONTRACT</span>
+              <h2 class="headline-lg">Independent Iteration. Absolute Fidelity.</h2>
+              <p>At the heart of Jay is the .jay-contract, a strict, declarative agreement that allows AI agents to work together without stepping on each other's toes.</p>
+              <ul class="contract-checklist">
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span>Strong typing across the entire AI generation pipeline.</span>
+                </li>
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span>Deterministic outcomes for stochastic models.</span>
+                </li>
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span>Direct mapping from .jay-contract to Production Code.</span>
+                </li>
+                <li>
+                  <span class="material-symbols-outlined">check_circle</span>
+                  <span>Independent iteration — redesign UI without rewriting backend logic.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="code-panel glass-panel">
+              <div class="code-tabs">
+                <span class="code-tab active">Contract</span>
+                <span class="code-tab">Jay HTML</span>
+                <span class="code-tab">Types</span>
+                <span class="code-tab">Component</span>
+              </div>
+              <div class="code-content">
+<pre><code>name: ProductWidget
+props:
+  - name: productId
+    type: string
+    required: true
+
+tags:
+  - tag: name
+    type: data
+    dataType: string
+    phase: slow
+
+  - tag: price
+    type: data
+    dataType: string
+    phase: fast+interactive
+
+  - tag: inStock
+    type: variant
+    dataType: boolean
+    phase: fast+interactive
+
+  - tag: addToCart
+    type: interactive
+    elementType: HTMLButtonElement</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Full Stack of Solutions                     -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="full-stack" class="section fullstack-section">
+        <div class="container text-center" style="margin-bottom: 64px;">
+          <h2 class="headline-lg" style="margin-bottom: 16px;">The Full Stack of Solutions</h2>
+          <p class="body-lg text-muted" style="max-width: 800px; margin: 0 auto;">From the foundation up, Jay provides every layer needed for AI-native enterprise web infrastructure.</p>
+        </div>
+        <div class="container">
+          <div class="fullstack-layout">
+            <div class="fullstack-col fullstack-col-left">
+              <div class="fullstack-layer">
+                <h4>Top Layer: The Jay AIditor</h4>
+                <p>The Surface. High-level visual assembly and agent steering.</p>
+              </div>
+              <div class="fullstack-layer">
+                <h4>Layer 4: Plugins</h4>
+                <p>The Ecosystem Multipliers. Zero-coding integrations for data and API.</p>
+              </div>
+              <div class="fullstack-layer">
+                <h4>Layer 3: Jay Stack</h4>
+                <p>The Production Infrastructure. Cloud-native, zero-trust backend.</p>
+              </div>
+            </div>
+            <div class="fullstack-image-col">
+              <img src="/full stack of solutions 2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor">
+            </div>
+            <div class="fullstack-col">
+              <div class="fullstack-layer">
+                <h4>Layer 2: Jay Framework</h4>
+                <p>The Engine. Declarative rendering and feedback cycles.</p>
+              </div>
+              <div class="fullstack-layer">
+                <h4>Layer 1: The Foundation</h4>
+                <p>Feedback Loop &amp; Contracts. The mathematical core of Jay.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Real-World Value (Bento Grid)               -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="value" class="section value-section">
+        <div class="container">
+          <h2 class="headline-lg text-center" style="margin-bottom: 48px;">Real-World Value</h2>
+          <div class="bento-grid">
+            <!-- Performance — wide -->
+            <div class="bento-card glass-panel bento-wide bento-card--performance">
+              <div class="bento-icon-corner">
+                <span class="material-symbols-outlined" style="font-size: 64px; color: var(--color-primary-container);">speed</span>
+              </div>
+              <div>
+                <h3 class="headline-md">Near-Perfect Performance</h3>
+                <p class="body-lg text-muted" style="margin-top: 16px; max-width: 520px;">Engineered for 60 FPS fluid interactions and superior SEO scores automatically, without developer intervention.</p>
+              </div>
+            </div>
+            <!-- Visual Editor — tall -->
+            <div class="bento-card glass-panel bento-tall bento-card--visual-editor">
+              <div>
+                <span class="material-symbols-outlined bento-icon" style="color: var(--color-secondary-container);">auto_fix_high</span>
+                <h3 class="headline-md">Claude as a Visual Editor</h3>
+              </div>
+              <p class="body-md text-muted">Direct integration with advanced LLMs allows for intuitive, natural language steering of complex UI layouts in real-time.</p>
+            </div>
+            <!-- Reducing Risk -->
+            <div class="bento-card glass-panel bento-card--risk">
+              <span class="material-symbols-outlined" style="font-size: 32px; color: var(--color-tertiary-container);">verified_user</span>
+              <h4 class="headline-sm">Reducing Risk</h4>
+              <p class="body-md text-muted">Autonomous verification ensures that every line of generated code meets enterprise security policies.</p>
+            </div>
+            <!-- Zero-Coding Assembly -->
+            <div class="bento-card glass-panel bento-card--assembly">
+              <span class="material-symbols-outlined" style="font-size: 32px; color: var(--color-primary-dim);">hub</span>
+              <h4 class="headline-sm">Zero-Coding App Assembly</h4>
+              <p class="body-md text-muted">Plug components into your architecture like modules. No complex wiring required.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- CTA                                         -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="cta" class="cta-section">
+        <div class="container">
+          <div class="cta-box glass-panel">
+            <div class="cta-glow-tl"></div>
+            <div class="cta-glow-br"></div>
+            <h2 class="headline-lg">Start Building the AI-Native Web</h2>
+            <div class="cta-buttons">
+              <a class="btn-cta-primary" href="#">Initialize Your First Agent</a>
+              <a class="btn-cta-secondary" href="#">Contact Enterprise Support</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- Footer                                      -->
+    <!-- ════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Jay Framework</div>
+            <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
+          </div>
+          <div>
+            <h5 class="footer-heading">Resources</h5>
+            <ul class="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Community</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="footer-heading">Legal</h5>
+            <ul class="footer-links">
+              <li><a href="#">Security Policy</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="footer-heading">Learn More</h5>
+            <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    </div>
   </body>
 </html>

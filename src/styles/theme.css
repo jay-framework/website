@@ -1,28 +1,85 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ── */
 :root {
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
-  --color-bg: #ffffff;
-  --color-surface: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-primary: #2563eb;
+  /* Surface palette */
+  --color-bg: #04070F;
+  --color-surface: #0e1322;
+  --color-surface-dim: #0e1322;
+  --color-surface-bright: #343949;
+  --color-surface-lowest: #090e1c;
+  --color-surface-low: #161b2b;
+  --color-surface-container: #1a1f2f;
+  --color-surface-high: #25293a;
+  --color-surface-highest: #2f3445;
+
+  /* Text */
+  --color-text: #dee1f7;
+  --color-text-muted: #bbc9cf;
+
+  /* Accent: Cyber Blue */
+  --color-primary: #a5e7ff;
+  --color-on-primary: #003543;
+  --color-primary-container: #00d2ff;
+  --color-on-primary-container: #00566a;
+  --color-primary-dim: #47d6ff;
+
+  /* Accent: Circuitry Cyan */
+  --color-secondary: #e6feff;
+  --color-secondary-container: #00f4fe;
+  --color-on-secondary-container: #006c71;
+  --color-secondary-dim: #00dce5;
+
+  /* Accent: Ruby Red */
+  --color-tertiary: #ffd2d1;
+  --color-tertiary-container: #ffabaa;
+  --color-on-tertiary-container: #a20022;
+
+  /* Error */
+  --color-error: #ffb4ab;
+
+  /* Borders */
+  --color-outline: #859399;
+  --color-outline-variant: #3c494e;
+  --color-border: #3c494e;
+
+  /* Typography stacks */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --space-base: 8px;
+  --space-gutter: 24px;
+  --margin-mobile: 16px;
+  --margin-desktop: 64px;
+  --max-width: 1440px;
+
+  /* Radii */
+  --radius-sm: 0.125rem;
+  --radius-default: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
 }
 
-*,
-*::before,
-*::after {
+/* ── Reset ── */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
   color: var(--color-text);
   background: var(--color-bg);
-  line-height: 1.6;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,7 +87,64 @@ a {
   color: var(--color-primary);
   text-decoration: none;
 }
+a:hover { text-decoration: underline; }
 
-a:hover {
-  text-decoration: underline;
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── Typography Utility Classes ── */
+.headline-lg {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.headline-md {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.headline-sm {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.body-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 28px;
+}
+.body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+}
+.code-md {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+}
+.label-sm {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+/* ── Layout ── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--margin-mobile);
+  padding-right: var(--margin-mobile);
+}
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--margin-desktop);
+    padding-right: var(--margin-desktop);
+  }
 }
