@@ -364,12 +364,14 @@
         display: flex;
         flex-direction: column;
       }
-      .role-card--designer { border-top: 2px solid var(--color-primary-container); }
-      .role-card--developer { border-top: 2px solid var(--color-secondary-container); }
-      .role-card--plugin { border-top: 2px solid var(--color-tertiary-container); }
-      .role-card--devops { border-top: 2px solid var(--color-error); }
+      .role-card--designer { border-top: 2px solid #b07aed; }
+      .role-card--developer { border-top: 2px solid #6abf4b; }
+      .role-card--plugin { border-top: 2px solid #d4952e; }
+      .role-card--devops { border-top: 2px solid #5b8cc9; }
       .role-icon {
-        font-size: 40px;
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
         margin-bottom: 24px;
       }
       .role-card h4 {
@@ -848,22 +850,22 @@
           </div>
           <div class="roles-cards">
             <div class="role-card glass-panel role-card--designer">
-              <span class="material-symbols-outlined text-primary role-icon">brush</span>
+              <img class="role-icon" src="/designer spider icon.png" alt="AI Designer">
               <h4>Designer</h4>
               <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
             </div>
             <div class="role-card glass-panel role-card--developer">
-              <span class="material-symbols-outlined role-icon" style="color: var(--color-secondary-container);">code</span>
+              <img class="role-icon" src="/developer spider icon.png" alt="AI Developer">
               <h4>Developer</h4>
               <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
             </div>
             <div class="role-card glass-panel role-card--plugin">
-              <span class="material-symbols-outlined role-icon" style="color: var(--color-tertiary-container);">extension</span>
+              <img class="role-icon" src="/plugin developer spider icon.png" alt="AI Plugin Developer">
               <h4>Plugin Developer</h4>
-              <p>Packages extensible, reusable business logic and headless components into installable plugins that execute securely within an isolated sandbox.</p>
+              <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
             </div>
             <div class="role-card glass-panel role-card--devops">
-              <span class="material-symbols-outlined role-icon" style="color: var(--color-error);">settings_ethernet</span>
+              <img class="role-icon" src="/devops spider icon.png" alt="AI DevOps">
               <h4>DevOps</h4>
               <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
             </div>
