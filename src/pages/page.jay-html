@@ -255,20 +255,20 @@
 
       /* ── Feedback Steps ── */
       .feedback-steps {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
         margin-top: 64px;
         max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
+        column-gap: 24px;
       }
       @media (min-width: 768px) {
-        .feedback-steps { grid-template-columns: 1fr 1fr; }
+        .feedback-steps { columns: 2; }
       }
       .feedback-step {
         padding: 32px;
         border-radius: var(--radius-2xl);
+        break-inside: avoid;
+        margin-bottom: 24px;
       }
       .feedback-step-number {
         display: inline-flex;
@@ -295,6 +295,30 @@
         font-size: 15px;
         line-height: 24px;
       }
+      .feedback-step ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 0;
+      }
+      .feedback-step ul li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--color-text-muted);
+        font-size: 15px;
+        line-height: 24px;
+      }
+      .feedback-step ul li::before {
+        content: '\2022';
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+      }
+      .feedback-step ul li strong {
+        color: var(--color-text);
+      }
 
       /* ── Agent Roles ── */
       .roles-section { background: var(--color-surface-lowest); position: relative; }
@@ -319,11 +343,9 @@
         margin-bottom: 64px;
       }
       .roles-image-frame img { width: 100%; }
-      .roles-image-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(9, 14, 28, 0.8), transparent);
-        pointer-events: none;
+      .roles-image-frame.glass-panel {
+        background: none;
+        backdrop-filter: none;
       }
       .roles-cards {
         display: grid;
@@ -765,31 +787,42 @@
           <div class="text-center">
             <span class="section-label">Core Architecture</span>
             <h2 class="headline-lg" style="margin-top: 16px;">The Jay Feedback Loop</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Guiding AI to guaranteed, production-ready results through continuous validation and strict boundaries.</p>
           </div>
           <div class="feedback-image-frame glass-panel">
-            <img src="/feedback loop.jpeg" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback">
+            <img src="/feedback loop.png" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback">
           </div>
 
           <div class="feedback-steps">
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">1</div>
-              <h4>The AI Agent</h4>
-              <p>Specialized AI roles read explicitly defined contracts and instructions. Because the boundaries are clear, the agent knows exactly what data it has to work with.</p>
+              <h4>The AI Agent (Generator)</h4>
+              <p>The cycle begins with specialized AI roles (Designer, Developer, or Plugin Developer) reading the explicitly defined contracts and instructions. Because the boundaries are clear, the agent knows exactly what data it has to work with and what it needs to build.</p>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">2</div>
-              <h4>Declarative Code</h4>
-              <p>The AI outputs code adhering to Jay's strict separation of design and logic. The Designer generates visual templates while the Developer outputs application logic.</p>
+              <h4>Declarative Code &amp; Logic (Output)</h4>
+              <p>The AI outputs the code, adhering to Jay's strict separation of design and logic.</p>
+              <ul>
+                <li>The <strong>AI Designer</strong> generates purely declarative, logic-free visual templates (.jay-html), utilizing functionality from plugins.</li>
+                <li>If custom functionality is needed, the <strong>AI Developer</strong> outputs the application logic in page.ts. This separation ensures agents can iterate on the UI without ever breaking the backend code.</li>
+              </ul>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">3</div>
-              <h4>Validation Engine</h4>
-              <p>Jay automatically inspects every output using jay-stack validate, tag coverage reports, TypeScript compilers, and plugin validation to ensure correctness.</p>
+              <h4>Validation Engine (Gatekeeper)</h4>
+              <p>Jay doesn't let the AI guess if its code works; it automatically acts as a strict inspection node. The framework evaluates the agent's output using comprehensive tools:</p>
+              <ul>
+                <li><strong>jay-stack validate:</strong> Checks for parsing and contract matching errors.</li>
+                <li><strong>Tag Coverage Report:</strong> Analyzes the HTML tree to tell the AI exactly which contract tags were used, which were missed, and if any required tags were omitted.</li>
+                <li><strong>TypeScript Compiler (TSC):</strong> Validates the backend logic against the auto-generated, phase-specific .d.ts types.</li>
+                <li><strong>Plugin Validation:</strong> Ensures consistency between plugin.yaml configurations and component properties.</li>
+              </ul>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">4</div>
-              <h4>Feedback &amp; Self-Correction</h4>
-              <p>Failed validations provide explicit paths forward, referencing the Agent-Kit's ground truth so AI can self-correct with exact context.</p>
+              <h4>Errors + Agent-Kit References (Feedback)</h4>
+              <p>If the code fails validation, the system doesn't just output a generic error. It provides an explicit path forward by pointing the agent directly back to the Agent-Kit's ground truth, referencing materialized contracts, the plugins-index.yaml, and specific Agent-Kit guides so the AI can self-correct with exact context.</p>
             </div>
           </div>
         </div>
@@ -812,7 +845,6 @@
           </div>
           <div class="roles-image-frame glass-panel">
             <img src="/AI Roles 3.png" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps">
-            <div class="roles-image-overlay"></div>
           </div>
           <div class="roles-cards">
             <div class="role-card glass-panel role-card--designer">
