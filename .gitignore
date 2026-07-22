@@ -7,3 +7,4 @@ wix.config.json
 serve.mjs
 content
 public
+.aiditor
