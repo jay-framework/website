@@ -19,18 +19,21 @@
     "aiditor:publish": "npm run build:production && npm run wix:deploy"
   },
   "dependencies": {
-    "@jay-framework/fullstack-component": "^0.21.0",
-    "@jay-framework/jay-stack-cli": "^0.21.0",
-    "@jay-framework/ui-kit": "latest",
-    "@jay-framework/wix-deploy": "latest",
-    "@jay-framework/wix-server-client": "latest"
+    "@jay-framework/fullstack-component": "^0.22.0",
+    "@jay-framework/jay-stack-cli": "^0.22.0",
+    "@jay-framework/ui-kit": "^0.22.0",
+    "@jay-framework/wix-deploy": "^0.22.0",
+    "@jay-framework/markdown": "^0.22.0",
+    "@jay-framework/wix-server-client": "^0.22.0"
   },
   "devDependencies": {
-    "@jay-framework/a11y-validator": "latest",
-    "@jay-framework/aiditor": "^0.21.0",
-    "@jay-framework/design-system-validator": "latest",
-    "@jay-framework/jay-cli": "^0.21.0",
-    "@jay-framework/seo-validator": "latest",
+    "@jay-framework/a11y-validator": "^0.22.0",
+    "@jay-framework/aiditor": "^0.22.0",
+    "@jay-framework/aiditor-quill": "^0.22.0",
+    "@jay-framework/design-system-validator": "^0.22.0",
+    "@jay-framework/jay-cli": "^0.22.0",
+    "@jay-framework/wix-media": "^0.22.0",
+    "@jay-framework/seo-validator": "^0.22.0",
     "@types/node": "^22.10.0",
     "rimraf": "^6.0.0",
     "typescript": "~5.7.2",
