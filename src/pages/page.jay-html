@@ -163,6 +163,8 @@
         line-height: 28px;
         color: var(--color-text-muted);
         max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .hero-buttons {
         display: flex;
@@ -364,10 +366,10 @@
         display: flex;
         flex-direction: column;
       }
-      .role-card--designer { border-top: 2px solid #b07aed; }
-      .role-card--developer { border-top: 2px solid #6abf4b; }
-      .role-card--plugin { border-top: 2px solid #d4952e; }
-      .role-card--devops { border-top: 2px solid #5b8cc9; }
+      .role-card--designer { box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15); }
+      .role-card--developer { box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15); }
+      .role-card--plugin { box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15); }
+      .role-card--devops { box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15); }
       .role-icon {
         width: 80px;
         height: 80px;
@@ -416,16 +418,18 @@
         line-height: 26px;
         margin-bottom: 32px;
       }
-      .plugins-features { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+      .plugins-features { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
       .plugins-features li {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
+        position: relative;
+        padding-left: 16px;
+        color: var(--color-text-muted);
+        line-height: 24px;
       }
-      .plugins-features li .material-symbols-outlined {
+      .plugins-features li::before {
+        content: '\2022';
         color: var(--color-primary);
-        margin-top: 2px;
-        flex-shrink: 0;
+        position: absolute;
+        left: 0;
       }
       .plugins-features li strong { color: var(--color-text); }
 
@@ -458,16 +462,18 @@
         line-height: 28px;
         margin-bottom: 32px;
       }
-      .contract-checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+      .contract-checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
       .contract-checklist li {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
+        position: relative;
+        padding-left: 16px;
+        color: var(--color-text-muted);
+        line-height: 24px;
       }
-      .contract-checklist li .material-symbols-outlined {
+      .contract-checklist li::before {
+        content: '\2022';
         color: var(--color-primary);
-        margin-top: 2px;
-        flex-shrink: 0;
+        position: absolute;
+        left: 0;
       }
 
       /* Code tabs */
@@ -477,7 +483,7 @@
         border: 1px solid rgba(60, 73, 78, 0.3);
         display: flex;
         flex-direction: column;
-        height: 480px;
+        height: 520px;
       }
       .code-tabs {
         display: flex;
@@ -497,21 +503,36 @@
         transition: color 0.2s;
       }
       .code-tab:hover { color: var(--color-primary); }
-      .code-tab.active {
-        color: var(--color-primary);
-        border-bottom-color: var(--color-primary);
-      }
-      .code-content {
+      .code-panel-content {
+        display: none;
         flex: 1;
         padding: 24px;
         background: var(--color-surface-lowest);
         font-family: var(--font-mono);
-        font-size: 14px;
-        line-height: 20px;
+        font-size: 13px;
+        line-height: 19px;
         overflow: auto;
         color: var(--color-secondary-dim);
       }
-      .code-content pre { white-space: pre-wrap; word-break: break-word; }
+      .code-line {
+        white-space: pre;
+        min-height: 19px;
+      }
+      .cb::before { content: '{'; }
+      .ce::before { content: '}'; }
+      #code-tab-contract:checked ~ .code-tabs label[for="code-tab-contract"],
+      #code-tab-html:checked ~ .code-tabs label[for="code-tab-html"],
+      #code-tab-types:checked ~ .code-tabs label[for="code-tab-types"],
+      #code-tab-component:checked ~ .code-tabs label[for="code-tab-component"] {
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
+      }
+      #code-tab-contract:checked ~ .code-panels #panel-contract,
+      #code-tab-html:checked ~ .code-panels #panel-html,
+      #code-tab-types:checked ~ .code-panels #panel-types,
+      #code-tab-component:checked ~ .code-panels #panel-component {
+        display: block;
+      }
 
       /* ── Full Stack ── */
       .fullstack-section {
@@ -519,38 +540,97 @@
         position: relative;
         overflow: hidden;
       }
-      .fullstack-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 48px;
-        align-items: center;
-      }
-      @media (min-width: 1024px) {
-        .fullstack-layout { grid-template-columns: 1fr 1fr 1fr; }
-      }
-      .fullstack-col { display: flex; flex-direction: column; gap: 48px; }
-      @media (min-width: 1024px) {
-        .fullstack-col-left { text-align: right; }
-      }
-      .fullstack-layer h4 {
-        font-family: var(--font-display);
-        font-size: 24px;
-        line-height: 32px;
-        font-weight: 600;
-        color: var(--color-primary);
-      }
-      .fullstack-layer p {
-        color: var(--color-text-muted);
-        margin-top: 8px;
-      }
-      .fullstack-image-col {
+      .fullstack-image {
         display: flex;
         justify-content: center;
+        margin-bottom: 64px;
       }
-      .fullstack-image-col img {
+      .fullstack-image img {
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
         filter: drop-shadow(0 0 50px rgba(255, 170, 0, 0.2));
+      }
+      /* Vertical tabs for layers */
+      .fullstack-tabs { display: flex; flex-direction: column; gap: 0; }
+      .fullstack-tabs input[type="radio"] { display: none; }
+      .fullstack-tabs-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      @media (min-width: 768px) {
+        .fullstack-tabs-inner { flex-direction: row; }
+      }
+      .fullstack-tab-nav {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.3);
+      }
+      @media (min-width: 768px) {
+        .fullstack-tab-nav {
+          flex-direction: column;
+          flex-shrink: 0;
+          width: 240px;
+          border-bottom: none;
+          border-right: 1px solid rgba(60, 73, 78, 0.3);
+          overflow-x: visible;
+        }
+      }
+      .fullstack-tab-label {
+        display: block;
+        padding: 16px 24px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        cursor: pointer;
+        border-left: 3px solid transparent;
+        transition: color 0.2s, background 0.2s;
+        white-space: nowrap;
+      }
+      .fullstack-tab-label:hover {
+        color: var(--color-primary);
+        background: rgba(165, 231, 255, 0.03);
+      }
+      .fullstack-tab-panels {
+        flex: 1;
+        min-height: 200px;
+      }
+      .fullstack-tab-panel {
+        display: none;
+        padding: 24px 32px;
+      }
+      .fullstack-tab-panel h4 {
+        font-family: var(--font-display);
+        font-size: 22px;
+        line-height: 30px;
+        font-weight: 600;
+        color: var(--color-primary);
+        margin-bottom: 16px;
+      }
+      .fullstack-tab-panel p {
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 26px;
+      }
+      /* Tab checked states */
+      #fs-tab-1:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-1"],
+      #fs-tab-2:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-2"],
+      #fs-tab-3:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-3"],
+      #fs-tab-4:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-4"],
+      #fs-tab-5:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-5"] {
+        color: var(--color-primary);
+        background: rgba(165, 231, 255, 0.05);
+        border-left-color: var(--color-primary);
+      }
+      #fs-tab-1:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-1,
+      #fs-tab-2:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-2,
+      #fs-tab-3:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-3,
+      #fs-tab-4:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-4,
+      #fs-tab-5:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-5 {
+        display: block;
       }
 
       /* ── Real-World Value (Bento Grid) ── */
@@ -577,29 +657,81 @@
       }
       .bento-card--performance {
         position: relative;
-        overflow: hidden;
-        justify-content: flex-end;
       }
       .bento-card--performance .bento-icon-corner {
+        position: relative;
+      }
+      .bento-card--performance .bento-icon-corner img {
+        opacity: 0.85;
+        transition: opacity 0.3s;
+      }
+      .bento-card--performance:hover .bento-icon-corner img {
+        opacity: 1;
+      }
+      .lighthouse-hint {
         position: absolute;
-        top: 0;
+        top: 100%;
         right: 0;
-        padding: 32px;
+        padding-top: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        z-index: 2;
+      }
+      .lighthouse-hint-inner {
+        padding: 8px 14px;
+        background: var(--color-surface-high);
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-lg);
+        font-size: 13px;
+        line-height: 18px;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+      }
+      .lighthouse-hint a {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+      .bento-icon-corner:hover .lighthouse-hint {
+        opacity: 1;
+        pointer-events: auto;
       }
       .bento-card--visual-editor {
         justify-content: space-between;
-        border-bottom: 4px solid var(--color-secondary-container);
       }
       .bento-card--risk {
         gap: 16px;
-        border-left: 4px solid var(--color-tertiary-container);
       }
       .bento-card--assembly {
         gap: 16px;
-        border-left: 4px solid var(--color-primary-dim);
       }
       .bento-icon { font-size: 48px; margin-bottom: 32px; }
       .bento-card h3 { margin-bottom: 16px; }
+
+      .bento-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px;
+        padding: 0;
+      }
+      .bento-features li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .bento-features li::before {
+        content: '\2022';
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+      }
+      .bento-features li strong {
+        color: var(--color-text);
+      }
 
       /* ── CTA ── */
       .cta-section { padding: 96px 0; }
@@ -765,17 +897,6 @@
                 <a class="btn-primary" href="#cta">Initialize Project</a>
                 <a class="btn-secondary" href="https://github.com/nicenathapong/jay-framework">View on GitHub</a>
               </div>
-              <div class="hero-stats" style="margin-top: 32px;">
-                <div class="stat-item">
-                  <span class="stat-value">60 FPS</span>
-                  <span class="stat-label">Target Performance</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                  <span class="stat-value">Zero</span>
-                  <span class="stat-label">Runtime Regressions</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -886,20 +1007,11 @@
               <span class="section-label">Ecosystem</span>
               <h2 class="headline-lg" style="margin-top: 16px;">Plugins</h2>
               <p class="plugins-tagline">Why force AI to hallucinate complex business logic from scratch? Just like human developers, AI agents favor reusing code.</p>
-              <p class="plugins-body">By leveraging battle-tested, pre-packaged capabilities, AI agents can significantly reduce the risk of bugs, improve generation accuracy, reduce token costs, and drastically reduce long-term maintenance overhead.</p>
+              <p class="plugins-body">Reusing battle-tested, pre-packaged capabilities reduces bugs, token costs, and maintenance overhead while improving accuracy and performance. Jay enables this through Plugins - installable NPM packages bundling headless components, server actions, and explicit data contracts.</p>
               <ul class="plugins-features">
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</span>
-                </li>
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</span>
-                </li>
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</span>
-                </li>
+                <li><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</li>
+                <li><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</li>
+                <li><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</li>
               </ul>
             </div>
           </div>
@@ -917,57 +1029,83 @@
               <h2 class="headline-lg">Independent Iteration. Absolute Fidelity.</h2>
               <p>At the heart of Jay is the .jay-contract, a strict, declarative agreement that allows AI agents to work together without stepping on each other's toes.</p>
               <ul class="contract-checklist">
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span>Strong typing across the entire AI generation pipeline.</span>
-                </li>
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span>Deterministic outcomes for stochastic models.</span>
-                </li>
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span>Direct mapping from .jay-contract to Production Code.</span>
-                </li>
-                <li>
-                  <span class="material-symbols-outlined">check_circle</span>
-                  <span>Independent iteration — redesign UI without rewriting backend logic.</span>
-                </li>
+                <li>Strong typing generated from the contract.</li>
+                <li>The Designer agent creates Jay HTML files.</li>
+                <li>The Developer or Plugin Developer agents code the components.</li>
+                <li>Independent iteration — redesign UI without rewriting backend logic.</li>
               </ul>
             </div>
             <div class="code-panel glass-panel">
+              <input type="radio" name="code-tab" id="code-tab-contract" checked hidden>
+              <input type="radio" name="code-tab" id="code-tab-html" hidden>
+              <input type="radio" name="code-tab" id="code-tab-types" hidden>
+              <input type="radio" name="code-tab" id="code-tab-component" hidden>
               <div class="code-tabs">
-                <span class="code-tab active">Contract</span>
-                <span class="code-tab">Jay HTML</span>
-                <span class="code-tab">Types</span>
-                <span class="code-tab">Component</span>
+                <label for="code-tab-contract" class="code-tab">Contract</label>
+                <label for="code-tab-html" class="code-tab">Jay HTML</label>
+                <label for="code-tab-types" class="code-tab">Types</label>
+                <label for="code-tab-component" class="code-tab">Component</label>
               </div>
-              <div class="code-content">
-<pre><code>name: ProductWidget
-props:
-  - name: productId
-    type: string
-    required: true
-
-tags:
-  - tag: name
-    type: data
-    dataType: string
-    phase: slow
-
-  - tag: price
-    type: data
-    dataType: string
-    phase: fast+interactive
-
-  - tag: inStock
-    type: variant
-    dataType: boolean
-    phase: fast+interactive
-
-  - tag: addToCart
-    type: interactive
-    elementType: HTMLButtonElement</code></pre>
+              <div class="code-panels">
+                <div class="code-panel-content" id="panel-contract">
+                  <div class="code-line">props:</div>
+                  <div class="code-line">&nbsp; - name: text</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; kind: required</div>
+                  <div class="code-line">tags:</div>
+                  <div class="code-line">&nbsp; - tag: text</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; type: data</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; dataType: string</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; phase: fast+interactive</div>
+                  <div class="code-line">&nbsp; - tag: copied</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; type: data</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; dataType: boolean</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; phase: fast+interactive</div>
+                  <div class="code-line">&nbsp; - tag: copyBtn</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; type: interactive</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; elementType: HTMLButtonElement</div>
+                </div>
+                <div class="code-panel-content" id="panel-html">
+                  <div class="code-line">&lt;!-- nested headless component --&gt;</div>
+                  <div class="code-line">&lt;jay:clipboard-copy text="..."&gt;</div>
+                  <div class="code-line">&nbsp; &lt;div class="copy-row"&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;div class="copy-url"&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the text tag renders here</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;/div&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;button ref="copyBtn"&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span if="!copied"&gt;Copy Link&lt;/span&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span if="copied"&gt;Copied!&lt;/span&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;/button&gt;</div>
+                  <div class="code-line">&nbsp; &lt;/div&gt;</div>
+                  <div class="code-line">&lt;/jay:clipboard-copy&gt;</div>
+                </div>
+                <div class="code-panel-content" id="panel-types">
+                  <div class="code-line">export interface ClipboardCopyViewState <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; text: string;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; copied: boolean;</div>
+                  <div class="code-line"><span class="ce"></span></div>
+                  <div class="code-line">export interface ClipboardCopyRefs <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; copyBtn: HTMLElementProxy&lt;ClipboardCopyViewState, HTMLButtonElement&gt;;</div>
+                  <div class="code-line"><span class="ce"></span></div>
+                  <div class="code-line">export interface ClipboardCopyProps <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; text?: string;</div>
+                  <div class="code-line"><span class="ce"></span></div>
+                </div>
+                <div class="code-panel-content" id="panel-component">
+                  <div class="code-line">export const clipboardCopy = makeJayStackComponent&lt;ClipboardCopyContract&gt;()</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withProps&lt;ClipboardCopyProps&gt;()</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withFastRender(async (props) =&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; phaseOutput(<span class="cb"></span> text: props.text ?? '', copied: false <span class="ce"></span>, <span class="cb"></span><span class="ce"></span>),</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; )</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withInteractive(function ClipboardCopy(props, refs) <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const [copied, setCopied] = createSignal(false);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; refs.copyBtn.onclick(async () =&gt; <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; await navigator.clipboard.writeText(props.text());</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setCopied(true);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setTimeout(() =&gt; setCopied(false), 2000);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="ce"></span>);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return <span class="cb"></span> render: () =&gt; (<span class="cb"></span> text: props.text(), copied: copied() <span class="ce"></span>) <span class="ce"></span>;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; <span class="ce"></span>);</div>
+                </div>
               </div>
             </div>
           </div>
@@ -980,35 +1118,47 @@ tags:
       <section id="full-stack" class="section fullstack-section">
         <div class="container text-center" style="margin-bottom: 64px;">
           <h2 class="headline-lg" style="margin-bottom: 16px;">The Full Stack of Solutions</h2>
-          <p class="body-lg text-muted" style="max-width: 800px; margin: 0 auto;">From the foundation up, Jay provides every layer needed for AI-native enterprise web infrastructure.</p>
+          <p class="body-lg text-muted" style="max-width: 800px; margin: 0 auto;">From initial concept to lightning-fast, production-ready deployments through a comprehensive, AI-native infrastructure.</p>
         </div>
         <div class="container">
-          <div class="fullstack-layout">
-            <div class="fullstack-col fullstack-col-left">
-              <div class="fullstack-layer">
-                <h4>Top Layer: The Jay AIditor</h4>
-                <p>The Surface. High-level visual assembly and agent steering.</p>
+          <div class="fullstack-image">
+            <img src="/full stack of solutions 2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor">
+          </div>
+          <div class="fullstack-tabs glass-panel" style="border-radius: var(--radius-2xl); overflow: hidden;">
+            <input type="radio" name="fs-tab" id="fs-tab-1" checked hidden>
+            <input type="radio" name="fs-tab" id="fs-tab-2" hidden>
+            <input type="radio" name="fs-tab" id="fs-tab-3" hidden>
+            <input type="radio" name="fs-tab" id="fs-tab-4" hidden>
+            <input type="radio" name="fs-tab" id="fs-tab-5" hidden>
+            <div class="fullstack-tabs-inner">
+              <div class="fullstack-tab-nav">
+                <label for="fs-tab-1" class="fullstack-tab-label">1. The Foundation</label>
+                <label for="fs-tab-2" class="fullstack-tab-label">2. Jay Framework</label>
+                <label for="fs-tab-3" class="fullstack-tab-label">3. Jay Stack</label>
+                <label for="fs-tab-4" class="fullstack-tab-label">4. Plugins</label>
+                <label for="fs-tab-5" class="fullstack-tab-label">5. The Jay AIditor</label>
               </div>
-              <div class="fullstack-layer">
-                <h4>Layer 4: Plugins</h4>
-                <p>The Ecosystem Multipliers. Zero-coding integrations for data and API.</p>
-              </div>
-              <div class="fullstack-layer">
-                <h4>Layer 3: Jay Stack</h4>
-                <p>The Production Infrastructure. Cloud-native, zero-trust backend.</p>
-              </div>
-            </div>
-            <div class="fullstack-image-col">
-              <img src="/full stack of solutions 2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor">
-            </div>
-            <div class="fullstack-col">
-              <div class="fullstack-layer">
-                <h4>Layer 2: Jay Framework</h4>
-                <p>The Engine. Declarative rendering and feedback cycles.</p>
-              </div>
-              <div class="fullstack-layer">
-                <h4>Layer 1: The Foundation</h4>
-                <p>Feedback Loop &amp; Contracts. The mathematical core of Jay.</p>
+              <div class="fullstack-tab-panels">
+                <div class="fullstack-tab-panel" id="fs-panel-1">
+                  <h4>The Feedback Loop &amp; Contracts</h4>
+                  <p>The foundation of the ecosystem is the .jay-contract, establishing a strict boundary that completely decouples visual design templates (.jay-html) from backend application logic (page.ts). This separation powers a self-correcting feedback loop: an automated Validation Engine rigorously inspects AI-generated code, returning explicit, context-rich errors that guide agents back to the ground truth to guarantee high-quality results.</p>
+                </div>
+                <div class="fullstack-tab-panel" id="fs-panel-2">
+                  <h4>Jay Framework</h4>
+                  <p>A minimal, highly optimized client-side framework (roughly 1,200 lines of code) built specifically for contracts and AI agents. It relies on fine-grained reactive and immutable data, and enforces security by default through an architecture that safely executes logic-free "Jay Elements" on the main thread while isolating potentially untrusted 3rd-party component logic within a secure sandbox.</p>
+                </div>
+                <div class="fullstack-tab-panel" id="fs-panel-3">
+                  <h4>Jay Stack</h4>
+                  <p>The full-stack web framework that takes Jay to production, engineered around a strict three-phase rendering model: Slow (build-time / SSG), Fast (request-time / SSR), and Interactive (client-side). This guarantees that even the most dynamic, AI-generated applications ship with sub-second load times, predictable request latency, and perfect SEO compatibility.</p>
+                </div>
+                <div class="fullstack-tab-panel" id="fs-panel-4">
+                  <h4>Plugins</h4>
+                  <p>Acting as an ecosystem multiplier, Plugins are installable NPM packages that bundle headless components, server actions, services, and explicit contracts. By reusing these battle-tested packages, AI agents can instantly drop complex functionalities (like a storefront or a CMS) into a page without having to hallucinate logic from scratch, vastly reducing bugs, computing costs, and long-term maintenance overhead.</p>
+                </div>
+                <div class="fullstack-tab-panel" id="fs-panel-5">
+                  <h4>The Jay AIditor</h4>
+                  <p>The ultimate "AI-first" visual creation tool, built entirely as a Jay plugin. The AIditor allows users to upload a screenshot or paste a live URL and instantly convert it into a working, contract-bound Jay website. Editing is done through a seamless "point-and-shoot" experience that feels like a natural human review process, eliminating the need for complex side-panels, property inspectors, or manual element selection.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1022,35 +1172,39 @@ tags:
         <div class="container">
           <h2 class="headline-lg text-center" style="margin-bottom: 48px;">Real-World Value</h2>
           <div class="bento-grid">
-            <!-- Performance — wide -->
-            <div class="bento-card glass-panel bento-wide bento-card--performance">
-              <div class="bento-icon-corner">
-                <span class="material-symbols-outlined" style="font-size: 64px; color: var(--color-primary-container);">speed</span>
+            <!-- Visual Editor — wide -->
+            <div class="bento-card glass-panel bento-wide bento-card--visual-editor">
+              <div>
+                <h3 class="headline-md">Claude as a Visual Editor</h3>
+                <img src="/aiditor.png" alt="Jay AIditor — visual editing interface" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
+                <p class="body-lg text-muted">The Jay AIditor transforms AI interaction into an intuitive "point and shoot" visual experience. Without any complex side-panels or manual selections, you simply point at an element and let the AI execute updates directly on the application / website code.</p>
               </div>
+            </div>
+            <!-- Performance — tall -->
+            <div class="bento-card glass-panel bento-tall bento-card--performance">
               <div>
                 <h3 class="headline-md">Near-Perfect Performance</h3>
-                <p class="body-lg text-muted" style="margin-top: 16px; max-width: 520px;">Engineered for 60 FPS fluid interactions and superior SEO scores automatically, without developer intervention.</p>
+                <div class="bento-icon-corner" style="position: relative; top: auto; right: auto; margin: 16px 0;">
+                  <img src="/lighthouse.png" alt="Lighthouse perfect scores" style="width: 200px; height: auto;">
+                  <div class="lighthouse-hint"><div class="lighthouse-hint-inner">measured on the <a href="https://jay-onsko-52654f57-yoav68.wix-site-host.com/" target="_blank">Jay Onsko Template</a></div></div>
+                </div>
+                <p class="body-md text-muted">Jay is engineered from the ground up to ensure every site ships with minimal bundle sizes, lightning-fast load times, and top-tier Lighthouse scores out of the box.</p>
+                <ul class="bento-features">
+                  <li><strong>3-Phase Rendering Pipeline:</strong> Strict separation of design and logic yields minimal bundle sizes and smooth 60 FPS performance for flawless SEO.</li>
+                  <li><strong>Automated Guardrails:</strong> Built-in AI feedback loops continuously monitor code generation, automatically catching common performance traps and heavy assets before deployment.</li>
+                  <li><strong>Wix Media Optimization</strong> (provided by wix-media plugin): Automatic image formatting, responsive sizing, CDN and asset optimization ensure ultra-fast media delivery.</li>
+                </ul>
               </div>
             </div>
-            <!-- Visual Editor — tall -->
-            <div class="bento-card glass-panel bento-tall bento-card--visual-editor">
-              <div>
-                <span class="material-symbols-outlined bento-icon" style="color: var(--color-secondary-container);">auto_fix_high</span>
-                <h3 class="headline-md">Claude as a Visual Editor</h3>
-              </div>
-              <p class="body-md text-muted">Direct integration with advanced LLMs allows for intuitive, natural language steering of complex UI layouts in real-time.</p>
-            </div>
-            <!-- Reducing Risk -->
+            <!-- Lower Costs & Maintenance -->
             <div class="bento-card glass-panel bento-card--risk">
-              <span class="material-symbols-outlined" style="font-size: 32px; color: var(--color-tertiary-container);">verified_user</span>
-              <h4 class="headline-sm">Reducing Risk</h4>
-              <p class="body-md text-muted">Autonomous verification ensures that every line of generated code meets enterprise security policies.</p>
+              <h4 class="headline-sm">Radically Lower Costs &amp; Maintenance</h4>
+              <p class="body-md text-muted">By reusing secure, pre-packaged code, AI agents avoid re-implementing core logic. This eliminates bugs, security flaws, and performance drops while drastically cutting token costs and maintenance overhead.</p>
             </div>
             <!-- Zero-Coding Assembly -->
             <div class="bento-card glass-panel bento-card--assembly">
-              <span class="material-symbols-outlined" style="font-size: 32px; color: var(--color-primary-dim);">hub</span>
               <h4 class="headline-sm">Zero-Coding App Assembly</h4>
-              <p class="body-md text-muted">Plug components into your architecture like modules. No complex wiring required.</p>
+              <p class="body-md text-muted">Agents instantly build full-stack apps by dropping in battle-tested Jay Plugins (NPM packages). They map data contracts directly to the visual UI—no manual wiring, prop-drilling, or coding required.</p>
             </div>
           </div>
         </div>

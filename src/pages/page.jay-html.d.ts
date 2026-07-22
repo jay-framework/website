@@ -1,6 +1,4 @@
 import {JayElement, RenderElement, RenderElementOptions, JayContract} from "@jay-framework/runtime";
-import {LetterSplitViewState, LetterSplitRefs, LetterOfLetterSplitViewState, LetterSplitInteractiveViewState} from "../../node_modules/@jay-framework/ui-kit/dist/letter-split.jay-contract";
-import {letterSplit} from "@jay-framework/ui-kit";
 
 import './page.css';
 
@@ -9,10 +7,7 @@ export interface PageViewState {
   description: string
 }
 
-
-export interface PageElementRefs {
-  ar0: LetterSplitRefs
-}
+export interface PageElementRefs {}
 
 export type PageSlowViewState = Pick<PageViewState, 'title' | 'description'>;
 
