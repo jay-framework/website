@@ -1,43 +1,1073 @@
 items:
-  - id: design-system:color-palette
-    title: Color palette
-    category: Design System
+  - id: design-system:color-primary
+    title: primary (#2563eb)
+    category: My Design System
     subCategory: Colors
-    prompt: >-
-      Apply colors from the project design system.
-
-      Available color tokens: primary: #2563eb, primary-hover: #1d4ed8, secondary: #64748b, text: #0f172a, text-muted:
-      #64748b, background: #ffffff, surface: #f8fafc, border: #e2e8f0, error: #dc2626, success: #16a34a.
-
-      Use the exact token values from DESIGN.md. Do not use hardcoded colors outside this palette.
-  - id: design-system:typography
-    title: Typography presets
-    category: Design System
+    prompt: 'Use color token "primary" with value #2563eb from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#2563eb;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">primary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#2563eb</div>
+        </div>
+      </div>
+  - id: design-system:color-primary-hover
+    title: primary-hover (#1d4ed8)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "primary-hover" with value #1d4ed8 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#1d4ed8;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">primary-hover</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#1d4ed8</div>
+        </div>
+      </div>
+  - id: design-system:color-secondary
+    title: secondary (#64748b)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "secondary" with value #64748b from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#64748b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">secondary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#64748b</div>
+        </div>
+      </div>
+  - id: design-system:color-text
+    title: text (#0f172a)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "text" with value #0f172a from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#0f172a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">text</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#0f172a</div>
+        </div>
+      </div>
+  - id: design-system:color-text-muted
+    title: text-muted (#64748b)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "text-muted" with value #64748b from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#64748b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">text-muted</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#64748b</div>
+        </div>
+      </div>
+  - id: design-system:color-background
+    title: background (#ffffff)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "background" with value #ffffff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffffff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">background</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffffff</div>
+        </div>
+      </div>
+  - id: design-system:color-surface
+    title: surface (#f8fafc)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "surface" with value #f8fafc from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#f8fafc;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#f8fafc</div>
+        </div>
+      </div>
+  - id: design-system:color-border
+    title: border (#e2e8f0)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "border" with value #e2e8f0 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#e2e8f0;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">border</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#e2e8f0</div>
+        </div>
+      </div>
+  - id: design-system:color-error
+    title: error (#dc2626)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "error" with value #dc2626 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#dc2626;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">error</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#dc2626</div>
+        </div>
+      </div>
+  - id: design-system:color-success
+    title: success (#16a34a)
+    category: My Design System
+    subCategory: Colors
+    prompt: 'Use color token "success" with value #16a34a from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#16a34a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">success</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#16a34a</div>
+        </div>
+      </div>
+  - id: design-system:typography-headline-lg
+    title: headline-lg
+    category: My Design System
     subCategory: Typography
+    prompt: 'Apply typography preset "headline-lg" from DESIGN.md: system-ui, sans-serif, 2.5rem, weight 700, line-height 1.2.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:system-ui, sans-serif,sans-serif;font-size:2.5rem;font-weight:700;line-height:1.2;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-lg: system-ui, sans-serif, 2.5rem, weight 700, line-height 1.2</div>
+      </div>
+  - id: design-system:typography-headline-md
+    title: headline-md
+    category: My Design System
+    subCategory: Typography
+    prompt: 'Apply typography preset "headline-md" from DESIGN.md: system-ui, sans-serif, 2rem, weight 600, line-height 1.3.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:system-ui, sans-serif,sans-serif;font-size:2rem;font-weight:600;line-height:1.3;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-md: system-ui, sans-serif, 2rem, weight 600, line-height 1.3</div>
+      </div>
+  - id: design-system:typography-body-md
+    title: body-md
+    category: My Design System
+    subCategory: Typography
+    prompt: 'Apply typography preset "body-md" from DESIGN.md: system-ui, sans-serif, 1rem, weight 400, line-height 1.6.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:system-ui, sans-serif,sans-serif;font-size:1rem;font-weight:400;line-height:1.6;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md: system-ui, sans-serif, 1rem, weight 400, line-height 1.6</div>
+      </div>
+  - id: design-system:typography-label-sm
+    title: label-sm
+    category: My Design System
+    subCategory: Typography
+    prompt: 'Apply typography preset "label-sm" from DESIGN.md: system-ui, sans-serif, 0.875rem, weight 500, line-height 1.5.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:system-ui, sans-serif,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.5;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm: system-ui, sans-serif, 0.875rem, weight 500, line-height 1.5</div>
+      </div>
+  - id: design-system:spacing-xs
+    title: xs (0.25rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "xs" with value 0.25rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:0.25rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">xs</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">0.25rem</span>
+        </div>
+      </div>
+  - id: design-system:spacing-sm
+    title: sm (0.5rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "sm" with value 0.5rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:0.5rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">sm</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">0.5rem</span>
+        </div>
+      </div>
+  - id: design-system:spacing-md
+    title: md (1rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "md" with value 1rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:1rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">md</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1rem</span>
+        </div>
+      </div>
+  - id: design-system:spacing-lg
+    title: lg (1.5rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "lg" with value 1.5rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:1.5rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">lg</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1.5rem</span>
+        </div>
+      </div>
+  - id: design-system:spacing-xl
+    title: xl (2rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "xl" with value 2rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:2rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">xl</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">2rem</span>
+        </div>
+      </div>
+  - id: design-system:spacing-2xl
+    title: 2xl (3rem)
+    category: My Design System
+    subCategory: Spacing
+    prompt: Use spacing token "2xl" with value 3rem from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:3rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">2xl</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">3rem</span>
+        </div>
+      </div>
+  - id: design-system:rounded-none
+    title: none (0)
+    category: My Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "none" with value 0 from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">none</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0</div>
+        </div>
+      </div>
+  - id: design-system:rounded-sm
+    title: sm (0.25rem)
+    category: My Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "sm" with value 0.25rem from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0.25rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">sm</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0.25rem</div>
+        </div>
+      </div>
+  - id: design-system:rounded-md
+    title: md (0.5rem)
+    category: My Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "md" with value 0.5rem from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">md</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0.5rem</div>
+        </div>
+      </div>
+  - id: design-system:rounded-lg
+    title: lg (0.75rem)
+    category: My Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "lg" with value 0.75rem from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">lg</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0.75rem</div>
+        </div>
+      </div>
+  - id: design-system:rounded-full
+    title: full (9999px)
+    category: My Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "full" with value 9999px from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:9999px;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">full</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">9999px</div>
+        </div>
+      </div>
+  - id: design-system:animation-micro
+    title: micro
+    category: My Design System
+    subCategory: Animations
     prompt: >-
-      Apply typography from the project design system.
-
-      Available presets: headline-lg: system-ui, sans-serif 2.5rem weight 700; headline-md: system-ui, sans-serif 2rem
-      weight 600; body-md: system-ui, sans-serif 1rem weight 400; label-sm: system-ui, sans-serif 0.875rem weight 500.
-
-      Use font-size, font-weight, line-height, and font-family values from these presets. Do not introduce typography
-      values outside the design system.
-  - id: design-system:spacing
-    title: Spacing scale
-    category: Design System
-    subCategory: Layout
+      Use animation preset "micro" from DESIGN.md: 150ms, ease-in-out. Apply to transition-duration and
+      transition-timing-function.
+    html: |-
+      <div style="font-family:sans-serif;">
+        <style>
+          @scope {
+            .anim-preview { width:40px;height:40px;border-radius:6px;background:#8b5cf6;transition:transform 150ms ease-in-out;cursor:pointer; }
+            .anim-preview:hover { transform:scale(1.3); }
+          }
+        </style>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="anim-preview"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">micro</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">150ms, ease-in-out</div>
+            <div style="font-size:10px;color:#aaa;">hover to preview</div>
+          </div>
+        </div>
+      </div>
+  - id: design-system:animation-normal
+    title: normal
+    category: My Design System
+    subCategory: Animations
     prompt: >-
-      Apply spacing from the project design system.
-
-      Spacing scale: xs: 0.25rem, sm: 0.5rem, md: 1rem, lg: 1.5rem, xl: 2rem, 2xl: 3rem.
-
-      Use these values for padding, margin, and gap. Add /* design-system: allow */ comment to exempt intentional
-      one-off values.
-  - id: design-system:rounded
-    title: Border radius
-    category: Design System
-    subCategory: Shapes
-    prompt: |-
-      Apply border-radius from the project design system.
-      Rounded scale: none: 0, sm: 0.25rem, md: 0.5rem, lg: 0.75rem, full: 9999px.
-      Use these values for border-radius. Do not use arbitrary radius values.
+      Use animation preset "normal" from DESIGN.md: 300ms, cubic-bezier(0, 0, 0.2, 1). Apply to transition-duration and
+      transition-timing-function.
+    html: |-
+      <div style="font-family:sans-serif;">
+        <style>
+          @scope {
+            .anim-preview { width:40px;height:40px;border-radius:6px;background:#8b5cf6;transition:transform 300ms cubic-bezier(0, 0, 0.2, 1);cursor:pointer; }
+            .anim-preview:hover { transform:scale(1.3); }
+          }
+        </style>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="anim-preview"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">normal</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">300ms, cubic-bezier(0, 0, 0.2, 1)</div>
+            <div style="font-size:10px;color:#aaa;">hover to preview</div>
+          </div>
+        </div>
+      </div>
+  - id: design-system:color-surface-dim
+    title: surface-dim (#0e1322)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-dim" with value #0e1322 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-dim</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#0e1322</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-bright
+    title: surface-bright (#343949)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-bright" with value #343949 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#343949;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-bright</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#343949</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-container-lowest
+    title: surface-container-lowest (#090e1c)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-container-lowest" with value #090e1c from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#090e1c;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-container-lowest</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#090e1c</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-container-low
+    title: surface-container-low (#161b2b)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-container-low" with value #161b2b from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#161b2b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-container-low</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#161b2b</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-container
+    title: surface-container (#1a1f2f)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-container" with value #1a1f2f from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#1a1f2f;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#1a1f2f</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-container-high
+    title: surface-container-high (#25293a)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-container-high" with value #25293a from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#25293a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-container-high</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#25293a</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-container-highest
+    title: surface-container-highest (#2f3445)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-container-highest" with value #2f3445 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-container-highest</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
+        </div>
+      </div>
+  - id: design-system:color-on-surface
+    title: on-surface (#dee1f7)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-surface" with value #dee1f7 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-surface</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div>
+      </div>
+  - id: design-system:color-on-surface-variant
+    title: on-surface-variant (#bbc9cf)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-surface-variant" with value #bbc9cf from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#bbc9cf;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-surface-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#bbc9cf</div>
+        </div>
+      </div>
+  - id: design-system:color-inverse-surface
+    title: inverse-surface (#dee1f7)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "inverse-surface" with value #dee1f7 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">inverse-surface</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div>
+      </div>
+  - id: design-system:color-inverse-on-surface
+    title: inverse-on-surface (#2b3040)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "inverse-on-surface" with value #2b3040 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#2b3040;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">inverse-on-surface</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#2b3040</div>
+        </div>
+      </div>
+  - id: design-system:color-outline
+    title: outline (#859399)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "outline" with value #859399 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#859399;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">outline</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#859399</div>
+        </div>
+      </div>
+  - id: design-system:color-outline-variant
+    title: outline-variant (#3c494e)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "outline-variant" with value #3c494e from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#3c494e;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">outline-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#3c494e</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-tint
+    title: surface-tint (#47d6ff)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-tint" with value #47d6ff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-tint</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#47d6ff</div>
+        </div>
+      </div>
+  - id: design-system:color-on-primary
+    title: on-primary (#003543)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-primary" with value #003543 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#003543;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-primary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#003543</div>
+        </div>
+      </div>
+  - id: design-system:color-primary-container
+    title: primary-container (#00d2ff)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "primary-container" with value #00d2ff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#00d2ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">primary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#00d2ff</div>
+        </div>
+      </div>
+  - id: design-system:color-on-primary-container
+    title: on-primary-container (#00566a)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-primary-container" with value #00566a from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#00566a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-primary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#00566a</div>
+        </div>
+      </div>
+  - id: design-system:color-inverse-primary
+    title: inverse-primary (#00677f)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "inverse-primary" with value #00677f from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#00677f;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">inverse-primary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#00677f</div>
+        </div>
+      </div>
+  - id: design-system:color-on-secondary
+    title: on-secondary (#003739)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-secondary" with value #003739 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#003739;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-secondary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#003739</div>
+        </div>
+      </div>
+  - id: design-system:color-secondary-container
+    title: secondary-container (#00f4fe)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "secondary-container" with value #00f4fe from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#00f4fe;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">secondary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#00f4fe</div>
+        </div>
+      </div>
+  - id: design-system:color-on-secondary-container
+    title: on-secondary-container (#006c71)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-secondary-container" with value #006c71 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#006c71;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-secondary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#006c71</div>
+        </div>
+      </div>
+  - id: design-system:color-tertiary
+    title: tertiary (#ffd2d1)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "tertiary" with value #ffd2d1 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffd2d1;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">tertiary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffd2d1</div>
+        </div>
+      </div>
+  - id: design-system:color-on-tertiary
+    title: on-tertiary (#680012)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-tertiary" with value #680012 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#680012;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-tertiary</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#680012</div>
+        </div>
+      </div>
+  - id: design-system:color-tertiary-container
+    title: tertiary-container (#ffabaa)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "tertiary-container" with value #ffabaa from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffabaa;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">tertiary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffabaa</div>
+        </div>
+      </div>
+  - id: design-system:color-on-tertiary-container
+    title: on-tertiary-container (#a20022)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-tertiary-container" with value #a20022 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#a20022;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-tertiary-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#a20022</div>
+        </div>
+      </div>
+  - id: design-system:color-on-error
+    title: on-error (#690005)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-error" with value #690005 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#690005;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-error</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#690005</div>
+        </div>
+      </div>
+  - id: design-system:color-error-container
+    title: error-container (#93000a)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "error-container" with value #93000a from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#93000a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">error-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#93000a</div>
+        </div>
+      </div>
+  - id: design-system:color-on-error-container
+    title: on-error-container (#ffdad6)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-error-container" with value #ffdad6 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffdad6;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-error-container</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffdad6</div>
+        </div>
+      </div>
+  - id: design-system:color-primary-fixed
+    title: primary-fixed (#b6ebff)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "primary-fixed" with value #b6ebff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#b6ebff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">primary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#b6ebff</div>
+        </div>
+      </div>
+  - id: design-system:color-primary-fixed-dim
+    title: primary-fixed-dim (#47d6ff)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "primary-fixed-dim" with value #47d6ff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">primary-fixed-dim</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#47d6ff</div>
+        </div>
+      </div>
+  - id: design-system:color-on-primary-fixed
+    title: on-primary-fixed (#001f28)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-primary-fixed" with value #001f28 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#001f28;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-primary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#001f28</div>
+        </div>
+      </div>
+  - id: design-system:color-on-primary-fixed-variant
+    title: on-primary-fixed-variant (#004e60)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-primary-fixed-variant" with value #004e60 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#004e60;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-primary-fixed-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#004e60</div>
+        </div>
+      </div>
+  - id: design-system:color-secondary-fixed
+    title: secondary-fixed (#63f7ff)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "secondary-fixed" with value #63f7ff from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#63f7ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">secondary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#63f7ff</div>
+        </div>
+      </div>
+  - id: design-system:color-secondary-fixed-dim
+    title: secondary-fixed-dim (#00dce5)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "secondary-fixed-dim" with value #00dce5 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#00dce5;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">secondary-fixed-dim</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#00dce5</div>
+        </div>
+      </div>
+  - id: design-system:color-on-secondary-fixed
+    title: on-secondary-fixed (#002021)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-secondary-fixed" with value #002021 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#002021;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-secondary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#002021</div>
+        </div>
+      </div>
+  - id: design-system:color-on-secondary-fixed-variant
+    title: on-secondary-fixed-variant (#004f53)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-secondary-fixed-variant" with value #004f53 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#004f53;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-secondary-fixed-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#004f53</div>
+        </div>
+      </div>
+  - id: design-system:color-tertiary-fixed
+    title: tertiary-fixed (#ffdad8)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "tertiary-fixed" with value #ffdad8 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffdad8;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">tertiary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffdad8</div>
+        </div>
+      </div>
+  - id: design-system:color-tertiary-fixed-dim
+    title: tertiary-fixed-dim (#ffb3b2)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "tertiary-fixed-dim" with value #ffb3b2 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#ffb3b2;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">tertiary-fixed-dim</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#ffb3b2</div>
+        </div>
+      </div>
+  - id: design-system:color-on-tertiary-fixed
+    title: on-tertiary-fixed (#410008)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-tertiary-fixed" with value #410008 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#410008;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-tertiary-fixed</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#410008</div>
+        </div>
+      </div>
+  - id: design-system:color-on-tertiary-fixed-variant
+    title: on-tertiary-fixed-variant (#92001e)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-tertiary-fixed-variant" with value #92001e from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#92001e;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-tertiary-fixed-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#92001e</div>
+        </div>
+      </div>
+  - id: design-system:color-on-background
+    title: on-background (#dee1f7)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "on-background" with value #dee1f7 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">on-background</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div>
+      </div>
+  - id: design-system:color-surface-variant
+    title: surface-variant (#2f3445)
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: 'Use color token "surface-variant" with value #2f3445 from DESIGN.md.'
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">surface-variant</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
+        </div>
+      </div>
+  - id: design-system:typography-headline-sm
+    title: headline-sm
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: 'Apply typography preset "headline-sm" from DESIGN.md: Sora, 24px, weight 600, line-height 32px.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:Sora,sans-serif;font-size:24px;font-weight:600;line-height:32px;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-sm: Sora, 24px, weight 600, line-height 32px</div>
+      </div>
+  - id: design-system:typography-body-lg
+    title: body-lg
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: 'Apply typography preset "body-lg" from DESIGN.md: Inter, 18px, weight 400, line-height 28px.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:Inter,sans-serif;font-size:18px;font-weight:400;line-height:28px;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-lg: Inter, 18px, weight 400, line-height 28px</div>
+      </div>
+  - id: design-system:typography-code-md
+    title: code-md
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: 'Apply typography preset "code-md" from DESIGN.md: JetBrains Mono, 14px, weight 400, line-height 20px.'
+    html: |-
+      <div style="font-family:sans-serif;">
+        <div style="font-family:JetBrains Mono,sans-serif;font-size:14px;font-weight:400;line-height:20px;margin:0;">The quick brown fox</div>
+        <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-md: JetBrains Mono, 14px, weight 400, line-height 20px</div>
+      </div>
+  - id: design-system:spacing-base
+    title: base (8px)
+    category: Cybernetic Web Intelligence
+    subCategory: Spacing
+    prompt: Use spacing token "base" with value 8px from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:8px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">base</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">8px</span>
+        </div>
+      </div>
+  - id: design-system:spacing-gutter
+    title: gutter (24px)
+    category: Cybernetic Web Intelligence
+    subCategory: Spacing
+    prompt: Use spacing token "gutter" with value 24px from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:24px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">gutter</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">24px</span>
+        </div>
+      </div>
+  - id: design-system:spacing-margin-mobile
+    title: margin-mobile (16px)
+    category: Cybernetic Web Intelligence
+    subCategory: Spacing
+    prompt: Use spacing token "margin-mobile" with value 16px from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:16px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">margin-mobile</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">16px</span>
+        </div>
+      </div>
+  - id: design-system:spacing-margin-desktop
+    title: margin-desktop (64px)
+    category: Cybernetic Web Intelligence
+    subCategory: Spacing
+    prompt: Use spacing token "margin-desktop" with value 64px from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:64px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">margin-desktop</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">64px</span>
+        </div>
+      </div>
+  - id: design-system:spacing-max-width
+    title: max-width (1440px)
+    category: Cybernetic Web Intelligence
+    subCategory: Spacing
+    prompt: Use spacing token "max-width" with value 1440px from DESIGN.md for padding, margin, or gap.
+    html: |-
+      <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+          <div style="width:1440px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+          <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+        </div>
+        <div>
+          <span style="font-size:12px;font-weight:600;">max-width</span>
+          <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1440px</span>
+        </div>
+      </div>
+  - id: design-system:rounded-DEFAULT
+    title: DEFAULT (0.25rem)
+    category: Cybernetic Web Intelligence
+    subCategory: Rounded
+    prompt: Use border-radius token "DEFAULT" with value 0.25rem from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0.25rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">DEFAULT</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0.25rem</div>
+        </div>
+      </div>
+  - id: design-system:rounded-xl
+    title: xl (0.75rem)
+    category: Cybernetic Web Intelligence
+    subCategory: Rounded
+    prompt: Use border-radius token "xl" with value 0.75rem from DESIGN.md.
+    html: |-
+      <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+        <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:12px;font-weight:600;">xl</div>
+          <div style="font-size:11px;color:#888;font-family:monospace;">0.75rem</div>
+        </div>
+      </div>
