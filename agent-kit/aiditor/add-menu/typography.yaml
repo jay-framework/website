@@ -1,0 +1,1081 @@
+items:
+  - id: jay-text:editorial-heading
+    title: Editorial heading
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an editorial heading component at this marker location on the page.
+    prompt: |
+      Add an "Editorial Heading" text element to the page.
+      A serif heading with a bold red left border rule. Font size uses clamp() for
+      fluid responsiveness — never too small on mobile, never too large on desktop.
+      The border color, font size range, and text content should be configurable via props.
+
+      Example:
+      <div class="editorial-heading">
+        <style>
+          @scope {
+            .head {
+              font-family: Georgia, serif;
+              font-size: clamp(22px, 2rem + 1vw, 32px);
+              font-weight: 700;
+              line-height: 1.15;
+              border-left: 3px solid #e24b4a;
+              padding-left: 14px;
+              margin: 0;
+            }
+          }
+        </style>
+        <h2 class="head">The future belongs to those who show up early.</h2>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="editorial-heading-widget">
+          <style>
+            @scope {
+              .head {
+                font-family: Georgia, serif;
+                font-size: clamp(22px, 2rem + 1vw, 32px);
+                font-weight: 700;
+                line-height: 1.15;
+                color: #1a1a1a;
+                border-left: 3px solid #e24b4a;
+                padding-left: 14px;
+                margin: 0;
+              }
+              .badge { font-size:10px; background:#FCEBEB; color:#A32D2D; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h2 class="head">The future belongs to those who show up early.</h2>
+          <div class="badge">editorial heading</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:display-heading
+    title: Display heading
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a display heading with kicker at this marker location on the page.
+    prompt: |
+      Add a "Display Heading" element to the page.
+      Consists of a small all-caps kicker label above a large italic serif heading.
+      The kicker sets context; the heading delivers the message. Font size uses clamp()
+      for fluid scaling. The kicker text, kicker color, and heading text should be
+      configurable via props.
+
+      Example:
+      <div class="display-heading">
+        <style>
+          @scope {
+            .kicker {
+              font-size: 10px;
+              font-weight: 700;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: #185FA5;
+              font-family: sans-serif;
+              margin: 0 0 4px;
+            }
+            .head {
+              font-family: Georgia, serif;
+              font-size: clamp(20px, 1.5rem + 1.5vw, 28px);
+              font-weight: 400;
+              font-style: italic;
+              margin: 0;
+              line-height: 1.2;
+            }
+          }
+        </style>
+        <p class="kicker">Weekly dispatch</p>
+        <h2 class="head">What nobody tells you about starting over.</h2>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="display-heading-widget">
+          <style>
+            @scope {
+              .kicker {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #185FA5;
+                font-family: sans-serif;
+                margin: 0 0 4px;
+              }
+              .head {
+                font-family: Georgia, serif;
+                font-size: clamp(20px, 1.5rem + 1.5vw, 28px);
+                font-weight: 400;
+                font-style: italic;
+                color: #1a1a1a;
+                margin: 0;
+                line-height: 1.2;
+              }
+              .badge { font-size:10px; background:#E6F1FB; color:#185FA5; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <p class="kicker">Weekly dispatch</p>
+          <h2 class="head">What nobody tells you about starting over.</h2>
+          <div class="badge">display heading</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:animated-underline-heading
+    title: Animated underline heading
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an animated underline heading at this marker location on the page.
+    prompt: |
+      Add an "Animated Underline Heading" to the page.
+      A sans-serif bold heading where a colored underline animates in from left to right
+      on load using CSS @keyframes on the width property of a ::after pseudo-element.
+      Font size uses clamp() for fluid scaling.
+      The text, underline color, and animation duration should be configurable via props.
+
+      Example:
+      <div class="underline-heading">
+        <style>
+          @scope {
+            @keyframes underline-grow {
+              from { width: 0; }
+              to   { width: 100%; }
+            }
+            .head {
+              font-family: sans-serif;
+              font-size: clamp(18px, 1rem + 1.5vw, 24px);
+              font-weight: 700;
+              margin: 0;
+              display: inline-block;
+              position: relative;
+              padding-bottom: 4px;
+            }
+            .head::after {
+              content: '';
+              position: absolute;
+              bottom: 0; left: 0;
+              height: 3px;
+              background: #7f77dd;
+              animation: underline-grow 1.2s ease forwards;
+              width: 100%;
+            }
+          }
+        </style>
+        <h2 class="head">Design that lasts</h2>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="underline-heading-widget">
+          <style>
+            @scope {
+              @keyframes underline-grow { from { width: 0; } to { width: 100%; } }
+              .head {
+                font-family: sans-serif;
+                font-size: clamp(18px, 1rem + 1.5vw, 24px);
+                font-weight: 700;
+                color: #1a1a1a;
+                margin: 0;
+                display: inline-block;
+                position: relative;
+                padding-bottom: 4px;
+              }
+              .head::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0;
+                height: 3px;
+                background: #7f77dd;
+                animation: underline-grow 1.2s ease forwards;
+                width: 100%;
+              }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:10px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h2 class="head">Design that lasts</h2>
+          <div class="badge">animated underline</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:stacked-heading
+    title: Stacked heading
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a stacked heading with overline and subhead at this marker location on the page.
+    prompt: |
+      Add a "Stacked Heading" element to the page.
+      Three-level typographic stack: a small tracked overline label at the top, a heavy
+      sans-serif display heading in the middle, and a lighter subhead below. Each level
+      uses distinct weight, size, and color to create clear visual hierarchy without
+      color as the sole differentiator. Font size uses clamp() for fluid scaling.
+      All three text strings and colors should be configurable via props.
+
+      Example:
+      <div class="stacked-heading">
+        <style>
+          @scope {
+            .overline { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #888780; font-family: sans-serif; margin: 0; }
+            .head { font-family: sans-serif; font-size: clamp(20px, 1.5rem + 1vw, 26px); font-weight: 800; margin: 2px 0 0; letter-spacing: -0.02em; }
+            .sub { font-family: sans-serif; font-size: 13px; color: #5F5E5A; margin: 4px 0 0; line-height: 1.5; }
+          }
+        </style>
+        <p class="overline">Studio update</p>
+        <h2 class="head">Less noise. More signal.</h2>
+        <p class="sub">A framework for building products that people actually want to use.</p>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="stacked-heading-widget">
+          <style>
+            @scope {
+              .overline { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #888780; font-family: sans-serif; margin: 0; }
+              .head { font-family: sans-serif; font-size: clamp(20px, 1.5rem + 1vw, 26px); font-weight: 800; color: #1a1a1a; margin: 2px 0 0; letter-spacing: -0.02em; }
+              .sub { font-family: sans-serif; font-size: 13px; color: #5F5E5A; margin: 4px 0 0; line-height: 1.5; }
+              .badge { font-size:10px; background:#F1EFE8; color:#444441; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <p class="overline">Studio update</p>
+          <h2 class="head">Less noise.<br>More signal.</h2>
+          <p class="sub">A framework for building products that people actually want to use.</p>
+          <div class="badge">stacked heading</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:heading-scale
+    title: Heading scale H1–H6
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a full H1–H6 heading hierarchy at this marker location on the page.
+    prompt: |
+      Add a full "Heading Scale" H1–H6 hierarchy to the page.
+      Each heading level has a distinct size, weight, and style that decreases in visual
+      prominence. H1–H5 use Georgia serif; H6 breaks to sans-serif with uppercase tracking
+      to serve as an eyebrow/label. All sizes use clamp() for fluid responsive scaling.
+      H5 is italic to distinguish it from H4 without relying solely on size.
+      The font family, size range, and heading text for each level should be configurable
+      via props. Apply only the levels needed for the document structure.
+
+      Example:
+      <div class="heading-scale">
+        <style>
+          @scope {
+            h1 { font-family: Georgia, serif; font-size: clamp(28px, 2rem + 2vw, 40px);   font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+            h2 { font-family: Georgia, serif; font-size: clamp(22px, 1.5rem + 1vw, 32px); font-weight: 700; line-height: 1.2; }
+            h3 { font-family: Georgia, serif; font-size: clamp(18px, 1.1rem + 0.8vw, 26px); font-weight: 600; }
+            h4 { font-family: Georgia, serif; font-size: clamp(15px, 0.9rem + 0.5vw, 20px); font-weight: 600; }
+            h5 { font-family: Georgia, serif; font-size: clamp(13px, 0.8rem + 0.3vw, 16px); font-weight: 600; font-style: italic; }
+            h6 { font-family: sans-serif;     font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; }
+          }
+        </style>
+        <h1>Page title</h1>
+        <h2>Section heading</h2>
+        <h3>Subsection heading</h3>
+        <h4>Group heading</h4>
+        <h5>Minor heading</h5>
+        <h6>Label / eyebrow</h6>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="heading-scale-widget">
+          <style>
+            @scope {
+              .h1 { font-family: Georgia, serif; font-size: clamp(28px, 2rem + 2vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 4px; }
+              .h2 { font-family: Georgia, serif; font-size: clamp(22px, 1.5rem + 1vw, 32px); font-weight: 700; line-height: 1.2; margin: 0 0 4px; }
+              .h3 { font-family: Georgia, serif; font-size: clamp(18px, 1.1rem + 0.8vw, 26px); font-weight: 600; line-height: 1.25; margin: 0 0 4px; }
+              .h4 { font-family: Georgia, serif; font-size: clamp(15px, 0.9rem + 0.5vw, 20px); font-weight: 600; line-height: 1.3; margin: 0 0 4px; }
+              .h5 { font-family: Georgia, serif; font-size: clamp(13px, 0.8rem + 0.3vw, 16px); font-weight: 600; font-style: italic; line-height: 1.4; margin: 0 0 4px; }
+              .h6 { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; margin: 0; }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:10px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h1 class="h1">Page title</h1>
+          <h2 class="h2">Section heading</h2>
+          <h3 class="h3">Subsection heading</h3>
+          <h4 class="h4">Group heading</h4>
+          <h5 class="h5">Minor heading</h5>
+          <h6 class="h6">Label / eyebrow</h6>
+          <div class="badge">H1 – H6 scale</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:drop-cap-paragraph
+    title: Drop cap paragraph
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a drop cap editorial paragraph at this marker location on the page.
+    prompt: |
+      Add a "Drop Cap Paragraph" to the page.
+      A serif editorial paragraph where the first letter is enlarged to ~3.4em,
+      floated left, with a tighter line-height so it sits flush with the top of the
+      text block. The drop cap uses a distinct accent color. The rest of the paragraph
+      flows normally. Font size uses clamp() for fluid scaling.
+      The paragraph text, drop cap color, and font size range should be configurable
+      via props.
+
+      Example:
+      <div class="drop-cap">
+        <style>
+          @scope {
+            .para {
+              font-family: Georgia, serif;
+              font-size: clamp(13px, 0.8rem + 0.3vw, 15px);
+              line-height: 1.8;
+              margin: 0;
+            }
+            .para::first-letter {
+              font-size: 3.4em;
+              font-weight: 700;
+              float: left;
+              line-height: 0.75;
+              margin: 0.08em 0.08em 0 0;
+              color: #e24b4a;
+            }
+          }
+        </style>
+        <p class="para">Every great design starts with an uncomfortable question...</p>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="drop-cap-widget">
+          <style>
+            @scope {
+              .para { font-family: Georgia, serif; font-size: clamp(13px, 0.8rem + 0.3vw, 15px); line-height: 1.8; margin: 0; }
+              .para::first-letter { font-size: 3.4em; font-weight: 700; float: left; line-height: 0.75; margin: 0.08em 0.08em 0 0; color: #e24b4a; font-family: Georgia, serif; }
+              .badge { font-size:10px; background:#EAF3DE; color:#3B6D11; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <p class="para">Every great design starts with an uncomfortable question. The kind that makes a room go quiet, that nobody wants to answer first. It is the question beneath the brief, the one the client forgot to ask. Finding it — and sitting with it long enough to understand it — is where the real work begins.</p>
+          <div class="badge">drop cap paragraph</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:blockquote
+    title: Blockquote
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a blockquote with attribution at this marker location on the page.
+    prompt: |
+      Add a "Blockquote" element to the page.
+      An italic serif quote with a colored left border and a light tinted background.
+      Attribution appears below in small sans-serif. Uses semantic <blockquote> and
+      <cite> elements. Font size uses clamp() for fluid scaling.
+      The quote text, attribution, border color, and background tint should be
+      configurable via props.
+
+      Example:
+      <div class="blockquote">
+        <style>
+          @scope {
+            .bq {
+              margin: 0;
+              padding: 12px 16px;
+              border-left: 3px solid #ef9f27;
+              background: #faeeda33;
+              border-radius: 0 8px 8px 0;
+            }
+            .bq p    { font-family: Georgia, serif; font-size: clamp(14px, 0.9rem + 0.3vw, 16px); font-style: italic; line-height: 1.6; margin: 0 0 6px; }
+            .bq cite { font-size: 12px; color: #888780; font-style: normal; font-family: sans-serif; }
+          }
+        </style>
+        <blockquote class="bq">
+          <p>Good design is as little design as possible.</p>
+          <cite>— Dieter Rams</cite>
+        </blockquote>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="blockquote-widget">
+          <style>
+            @scope {
+              .bq { margin: 0; padding: 12px 16px; border-left: 3px solid #ef9f27; background: #faeeda33; border-radius: 0 8px 8px 0; }
+              .bq p { font-family: Georgia, serif; font-size: clamp(14px, 0.9rem + 0.3vw, 16px); font-style: italic; line-height: 1.6; margin: 0 0 6px; }
+              .bq cite { font-size: 12px; color: #888780; font-style: normal; font-family: sans-serif; }
+              .badge { font-size:10px; background:#FAEEDA; color:#633806; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <blockquote class="bq">
+            <p>Good design is as little design as possible.</p>
+            <cite>— Dieter Rams</cite>
+          </blockquote>
+          <div class="badge">blockquote</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:pull-quote
+    title: Pull quote
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a centred pull quote at this marker location on the page.
+    prompt: |
+      Add a "Pull Quote" element to the page.
+      A large centred italic serif quote with oversized decorative curly quotation marks
+      rendered via CSS ::before and ::after pseudo-elements using Unicode characters
+      \201C and \201D. The quote marks use an accent color distinct from the text.
+      Font size uses clamp() for fluid scaling.
+      The quote text and accent color should be configurable via props.
+
+      Example:
+      <div class="pull-quote">
+        <style>
+          @scope {
+            .pq {
+              font-family: Georgia, serif;
+              font-size: clamp(16px, 1rem + 1vw, 22px);
+              font-weight: 700;
+              font-style: italic;
+              line-height: 1.35;
+              margin: 0;
+              text-align: center;
+            }
+            .pq::before { content: '\201C'; font-size: 64px; color: #7f77dd; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+            .pq::after  { content: '\201D'; font-size: 64px; color: #7f77dd; line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+          }
+        </style>
+        <p class="pq">Clarity is the ultimate sophistication.</p>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="pull-quote-widget">
+          <style>
+            @scope {
+              .pq { font-family: Georgia, serif; font-size: clamp(16px, 1rem + 1vw, 22px); font-weight: 700; font-style: italic; line-height: 1.35; margin: 0; text-align: center; }
+              .pq::before { content: '\201C'; font-size: 64px; color: #7f77dd; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+              .pq::after  { content: '\201D'; font-size: 64px; color: #7f77dd; line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+              .badge { font-size:10px; background:#EEEDFE; color:#3C3489; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <p class="pq">Clarity is the ultimate sophistication.</p>
+          <div class="badge">pull quote</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:inline-code-caption
+    title: Inline code with caption
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a paragraph with inline code and figure caption at this marker location.
+    prompt: |
+      Add an "Inline Code with Caption" text element to the page.
+      A prose paragraph containing inline <code> elements styled with a monospace font,
+      subtle background tint, and border. Below the paragraph, a figure caption in small
+      muted sans-serif is separated by a hairline border-top.
+      The paragraph content, inline code values, and caption text should be configurable
+      via props.
+
+      Example:
+      <div class="code-caption">
+        <style>
+          @scope {
+            .para { font-size: 13px; font-family: sans-serif; line-height: 1.7; margin: 0; }
+            .para code {
+              font-family: monospace;
+              font-size: 12px;
+              background: #F1EFE8;
+              border: 0.5px solid #D3D1C7;
+              border-radius: 4px;
+              padding: 1px 5px;
+              color: #185FA5;
+            }
+            .caption {
+              font-size: 11px;
+              color: #888780;
+              font-family: sans-serif;
+              margin-top: 6px;
+              border-top: 0.5px solid #D3D1C7;
+              padding-top: 6px;
+            }
+          }
+        </style>
+        <p class="para">Pass the <code>variant</code> prop to switch between <code>primary</code> and <code>ghost</code> styles.</p>
+        <p class="caption">Figure 3 — Button variant API reference.</p>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="code-caption-widget">
+          <style>
+            @scope {
+              .para { font-size: 13px; font-family: sans-serif; line-height: 1.7; margin: 0; }
+              .para code { font-family: monospace; font-size: 12px; background: #F1EFE8; border: 0.5px solid #D3D1C7; border-radius: 4px; padding: 1px 5px; color: #185FA5; }
+              .caption { font-size: 11px; color: #888780; font-family: sans-serif; margin-top: 6px; border-top: 0.5px solid #D3D1C7; padding-top: 6px; }
+              .badge { font-size:10px; background:#F1EFE8; color:#444441; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <p class="para">Pass the <code>variant</code> prop to switch between <code>primary</code>, <code>secondary</code>, and <code>ghost</code> button styles. Combine with <code>size="sm"</code> for compact layouts.</p>
+          <p class="caption">Figure 3 — Button variant API reference. See design tokens for full color mapping.</p>
+          <div class="badge">inline code + caption</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:definition-list
+    title: Definition list
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a definition list at this marker location on the page.
+    prompt: |
+      Add a "Definition List" element to the page.
+      Uses semantic <dl>, <dt>, <dd> elements. Terms are rendered in small uppercase
+      sans-serif with an accent color. Definitions are serif with a colored left border
+      rule creating visual grouping. Multiple term/definition pairs are stacked with gap.
+      The terms, definitions, and accent color should be configurable via props.
+
+      Example:
+      <div class="definition-list">
+        <style>
+          @scope {
+            .dl { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+            .dl dt { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #185FA5; font-family: sans-serif; }
+            .dl dd { margin: 0; font-size: 13px; line-height: 1.55; font-family: Georgia, serif; padding-left: 12px; border-left: 2px solid #E6F1FB; }
+          }
+        </style>
+        <dl class="dl">
+          <dt>Kerning</dt>
+          <dd>The adjustment of space between individual letter pairs.</dd>
+          <dt>Leading</dt>
+          <dd>The vertical spacing between lines of text, baseline to baseline.</dd>
+        </dl>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="definition-list-widget">
+          <style>
+            @scope {
+              .dl { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+              .dl dt { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #185FA5; font-family: sans-serif; }
+              .dl dd { margin: 0; font-size: 13px; line-height: 1.55; font-family: Georgia, serif; padding-left: 12px; border-left: 2px solid #E6F1FB; }
+              .badge { font-size:10px; background:#E6F1FB; color:#0C447C; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <dl class="dl">
+            <dt>Kerning</dt><dd>The adjustment of space between individual letter pairs to achieve visual harmony.</dd>
+            <dt>Leading</dt><dd>The vertical spacing between lines of text, measured baseline to baseline.</dd>
+            <dt>Tracking</dt><dd>Uniform letter-spacing applied across a word, line, or block of text.</dd>
+          </dl>
+          <div class="badge">definition list</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:numbered-list
+    title: Numbered editorial list
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a numbered editorial list at this marker location on the page.
+    prompt: |
+      Add a "Numbered Editorial List" to the page.
+      An ordered list where each number is rendered inside a small filled circle
+      (not the browser default). Numbers are bold white on a colored background circle,
+      vertically aligned to the first line of text. Uses flexbox layout, not list-style.
+      The list items, number circle color, and font size should be configurable via props.
+
+      Example:
+      <div class="numbered-list">
+        <style>
+          @scope {
+            .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+            .list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.55; font-family: sans-serif; }
+            .list .n {
+              min-width: 24px; height: 24px;
+              border-radius: 50%;
+              background: #e24b4a; color: #fff;
+              font-size: 11px; font-weight: 700;
+              display: flex; align-items: center; justify-content: center;
+              flex-shrink: 0; margin-top: 1px;
+            }
+          }
+        </style>
+        <ol class="list">
+          <li><span class="n">1</span>Understand the problem before touching the tool.</li>
+          <li><span class="n">2</span>Sketch ten ideas. Keep one. Maybe two.</li>
+        </ol>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="numbered-list-widget">
+          <style>
+            @scope {
+              .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+              .list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.55; font-family: sans-serif; }
+              .list .n { min-width: 24px; height: 24px; border-radius: 50%; background: #e24b4a; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+              .badge { font-size:10px; background:#FCEBEB; color:#A32D2D; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <ol class="list">
+            <li><span class="n">1</span>Understand the problem before touching the tool.</li>
+            <li><span class="n">2</span>Sketch ten ideas. Keep one. Maybe two.</li>
+            <li><span class="n">3</span>Show it to someone who will tell you the truth.</li>
+            <li><span class="n">4</span>Ship it. Then make it better.</li>
+          </ol>
+          <div class="badge">numbered list</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:checklist
+    title: Checklist
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a checklist with done and todo states at this marker location on the page.
+    prompt: |
+      Add a "Checklist" element to the page.
+      An unordered list where each item has a small square checkbox. Done items show
+      a green filled checkbox with a checkmark, strikethrough text, and muted color.
+      Todo items show an empty bordered checkbox. Uses flexbox layout, not list-style.
+      The list items, their done/todo state, and accent color should be configurable
+      via props.
+
+      Example:
+      <div class="checklist">
+        <style>
+          @scope {
+            .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+            .list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; font-family: sans-serif; line-height: 1.5; }
+            .chk { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+            .chk.done { background: #EAF3DE; color: #3B6D11; }
+            .chk.todo { background: #F1EFE8; border: 1.5px solid #B4B2A9; }
+            .list li.done-item { color: #888780; text-decoration: line-through; }
+          }
+        </style>
+        <ul class="list">
+          <li class="done-item"><span class="chk done">✓</span>Define the audience</li>
+          <li><span class="chk todo"></span>Write first draft of copy</li>
+        </ul>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="checklist-widget">
+          <style>
+            @scope {
+              .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+              .list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; font-family: sans-serif; line-height: 1.5; }
+              .chk { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+              .chk.done { background: #EAF3DE; color: #3B6D11; }
+              .chk.todo { background: #F1EFE8; border: 1.5px solid #B4B2A9; }
+              .list li.done-item { color: #888780; text-decoration: line-through; }
+              .badge { font-size:10px; background:#EAF3DE; color:#3B6D11; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <ul class="list">
+            <li class="done-item"><span class="chk done">✓</span>Define the audience</li>
+            <li class="done-item"><span class="chk done">✓</span>Establish visual language</li>
+            <li><span class="chk todo"></span>Write first draft of copy</li>
+            <li><span class="chk todo"></span>Gather stakeholder feedback</li>
+            <li><span class="chk todo"></span>Final review and handoff</li>
+          </ul>
+          <div class="badge">checklist</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:tag-cloud
+    title: Tag cloud
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a tag cloud at this marker location on the page.
+    prompt: |
+      Add a "Tag Cloud" element to the page.
+      A wrapping flex container of pill-shaped tags, each with a distinct background
+      and text color from a consistent palette. Tags scale up slightly on hover via
+      CSS transform. Each tag uses the same pill shape (border-radius: 999px).
+      The tag labels, their individual colors, and font size should be configurable
+      via props.
+
+      Example:
+      <div class="tag-cloud">
+        <style>
+          @scope {
+            .cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+            .pill {
+              font-size: 12px; font-family: sans-serif;
+              padding: 4px 12px; border-radius: 999px;
+              font-weight: 500; cursor: default;
+              transition: transform 0.15s;
+            }
+            .pill:hover { transform: scale(1.07); }
+          }
+        </style>
+        <div class="cloud">
+          <span class="pill" style="background:#FCEBEB;color:#A32D2D;">typography</span>
+          <span class="pill" style="background:#EAF3DE;color:#3B6D11;">branding</span>
+          <span class="pill" style="background:#E6F1FB;color:#185FA5;">motion</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="tag-cloud-widget">
+          <style>
+            @scope {
+              .cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+              .pill { font-size: 12px; font-family: sans-serif; padding: 4px 12px; border-radius: 999px; font-weight: 500; cursor: default; transition: transform 0.15s; }
+              .pill:hover { transform: scale(1.07); }
+              .badge { font-size:10px; background:#FAEEDA; color:#854F0B; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="cloud">
+            <span class="pill" style="background:#FCEBEB;color:#A32D2D;">typography</span>
+            <span class="pill" style="background:#FAEEDA;color:#633806;">layout</span>
+            <span class="pill" style="background:#EAF3DE;color:#3B6D11;">branding</span>
+            <span class="pill" style="background:#E6F1FB;color:#185FA5;">motion</span>
+            <span class="pill" style="background:#EEEDFE;color:#534AB7;">editorial</span>
+            <span class="pill" style="background:#E1F5EE;color:#0F6E56;">web</span>
+          </div>
+          <div class="badge">tag cloud</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:stat-callout
+    title: Stat callout
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a stat callout with description at this marker location on the page.
+    prompt: |
+      Add a "Stat Callout" element to the page.
+      A large bold number (the stat) with an optional unit suffix in an accent color,
+      a small all-caps label beneath it, and a short description paragraph separated
+      by a hairline rule. The number uses clamp() for fluid scaling.
+      The number, unit, label text, description, and accent color should be configurable
+      via props.
+
+      Example:
+      <div class="stat-callout">
+        <style>
+          @scope {
+            .num  { font-size: clamp(36px, 3rem + 1vw, 52px); font-weight: 900; font-family: sans-serif; line-height: 1; letter-spacing: -0.03em; }
+            .unit { font-size: clamp(18px, 1.2rem + 0.5vw, 22px); color: #185FA5; }
+            .lbl  { font-size: 12px; color: #888780; font-family: sans-serif; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px; }
+            .desc { font-size: 13px; color: #5F5E5A; font-family: sans-serif; line-height: 1.5; border-top: 0.5px solid #D3D1C7; padding-top: 8px; margin-top: 6px; }
+          }
+        </style>
+        <div class="num">94<span class="unit">%</span></div>
+        <div class="lbl">user satisfaction</div>
+        <div class="desc">Based on 4,200 responses across three cohorts in Q1 2025.</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="stat-callout-widget">
+          <style>
+            @scope {
+              .num { font-size: clamp(36px, 3rem + 1vw, 52px); font-weight: 900; font-family: sans-serif; line-height: 1; letter-spacing: -0.03em; }
+              .unit { font-size: clamp(18px, 1.2rem + 0.5vw, 22px); color: #185FA5; }
+              .lbl { font-size: 12px; color: #888780; font-family: sans-serif; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px; }
+              .desc { font-size: 13px; color: #5F5E5A; font-family: sans-serif; line-height: 1.5; border-top: 0.5px solid #D3D1C7; padding-top: 8px; margin-top: 6px; }
+              .badge { font-size:10px; background:#E6F1FB; color:#185FA5; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="num">94<span class="unit">%</span></div>
+          <div class="lbl">user satisfaction</div>
+          <div class="desc">Based on 4,200 responses collected across three product cohorts in Q1 2025.</div>
+          <div class="badge">stat callout</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:step-timeline
+    title: Step timeline
+    category: Text
+    subCategory: Typography
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a step timeline at this marker location on the page.
+    prompt: |
+      Add a "Step Timeline" element to the page.
+      A vertical list of steps connected by a spine — each step has a filled circle dot
+      and a vertical line connecting to the next step. The last step has a muted dot and
+      no connecting line. Each step has a bold title and a muted description below.
+      The spine uses flexbox layout with the dot and line in a column, and the text body
+      beside it. The step titles, descriptions, and dot color should be configurable via props.
+
+      Example:
+      <div class="step-timeline">
+        <style>
+          @scope {
+            .steps { display: flex; flex-direction: column; }
+            .step  { display: flex; gap: 12px; }
+            .spine { display: flex; flex-direction: column; align-items: center; }
+            .dot   { width: 12px; height: 12px; border-radius: 50%; background: #7f77dd; flex-shrink: 0; margin-top: 3px; }
+            .dot.last { background: #B4B2A9; }
+            .line  { width: 1.5px; background: #D3D1C7; flex: 1; margin: 3px 0; min-height: 16px; }
+            .body  { padding-bottom: 14px; }
+            .title { font-size: 13px; font-weight: 600; font-family: sans-serif; margin: 0 0 2px; }
+            .desc  { font-size: 12px; font-family: sans-serif; color: #888780; margin: 0; line-height: 1.5; }
+          }
+        </style>
+        <div class="steps">
+          <div class="step">
+            <div class="spine"><div class="dot"></div><div class="line"></div></div>
+            <div class="body"><p class="title">Discovery</p><p class="desc">Research and interviews.</p></div>
+          </div>
+          <div class="step">
+            <div class="spine"><div class="dot last"></div></div>
+            <div class="body"><p class="title">Delivery</p><p class="desc">Handoff and launch.</p></div>
+          </div>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="step-timeline-widget">
+          <style>
+            @scope {
+              .steps { display: flex; flex-direction: column; }
+              .step { display: flex; gap: 12px; }
+              .spine { display: flex; flex-direction: column; align-items: center; }
+              .dot { width: 12px; height: 12px; border-radius: 50%; background: #7f77dd; flex-shrink: 0; margin-top: 3px; }
+              .dot.last { background: #B4B2A9; }
+              .line { width: 1.5px; background: #D3D1C7; flex: 1; margin: 3px 0; min-height: 16px; }
+              .body { padding-bottom: 14px; }
+              .title { font-size: 13px; font-weight: 600; font-family: sans-serif; margin: 0 0 2px; }
+              .desc  { font-size: 12px; font-family: sans-serif; color: #888780; margin: 0; line-height: 1.5; }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="steps">
+            <div class="step"><div class="spine"><div class="dot"></div><div class="line"></div></div><div class="body"><p class="title">Discovery</p><p class="desc">Research, interviews, and competitive audit.</p></div></div>
+            <div class="step"><div class="spine"><div class="dot"></div><div class="line"></div></div><div class="body"><p class="title">Definition</p><p class="desc">Synthesise findings into a clear problem statement.</p></div></div>
+            <div class="step"><div class="spine"><div class="dot"></div><div class="line"></div></div><div class="body"><p class="title">Design</p><p class="desc">Wireframes, prototypes, and iterative testing.</p></div></div>
+            <div class="step"><div class="spine"><div class="dot last"></div></div><div class="body"><p class="title">Delivery</p><p class="desc">Handoff, QA, and launch.</p></div></div>
+          </div>
+          <div class="badge">step timeline</div>
+        </div>
+    browse:
+      size: large
+  - id: jay-text:responsive-fluid-clamp
+    title: Responsive · fluid clamp scale
+    category: Text
+    subCategory: Typography / Responsive
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Apply fluid clamp responsive scaling to the text component at this marker location.
+    prompt: |
+      Apply "Fluid Clamp" responsive font sizing to the target text component.
+      This is a modifier — it adjusts the font-size property of an existing text element,
+      not a standalone component. Replace any fixed font-size with a clamp() value that
+      sets a minimum (for small screens), a preferred fluid value (using vw or a
+      combination of rem + vw), and a maximum (for large screens).
+      The min, preferred, and max values should be tuned to the specific heading level:
+
+      H1: clamp(28px, 2rem + 2.5vw, 48px)
+      H2: clamp(22px, 1.5rem + 1.5vw, 36px)
+      H3: clamp(18px, 1.1rem + 1vw,  28px)
+      H4: clamp(15px, 0.9rem + 0.7vw, 22px)
+      H5: clamp(13px, 0.8rem + 0.4vw, 17px)
+      body: clamp(14px, 0.85rem + 0.2vw, 16px)
+
+      No media queries are needed. The font size transitions smoothly between
+      the min and max as the viewport grows.
+
+      Example (applied to an H1):
+      <style>
+        @scope {
+          h1 { font-size: clamp(28px, 2rem + 2.5vw, 48px); }
+        }
+      </style>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="responsive-clamp-widget">
+          <style>
+            @scope {
+              .head { font-family: Georgia, serif; font-size: clamp(28px, 2rem + 2.5vw, 48px); font-weight: 700; line-height: 1.15; margin: 0; }
+              .note { font-size: 11px; color: #888780; font-family: monospace; margin-top: 6px; }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h2 class="head">Fluid type scale</h2>
+          <div class="note">font-size: clamp(28px, 2rem + 2.5vw, 48px)</div>
+          <div class="badge">modifier · apply to any text</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:responsive-vw-hero
+    title: Responsive · viewport-relative hero
+    category: Text
+    subCategory: Typography / Responsive
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Apply viewport-relative hero sizing to the text component at this marker location.
+    prompt: |
+      Apply "Viewport-Relative Hero" responsive sizing to the target text component.
+      This is a modifier — it adjusts the font-size of an existing large display or
+      hero heading to scale proportionally with the viewport width using vw units.
+      Always wrap the vw value in clamp() to prevent the text from becoming too small
+      on mobile or too large on very wide screens.
+      Use only for hero headings, large display text, or banner titles — never for
+      body copy, captions, or UI labels.
+
+      Recommended values:
+      Large hero:   clamp(32px, 6vw,  96px)
+      Medium hero:  clamp(24px, 4vw,  72px)
+      Display only: clamp(48px, 8vw, 120px)
+
+      Example (large hero heading):
+      <style>
+        @scope {
+          .hero-heading {
+            font-size: clamp(32px, 6vw, 96px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+          }
+        }
+      </style>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="responsive-vw-widget">
+          <style>
+            @scope {
+              .head { font-family: Georgia, serif; font-size: clamp(32px, 6vw, 96px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin: 0; }
+              .note { font-size: 11px; color: #888780; font-family: monospace; margin-top: 6px; }
+              .badge { font-size:10px; background:#E6F1FB; color:#185FA5; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h1 class="head">Big idea.</h1>
+          <div class="note">font-size: clamp(32px, 6vw, 96px)</div>
+          <div class="badge">modifier · hero text only</div>
+        </div>
+    browse:
+      size: large
+  - id: jay-text:responsive-stepped-breakpoints
+    title: Responsive · stepped breakpoints
+    category: Text
+    subCategory: Typography / Responsive
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Apply stepped breakpoint responsive sizing to the text component at this marker location.
+    prompt: |
+      Apply "Stepped Breakpoints" responsive font sizing to the target text component.
+      This is a modifier — it adds explicit @media queries to an existing text element,
+      setting a fixed font-size at each breakpoint. Use this when the design is
+      spec'd at specific pixel values per screen size and you need predictable, exact
+      sizing with no fluid transitions between breakpoints.
+
+      Standard breakpoint scale:
+      Mobile  (default, < 640px):  22px
+      Tablet  (>= 640px):          30px
+      Desktop (>= 1024px):         40px
+
+      Adjust these values to match the specific heading level. H2 might use
+      18px / 26px / 34px; body text 14px / 15px / 16px.
+
+      Example (applied to an H2):
+      <style>
+        @scope {
+          .head { font-size: 22px; }
+
+          @media (min-width: 640px) {
+            .head { font-size: 30px; }
+          }
+          @media (min-width: 1024px) {
+            .head { font-size: 40px; }
+          }
+        }
+      </style>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="responsive-stepped-widget">
+          <style>
+            @scope {
+              .head { font-family: Georgia, serif; font-size: 22px; font-weight: 700; line-height: 1.2; margin: 0; }
+              @media (min-width: 640px)  { .head { font-size: 30px; } }
+              @media (min-width: 1024px) { .head { font-size: 40px; } }
+              .note { font-size: 11px; color: #888780; font-family: monospace; margin-top: 6px; line-height: 1.6; }
+              .badge { font-size:10px; background:#EAF3DE; color:#3B6D11; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <h2 class="head">The craft of design</h2>
+          <div class="note">22px · 30px · 40px<br>mobile · tablet · desktop</div>
+          <div class="badge">modifier · stepped sizes</div>
+        </div>
+    browse:
+      size: medium

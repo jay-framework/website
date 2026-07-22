@@ -1,0 +1,681 @@
+items:
+  - id: jay-text:wave-dance
+    title: Wave dance
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a wave-dance animated text component at this marker location on the page.
+    prompt: |
+      Add a "Wave Dance" animated text element to the page.
+      Each letter is wrapped in its own <span> and animates with a vertical wave motion
+      using CSS @keyframes, with staggered animation-delay per letter (increment 0.1s per
+      character). The overall effect is happy and bouncy. The text content, font size,
+      color, and animation speed should be exposed as configurable props.
+
+      Example:
+      <div class="wave-dance">
+        <style>
+          @scope {
+            @keyframes wave {
+              0%,100% { transform: translateY(0) rotate(0deg); }
+              25%      { transform: translateY(-10px) rotate(-3deg); }
+              75%      { transform: translateY(10px) rotate(3deg); }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; }
+            .text span { display: inline-block; animation: wave 1.6s ease-in-out infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .1s; }
+            .text span:nth-child(3) { animation-delay: .2s; }
+            .text span:nth-child(4) { animation-delay: .3s; }
+            .text span:nth-child(5) { animation-delay: .4s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="wave-dance-widget">
+          <style>
+            @scope {
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; }
+              @keyframes wave { 0%,100%{transform:translateY(0) rotate(0deg)} 25%{transform:translateY(-10px) rotate(-3deg)} 75%{transform:translateY(10px) rotate(3deg)} }
+              .text span { display: inline-block; animation: wave 1.6s ease-in-out infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.1s} .text span:nth-child(3){animation-delay:.2s} .text span:nth-child(4){animation-delay:.3s} .text span:nth-child(5){animation-delay:.4s} .text span:nth-child(6){animation-delay:.5s} .text span:nth-child(7){animation-delay:.6s} .text span:nth-child(8){animation-delay:.7s} .text span:nth-child(9){animation-delay:.8s}
+              .badge { font-size: 10px; background: #EAF3DE; color: #3B6D11; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>S</span><span>U</span><span>N</span><span>S</span><span>H</span><span>I</span><span>N</span><span>E</span><span>!</span></div>
+          <div class="badge">happy</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:tilted-colors
+    title: Tilted colors
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a tilted-colors text component at this marker location on the page.
+    prompt: |
+      Add a "Tilted Colors" text element to the page.
+      Each letter is wrapped in its own <span>, rotated by a unique static angle
+      (alternating positive and negative values between -20deg and +20deg), and
+      given a distinct color from a vibrant palette. The effect is chaotic and playful.
+      The text content and color palette should be configurable via props.
+
+      Example:
+      <div class="tilted-colors">
+        <style>
+          @scope {
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; }
+            .text span { display: inline-block; }
+            .text span:nth-child(1) { transform: rotate(-18deg); color: #e24b4a; }
+            .text span:nth-child(2) { transform: rotate(7deg);   color: #ef9f27; }
+            .text span:nth-child(3) { transform: rotate(-5deg);  color: #639922; }
+            .text span:nth-child(4) { transform: rotate(15deg);  color: #378add; }
+            .text span:nth-child(5) { transform: rotate(-12deg); color: #7f77dd; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="tilted-colors-widget">
+          <style>
+            @scope {
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; }
+              .text span { display: inline-block; }
+              .text span:nth-child(1){transform:rotate(-18deg);color:#e24b4a} .text span:nth-child(2){transform:rotate(7deg);color:#ef9f27} .text span:nth-child(3){transform:rotate(-5deg);color:#639922} .text span:nth-child(4){transform:rotate(15deg);color:#378add} .text span:nth-child(5){transform:rotate(-12deg);color:#7f77dd} .text span:nth-child(6){transform:rotate(9deg);color:#d4537e} .text span:nth-child(7){transform:rotate(-3deg);color:#1d9e75}
+              .badge { font-size: 10px; background: #FAEEDA; color: #633806; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>C</span><span>H</span><span>A</span><span>O</span><span>T</span><span>I</span><span>C</span></div>
+          <div class="badge">playful</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:cycling-rainbow
+    title: Cycling rainbow
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a cycling-rainbow animated text component at this marker location on the page.
+    prompt: |
+      Add a "Cycling Rainbow" text element to the page.
+      Each letter cycles through the full color spectrum using a CSS @keyframes animation
+      (red → amber → green → blue → purple → pink → red). Letters have staggered
+      animation-delay (0.2s per character) so the rainbow wave travels across the word.
+      The text content and animation duration should be configurable via props.
+
+      Example:
+      <div class="cycling-rainbow">
+        <style>
+          @scope {
+            @keyframes rainbow {
+              0%   { color: #e24b4a; }
+              16%  { color: #ef9f27; }
+              33%  { color: #639922; }
+              50%  { color: #378add; }
+              66%  { color: #7f77dd; }
+              83%  { color: #d4537e; }
+              100% { color: #e24b4a; }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; }
+            .text span { display: inline-block; animation: rainbow 3s linear infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .2s; }
+            .text span:nth-child(3) { animation-delay: .4s; }
+            .text span:nth-child(4) { animation-delay: .6s; }
+            .text span:nth-child(5) { animation-delay: .8s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="cycling-rainbow-widget">
+          <style>
+            @scope {
+              @keyframes rainbow { 0%{color:#e24b4a} 16%{color:#ef9f27} 33%{color:#639922} 50%{color:#378add} 66%{color:#7f77dd} 83%{color:#d4537e} 100%{color:#e24b4a} }
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; }
+              .text span { display: inline-block; animation: rainbow 3s linear infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.2s} .text span:nth-child(3){animation-delay:.4s} .text span:nth-child(4){animation-delay:.6s} .text span:nth-child(5){animation-delay:.8s} .text span:nth-child(6){animation-delay:1s} .text span:nth-child(7){animation-delay:1.2s}
+              .badge { font-size: 10px; background: #EAF3DE; color: #3B6D11; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>R</span><span>A</span><span>D</span><span>I</span><span>A</span><span>N</span><span>T</span></div>
+          <div class="badge">joyful</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:staggered-float
+    title: Staggered float
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a staggered-float animated text component at this marker location on the page.
+    prompt: |
+      Add a "Staggered Float" text element to the page.
+      Each letter gently bobs up and down using CSS @keyframes translateY(-8px),
+      with tightly staggered animation-delay (0.09s per character) creating a
+      ripple-like wave of floating motion. The effect is celebratory and light.
+      The text content, float height, and animation speed should be configurable via props.
+
+      Example:
+      <div class="staggered-float">
+        <style>
+          @scope {
+            @keyframes float {
+              0%,100% { transform: translateY(0); }
+              50%     { transform: translateY(-8px); }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; }
+            .text span { display: inline-block; animation: float 1.2s ease-in-out infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .09s; }
+            .text span:nth-child(3) { animation-delay: .18s; }
+            .text span:nth-child(4) { animation-delay: .27s; }
+            .text span:nth-child(5) { animation-delay: .36s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="staggered-float-widget">
+          <style>
+            @scope {
+              @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; }
+              .text span { display: inline-block; animation: float 1.2s ease-in-out infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.09s} .text span:nth-child(3){animation-delay:.18s} .text span:nth-child(4){animation-delay:.27s} .text span:nth-child(5){animation-delay:.36s} .text span:nth-child(6){animation-delay:.45s} .text span:nth-child(7){animation-delay:.54s} .text span:nth-child(8){animation-delay:.63s} .text span:nth-child(9){animation-delay:.72s}
+              .badge { font-size: 10px; background: #FAEEDA; color: #633806; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>C</span><span>E</span><span>L</span><span>E</span><span>B</span><span>R</span><span>A</span><span>T</span><span>E</span></div>
+          <div class="badge">excited</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:body-shudder
+    title: Body shudder
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a body-shudder animated text component at this marker location on the page.
+    prompt: |
+      Add a "Body Shudder" text element to the page.
+      The entire text block shakes horizontally using CSS @keyframes translateX,
+      rapidly alternating left and right (-4px, +4px, -3px, +3px) on a short 0.5s loop.
+      The text color is red. The effect is angry and urgent.
+      The text content, shake intensity, and color should be configurable via props.
+
+      Example:
+      <div class="body-shudder">
+        <style>
+          @scope {
+            @keyframes shake {
+              0%,100% { transform: translateX(0); }
+              20%     { transform: translateX(-4px); }
+              40%     { transform: translateX(4px); }
+              60%     { transform: translateX(-3px); }
+              80%     { transform: translateX(3px); }
+            }
+            .text {
+              display: inline-block;
+              font-size: 22px;
+              font-weight: 500;
+              color: #e24b4a;
+              animation: shake 0.5s ease-in-out infinite;
+            }
+          }
+        </style>
+        <div class="text">FURIOUS!</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="body-shudder-widget">
+          <style>
+            @scope {
+              @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-4px)} 40%{transform:translateX(4px)} 60%{transform:translateX(-3px)} 80%{transform:translateX(3px)} }
+              .text { font-size: 22px; font-weight: 500; font-family: sans-serif; color: #e24b4a; display: inline-block; animation: shake 0.5s ease-in-out infinite; }
+              .badge { font-size: 10px; background: #FCEBEB; color: #A32D2D; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text">FURIOUS!</div>
+          <div class="badge">angry</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:rgb-glitch
+    title: RGB glitch
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an RGB-glitch animated text component at this marker location on the page.
+    prompt: |
+      Add an "RGB Glitch" text element to the page.
+      The element uses CSS ::before and ::after pseudo-elements that clone the text
+      via the data-text attribute. Each pseudo-element gets a different color (red and blue)
+      and animates with offset clip-path insets and small translateX displacements,
+      creating a broken-signal glitch effect. The emotion is eerie and unsettling.
+      The text content and glitch colors should be configurable via props.
+      Note: the data-text attribute must be kept in sync with the text content.
+
+      Example:
+      <div class="rgb-glitch">
+        <style>
+          @scope {
+            @keyframes glitch1 {
+              0%,100% { clip-path: inset(0 0 85% 0);  transform: translateX(0); }
+              20%     { clip-path: inset(15% 0 60% 0); transform: translateX(-4px); }
+              40%     { clip-path: inset(50% 0 30% 0); transform: translateX(4px); }
+              60%     { clip-path: inset(70% 0 5% 0);  transform: translateX(-2px); }
+              80%     { clip-path: inset(10% 0 75% 0); transform: translateX(2px); }
+            }
+            @keyframes glitch2 {
+              0%,100% { clip-path: inset(80% 0 0 0);   transform: translateX(0); }
+              20%     { clip-path: inset(55% 0 20% 0);  transform: translateX(4px); }
+              40%     { clip-path: inset(25% 0 55% 0);  transform: translateX(-4px); }
+              60%     { clip-path: inset(5% 0 80% 0);   transform: translateX(2px); }
+              80%     { clip-path: inset(60% 0 10% 0);  transform: translateX(-2px); }
+            }
+            .wrap { position: relative; display: inline-block; font-size: 22px; font-weight: 500; }
+            .wrap::before, .wrap::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; }
+            .wrap::before { color: #e24b4a; animation: glitch1 2.5s infinite; }
+            .wrap::after  { color: #378add; animation: glitch2 2.5s infinite; }
+          }
+        </style>
+        <span class="wrap" data-text="HELLO">HELLO</span>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="rgb-glitch-widget">
+          <style>
+            @scope {
+              @keyframes glitch1 { 0%,100%{clip-path:inset(0 0 85% 0);transform:translateX(0)} 20%{clip-path:inset(15% 0 60% 0);transform:translateX(-4px)} 40%{clip-path:inset(50% 0 30% 0);transform:translateX(4px)} 60%{clip-path:inset(70% 0 5% 0);transform:translateX(-2px)} 80%{clip-path:inset(10% 0 75% 0);transform:translateX(2px)} }
+              @keyframes glitch2 { 0%,100%{clip-path:inset(80% 0 0 0);transform:translateX(0)} 20%{clip-path:inset(55% 0 20% 0);transform:translateX(4px)} 40%{clip-path:inset(25% 0 55% 0);transform:translateX(-4px)} 60%{clip-path:inset(5% 0 80% 0);transform:translateX(2px)} 80%{clip-path:inset(60% 0 10% 0);transform:translateX(-2px)} }
+              .wrap { position: relative; display: inline-block; font-size: 22px; font-weight: 500; font-family: sans-serif; }
+              .wrap::before, .wrap::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; }
+              .wrap::before { color: #e24b4a; animation: glitch1 2.5s infinite; }
+              .wrap::after  { color: #378add; animation: glitch2 2.5s infinite; }
+              .badge { font-size: 10px; background: #EEEDFE; color: #3C3489; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <span class="wrap" data-text="FRACTURE">FRACTURE</span>
+          <div class="badge">eerie</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:typewriter
+    title: Typewriter
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a typewriter animated text component at this marker location on the page.
+    prompt: |
+      Add a "Typewriter" text element to the page.
+      The text reveals itself character by character using CSS @keyframes on the width
+      property with steps() timing — the step count must equal the character count of
+      the text. A blinking border-right simulates the cursor. Use monospace font.
+      The animation alternates: types out, pauses, then resets.
+      The text content, typing speed, and cursor color should be configurable via props.
+      Important: update the steps() count whenever the text content changes.
+
+      Example (9 characters → steps(9)):
+      <div class="typewriter">
+        <style>
+          @scope {
+            @keyframes typewriter {
+              from { width: 0; }
+              to   { width: 100%; }
+            }
+            @keyframes cursor {
+              0%,100% { border-right-color: #333; }
+              50%     { border-right-color: transparent; }
+            }
+            .text {
+              font-family: monospace;
+              font-size: 22px;
+              font-weight: 500;
+              overflow: hidden;
+              white-space: nowrap;
+              border-right: 2px solid #333;
+              width: fit-content;
+              animation:
+                typewriter 2.2s steps(9) infinite alternate,
+                cursor 0.6s step-end infinite;
+            }
+          }
+        </style>
+        <div class="text">WHO AM I?</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="typewriter-widget">
+          <style>
+            @scope {
+              @keyframes typewriter { from{width:0} to{width:100%} }
+              @keyframes cursor { 0%,100%{border-right-color:#333} 50%{border-right-color:transparent} }
+              .text { font-size: 22px; font-weight: 500; font-family: monospace; overflow: hidden; white-space: nowrap; border-right: 2px solid #333; width: fit-content; animation: typewriter 2.2s steps(10) infinite alternate, cursor 0.6s step-end infinite; }
+              .badge { font-size: 10px; background: #EEEDFE; color: #3C3489; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text">WHO AM I?</div>
+          <div class="badge">mysterious</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:size-crescendo
+    title: Size crescendo
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a size-crescendo text component at this marker location on the page.
+    prompt: |
+      Add a "Size Crescendo" text element to the page.
+      Each letter is progressively larger than the previous, building from small/faded
+      on the left to large/bold on the right. Letters are baseline-aligned
+      (align-items: flex-end). Opacity also increases with size (from ~0.5 to 1.0).
+      No animation — the static escalation is the effect. Distribute font sizes evenly
+      between the configured min and max across the character count.
+      The text content and size range (min/max font-size) should be configurable via props.
+
+      Example (5 characters, 14px → 30px):
+      <div class="size-crescendo">
+        <style>
+          @scope {
+            .text { display: flex; gap: 0; align-items: flex-end; font-weight: 500; }
+            .text span:nth-child(1) { font-size: 14px; opacity: 0.5; }
+            .text span:nth-child(2) { font-size: 18px; opacity: 0.65; }
+            .text span:nth-child(3) { font-size: 22px; opacity: 0.8; }
+            .text span:nth-child(4) { font-size: 26px; opacity: 0.9; }
+            .text span:nth-child(5) { font-size: 30px; opacity: 1.0; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="size-crescendo-widget">
+          <style>
+            @scope {
+              .text { display: flex; gap: 0; align-items: flex-end; font-weight: 500; font-family: sans-serif; }
+              .text span:nth-child(1){font-size:12px;opacity:.5} .text span:nth-child(2){font-size:14px;opacity:.6} .text span:nth-child(3){font-size:16px;opacity:.7} .text span:nth-child(4){font-size:18px;opacity:.8} .text span:nth-child(5){font-size:22px;opacity:.9} .text span:nth-child(6){font-size:26px} .text span:nth-child(7){font-size:31px} .text span:nth-child(8){font-size:36px}
+              .badge { font-size: 10px; background: #FAEEDA; color: #633806; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>G</span><span>R</span><span>O</span><span>W</span><span>I</span><span>N</span><span>G</span><span>!</span></div>
+          <div class="badge">triumphant</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:slow-drip
+    title: Slow drip
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a slow-drip animated text component at this marker location on the page.
+    prompt: |
+      Add a "Slow Drip" text element to the page.
+      Each letter pulses gently downward: it drops a few pixels and briefly stretches
+      vertically (scaleY 1.15) before snapping back, mimicking a slow viscous drip.
+      Letters animate with staggered delay (0.15s per character). Color is a cool blue.
+      The effect is languid and melting.
+      The text content, drip color, and animation speed should be configurable via props.
+
+      Example:
+      <div class="slow-drip">
+        <style>
+          @scope {
+            @keyframes drip {
+              0%,60%,100% { transform: translateY(0) scaleY(1); }
+              80%          { transform: translateY(4px) scaleY(1.15); }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; color: #378add; }
+            .text span { display: inline-block; animation: drip 2s ease-in-out infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .15s; }
+            .text span:nth-child(3) { animation-delay: .3s; }
+            .text span:nth-child(4) { animation-delay: .45s; }
+            .text span:nth-child(5) { animation-delay: .6s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="slow-drip-widget">
+          <style>
+            @scope {
+              @keyframes drip { 0%,60%,100%{transform:translateY(0) scaleY(1)} 80%{transform:translateY(4px) scaleY(1.15)} }
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; color: #378add; align-items: flex-end; }
+              .text span { display: inline-block; animation: drip 2s ease-in-out infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.15s} .text span:nth-child(3){animation-delay:.3s} .text span:nth-child(4){animation-delay:.45s} .text span:nth-child(5){animation-delay:.6s} .text span:nth-child(6){animation-delay:.75s} .text span:nth-child(7){animation-delay:.9s}
+              .badge { font-size: 10px; background: #E1F5EE; color: #0F6E56; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>M</span><span>E</span><span>L</span><span>T</span><span>I</span><span>N</span><span>G</span></div>
+          <div class="badge">languid</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:staggered-fade
+    title: Staggered fade
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a staggered-fade animated text component at this marker location on the page.
+    prompt: |
+      Add a "Staggered Fade" text element to the page.
+      Each letter independently fades between full opacity and near-invisible (0.15)
+      using CSS @keyframes, with staggered animation-delay (0.2s per character).
+      The result is a ghostly shimmer — letters flicker in and out at different times.
+      Color is purple. The effect is haunting and mysterious.
+      The text content, minimum opacity, and animation speed should be configurable via props.
+
+      Example:
+      <div class="staggered-fade">
+        <style>
+          @scope {
+            @keyframes blink {
+              0%,100% { opacity: 1; }
+              50%     { opacity: 0.15; }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; color: #7f77dd; }
+            .text span { display: inline-block; animation: blink 1.8s ease-in-out infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .2s; }
+            .text span:nth-child(3) { animation-delay: .4s; }
+            .text span:nth-child(4) { animation-delay: .6s; }
+            .text span:nth-child(5) { animation-delay: .8s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="staggered-fade-widget">
+          <style>
+            @scope {
+              @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; color: #7f77dd; }
+              .text span { display: inline-block; animation: blink 1.8s ease-in-out infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.2s} .text span:nth-child(3){animation-delay:.4s} .text span:nth-child(4){animation-delay:.6s} .text span:nth-child(5){animation-delay:.8s} .text span:nth-child(6){animation-delay:1s} .text span:nth-child(7){animation-delay:1.2s}
+              .badge { font-size: 10px; background: #EEEDFE; color: #3C3489; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>P</span><span>H</span><span>A</span><span>N</span><span>T</span><span>O</span><span>M</span></div>
+          <div class="badge">haunting</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:letter-tumble
+    title: Letter tumble
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a letter-tumble animated text component at this marker location on the page.
+    prompt: |
+      Add a "Letter Tumble" text element to the page.
+      Each letter drops in from slightly above (translateY -6px, opacity 0.4),
+      overshoots slightly, then settles — using cubic-bezier(.36,.07,.19,.97) easing
+      for a heavy, weighted feel. Letters animate in sequence with staggered delay
+      (0.12s per character). Color is deep blue. The effect is sad and heavy.
+      The text content, drop distance, and color should be configurable via props.
+
+      Example:
+      <div class="letter-tumble">
+        <style>
+          @scope {
+            @keyframes fall {
+              0%   { transform: translateY(-6px); opacity: 0.4; }
+              60%  { transform: translateY(2px); }
+              100% { transform: translateY(0);   opacity: 1; }
+            }
+            .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; color: #185FA5; }
+            .text span { display: inline-block; animation: fall 2s cubic-bezier(.36,.07,.19,.97) infinite; }
+            .text span:nth-child(1) { animation-delay: 0s; }
+            .text span:nth-child(2) { animation-delay: .12s; }
+            .text span:nth-child(3) { animation-delay: .24s; }
+            .text span:nth-child(4) { animation-delay: .36s; }
+            .text span:nth-child(5) { animation-delay: .48s; }
+          }
+        </style>
+        <div class="text">
+          <span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="letter-tumble-widget">
+          <style>
+            @scope {
+              @keyframes fall { 0%{transform:translateY(-6px);opacity:0.4} 60%{transform:translateY(2px)} 100%{transform:translateY(0);opacity:1} }
+              .text { display: flex; gap: 2px; font-size: 22px; font-weight: 500; font-family: sans-serif; color: #185FA5; }
+              .text span { display: inline-block; animation: fall 2s cubic-bezier(.36,.07,.19,.97) infinite; }
+              .text span:nth-child(1){animation-delay:0s} .text span:nth-child(2){animation-delay:.12s} .text span:nth-child(3){animation-delay:.24s} .text span:nth-child(4){animation-delay:.36s} .text span:nth-child(5){animation-delay:.48s} .text span:nth-child(6){animation-delay:.6s} .text span:nth-child(7){animation-delay:.72s}
+              .badge { font-size: 10px; background: #E6F1FB; color: #185FA5; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text"><span>S</span><span>I</span><span>N</span><span>K</span><span>I</span><span>N</span><span>G</span></div>
+          <div class="badge">sad</div>
+        </div>
+    browse:
+      size: small
+  - id: jay-text:quiet-stillness
+    title: Quiet stillness
+    category: Text
+    subCategory: Personalities
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a quiet-stillness text component at this marker location on the page.
+    prompt: |
+      Add a "Quiet Stillness" text element to the page.
+      This is deliberately the anti-animation: no keyframes, no movement whatsoever.
+      The text is rendered with wide letter-spacing (0.35em), muted gray color, and a
+      slightly reduced font size. Ellipsis dots may flank the word. The power comes from
+      restraint — the absence of motion conveys melancholy and stillness.
+      Do not add any animation. The text content, letter-spacing, and color should be
+      configurable via props.
+
+      Example:
+      <div class="quiet-stillness">
+        <style>
+          @scope {
+            .text {
+              font-size: 16px;
+              font-weight: 500;
+              letter-spacing: 0.35em;
+              color: #888780;
+            }
+          }
+        </style>
+        <div class="text">···stillness···</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="quiet-stillness-widget">
+          <style>
+            @scope {
+              .text { font-size: 16px; font-weight: 500; font-family: sans-serif; letter-spacing: 0.35em; color: #888780; }
+              .badge { font-size: 10px; background: #E6F1FB; color: #0C447C; border-radius: 999px; padding: 2px 8px; margin-top: 8px; font-family: sans-serif; }
+            }
+          </style>
+          <div class="text">···stillness···</div>
+          <div class="badge">melancholy</div>
+        </div>
+    browse:
+      size: small

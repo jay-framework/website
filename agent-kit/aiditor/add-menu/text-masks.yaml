@@ -1,0 +1,971 @@
+items:
+  - id: jay-text:mask-aurora
+    title: Aurora gradient mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an aurora animated gradient text mask at this marker location on the page.
+    prompt: |
+      Add an "Aurora Gradient Mask" text element to the page.
+      The text is filled with an animated multi-color gradient that shifts continuously
+      through the full spectrum (red → amber → green → blue → purple → pink → red).
+      Achieved with background-clip: text and color: transparent. The gradient animates
+      via background-position using @keyframes on a 400% wide background-size, creating
+      a smooth cycling aurora effect.
+      The text content, gradient colors, animation speed, and font size should be
+      configurable via props.
+
+      Example:
+      <div class="mask-aurora">
+        <style>
+          @scope {
+            @keyframes gradshift {
+              0%   { background-position: 0% 50%; }
+              50%  { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: linear-gradient(135deg,
+                #e24b4a, #ef9f27, #639922,
+                #378add, #7f77dd, #d4537e, #e24b4a);
+              background-size: 400% 400%;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: gradshift 4s ease infinite;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-aurora-widget">
+          <style>
+            @scope {
+              @keyframes gradshift {
+                0%   { background-position: 0% 50%; }
+                50%  { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+              }
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                background-image: linear-gradient(135deg, #e24b4a, #ef9f27, #639922, #378add, #7f77dd, #d4537e, #e24b4a);
+                background-size: 400% 400%;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: gradshift 4s ease infinite;
+              }
+              .badge { font-size:10px; background:#EAF3DE; color:#3B6D11; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">AURORA</div>
+          <div class="badge">animated gradient mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-ocean
+    title: Ocean gradient mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an ocean animated gradient text mask at this marker location on the page.
+    prompt: |
+      Add an "Ocean Gradient Mask" text element to the page.
+      The text is filled with an animated cool-toned gradient drifting between deep navy,
+      ocean blue, and teal (dark → mid → light). Uses background-clip: text with an
+      animated background-position on a 200% background-size for a slow drifting effect.
+      The text content, gradient stops, animation speed, and font size should be
+      configurable via props.
+
+      Example:
+      <div class="mask-ocean">
+        <style>
+          @scope {
+            @keyframes gradshift {
+              0%   { background-position: 0% 50%; }
+              50%  { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: linear-gradient(160deg, #042C53, #185FA5, #5DCAA5, #9FE1CB);
+              background-size: 200% 200%;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: gradshift 5s ease infinite;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-ocean-widget">
+          <style>
+            @scope {
+              @keyframes gradshift {
+                0%   { background-position: 0% 50%; }
+                50%  { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+              }
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                background-image: linear-gradient(160deg, #042C53, #185FA5, #5DCAA5, #9FE1CB);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: gradshift 5s ease infinite;
+              }
+              .badge { font-size:10px; background:#E6F1FB; color:#0C447C; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">DEEP</div>
+          <div class="badge">animated gradient mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-fire
+    title: Flame gradient mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a flame animated gradient text mask at this marker location on the page.
+    prompt: |
+      Add a "Flame Gradient Mask" text element to the page.
+      The text is filled with a vertical gradient rising from near-black at the base
+      through red and amber to a pale cream at the tip, mimicking a flame. The gradient
+      animates vertically using background-position on a 200% tall background-size,
+      alternating direction to create a flicker effect. Uses background-clip: text.
+      The text content, flame colors, flicker speed, and font size should be
+      configurable via props.
+
+      Example:
+      <div class="mask-fire">
+        <style>
+          @scope {
+            @keyframes flicker {
+              0%   { background-position: 0% 100%; }
+              100% { background-position: 0% 0%; }
+            }
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: linear-gradient(to top,
+                #2C2C2A 0%, #e24b4a 30%, #ef9f27 65%, #faeeda 100%);
+              background-size: 100% 200%;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: flicker 2s ease-in-out infinite alternate;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-fire-widget">
+          <style>
+            @scope {
+              @keyframes flicker {
+                0%   { background-position: 0% 100%; }
+                100% { background-position: 0% 0%; }
+              }
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                background-image: linear-gradient(to top, #2C2C2A 0%, #e24b4a 30%, #ef9f27 65%, #faeeda 100%);
+                background-size: 100% 200%;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: flicker 2s ease-in-out infinite alternate;
+              }
+              .badge { font-size:10px; background:#FCEBEB; color:#A32D2D; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">BLAZE</div>
+          <div class="badge">animated gradient mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-foil
+    title: Metallic foil mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a metallic foil shimmer text effect at this marker location on the page.
+    prompt: |
+      Add a "Metallic Foil" text element to the page.
+      Uses a two-layer technique: a solid dark base text provides the readable shape,
+      and an absolutely-positioned duplicate with identical content sits on top using
+      background-clip: text with an animated shimmer gradient. The shimmer is a
+      diagonal highlight sweeping from left to right using background-position animation
+      on a 300% wide background-size.
+      Important: the shine layer must duplicate the text content exactly via a second
+      element (not ::before, which doesn't reliably support background-clip: text in
+      all browsers). The text content, shimmer speed, and base color should be
+      configurable via props.
+
+      Example:
+      <div class="mask-foil">
+        <style>
+          @scope {
+            @keyframes shimmer {
+              0%   { background-position: -300% center; }
+              100% { background-position:  300% center; }
+            }
+            .wrap  { position: relative; display: inline-block; font-size: clamp(36px, 4vw, 56px); font-weight: 900; font-family: sans-serif; line-height: 1; }
+            .base  { color: #444441; }
+            .shine {
+              position: absolute; top: 0; left: 0;
+              background: linear-gradient(105deg,
+                transparent 20%, rgba(255,255,255,0.85) 40%,
+                #D3D1C7 50%, rgba(255,255,255,0.85) 60%, transparent 80%);
+              background-size: 300% auto;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: shimmer 2.5s linear infinite;
+            }
+          }
+        </style>
+        <div class="wrap">
+          <span class="base">HELLO</span>
+          <span class="shine">HELLO</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-foil-widget">
+          <style>
+            @scope {
+              @keyframes shimmer {
+                0%   { background-position: -300% center; }
+                100% { background-position: 300% center; }
+              }
+              .wrap { position: relative; display: inline-block; font-size: clamp(36px, 4vw, 56px); font-weight: 900; font-family: sans-serif; line-height: 1; }
+              .base  { color: #444441; }
+              .shine {
+                position: absolute; top: 0; left: 0;
+                background: linear-gradient(105deg,
+                  transparent 20%,
+                  rgba(255,255,255,0.85) 40%,
+                  #D3D1C7 50%,
+                  rgba(255,255,255,0.85) 60%,
+                  transparent 80%);
+                background-size: 300% auto;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: shimmer 2.5s linear infinite;
+              }
+              .badge { font-size:10px; background:#F1EFE8; color:#444441; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="wrap">
+            <span class="base">FOIL</span>
+            <span class="shine">FOIL</span>
+          </div>
+          <div class="badge">metallic shimmer</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-stripes
+    title: Diagonal stripes mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a diagonal stripes pattern text mask at this marker location on the page.
+    prompt: |
+      Add a "Diagonal Stripes Mask" text element to the page.
+      The text is filled with a repeating diagonal stripe pattern generated entirely
+      with CSS repeating-linear-gradient — no image required. Two colors alternate
+      at 45 degrees in equal-width bands. Uses background-clip: text with
+      color: transparent.
+      The text content, stripe colors, stripe width (in px), angle, and font size
+      should be configurable via props.
+
+      Example:
+      <div class="mask-stripes">
+        <style>
+          @scope {
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: repeating-linear-gradient(
+                45deg,
+                #378add 0px,  #378add 8px,
+                #E6F1FB 8px, #E6F1FB 16px
+              );
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-stripes-widget">
+          <style>
+            @scope {
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-image: repeating-linear-gradient(
+                  45deg,
+                  #378add 0px, #378add 8px,
+                  #E6F1FB 8px, #E6F1FB 16px
+                );
+              }
+              .badge { font-size:10px; background:#E6F1FB; color:#185FA5; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">WAVE</div>
+          <div class="badge">css pattern mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-checkerboard
+    title: Checkerboard mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a checkerboard pattern text mask at this marker location on the page.
+    prompt: |
+      Add a "Checkerboard Mask" text element to the page.
+      The text is filled with a checkerboard pattern generated with CSS
+      repeating-conic-gradient — no image required. Two colors alternate in equal
+      quadrants tiled at a configurable size. Uses background-clip: text with
+      color: transparent.
+      The text content, two checker colors, tile size (background-size), and font size
+      should be configurable via props.
+
+      Example:
+      <div class="mask-checkerboard">
+        <style>
+          @scope {
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: repeating-conic-gradient(
+                #e24b4a 0% 25%, #faeeda 0% 50%
+              );
+              background-size: 16px 16px;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-checker-widget">
+          <style>
+            @scope {
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-image: repeating-conic-gradient(#e24b4a 0% 25%, #faeeda 0% 50%);
+                background-size: 16px 16px;
+              }
+              .badge { font-size:10px; background:#FAECE7; color:#993C1D; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">CHECK</div>
+          <div class="badge">css pattern mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-halftone
+    title: Halftone dots mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a halftone dot pattern text mask at this marker location on the page.
+    prompt: |
+      Add a "Halftone Dots Mask" text element to the page.
+      The text is filled with a halftone dot pattern generated with two offset
+      radial-gradient layers — no image required. Each layer places a circle at 30%
+      radius; the second layer is offset by half the tile size to create the staggered
+      halftone grid. A background-color fills the space between dots.
+      Uses background-clip: text with color: transparent.
+      The text content, dot color, background color, dot size, and font size should be
+      configurable via props.
+
+      Example:
+      <div class="mask-halftone">
+        <style>
+          @scope {
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image:
+                radial-gradient(circle, #7f77dd 30%, transparent 31%),
+                radial-gradient(circle, #7f77dd 30%, transparent 31%);
+              background-size: 10px 10px;
+              background-position: 0 0, 5px 5px;
+              background-color: #EEEDFE;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-halftone-widget">
+          <style>
+            @scope {
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-image:
+                  radial-gradient(circle, #7f77dd 30%, transparent 31%),
+                  radial-gradient(circle, #7f77dd 30%, transparent 31%);
+                background-size: 10px 10px;
+                background-position: 0 0, 5px 5px;
+                background-color: #EEEDFE;
+              }
+              .badge { font-size:10px; background:#EEEDFE; color:#3C3489; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">DOTS</div>
+          <div class="badge">css pattern mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-neon-outline
+    title: Neon outline text
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a neon outline text effect at this marker location on the page.
+    prompt: |
+      Add a "Neon Outline" text element to the page.
+      The text has no fill (color: transparent) and uses -webkit-text-stroke to render
+      only the outline of the letterforms. The stroke color creates the neon effect.
+      Works best with heavy (900) font weights at large sizes — thin weights produce
+      strokes too fine to read. Letter-spacing can be increased for extra dramatic effect.
+      The text content, stroke color, stroke width, and font size should be configurable
+      via props.
+
+      Example:
+      <div class="mask-neon-outline">
+        <style>
+          @scope {
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              color: transparent;
+              -webkit-text-stroke: 2px #7f77dd;
+              letter-spacing: 2px;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-neon-widget">
+          <style>
+            @scope {
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                color: transparent;
+                -webkit-text-stroke: 2px #7f77dd;
+                letter-spacing: 2px;
+              }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">GHOST</div>
+          <div class="badge">outline only · no fill</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-photo
+    title: Photo fill mask
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a photo fill text mask at this marker location on the page.
+    prompt: |
+      Add a "Photo Fill Mask" text element to the page.
+      The text is filled with a photo or image using background-clip: text with
+      color: transparent. The image URL is set as background-image. background-size:
+      cover and background-position: center ensure the image fills the text bounding box.
+      Use a high-contrast, richly-colored image for the best legibility — light or pastel
+      images may not provide enough contrast for the letterforms to read clearly.
+      At authoring time, use a placeholder image URL. At runtime, the image URL should
+      be bound to a configurable prop so the user can supply their own image.
+      The text content, image URL, background-position, and font size should be
+      configurable via props.
+
+      Example:
+      <div class="mask-photo">
+        <style>
+          @scope {
+            .text {
+              font-size: clamp(36px, 4vw, 56px);
+              font-weight: 900;
+              font-family: sans-serif;
+              line-height: 1;
+              background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80');
+              background-size: cover;
+              background-position: center;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            }
+          }
+        </style>
+        <div class="text">HELLO</div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="mask-photo-widget">
+          <style>
+            @scope {
+              .text {
+                font-size: clamp(36px, 4vw, 56px);
+                font-weight: 900;
+                font-family: sans-serif;
+                line-height: 1;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80');
+                background-size: cover;
+                background-position: center;
+              }
+              .badge { font-size:10px; background:#EAF3DE; color:#3B6D11; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="text">FOREST</div>
+          <div class="badge">photo fill mask</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:path-wave-flow
+    title: Wave flow text path
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add an animated wave flow text path at this marker location on the page.
+    prompt: |
+      Add a "Wave Flow Text Path" element to the page.
+      Text flows continuously along a sinusoidal SVG path using <textPath> with an
+      animated startOffset attribute (from 0% to -40% over 6s, indefinite). The text
+      repeats so the loop is seamless. A <clipPath> rect matching the SVG viewBox clips
+      the text at the card edges — this is essential to prevent overflow.
+      The SVG viewBox should be 560 wide. The wave path uses cubic bezier curves
+      (C commands) to create smooth sinusoidal motion.
+      The text content, text color, background color, wave amplitude, and scroll speed
+      should be configurable via props.
+      Important: the text string must be duplicated in the textPath content to ensure
+      the loop appears seamless at all scroll positions.
+
+      Example:
+      <div class="wave-flow" style="background:#1a2a1a;border-radius:12px;padding:1rem;overflow:hidden;">
+        <svg width="100%" viewBox="0 0 560 70" style="display:block;overflow:hidden;">
+          <defs>
+            <clipPath id="wclip"><rect x="0" y="0" width="560" height="70"/></clipPath>
+            <path id="wpath" d="M -200 40 C -140 15,-80 65,-20 40 C 40 15,100 65,160 40 C 220 15,280 65,340 40 C 400 15,460 65,520 40 C 580 15,640 65,700 40"/>
+          </defs>
+          <g clip-path="url(#wclip)">
+            <text font-size="13" font-weight="700" font-family="sans-serif" fill="#c8e6a0" letter-spacing="2">
+              <textPath href="#wpath" startOffset="0%">
+                <animate attributeName="startOffset" from="0%" to="-40%" dur="6s" repeatCount="indefinite"/>
+                ✦ YOUR TEXT HERE ✦ YOUR TEXT HERE ✦ YOUR TEXT HERE ✦
+              </textPath>
+            </text>
+          </g>
+        </svg>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="path-wave-widget" style="background:#1a2a1a;border-radius:12px;padding:1rem;">
+          <style>
+            @scope {
+              .wrap { overflow: hidden; }
+              .badge { font-size:10px; background:#2a3a1a; color:#c8e6a0; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="wrap">
+            <svg width="100%" viewBox="0 0 560 70" style="display:block;overflow:hidden;">
+              <defs>
+                <clipPath id="wclip"><rect x="0" y="0" width="560" height="70"/></clipPath>
+                <path id="wpath" d="M -200 40 C -140 15,-80 65,-20 40 C 40 15,100 65,160 40 C 220 15,280 65,340 40 C 400 15,460 65,520 40 C 580 15,640 65,700 40"/>
+              </defs>
+              <g clip-path="url(#wclip)">
+                <text font-size="13" font-weight="700" font-family="sans-serif" fill="#c8e6a0" letter-spacing="2">
+                  <textPath href="#wpath" startOffset="0%">
+                    <animate attributeName="startOffset" from="0%" to="-40%" dur="6s" repeatCount="indefinite"/>
+                    ✦ WE'RE NOT CHANGING THE WORLD, JUST MAKING IT SLIGHTLY LESS UGLY ✦ WE'RE NOT CHANGING THE WORLD, JUST MAKING IT SLIGHTLY LESS UGLY ✦
+                  </textPath>
+                </text>
+              </g>
+            </svg>
+          </div>
+          <div class="badge">svg animated · wave path</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:path-shape-hover
+    title: Shape path text (hover)
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a shape path text element with hover interaction at this marker location.
+    prompt: |
+      Add a "Shape Path Text" element to the page.
+      Text flows along a custom SVG path defining a recognisable shape (e.g. house,
+      circle, arrow, heart). A dashed stroke on the same path provides a visible guide
+      line. On hover, CSS transitions animate the font-size larger and shift the fill
+      to an accent color — no JavaScript required, using a :hover selector on the
+      wrapping SVG element with transition on the text element.
+      The text content, path shape (d attribute), guide stroke color, text color,
+      hover color, and letter-spacing should be configurable via props.
+      The text string should repeat enough times to fill the full path perimeter.
+
+      Example (house shape):
+      <div class="shape-path" style="background:#f0eef8;border-radius:12px;padding:1rem;">
+        <style>
+          @scope {
+            .sw text { transition: font-size 0.3s ease, fill 0.3s ease; }
+            .sw:hover text { font-size: 20px !important; fill: #ef9f27 !important; }
+          }
+        </style>
+        <svg class="sw" width="100%" viewBox="0 0 420 200" style="cursor:pointer;">
+          <defs>
+            <path id="sp" d="M 60 180 L 60 100 L 210 30 L 360 100 L 360 180 L 60 180" fill="none"/>
+          </defs>
+          <path d="M 60 180 L 60 100 L 210 30 L 360 100 L 360 180 L 60 180"
+                fill="none" stroke="#7f77dd" stroke-width="1" stroke-dasharray="4 4"/>
+          <text font-size="15" font-weight="800" font-family="sans-serif" fill="#534AB7" letter-spacing="3">
+            <textPath href="#sp" startOffset="2%">BE BOLD · BE WEIRD · BE LOUD · BE YOU ·</textPath>
+          </text>
+        </svg>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="path-shape-widget" style="background:#f0eef8;border-radius:12px;padding:1rem;">
+          <style>
+            @scope {
+              .svg-wrap text { transition: font-size 0.3s ease, fill 0.3s ease; }
+              .svg-wrap:hover text { font-size: 20px !important; fill: #ef9f27 !important; }
+              .badge { font-size:10px; background:#EEEDFE; color:#534AB7; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <svg class="svg-wrap" width="100%" viewBox="0 0 420 200" style="cursor:pointer;max-width:420px;display:block;">
+            <defs>
+              <path id="hpath" d="M 60 180 L 60 100 L 210 30 L 360 100 L 360 180 L 60 180" fill="none"/>
+            </defs>
+            <path d="M 60 180 L 60 100 L 210 30 L 360 100 L 360 180 L 60 180" fill="none" stroke="#7f77dd" stroke-width="1" stroke-dasharray="4 4"/>
+            <text font-size="15" font-weight="800" font-family="sans-serif" fill="#534AB7" letter-spacing="3">
+              <textPath href="#hpath" startOffset="2%">BE BOLD · BE WEIRD · BE LOUD · BE YOU · BE UNFORGETTABLE ·</textPath>
+            </text>
+          </svg>
+          <div class="badge">svg hover · shape path</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:path-spinning-orbit
+    title: Spinning orbit rings
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add spinning orbit ring text paths at this marker location on the page.
+    prompt: |
+      Add a "Spinning Orbit Rings" element to the page.
+      Two concentric circular SVG text paths rotate together as a single unit using
+      a CSS animation on a wrapping <g> element (transform-origin at the SVG center).
+      Both <textPath> elements are inside the same <g> so they spin in sync.
+      A static bold label (e.g. a year or brand name) sits at the center of the SVG,
+      outside the spinning <g>, so it remains stationary.
+      Each circle path is defined as an SVG arc (A command) — use radius values that
+      give comfortable spacing between the two rings. The text must fill the full
+      circumference of each circle; repeat the string as needed.
+      The outer ring text, inner ring text, center label, ring colors, rotation speed,
+      and radius of each ring should be configurable via props.
+      Important: both textPath elements must be inside the same animated <g> for
+      synchronized rotation. The center text must be outside that <g>.
+
+      Example:
+      <div class="orbit-rings" style="background:#042C53;border-radius:12px;padding:1rem;">
+        <style>
+          @scope {
+            @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+          }
+        </style>
+        <svg width="100%" viewBox="0 0 300 300">
+          <defs>
+            <path id="outer" d="M 150 35  A 115 115 0 1 1 149.99 35"/>
+            <path id="inner" d="M 150 68  A 82  82  0 1 1 149.99 68"/>
+          </defs>
+          <g style="transform-origin:150px 150px; animation:spin 14s linear infinite;">
+            <text font-size="13" font-weight="700" font-family="sans-serif" fill="#9FE1CB" letter-spacing="3">
+              <textPath href="#outer">★ SS2025 ★ SS2025 ★ SS2025 ★ SS2025 ★ SS20</textPath>
+            </text>
+            <text font-size="11" font-weight="500" font-family="sans-serif" fill="#5DCAA5" letter-spacing="2">
+              <textPath href="#inner" startOffset="10%">LET YOUR MIND WONDER FREE · LET YOUR MIND WONDER FREE ·</textPath>
+            </text>
+          </g>
+          <text x="150" y="158" text-anchor="middle" font-size="28" font-weight="900" font-family="sans-serif" fill="#ffffff">2025</text>
+        </svg>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="path-orbit-widget" style="background:#042C53;border-radius:12px;padding:1rem;">
+          <style>
+            @scope {
+              @keyframes spinpath { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+              .badge { font-size:10px; background:#0C447C; color:#9FE1CB; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <svg width="100%" viewBox="0 0 300 300" style="max-width:300px;display:block;margin:0 auto;">
+            <defs>
+              <path id="co" d="M 150 35 A 115 115 0 1 1 149.99 35"/>
+              <path id="ci" d="M 150 68 A 82 82 0 1 1 149.99 68"/>
+            </defs>
+            <g style="transform-origin:150px 150px;animation:spinpath 14s linear infinite;">
+              <text font-size="13" font-weight="700" font-family="sans-serif" fill="#9FE1CB" letter-spacing="3">
+                <textPath href="#co">★ SS2025 ★ SS2025 ★ SS2025 ★ SS2025 ★ SS20</textPath>
+              </text>
+              <text font-size="11" font-weight="500" font-family="sans-serif" fill="#5DCAA5" letter-spacing="2">
+                <textPath href="#ci" startOffset="10%">LET YOUR MIND WONDER FREE · LET YOUR MIND WONDER FREE ·</textPath>
+              </text>
+            </g>
+            <text x="150" y="158" text-anchor="middle" font-size="28" font-weight="900" font-family="sans-serif" fill="#ffffff">2025</text>
+          </svg>
+          <div class="badge">svg animated · spinning rings</div>
+        </div>
+    browse:
+      size: medium
+  - id: jay-text:mask-shimmer-pass
+    title: Shimmer pass
+    category: Text
+    subCategory: Masks & Effects
+    pluginName: aiditor-quill
+    packageName: "@jay-framework/aiditor-quill"
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |
+        Add a shimmer pass text effect at this marker location on the page.
+    prompt: |
+      Add a "Shimmer Pass" text element to the page.
+      A single highlight stripe sweeps across the text once every 5 seconds, then
+      disappears — giving the impression of light briefly catching the letterforms.
+      During idle the shine layer is fully invisible, parked off-screen.
+      
+      Implementation uses two layers:
+      - A base span with the visible text color
+      - A shine span absolutely positioned on top, using background-clip: text with
+        a narrow white gradient as the highlight stripe
+      
+      Key properties that make it work correctly:
+      - background-size: 200% auto — makes the gradient tile twice the element width
+      - background-repeat: no-repeat — prevents the tile from repeating, which would
+        cause multiple visible stripes
+      - background-position animates from -150% (fully off-screen left) to 150%
+        (fully off-screen right) — the extra 50% on each side ensures the bright
+        center of the stripe clears the element edge completely during idle
+      - The sweep occupies keyframes 15%→35% of the 5s cycle (~1 second), the
+        remaining 4 seconds are idle with the stripe parked off-screen
+      
+      The text content, base color, highlight opacity, sweep duration, and interval
+      (animation duration) should be configurable via props.
+      Important: the shine span must duplicate the text content exactly.
+      
+      Example:
+      <div class="shimmer-pass">
+        <style>
+          @scope {
+            @keyframes shimmer-pass {
+              0%   { background-position: -150% center; }
+              15%  { background-position: -150% center; }
+              35%  { background-position:  150% center; }
+              100% { background-position:  150% center; }
+            }
+            .wrap { position: relative; display: inline-block; font-size: clamp(36px, 4vw, 56px); font-weight: 900; font-family: sans-serif; line-height: 1; }
+            .base { color: #1a1a1a; }
+            .shine {
+              position: absolute; top: 0; left: 0;
+              background: linear-gradient(
+                105deg,
+                transparent 35%,
+                rgba(255,255,255,0.6)  46%,
+                rgba(255,255,255,0.95) 50%,
+                rgba(255,255,255,0.6)  54%,
+                transparent 65%
+              );
+              background-size: 200% auto;
+              background-repeat: no-repeat;
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+              animation: shimmer-pass 5s ease-in-out infinite;
+            }
+          }
+        </style>
+        <div class="wrap">
+          <span class="base">HELLO</span>
+          <span class="shine">HELLO</span>
+        </div>
+      </div>
+    presentation:
+      type: html-fragment
+      html: |
+        <div class="shimmer-pass-widget">
+          <style>
+            @scope {
+              @keyframes shimmer-pass {
+                0%    { background-position: -150% center; }
+                15%   { background-position: -150% center; }
+                35%   { background-position:  150% center; }
+                100%  { background-position:  150% center; }
+              }
+              .wrap { position: relative; display: inline-block; font-size: clamp(36px, 4vw, 56px); font-weight: 900; font-family: sans-serif; line-height: 1; }
+              .base { color: #1a1a1a; }
+              .shine {
+                position: absolute; top: 0; left: 0;
+                background: linear-gradient(
+                  105deg,
+                  transparent 35%,
+                  rgba(255,255,255,0.6)  46%,
+                  rgba(255,255,255,0.95) 50%,
+                  rgba(255,255,255,0.6)  54%,
+                  transparent 65%
+                );
+                background-size: 200% auto;
+                background-repeat: no-repeat;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: shimmer-pass 5s ease-in-out infinite;
+              }
+              .badge { font-size:10px; background:#F1EFE8; color:#444441; border-radius:999px; padding:2px 8px; margin-top:8px; font-family:sans-serif; display:inline-block; }
+            }
+          </style>
+          <div class="wrap">
+            <span class="base">SHIMMER</span>
+            <span class="shine" aria-hidden="true">SHIMMER</span>
+          </div>
+          <div class="badge">single shimmer pass</div>
+        </div>
+      browse:
+        size: small

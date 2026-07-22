@@ -33,6 +33,21 @@ plugins:
       - name: build-entry
       - name: upload-backend
       - name: deploy-baas
+  - name: markdown
+    path: ./node_modules/@jay-framework/markdown
+    contracts:
+      - name: markdown-pages
+        description: Renders a directory of markdown files as routable pages
+        type: static
+        path: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-pages.jay-contract
+      - name: markdown-content
+        description: Renders a markdown string to HTML at build time (slow phase)
+        type: static
+        path: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-content.jay-contract
+      - name: markdown-live
+        description: Renders markdown with fast+interactive updates
+        type: static
+        path: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-live.jay-contract
   - name: wix-server-client
     path: ./node_modules/@jay-framework/wix-server-client
     contracts: []
@@ -170,9 +185,18 @@ plugins:
     routes:
       - path: /aiditor
         description: AIditor — visual AI-driven code editor
+  - name: aiditor-quill
+    path: ./node_modules/@jay-framework/aiditor-quill
+    contracts: []
   - name: design-system-validator
     path: ./node_modules/@jay-framework/design-system-validator
     contracts: []
+  - name: wix-media
+    path: ./node_modules/@jay-framework/wix-media
+    contracts: []
+    commands:
+      - name: upload-public
+      - name: rebuild-index
   - name: seo-validator
     path: ./node_modules/@jay-framework/seo-validator
     contracts: []
