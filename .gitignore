@@ -4,3 +4,6 @@ build
 config/.wix.yaml
 .idea
 wix.config.json
+serve.mjs
+content
+public
