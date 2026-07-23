@@ -3,6 +3,7 @@
     <title>{title}</title>
     <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
+    <link rel="icon" type="image/svg+xml" href="/jay logo spider.svg">
     <link rel="stylesheet" href="../styles/theme.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -58,12 +59,23 @@
       }
       .header-brand {
         position: relative;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         font-family: var(--font-display);
         font-size: 32px;
         font-weight: 700;
         letter-spacing: -0.01em;
         text-decoration: none;
+      }
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+      .brand-text-wrap {
+        position: relative;
+        display: inline-block;
       }
       .header-brand .brand-base {
         color: var(--color-primary);
@@ -885,7 +897,7 @@
     <!-- ════════════════════════════════════════════ -->
     <header class="site-header">
       <nav class="header-inner">
-        <a href="/" class="header-brand"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></a>
+        <a href="/" class="header-brand"><img src="/jay logo spider.svg" alt="" class="brand-icon"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
         <div class="header-nav">
           <a href="#feedback-loop">Ecosystem</a>
           <a href="#agent-roles">Agents</a>
