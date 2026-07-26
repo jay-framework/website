@@ -3,7 +3,7 @@
     <title>{title}</title>
     <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <link rel="icon" type="image/svg+xml" href="/jay-logo-spider.svg">
+    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
     <link rel="stylesheet" href="../styles/theme.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -899,6 +899,7 @@
         margin-bottom: 24px;
       }
       .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
       .footer-links a {
         color: var(--color-text-muted);
         font-family: var(--font-mono);
@@ -917,7 +918,7 @@
     <!-- ════════════════════════════════════════════ -->
     <header class="site-header">
       <nav class="header-inner">
-        <a href="/" class="header-brand"><img src="/jay-logo-spider.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
+        <a href="/" class="header-brand"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
         <div class="header-nav">
           <a href="#feedback-loop">Ecosystem</a>
           <a href="#agent-roles">Agents</a>
@@ -943,7 +944,7 @@
           <div class="hero-content">
             <div class="hero-logo-wrapper">
               <div class="hero-logo-glow"></div>
-              <img class="hero-logo" src="/Jay-Logo-2.png" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
+              <img class="hero-logo" src="https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_500,h_500/file.webp" srcset="https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w" sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
             </div>
             <div>
               <h1 class="hero-headline">The self-correcting visual ecosystem for AI-native web development.</h1>
@@ -968,7 +969,7 @@
             <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Guiding AI to guaranteed, production-ready results through continuous validation and strict boundaries.</p>
           </div>
           <div class="feedback-image-frame glass-panel">
-            <img src="/feedback-loop.png" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback" width="900" height="506" loading="lazy">
+            <img src="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900,h_506/file.webp" srcset="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_600%2Ch_337/file.webp 600w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900%2Ch_506/file.webp 900w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 900px" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback" width="900" height="506" loading="lazy">
           </div>
 
           <div class="feedback-steps">
@@ -1022,26 +1023,26 @@
             <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
           </div>
           <div class="roles-image-frame glass-panel">
-            <img src="/AI-Roles-3.png" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
+            <img src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp" srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
           </div>
           <div class="roles-cards">
             <div class="role-card glass-panel role-card--designer">
-              <img class="role-icon" src="/designer-spider-icon.png" alt="AI Designer" width="80" height="80" loading="lazy">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Designer" width="80" height="80" loading="lazy">
               <h3>Designer</h3>
               <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
             </div>
             <div class="role-card glass-panel role-card--developer">
-              <img class="role-icon" src="/developer-spider-icon.png" alt="AI Developer" width="80" height="80" loading="lazy">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Developer" width="80" height="80" loading="lazy">
               <h3>Developer</h3>
               <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
             </div>
             <div class="role-card glass-panel role-card--plugin">
-              <img class="role-icon" src="/plugin-developer-spider-icon.png" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
               <h3>Plugin Developer</h3>
               <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
             </div>
             <div class="role-card glass-panel role-card--devops">
-              <img class="role-icon" src="/devops-spider-icon.png" alt="AI DevOps" width="80" height="80" loading="lazy">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI DevOps" width="80" height="80" loading="lazy">
               <h3>DevOps</h3>
               <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
             </div>
@@ -1056,7 +1057,7 @@
         <div class="container">
           <div class="plugins-layout">
             <div class="plugins-image-frame glass-panel">
-              <img src="/Jay-Framework-Plugins.png" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
+              <img src="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_600%2Ch_450/file.webp 600w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800%2Ch_600/file.webp 800w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 800px" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
             </div>
             <div class="plugins-text">
               <span class="section-label">Ecosystem</span>
@@ -1178,7 +1179,7 @@
         <div class="container">
           <div class="fullstack-layout">
           <div class="fullstack-image">
-            <img src="/full-stack-of-solutions-2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor" width="600" height="600" loading="lazy">
+            <img src="https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_600,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_450%2Ch_450/file.webp 450w, https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_600%2Ch_600/file.webp 600w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 45vw" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor" width="600" height="600" loading="lazy">
           </div>
           <div class="fullstack-tabs glass-panel" style="border-radius: var(--radius-2xl); overflow: hidden;">
             <input type="radio" name="fs-tab" id="fs-tab-1" checked hidden>
@@ -1233,7 +1234,7 @@
             <div class="bento-card glass-panel bento-wide bento-card--visual-editor">
               <div>
                 <h3 class="headline-md">Claude as a Visual Editor</h3>
-                <img src="/aiditor.png" alt="Jay AIditor — visual editing interface" width="400" height="300" loading="lazy" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
+                <img src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_300/file.webp" srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w" sizes="(max-width: 600px) 100vw, 400px" alt="Jay AIditor — visual editing interface" width="400" height="300" loading="lazy" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
                 <p class="body-lg text-muted">The Jay AIditor transforms AI interaction into an intuitive "point and shoot" visual experience. Without any complex side-panels or manual selections, you simply point at an element and let the AI execute updates directly on the application / website code.</p>
               </div>
             </div>
@@ -1242,7 +1243,7 @@
               <div>
                 <h3 class="headline-md">Near-Perfect Performance</h3>
                 <div class="bento-icon-corner" style="position: relative; top: auto; right: auto; margin: 16px 0;">
-                  <img src="/lighthouse.png" alt="Lighthouse perfect scores" width="200" height="150" loading="lazy" style="width: 200px; height: auto;">
+                  <img src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_200,h_150/file.webp" alt="Lighthouse perfect scores" width="200" height="150" loading="lazy" style="width: 200px; height: auto;">
                   <div class="lighthouse-hint"><div class="lighthouse-hint-inner">measured on the <a href="https://jay-onsko-52654f57-yoav68.wix-site-host.com/" target="_blank">Jay Onsko Template</a></div></div>
                 </div>
                 <p class="body-md text-muted">Jay is engineered from the ground up to ensure every site ships with minimal bundle sizes, lightning-fast load times, and top-tier Lighthouse scores out of the box.</p>

@@ -136,6 +136,7 @@ jay-stack dev
 
 | File | Plugin | Description |
 | --- | --- | --- |
+| [markdown-usage.md](markdown-usage.md) | markdown | The `@jay-framework/markdown` plugin renders markdown content as HTML in jay-html pages. It provides three headless components. |
 | [accordion.md](accordion.md) | ui-kit | Collapsible sections using native `<details>` / `<summary>`. Pure HTML, no component needed. |
 | [click-popover.md](click-popover.md) | ui-kit | Popup dialog on button click with auto-dismiss on click outside. Pure HTML using `popovertarget`, no component needed. |
 | [clipboard-copy.md](clipboard-copy.md) | ui-kit | Copy-to-clipboard button with "Copied!" feedback. Headless component — requires import. |
@@ -148,5 +149,5 @@ jay-stack dev
 | [toggle-switch.md](toggle-switch.md) | ui-kit | On/off toggle styled as a switch. Pure CSS using a checkbox input, no component needed. |
 | [tooltip.md](tooltip.md) | ui-kit | Hover tooltip showing extra info. Pure CSS using `::after` pseudo-element, no component needed. |
 | [word-split.md](word-split.md) | ui-kit | Splits dynamic text into one span per word for individual word styling. Headless component — requires import. |
-| [markdown-usage.md](markdown-usage.md) | markdown | The `@jay-framework/markdown` plugin renders markdown content as HTML in jay-html pages. It provides three headless components. |
 | [design-system.md](design-system.md) | design-system-validator | The project uses a `DESIGN.md` file to define design tokens — colors, typography, spacing, rounded corners, and component specs. The validator enforces these tokens across all `.jay-html` pages. |
+| [wix-media.md](wix-media.md) | wix-media | How to use images, video, documents, and audio from Wix Media Manager in jay-html templates. |
