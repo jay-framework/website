@@ -1,319 +1,789 @@
 items:
   - id: design-system:color-primary
-    title: primary (#2563eb)
-    category: My Design System
+    title: primary (#a5e7ff)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "primary" with value #2563eb from DESIGN.md.'
+    prompt: 'Use color token "primary" with value #a5e7ff from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#2563eb;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#a5e7ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">primary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#2563eb</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#a5e7ff</div>
           </div>
         </div>
-  - id: design-system:color-primary-hover
-    title: primary-hover (#1d4ed8)
-    category: My Design System
+  - id: design-system:color-primary-container
+    title: primary-container (#00d2ff)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "primary-hover" with value #1d4ed8 from DESIGN.md.'
+    prompt: 'Use color token "primary-container" with value #00d2ff from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#1d4ed8;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#00d2ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
-            <div style="font-size:13px;font-weight:600;">primary-hover</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#1d4ed8</div>
+            <div style="font-size:13px;font-weight:600;">primary-container</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#00d2ff</div>
+          </div>
+        </div>
+  - id: design-system:color-on-primary-container
+    title: on-primary-container (#00566a)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "on-primary-container" with value #00566a from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00566a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">on-primary-container</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#00566a</div>
+          </div>
+        </div>
+  - id: design-system:color-primary-dim
+    title: primary-dim (#47d6ff)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "primary-dim" with value #47d6ff from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">primary-dim</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#47d6ff</div>
           </div>
         </div>
   - id: design-system:color-secondary
-    title: secondary (#64748b)
-    category: My Design System
+    title: secondary (#e6feff)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "secondary" with value #64748b from DESIGN.md.'
+    prompt: 'Use color token "secondary" with value #e6feff from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#64748b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#e6feff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">secondary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#64748b</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#e6feff</div>
+          </div>
+        </div>
+  - id: design-system:color-secondary-container
+    title: secondary-container (#00f4fe)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "secondary-container" with value #00f4fe from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00f4fe;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">secondary-container</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#00f4fe</div>
+          </div>
+        </div>
+  - id: design-system:color-secondary-dim
+    title: secondary-dim (#00dce5)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "secondary-dim" with value #00dce5 from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00dce5;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">secondary-dim</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#00dce5</div>
+          </div>
+        </div>
+  - id: design-system:color-tertiary
+    title: tertiary (#ffd2d1)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "tertiary" with value #ffd2d1 from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffd2d1;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">tertiary</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#ffd2d1</div>
           </div>
         </div>
   - id: design-system:color-text
-    title: text (#0f172a)
-    category: My Design System
+    title: text (#dee1f7)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "text" with value #0f172a from DESIGN.md.'
+    prompt: 'Use color token "text" with value #dee1f7 from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#0f172a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">text</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#0f172a</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
           </div>
         </div>
   - id: design-system:color-text-muted
-    title: text-muted (#64748b)
-    category: My Design System
+    title: text-muted (#bbc9cf)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "text-muted" with value #64748b from DESIGN.md.'
+    prompt: 'Use color token "text-muted" with value #bbc9cf from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#64748b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#bbc9cf;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">text-muted</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#64748b</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#bbc9cf</div>
           </div>
         </div>
   - id: design-system:color-background
-    title: background (#ffffff)
-    category: My Design System
+    title: background (#04070F)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "background" with value #ffffff from DESIGN.md.'
+    prompt: 'Use color token "background" with value #04070F from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffffff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#04070F;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">background</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffffff</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#04070F</div>
           </div>
         </div>
   - id: design-system:color-surface
-    title: surface (#f8fafc)
-    category: My Design System
+    title: surface (#0e1322)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "surface" with value #f8fafc from DESIGN.md.'
+    prompt: 'Use color token "surface" with value #0e1322 from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#f8fafc;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">surface</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#f8fafc</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#0e1322</div>
+          </div>
+        </div>
+  - id: design-system:color-surface-lowest
+    title: surface-lowest (#090e1c)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "surface-lowest" with value #090e1c from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#090e1c;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">surface-lowest</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#090e1c</div>
+          </div>
+        </div>
+  - id: design-system:color-surface-low
+    title: surface-low (#161b2b)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "surface-low" with value #161b2b from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#161b2b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">surface-low</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#161b2b</div>
+          </div>
+        </div>
+  - id: design-system:color-surface-high
+    title: surface-high (#25293a)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "surface-high" with value #25293a from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#25293a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">surface-high</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#25293a</div>
+          </div>
+        </div>
+  - id: design-system:color-surface-highest
+    title: surface-highest (#2f3445)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "surface-highest" with value #2f3445 from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">surface-highest</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
+          </div>
+        </div>
+  - id: design-system:color-outline
+    title: outline (#859399)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "outline" with value #859399 from DESIGN.md.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#859399;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">outline</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#859399</div>
           </div>
         </div>
   - id: design-system:color-border
-    title: border (#e2e8f0)
-    category: My Design System
+    title: border (#3c494e)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "border" with value #e2e8f0 from DESIGN.md.'
+    prompt: 'Use color token "border" with value #3c494e from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#e2e8f0;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#3c494e;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">border</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#e2e8f0</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#3c494e</div>
           </div>
         </div>
   - id: design-system:color-error
-    title: error (#dc2626)
-    category: My Design System
+    title: error (#ffb4ab)
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "error" with value #dc2626 from DESIGN.md.'
+    prompt: 'Use color token "error" with value #ffb4ab from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#dc2626;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffb4ab;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;">error</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#dc2626</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#ffb4ab</div>
           </div>
         </div>
-  - id: design-system:color-success
-    title: success (#16a34a)
-    category: My Design System
+  - id: design-system:color-glass-bg
+    title: glass-bg (rgba(10, 15, 30, 0.7))
+    category: Jay Framework Design System
     subCategory: Colors
-    prompt: 'Use color token "success" with value #16a34a from DESIGN.md.'
+    prompt: Use color token "glass-bg" with value rgba(10, 15, 30, 0.7) from DESIGN.md.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#16a34a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div style="width:40px;height:40px;border-radius:6px;background:rgba(10, 15, 30, 0.7);border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
           <div>
-            <div style="font-size:13px;font-weight:600;">success</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#16a34a</div>
+            <div style="font-size:13px;font-weight:600;">glass-bg</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">rgba(10, 15, 30, 0.7)</div>
           </div>
         </div>
-  - id: design-system:typography-headline-lg
-    title: headline-lg
-    category: My Design System
-    subCategory: Typography
-    prompt: 'Apply typography preset "headline-lg" from DESIGN.md: system-ui, sans-serif, 2.5rem, weight 700, line-height 1.2.'
+  - id: design-system:color-deep-bg
+    title: deep-bg (#0A0F1E)
+    category: Jay Framework Design System
+    subCategory: Colors
+    prompt: 'Use color token "deep-bg" with value #0A0F1E from DESIGN.md.'
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
-          <div style="font-family:system-ui, sans-serif,sans-serif;font-size:2.5rem;font-weight:700;line-height:1.2;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-lg: system-ui, sans-serif, 2.5rem, weight 700, line-height 1.2</div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#0A0F1E;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">deep-bg</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">#0A0F1E</div>
+          </div>
         </div>
-  - id: design-system:typography-headline-md
-    title: headline-md
-    category: My Design System
+  - id: design-system:typography-display-lg
+    title: display-lg
+    category: Jay Framework Design System
     subCategory: Typography
-    prompt: 'Apply typography preset "headline-md" from DESIGN.md: system-ui, sans-serif, 2rem, weight 600, line-height 1.3.'
+    prompt: >-
+      Apply typography preset "display-lg" from DESIGN.md: Sora, system-ui, sans-serif, 48px, weight 700, line-height
+      56px, letter-spacing -0.02em.
     presentation:
       type: html-fragment
       html: |-
         <div style="font-family:sans-serif;">
-          <div style="font-family:system-ui, sans-serif,sans-serif;font-size:2rem;font-weight:600;line-height:1.3;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-md: system-ui, sans-serif, 2rem, weight 600, line-height 1.3</div>
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:48px;font-weight:700;line-height:56px;letter-spacing:-0.02em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">display-lg: Sora, system-ui, sans-serif, 48px, weight 700, line-height 56px, letter-spacing -0.02em</div>
+        </div>
+  - id: design-system:typography-display-brand
+    title: display-brand
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "display-brand" from DESIGN.md: Sora, system-ui, sans-serif, 32px, weight 700, line-height
+      40px, letter-spacing -0.01em.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:32px;font-weight:700;line-height:40px;letter-spacing:-0.01em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">display-brand: Sora, system-ui, sans-serif, 32px, weight 700, line-height 40px, letter-spacing -0.01em</div>
+        </div>
+  - id: design-system:typography-hero-display
+    title: hero-display
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "hero-display" from DESIGN.md: Sora, system-ui, sans-serif, clamp(32px, 5vw, 48px), weight
+      700, line-height 1.15, letter-spacing -0.02em.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:clamp(32px, 5vw, 48px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">hero-display: Sora, system-ui, sans-serif, clamp(32px, 5vw, 48px), weight 700, line-height 1.15, letter-spacing -0.02em</div>
+        </div>
+  - id: design-system:typography-heading-lg
+    title: heading-lg
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "heading-lg" from DESIGN.md: Sora, system-ui, sans-serif, 24px, weight 600, line-height
+      32px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:24px;font-weight:600;line-height:32px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">heading-lg: Sora, system-ui, sans-serif, 24px, weight 600, line-height 32px</div>
+        </div>
+  - id: design-system:typography-heading-md
+    title: heading-md
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "heading-md" from DESIGN.md: Sora, system-ui, sans-serif, 22px, weight 600, line-height
+      30px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:22px;font-weight:600;line-height:30px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">heading-md: Sora, system-ui, sans-serif, 22px, weight 600, line-height 30px</div>
+        </div>
+  - id: design-system:typography-heading-sm
+    title: heading-sm
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "heading-sm" from DESIGN.md: Sora, system-ui, sans-serif, 20px, weight 600, line-height
+      28px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora, system-ui, sans-serif,sans-serif;font-size:20px;font-weight:600;line-height:28px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">heading-sm: Sora, system-ui, sans-serif, 20px, weight 600, line-height 28px</div>
+        </div>
+  - id: design-system:typography-body-lg
+    title: body-lg
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "body-lg" from DESIGN.md: Inter, system-ui, sans-serif, 18px, weight 400, line-height
+      28px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Inter, system-ui, sans-serif,sans-serif;font-size:18px;font-weight:400;line-height:28px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-lg: Inter, system-ui, sans-serif, 18px, weight 400, line-height 28px</div>
         </div>
   - id: design-system:typography-body-md
     title: body-md
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Typography
-    prompt: 'Apply typography preset "body-md" from DESIGN.md: system-ui, sans-serif, 1rem, weight 400, line-height 1.6.'
+    prompt: >-
+      Apply typography preset "body-md" from DESIGN.md: Inter, system-ui, sans-serif, 16px, weight 400, line-height
+      24px.
     presentation:
       type: html-fragment
       html: |-
         <div style="font-family:sans-serif;">
-          <div style="font-family:system-ui, sans-serif,sans-serif;font-size:1rem;font-weight:400;line-height:1.6;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md: system-ui, sans-serif, 1rem, weight 400, line-height 1.6</div>
+          <div style="font-family:Inter, system-ui, sans-serif,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md: Inter, system-ui, sans-serif, 16px, weight 400, line-height 24px</div>
+        </div>
+  - id: design-system:typography-body-md-relaxed
+    title: body-md-relaxed
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "body-md-relaxed" from DESIGN.md: Inter, system-ui, sans-serif, 16px, weight 400,
+      line-height 26px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Inter, system-ui, sans-serif,sans-serif;font-size:16px;font-weight:400;line-height:26px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md-relaxed: Inter, system-ui, sans-serif, 16px, weight 400, line-height 26px</div>
+        </div>
+  - id: design-system:typography-body-sm
+    title: body-sm
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "body-sm" from DESIGN.md: Inter, system-ui, sans-serif, 15px, weight 400, line-height
+      24px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Inter, system-ui, sans-serif,sans-serif;font-size:15px;font-weight:400;line-height:24px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-sm: Inter, system-ui, sans-serif, 15px, weight 400, line-height 24px</div>
+        </div>
+  - id: design-system:typography-code-md
+    title: code-md
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: 'Apply typography preset "code-md" from DESIGN.md: JetBrains Mono, monospace, 14px, weight 400, line-height 20px.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:JetBrains Mono, monospace,sans-serif;font-size:14px;font-weight:400;line-height:20px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-md: JetBrains Mono, monospace, 14px, weight 400, line-height 20px</div>
+        </div>
+  - id: design-system:typography-code-sm
+    title: code-sm
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: 'Apply typography preset "code-sm" from DESIGN.md: JetBrains Mono, monospace, 13px, weight 400, line-height 19px.'
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:JetBrains Mono, monospace,sans-serif;font-size:13px;font-weight:400;line-height:19px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-sm: JetBrains Mono, monospace, 13px, weight 400, line-height 19px</div>
+        </div>
+  - id: design-system:typography-tooltip
+    title: tooltip
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "tooltip" from DESIGN.md: Inter, system-ui, sans-serif, 13px, weight 400, line-height
+      18px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Inter, system-ui, sans-serif,sans-serif;font-size:13px;font-weight:400;line-height:18px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">tooltip: Inter, system-ui, sans-serif, 13px, weight 400, line-height 18px</div>
         </div>
   - id: design-system:typography-label-sm
     title: label-sm
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Typography
-    prompt: 'Apply typography preset "label-sm" from DESIGN.md: system-ui, sans-serif, 0.875rem, weight 500, line-height 1.5.'
+    prompt: >-
+      Apply typography preset "label-sm" from DESIGN.md: JetBrains Mono, monospace, 12px, weight 500, line-height 16px,
+      letter-spacing 0.4em.
     presentation:
       type: html-fragment
       html: |-
         <div style="font-family:sans-serif;">
-          <div style="font-family:system-ui, sans-serif,sans-serif;font-size:0.875rem;font-weight:500;line-height:1.5;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm: system-ui, sans-serif, 0.875rem, weight 500, line-height 1.5</div>
+          <div style="font-family:JetBrains Mono, monospace,sans-serif;font-size:12px;font-weight:500;line-height:16px;letter-spacing:0.4em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm: JetBrains Mono, monospace, 12px, weight 500, line-height 16px, letter-spacing 0.4em</div>
         </div>
-  - id: design-system:spacing-xs
-    title: xs (0.25rem)
-    category: My Design System
+  - id: design-system:typography-label-sm-spaced
+    title: label-sm-spaced
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "label-sm-spaced" from DESIGN.md: JetBrains Mono, monospace, 12px, weight 500, line-height
+      16px, letter-spacing 0.15em.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:JetBrains Mono, monospace,sans-serif;font-size:12px;font-weight:500;line-height:16px;letter-spacing:0.15em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm-spaced: JetBrains Mono, monospace, 12px, weight 500, line-height 16px, letter-spacing 0.15em</div>
+        </div>
+  - id: design-system:typography-label-sm-tight
+    title: label-sm-tight
+    category: Jay Framework Design System
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "label-sm-tight" from DESIGN.md: JetBrains Mono, monospace, 12px, weight 700, line-height
+      16px.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:JetBrains Mono, monospace,sans-serif;font-size:12px;font-weight:700;line-height:16px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm-tight: JetBrains Mono, monospace, 12px, weight 700, line-height 16px</div>
+        </div>
+  - id: design-system:spacing-3xs
+    title: 3xs (4px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "xs" with value 0.25rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "3xs" with value 4px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:0.25rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:4px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">3xs</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">4px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-2xs
+    title: 2xs (8px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "2xs" with value 8px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:8px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">2xs</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">8px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-xs
+    title: xs (10px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "xs" with value 10px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:10px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">xs</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">0.25rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">10px</span>
           </div>
         </div>
   - id: design-system:spacing-sm
-    title: sm (0.5rem)
-    category: My Design System
+    title: sm (12px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "sm" with value 0.5rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "sm" with value 12px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:0.5rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:12px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">sm</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">0.5rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">12px</span>
           </div>
         </div>
-  - id: design-system:spacing-md
-    title: md (1rem)
-    category: My Design System
+  - id: design-system:spacing-sm-md
+    title: sm-md (14px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "md" with value 1rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "sm-md" with value 14px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:1rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:14px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">sm-md</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">14px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-md
+    title: md (16px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "md" with value 16px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:16px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">md</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">16px</span>
           </div>
         </div>
-  - id: design-system:spacing-lg
-    title: lg (1.5rem)
-    category: My Design System
+  - id: design-system:spacing-md-lg
+    title: md-lg (20px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "lg" with value 1.5rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "md-lg" with value 20px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:1.5rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:20px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">md-lg</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">20px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-lg
+    title: lg (24px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "lg" with value 24px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:24px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">lg</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1.5rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">24px</span>
           </div>
         </div>
   - id: design-system:spacing-xl
-    title: xl (2rem)
-    category: My Design System
+    title: xl (32px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "xl" with value 2rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "xl" with value 32px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:2rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:32px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">2rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">32px</span>
           </div>
         </div>
   - id: design-system:spacing-2xl
-    title: 2xl (3rem)
-    category: My Design System
+    title: 2xl (40px)
+    category: Jay Framework Design System
     subCategory: Spacing
-    prompt: Use spacing token "2xl" with value 3rem from DESIGN.md for padding, margin, or gap.
+    prompt: Use spacing token "2xl" with value 40px from DESIGN.md for padding, margin, or gap.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:3rem;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:40px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
           <div>
             <span style="font-size:12px;font-weight:600;">2xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">3rem</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">40px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-3xl
+    title: 3xl (48px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "3xl" with value 48px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:48px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">3xl</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">48px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-4xl
+    title: 4xl (64px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "4xl" with value 64px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:64px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">4xl</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">64px</span>
+          </div>
+        </div>
+  - id: design-system:spacing-5xl
+    title: 5xl (96px)
+    category: Jay Framework Design System
+    subCategory: Spacing
+    prompt: Use spacing token "5xl" with value 96px from DESIGN.md for padding, margin, or gap.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+          <div style="display:flex;align-items:center;gap:0;">
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
+            <div style="width:96px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
+            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:600;">5xl</span>
+            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">96px</span>
           </div>
         </div>
   - id: design-system:rounded-none
     title: none (0)
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Rounded
     prompt: Use border-radius token "none" with value 0 from DESIGN.md.
     presentation:
@@ -326,9 +796,24 @@ items:
             <div style="font-size:11px;color:#888;font-family:monospace;">0</div>
           </div>
         </div>
+  - id: design-system:rounded-xs
+    title: xs (0.125rem)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "xs" with value 0.125rem from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:0.125rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">xs</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">0.125rem</div>
+          </div>
+        </div>
   - id: design-system:rounded-sm
     title: sm (0.25rem)
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Rounded
     prompt: Use border-radius token "sm" with value 0.25rem from DESIGN.md.
     presentation:
@@ -342,38 +827,113 @@ items:
           </div>
         </div>
   - id: design-system:rounded-md
-    title: md (0.5rem)
-    category: My Design System
+    title: md (0.375rem)
+    category: Jay Framework Design System
     subCategory: Rounded
-    prompt: Use border-radius token "md" with value 0.5rem from DESIGN.md.
+    prompt: Use border-radius token "md" with value 0.375rem from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:0.375rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">md</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">0.375rem</div>
+          </div>
+        </div>
+  - id: design-system:rounded-lg
+    title: lg (0.5rem)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "lg" with value 0.5rem from DESIGN.md.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
           <div style="width:40px;height:40px;border-radius:0.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
           <div>
-            <div style="font-size:12px;font-weight:600;">md</div>
+            <div style="font-size:12px;font-weight:600;">lg</div>
             <div style="font-size:11px;color:#888;font-family:monospace;">0.5rem</div>
           </div>
         </div>
-  - id: design-system:rounded-lg
-    title: lg (0.75rem)
-    category: My Design System
+  - id: design-system:rounded-xl
+    title: xl (0.75rem)
+    category: Jay Framework Design System
     subCategory: Rounded
-    prompt: Use border-radius token "lg" with value 0.75rem from DESIGN.md.
+    prompt: Use border-radius token "xl" with value 0.75rem from DESIGN.md.
     presentation:
       type: html-fragment
       html: |-
         <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
           <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
           <div>
-            <div style="font-size:12px;font-weight:600;">lg</div>
+            <div style="font-size:12px;font-weight:600;">xl</div>
             <div style="font-size:11px;color:#888;font-family:monospace;">0.75rem</div>
+          </div>
+        </div>
+  - id: design-system:rounded-2xl
+    title: 2xl (1rem)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "2xl" with value 1rem from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:1rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">2xl</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">1rem</div>
+          </div>
+        </div>
+  - id: design-system:rounded-3xl
+    title: 3xl (1.5rem)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "3xl" with value 1.5rem from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:1.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">3xl</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">1.5rem</div>
+          </div>
+        </div>
+  - id: design-system:rounded-4xl
+    title: 4xl (2rem)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "4xl" with value 2rem from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:2rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">4xl</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">2rem</div>
+          </div>
+        </div>
+  - id: design-system:rounded-circle
+    title: circle (50%)
+    category: Jay Framework Design System
+    subCategory: Rounded
+    prompt: Use border-radius token "circle" with value 50% from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">circle</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">50%</div>
           </div>
         </div>
   - id: design-system:rounded-full
     title: full (9999px)
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Rounded
     prompt: Use border-radius token "full" with value 9999px from DESIGN.md.
     presentation:
@@ -388,7 +948,7 @@ items:
         </div>
   - id: design-system:animation-micro
     title: micro
-    category: My Design System
+    category: Jay Framework Design System
     subCategory: Animations
     prompt: >-
       Use animation preset "micro" from DESIGN.md: 150ms, ease-in-out. Apply to transition-duration and
@@ -412,12 +972,64 @@ items:
             </div>
           </div>
         </div>
-  - id: design-system:animation-normal
-    title: normal
-    category: My Design System
+  - id: design-system:animation-fast
+    title: fast
+    category: Jay Framework Design System
     subCategory: Animations
     prompt: >-
-      Use animation preset "normal" from DESIGN.md: 300ms, cubic-bezier(0, 0, 0.2, 1). Apply to transition-duration and
+      Use animation preset "fast" from DESIGN.md: 200ms, ease. Apply to transition-duration and
+      transition-timing-function.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <style>
+            @scope {
+              .anim-preview { width:40px;height:40px;border-radius:6px;background:#8b5cf6;transition:transform 200ms ease;cursor:pointer; }
+              .anim-preview:hover { transform:scale(1.3); }
+            }
+          </style>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="anim-preview"></div>
+            <div>
+              <div style="font-size:12px;font-weight:600;">fast</div>
+              <div style="font-size:11px;color:#888;font-family:monospace;">200ms, ease</div>
+              <div style="font-size:10px;color:#aaa;">hover to preview</div>
+            </div>
+          </div>
+        </div>
+  - id: design-system:animation-normal
+    title: normal
+    category: Jay Framework Design System
+    subCategory: Animations
+    prompt: >-
+      Use animation preset "normal" from DESIGN.md: 300ms, ease. Apply to transition-duration and
+      transition-timing-function.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <style>
+            @scope {
+              .anim-preview { width:40px;height:40px;border-radius:6px;background:#8b5cf6;transition:transform 300ms ease;cursor:pointer; }
+              .anim-preview:hover { transform:scale(1.3); }
+            }
+          </style>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="anim-preview"></div>
+            <div>
+              <div style="font-size:12px;font-weight:600;">normal</div>
+              <div style="font-size:11px;color:#888;font-family:monospace;">300ms, ease</div>
+              <div style="font-size:10px;color:#aaa;">hover to preview</div>
+            </div>
+          </div>
+        </div>
+  - id: design-system:animation-smooth
+    title: smooth
+    category: Jay Framework Design System
+    subCategory: Animations
+    prompt: >-
+      Use animation preset "smooth" from DESIGN.md: 300ms, cubic-bezier(0, 0, 0.2, 1). Apply to transition-duration and
       transition-timing-function.
     presentation:
       type: html-fragment
@@ -432,7 +1044,7 @@ items:
           <div style="display:flex;align-items:center;gap:10px;">
             <div class="anim-preview"></div>
             <div>
-              <div style="font-size:12px;font-weight:600;">normal</div>
+              <div style="font-size:12px;font-weight:600;">smooth</div>
               <div style="font-size:11px;color:#888;font-family:monospace;">300ms, cubic-bezier(0, 0, 0.2, 1)</div>
               <div style="font-size:10px;color:#aaa;">hover to preview</div>
             </div>
@@ -603,21 +1215,6 @@ items:
             <div style="font-size:11px;color:#888;font-family:monospace;">#2b3040</div>
           </div>
         </div>
-  - id: design-system:color-outline
-    title: outline (#859399)
-    category: Cybernetic Web Intelligence
-    subCategory: Colors
-    prompt: 'Use color token "outline" with value #859399 from DESIGN.md.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#859399;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">outline</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#859399</div>
-          </div>
-        </div>
   - id: design-system:color-outline-variant
     title: outline-variant (#3c494e)
     category: Cybernetic Web Intelligence
@@ -663,36 +1260,6 @@ items:
             <div style="font-size:11px;color:#888;font-family:monospace;">#003543</div>
           </div>
         </div>
-  - id: design-system:color-primary-container
-    title: primary-container (#00d2ff)
-    category: Cybernetic Web Intelligence
-    subCategory: Colors
-    prompt: 'Use color token "primary-container" with value #00d2ff from DESIGN.md.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00d2ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">primary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00d2ff</div>
-          </div>
-        </div>
-  - id: design-system:color-on-primary-container
-    title: on-primary-container (#00566a)
-    category: Cybernetic Web Intelligence
-    subCategory: Colors
-    prompt: 'Use color token "on-primary-container" with value #00566a from DESIGN.md.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00566a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-primary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00566a</div>
-          </div>
-        </div>
   - id: design-system:color-inverse-primary
     title: inverse-primary (#00677f)
     category: Cybernetic Web Intelligence
@@ -723,21 +1290,6 @@ items:
             <div style="font-size:11px;color:#888;font-family:monospace;">#003739</div>
           </div>
         </div>
-  - id: design-system:color-secondary-container
-    title: secondary-container (#00f4fe)
-    category: Cybernetic Web Intelligence
-    subCategory: Colors
-    prompt: 'Use color token "secondary-container" with value #00f4fe from DESIGN.md.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00f4fe;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">secondary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00f4fe</div>
-          </div>
-        </div>
   - id: design-system:color-on-secondary-container
     title: on-secondary-container (#006c71)
     category: Cybernetic Web Intelligence
@@ -751,21 +1303,6 @@ items:
           <div>
             <div style="font-size:13px;font-weight:600;">on-secondary-container</div>
             <div style="font-size:11px;color:#888;font-family:monospace;">#006c71</div>
-          </div>
-        </div>
-  - id: design-system:color-tertiary
-    title: tertiary (#ffd2d1)
-    category: Cybernetic Web Intelligence
-    subCategory: Colors
-    prompt: 'Use color token "tertiary" with value #ffd2d1 from DESIGN.md.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffd2d1;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">tertiary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffd2d1</div>
           </div>
         </div>
   - id: design-system:color-on-tertiary
@@ -1068,6 +1605,49 @@ items:
             <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
           </div>
         </div>
+  - id: design-system:color-white-subtle
+    title: white-subtle (rgba(255, 255, 255, 0.05))
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    prompt: Use color token "white-subtle" with value rgba(255, 255, 255, 0.05) from DESIGN.md.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
+          <div style="width:40px;height:40px;border-radius:6px;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">white-subtle</div>
+            <div style="font-size:11px;color:#888;font-family:monospace;">rgba(255, 255, 255, 0.05)</div>
+          </div>
+        </div>
+  - id: design-system:typography-headline-lg
+    title: headline-lg
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "headline-lg" from DESIGN.md: Sora, 48px, weight 700, line-height 56px, letter-spacing
+      -0.02em.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora,sans-serif;font-size:48px;font-weight:700;line-height:56px;letter-spacing:-0.02em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-lg: Sora, 48px, weight 700, line-height 56px, letter-spacing -0.02em</div>
+        </div>
+  - id: design-system:typography-headline-md
+    title: headline-md
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "headline-md" from DESIGN.md: Sora, 32px, weight 600, line-height 40px, letter-spacing
+      -0.01em.
+    presentation:
+      type: html-fragment
+      html: |-
+        <div style="font-family:sans-serif;">
+          <div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;line-height:40px;letter-spacing:-0.01em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-md: Sora, 32px, weight 600, line-height 40px, letter-spacing -0.01em</div>
+        </div>
   - id: design-system:typography-headline-sm
     title: headline-sm
     category: Cybernetic Web Intelligence
@@ -1080,105 +1660,17 @@ items:
           <div style="font-family:Sora,sans-serif;font-size:24px;font-weight:600;line-height:32px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-sm: Sora, 24px, weight 600, line-height 32px</div>
         </div>
-  - id: design-system:typography-body-lg
-    title: body-lg
+  - id: design-system:typography-label-sm-bold
+    title: label-sm-bold
     category: Cybernetic Web Intelligence
     subCategory: Typography
-    prompt: 'Apply typography preset "body-lg" from DESIGN.md: Inter, 18px, weight 400, line-height 28px.'
+    prompt: 'Apply typography preset "label-sm-bold" from DESIGN.md: JetBrains Mono, 12px, weight 700, line-height 16px.'
     presentation:
       type: html-fragment
       html: |-
         <div style="font-family:sans-serif;">
-          <div style="font-family:Inter,sans-serif;font-size:18px;font-weight:400;line-height:28px;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-lg: Inter, 18px, weight 400, line-height 28px</div>
-        </div>
-  - id: design-system:typography-code-md
-    title: code-md
-    category: Cybernetic Web Intelligence
-    subCategory: Typography
-    prompt: 'Apply typography preset "code-md" from DESIGN.md: JetBrains Mono, 14px, weight 400, line-height 20px.'
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="font-family:sans-serif;">
-          <div style="font-family:JetBrains Mono,sans-serif;font-size:14px;font-weight:400;line-height:20px;margin:0;">The quick brown fox</div>
-          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-md: JetBrains Mono, 14px, weight 400, line-height 20px</div>
-        </div>
-  - id: design-system:spacing-base
-    title: base (8px)
-    category: Cybernetic Web Intelligence
-    subCategory: Spacing
-    prompt: Use spacing token "base" with value 8px from DESIGN.md for padding, margin, or gap.
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
-          <div style="display:flex;align-items:center;gap:0;">
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:8px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
-          </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">base</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">8px</span>
-          </div>
-        </div>
-  - id: design-system:spacing-gutter
-    title: gutter (24px)
-    category: Cybernetic Web Intelligence
-    subCategory: Spacing
-    prompt: Use spacing token "gutter" with value 24px from DESIGN.md for padding, margin, or gap.
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
-          <div style="display:flex;align-items:center;gap:0;">
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:24px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
-          </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">gutter</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">24px</span>
-          </div>
-        </div>
-  - id: design-system:spacing-margin-mobile
-    title: margin-mobile (16px)
-    category: Cybernetic Web Intelligence
-    subCategory: Spacing
-    prompt: Use spacing token "margin-mobile" with value 16px from DESIGN.md for padding, margin, or gap.
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
-          <div style="display:flex;align-items:center;gap:0;">
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:16px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
-          </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">margin-mobile</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">16px</span>
-          </div>
-        </div>
-  - id: design-system:spacing-margin-desktop
-    title: margin-desktop (64px)
-    category: Cybernetic Web Intelligence
-    subCategory: Spacing
-    prompt: Use spacing token "margin-desktop" with value 64px from DESIGN.md for padding, margin, or gap.
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
-          <div style="display:flex;align-items:center;gap:0;">
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
-            <div style="width:64px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
-            <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
-          </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">margin-desktop</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">64px</span>
-          </div>
+          <div style="font-family:JetBrains Mono,sans-serif;font-size:12px;font-weight:700;line-height:16px;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm-bold: JetBrains Mono, 12px, weight 700, line-height 16px</div>
         </div>
   - id: design-system:spacing-max-width
     title: max-width (1440px)
@@ -1212,20 +1704,5 @@ items:
           <div>
             <div style="font-size:12px;font-weight:600;">DEFAULT</div>
             <div style="font-size:11px;color:#888;font-family:monospace;">0.25rem</div>
-          </div>
-        </div>
-  - id: design-system:rounded-xl
-    title: xl (0.75rem)
-    category: Cybernetic Web Intelligence
-    subCategory: Rounded
-    prompt: Use border-radius token "xl" with value 0.75rem from DESIGN.md.
-    presentation:
-      type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">xl</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.75rem</div>
           </div>
         </div>

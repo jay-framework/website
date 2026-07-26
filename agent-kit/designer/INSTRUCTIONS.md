@@ -150,4 +150,3 @@ jay-stack dev
 | [word-split.md](word-split.md) | ui-kit | Splits dynamic text into one span per word for individual word styling. Headless component — requires import. |
 | [markdown-usage.md](markdown-usage.md) | markdown | The `@jay-framework/markdown` plugin renders markdown content as HTML in jay-html pages. It provides three headless components. |
 | [design-system.md](design-system.md) | design-system-validator | The project uses a `DESIGN.md` file to define design tokens — colors, typography, spacing, rounded corners, and component specs. The validator enforces these tokens across all `.jay-html` pages. |
-| [wix-media.md](wix-media.md) | wix-media | How to use images, video, documents, and audio from Wix Media Manager in jay-html templates. |

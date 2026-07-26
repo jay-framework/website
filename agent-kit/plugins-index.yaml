@@ -191,12 +191,6 @@ plugins:
   - name: design-system-validator
     path: ./node_modules/@jay-framework/design-system-validator
     contracts: []
-  - name: wix-media
-    path: ./node_modules/@jay-framework/wix-media
-    contracts: []
-    commands:
-      - name: upload-public
-      - name: rebuild-index
   - name: seo-validator
     path: ./node_modules/@jay-framework/seo-validator
     contracts: []
