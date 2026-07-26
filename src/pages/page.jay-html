@@ -3,7 +3,7 @@
     <title>{title}</title>
     <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <link rel="icon" type="image/svg+xml" href="/jay logo spider.svg">
+    <link rel="icon" type="image/svg+xml" href="/jay-logo-spider.svg">
     <link rel="stylesheet" href="../styles/theme.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -320,7 +320,7 @@
         font-weight: 700;
         margin-bottom: 16px;
       }
-      .feedback-step h4 {
+      .feedback-step h3 {
         font-family: var(--font-display);
         font-size: 20px;
         font-weight: 600;
@@ -410,7 +410,7 @@
         object-fit: contain;
         margin-bottom: 24px;
       }
-      .role-card h4 {
+      .role-card h3 {
         font-family: var(--font-display);
         font-size: 24px;
         line-height: 32px;
@@ -574,18 +574,36 @@
         position: relative;
         overflow: hidden;
       }
+      .fullstack-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+      @media (min-width: 1024px) {
+        .fullstack-layout {
+          flex-direction: row;
+          align-items: stretch;
+          gap: 48px;
+        }
+      }
       .fullstack-image {
         display: flex;
         justify-content: center;
-        margin-bottom: 64px;
+        align-items: flex-start;
+      }
+      @media (min-width: 1024px) {
+        .fullstack-image {
+          flex-shrink: 0;
+          width: 45%;
+        }
       }
       .fullstack-image img {
         width: 100%;
-        max-width: 600px;
+        max-width: 500px;
         filter: drop-shadow(0 0 50px rgba(255, 170, 0, 0.2));
       }
       /* Vertical tabs for layers */
-      .fullstack-tabs { display: flex; flex-direction: column; gap: 0; }
+      .fullstack-tabs { display: flex; flex-direction: column; gap: 0; flex: 1; min-width: 0; }
       .fullstack-tabs input[type="radio"] { display: none; }
       .fullstack-tabs-inner {
         display: flex;
@@ -636,7 +654,7 @@
         display: none;
         padding: 24px 32px;
       }
-      .fullstack-tab-panel h4 {
+      .fullstack-tab-panel h3 {
         font-family: var(--font-display);
         font-size: 22px;
         line-height: 30px;
@@ -704,7 +722,7 @@
       }
       .lighthouse-hint {
         position: absolute;
-        top: 100%;
+        top: 100%; /* design-system: allow */
         right: 0;
         padding-top: 8px;
         opacity: 0;
@@ -779,7 +797,8 @@
       }
       .cta-glow-tl {
         position: absolute;
-        top: -96px; left: -96px;
+        top: -96px; /* design-system: allow */
+        left: -96px; /* design-system: allow */
         width: 256px; height: 256px;
         background: rgba(165, 231, 255, 0.2);
         border-radius: 50%;
@@ -788,7 +807,8 @@
       }
       .cta-glow-br {
         position: absolute;
-        bottom: -96px; right: -96px;
+        bottom: -96px; /* design-system: allow */
+        right: -96px; /* design-system: allow */
         width: 256px; height: 256px;
         background: rgba(0, 244, 254, 0.1);
         border-radius: 50%;
@@ -897,7 +917,7 @@
     <!-- ════════════════════════════════════════════ -->
     <header class="site-header">
       <nav class="header-inner">
-        <a href="/" class="header-brand"><img src="/jay logo spider.svg" alt="" class="brand-icon"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
+        <a href="/" class="header-brand"><img src="/jay-logo-spider.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
         <div class="header-nav">
           <a href="#feedback-loop">Ecosystem</a>
           <a href="#agent-roles">Agents</a>
@@ -923,7 +943,7 @@
           <div class="hero-content">
             <div class="hero-logo-wrapper">
               <div class="hero-logo-glow"></div>
-              <img class="hero-logo" src="/Jay Logo 2.png" alt="Jay Framework Logo">
+              <img class="hero-logo" src="/Jay-Logo-2.png" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
             </div>
             <div>
               <h1 class="hero-headline">The self-correcting visual ecosystem for AI-native web development.</h1>
@@ -948,18 +968,18 @@
             <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Guiding AI to guaranteed, production-ready results through continuous validation and strict boundaries.</p>
           </div>
           <div class="feedback-image-frame glass-panel">
-            <img src="/feedback loop.png" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback">
+            <img src="/feedback-loop.png" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback" width="900" height="506" loading="lazy">
           </div>
 
           <div class="feedback-steps">
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">1</div>
-              <h4>The AI Agent (Generator)</h4>
+              <h3>The AI Agent (Generator)</h3>
               <p>The cycle begins with specialized AI roles (Designer, Developer, or Plugin Developer) reading the explicitly defined contracts and instructions. Because the boundaries are clear, the agent knows exactly what data it has to work with and what it needs to build.</p>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">2</div>
-              <h4>Declarative Code &amp; Logic (Output)</h4>
+              <h3>Declarative Code &amp; Logic (Output)</h3>
               <p>The AI outputs the code, adhering to Jay's strict separation of design and logic.</p>
               <ul>
                 <li>The <strong>AI Designer</strong> generates purely declarative, logic-free visual templates (.jay-html), utilizing functionality from plugins.</li>
@@ -968,7 +988,7 @@
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">3</div>
-              <h4>Validation Engine (Gatekeeper)</h4>
+              <h3>Validation Engine (Gatekeeper)</h3>
               <p>Jay doesn't let the AI guess if its code works; it automatically acts as a strict inspection node. The framework evaluates the agent's output using comprehensive tools:</p>
               <ul>
                 <li><strong>jay-stack validate:</strong> Checks for parsing and contract matching errors.</li>
@@ -979,7 +999,7 @@
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">4</div>
-              <h4>Errors + Agent-Kit References (Feedback)</h4>
+              <h3>Errors + Agent-Kit References (Feedback)</h3>
               <p>If the code fails validation, the system doesn't just output a generic error. It provides an explicit path forward by pointing the agent directly back to the Agent-Kit's ground truth, referencing materialized contracts, the plugins-index.yaml, and specific Agent-Kit guides so the AI can self-correct with exact context.</p>
             </div>
           </div>
@@ -1002,27 +1022,27 @@
             <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
           </div>
           <div class="roles-image-frame glass-panel">
-            <img src="/AI Roles 3.png" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps">
+            <img src="/AI-Roles-3.png" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
           </div>
           <div class="roles-cards">
             <div class="role-card glass-panel role-card--designer">
-              <img class="role-icon" src="/designer spider icon.png" alt="AI Designer">
-              <h4>Designer</h4>
+              <img class="role-icon" src="/designer-spider-icon.png" alt="AI Designer" width="80" height="80" loading="lazy">
+              <h3>Designer</h3>
               <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
             </div>
             <div class="role-card glass-panel role-card--developer">
-              <img class="role-icon" src="/developer spider icon.png" alt="AI Developer">
-              <h4>Developer</h4>
+              <img class="role-icon" src="/developer-spider-icon.png" alt="AI Developer" width="80" height="80" loading="lazy">
+              <h3>Developer</h3>
               <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
             </div>
             <div class="role-card glass-panel role-card--plugin">
-              <img class="role-icon" src="/plugin developer spider icon.png" alt="AI Plugin Developer">
-              <h4>Plugin Developer</h4>
+              <img class="role-icon" src="/plugin-developer-spider-icon.png" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
+              <h3>Plugin Developer</h3>
               <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
             </div>
             <div class="role-card glass-panel role-card--devops">
-              <img class="role-icon" src="/devops spider icon.png" alt="AI DevOps">
-              <h4>DevOps</h4>
+              <img class="role-icon" src="/devops-spider-icon.png" alt="AI DevOps" width="80" height="80" loading="lazy">
+              <h3>DevOps</h3>
               <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
             </div>
           </div>
@@ -1036,7 +1056,7 @@
         <div class="container">
           <div class="plugins-layout">
             <div class="plugins-image-frame glass-panel">
-              <img src="/Jay Framework Plugins.png" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts">
+              <img src="/Jay-Framework-Plugins.png" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
             </div>
             <div class="plugins-text">
               <span class="section-label">Ecosystem</span>
@@ -1156,8 +1176,9 @@
           <p class="body-lg text-muted" style="max-width: 800px; margin: 0 auto;">From initial concept to lightning-fast, production-ready deployments through a comprehensive, AI-native infrastructure.</p>
         </div>
         <div class="container">
+          <div class="fullstack-layout">
           <div class="fullstack-image">
-            <img src="/full stack of solutions 2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor">
+            <img src="/full-stack-of-solutions-2.png" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor" width="600" height="600" loading="lazy">
           </div>
           <div class="fullstack-tabs glass-panel" style="border-radius: var(--radius-2xl); overflow: hidden;">
             <input type="radio" name="fs-tab" id="fs-tab-1" checked hidden>
@@ -1175,27 +1196,28 @@
               </div>
               <div class="fullstack-tab-panels">
                 <div class="fullstack-tab-panel" id="fs-panel-1">
-                  <h4>The Feedback Loop &amp; Contracts</h4>
+                  <h3>The Feedback Loop &amp; Contracts</h3>
                   <p>The foundation of the ecosystem is the .jay-contract, establishing a strict boundary that completely decouples visual design templates (.jay-html) from backend application logic (page.ts). This separation powers a self-correcting feedback loop: an automated Validation Engine rigorously inspects AI-generated code, returning explicit, context-rich errors that guide agents back to the ground truth to guarantee high-quality results.</p>
                 </div>
                 <div class="fullstack-tab-panel" id="fs-panel-2">
-                  <h4>Jay Framework</h4>
+                  <h3>Jay Framework</h3>
                   <p>A minimal, highly optimized client-side framework (roughly 1,200 lines of code) built specifically for contracts and AI agents. It relies on fine-grained reactive and immutable data, and enforces security by default through an architecture that safely executes logic-free "Jay Elements" on the main thread while isolating potentially untrusted 3rd-party component logic within a secure sandbox.</p>
                 </div>
                 <div class="fullstack-tab-panel" id="fs-panel-3">
-                  <h4>Jay Stack</h4>
+                  <h3>Jay Stack</h3>
                   <p>The full-stack web framework that takes Jay to production, engineered around a strict three-phase rendering model: Slow (build-time / SSG), Fast (request-time / SSR), and Interactive (client-side). This guarantees that even the most dynamic, AI-generated applications ship with sub-second load times, predictable request latency, and perfect SEO compatibility.</p>
                 </div>
                 <div class="fullstack-tab-panel" id="fs-panel-4">
-                  <h4>Plugins</h4>
+                  <h3>Plugins</h3>
                   <p>Acting as an ecosystem multiplier, Plugins are installable NPM packages that bundle headless components, server actions, services, and explicit contracts. By reusing these battle-tested packages, AI agents can instantly drop complex functionalities (like a storefront or a CMS) into a page without having to hallucinate logic from scratch, vastly reducing bugs, computing costs, and long-term maintenance overhead.</p>
                 </div>
                 <div class="fullstack-tab-panel" id="fs-panel-5">
-                  <h4>The Jay AIditor</h4>
+                  <h3>The Jay AIditor</h3>
                   <p>The ultimate "AI-first" visual creation tool, built entirely as a Jay plugin. The AIditor allows users to upload a screenshot or paste a live URL and instantly convert it into a working, contract-bound Jay website. Editing is done through a seamless "point-and-shoot" experience that feels like a natural human review process, eliminating the need for complex side-panels, property inspectors, or manual element selection.</p>
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -1211,7 +1233,7 @@
             <div class="bento-card glass-panel bento-wide bento-card--visual-editor">
               <div>
                 <h3 class="headline-md">Claude as a Visual Editor</h3>
-                <img src="/aiditor.png" alt="Jay AIditor — visual editing interface" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
+                <img src="/aiditor.png" alt="Jay AIditor — visual editing interface" width="400" height="300" loading="lazy" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
                 <p class="body-lg text-muted">The Jay AIditor transforms AI interaction into an intuitive "point and shoot" visual experience. Without any complex side-panels or manual selections, you simply point at an element and let the AI execute updates directly on the application / website code.</p>
               </div>
             </div>
@@ -1220,7 +1242,7 @@
               <div>
                 <h3 class="headline-md">Near-Perfect Performance</h3>
                 <div class="bento-icon-corner" style="position: relative; top: auto; right: auto; margin: 16px 0;">
-                  <img src="/lighthouse.png" alt="Lighthouse perfect scores" style="width: 200px; height: auto;">
+                  <img src="/lighthouse.png" alt="Lighthouse perfect scores" width="200" height="150" loading="lazy" style="width: 200px; height: auto;">
                   <div class="lighthouse-hint"><div class="lighthouse-hint-inner">measured on the <a href="https://jay-onsko-52654f57-yoav68.wix-site-host.com/" target="_blank">Jay Onsko Template</a></div></div>
                 </div>
                 <p class="body-md text-muted">Jay is engineered from the ground up to ensure every site ships with minimal bundle sizes, lightning-fast load times, and top-tier Lighthouse scores out of the box.</p>
@@ -1233,12 +1255,12 @@
             </div>
             <!-- Lower Costs & Maintenance -->
             <div class="bento-card glass-panel bento-card--risk">
-              <h4 class="headline-sm">Radically Lower Costs &amp; Maintenance</h4>
+              <h3 class="headline-sm">Radically Lower Costs &amp; Maintenance</h3>
               <p class="body-md text-muted">By reusing secure, pre-packaged code, AI agents avoid re-implementing core logic. This eliminates bugs, security flaws, and performance drops while drastically cutting token costs and maintenance overhead.</p>
             </div>
             <!-- Zero-Coding Assembly -->
             <div class="bento-card glass-panel bento-card--assembly">
-              <h4 class="headline-sm">Zero-Coding App Assembly</h4>
+              <h3 class="headline-sm">Zero-Coding App Assembly</h3>
               <p class="body-md text-muted">Agents instantly build full-stack apps by dropping in battle-tested Jay Plugins (NPM packages). They map data contracts directly to the visual UI—no manual wiring, prop-drilling, or coding required.</p>
             </div>
           </div>
@@ -1275,7 +1297,7 @@
             <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
           </div>
           <div>
-            <h5 class="footer-heading">Resources</h5>
+            <h3 class="footer-heading">Resources</h3>
             <ul class="footer-links">
               <li><a href="#">Documentation</a></li>
               <li><a href="#">GitHub</a></li>
@@ -1283,14 +1305,14 @@
             </ul>
           </div>
           <div>
-            <h5 class="footer-heading">Legal</h5>
+            <h3 class="footer-heading">Legal</h3>
             <ul class="footer-links">
               <li><a href="#">Security Policy</a></li>
               <li><a href="#">Privacy</a></li>
             </ul>
           </div>
           <div>
-            <h5 class="footer-heading">Learn More</h5>
+            <h3 class="footer-heading">Learn More</h3>
             <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
           </div>
         </div>

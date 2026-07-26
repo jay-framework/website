@@ -48,6 +48,9 @@ colors:
   background: '#0e1322'
   on-background: '#dee1f7'
   surface-variant: '#2f3445'
+  glass-bg: 'rgba(10, 15, 30, 0.7)'
+  deep-bg: '#0A0F1E'
+  white-subtle: 'rgba(255, 255, 255, 0.05)'
 typography:
   headline-lg:
     fontFamily: Sora
@@ -66,6 +69,22 @@ typography:
     fontSize: 24px
     fontWeight: '600'
     lineHeight: 32px
+  hero-display:
+    fontFamily: Sora
+    fontSize: clamp(32px, 5vw, 48px)
+    fontWeight: '700'
+    lineHeight: 1.15
+    letterSpacing: -0.02em
+  heading-md:
+    fontFamily: Sora
+    fontSize: 22px
+    fontWeight: '600'
+    lineHeight: 30px
+  heading-sm:
+    fontFamily: Sora
+    fontSize: 20px
+    fontWeight: '600'
+    lineHeight: 28px
   body-lg:
     fontFamily: Inter
     fontSize: 18px
@@ -76,28 +95,78 @@ typography:
     fontSize: 16px
     fontWeight: '400'
     lineHeight: 24px
+  body-md-relaxed:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 26px
+  body-sm:
+    fontFamily: Inter
+    fontSize: 15px
+    fontWeight: '400'
+    lineHeight: 24px
   code-md:
     fontFamily: JetBrains Mono
     fontSize: 14px
     fontWeight: '400'
     lineHeight: 20px
+  code-sm:
+    fontFamily: JetBrains Mono
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 19px
+  tooltip:
+    fontFamily: Inter
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 18px
   label-sm:
     fontFamily: JetBrains Mono
     fontSize: 12px
     fontWeight: '500'
     lineHeight: 16px
+    letterSpacing: 0.4em
+  label-sm-spaced:
+    fontFamily: JetBrains Mono
+    fontSize: 12px
+    fontWeight: '500'
+    lineHeight: 16px
+    letterSpacing: 0.15em
+  label-sm-bold:
+    fontFamily: JetBrains Mono
+    fontSize: 12px
+    fontWeight: '700'
+    lineHeight: 16px
+  display-brand:
+    fontFamily: Sora
+    fontSize: 24px
+    fontWeight: '800'
+    lineHeight: 32px
 rounded:
   sm: 0.125rem
   DEFAULT: 0.25rem
   md: 0.375rem
   lg: 0.5rem
   xl: 0.75rem
+  2xl: 1rem
+  3xl: 1.5rem
+  4xl: 2rem
+  circle: 50%
   full: 9999px
 spacing:
-  base: 8px
-  gutter: 24px
-  margin-mobile: 16px
-  margin-desktop: 64px
+  3xs: 4px
+  2xs: 8px
+  xs: 10px
+  sm: 12px
+  sm-md: 14px
+  md: 16px
+  md-lg: 20px
+  lg: 24px
+  xl: 32px
+  2xl: 40px
+  3xl: 48px
+  4xl: 64px
+  5xl: 96px
   max-width: 1440px
 ---
 
