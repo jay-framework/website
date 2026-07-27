@@ -16,6 +16,7 @@
     "serve": "jay-stack-cli serve",
     "wix:deploy": "jay-stack-cli run wix-deploy/deploy --exclude-plugins aiditor",
     "wix:serve": "node serve.mjs",
+    "sync:design-log": "node scripts/sync-design-log.cjs",
     "aiditor:publish": "npm run build:production && npm run wix:deploy"
   },
   "dependencies": {

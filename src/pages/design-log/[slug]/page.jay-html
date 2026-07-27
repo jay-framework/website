@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless"
+          plugin="@jay-framework/markdown"
+          contract="markdown-pages"
+          key="post">
+    contentDir: src/pages/design-log/content
+  </script>
+  <link rel="stylesheet" href="../../../styles/theme.css" />
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+    }
+    .design-log {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px var(--margin-mobile) 96px;
+    }
+    .design-log h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .design-log .md {
+      line-height: 1.7;
+    }
+
+    /* Headings: more space between heading and paragraph */
+    .design-log .md h2,
+    .design-log .md h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .design-log .md h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .design-log .md h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .design-log .md p {
+      margin-bottom: 1rem;
+    }
+
+    /* Bullet lists: indent to the right */
+    .design-log .md ul,
+    .design-log .md ol {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    .design-log .md li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Code blocks: background, spacing, and syntax highlighting */
+    .design-log .md pre.md-code,
+    .design-log .md pre {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+    .design-log .md pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      color: var(--color-text);
+    }
+
+    /* Inline code */
+    .design-log .md code {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      padding: 0.15em 0.4em;
+      border-radius: var(--radius-default);
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+    }
+
+    /* Syntax highlighting tokens */
+    .design-log .md .token.keyword { color: #c084fc; }
+    .design-log .md .token.string { color: #34d399; }
+    .design-log .md .token.comment { color: #94a3b8; font-style: italic; }
+    .design-log .md .token.number { color: #fbbf24; }
+    .design-log .md .token.function { color: #60a5fa; }
+    .design-log .md .token.operator { color: #94a3b8; }
+    .design-log .md .token.punctuation { color: #94a3b8; }
+    .design-log .md .token.tag { color: #f87171; }
+    .design-log .md .token.attribute { color: #fbbf24; }
+  </style>
+</head>
+<body>
+  <main class="design-log">
+    <h1>{post.title}</h1>
+    <div class="md">{post.content}</div>
+  </main>
+</body>
+</html>

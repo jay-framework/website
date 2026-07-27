@@ -3,6 +3,7 @@
     <title>{title}</title>
     <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
+    <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
     <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
     <link rel="stylesheet" href="../styles/theme.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -162,15 +163,29 @@
         align-items: center;
         text-align: center;
         width: 100%;
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         gap: 48px;
         padding: 48px 0;
+      }
+      @media (min-width: 768px) {
+        .hero-content {
+          flex-direction: row;
+          text-align: left;
+          align-items: center;
+          gap: 64px;
+        }
       }
       .hero-logo-wrapper {
         position: relative;
         width: 100%;
         max-width: 500px;
+        flex-shrink: 0;
+      }
+      @media (min-width: 768px) {
+        .hero-logo-wrapper {
+          width: 45%;
+        }
       }
       .hero-logo-glow {
         position: absolute;
@@ -202,11 +217,21 @@
         margin-left: auto;
         margin-right: auto;
       }
+      @media (min-width: 768px) {
+        .hero-subtitle {
+          margin-left: 0;
+        }
+      }
       .hero-buttons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
+      }
+      @media (min-width: 768px) {
+        .hero-buttons {
+          justify-content: flex-start;
+        }
       }
       .btn-primary {
         display: inline-flex;
@@ -248,12 +273,29 @@
         background: rgba(165, 231, 255, 0.1);
         text-decoration: none;
       }
+      .btn-copy-cmd {
+        cursor: pointer;
+      }
+      .copy-icon {
+        display: inline-flex;
+        align-items: center;
+        opacity: 0.6;
+        transition: opacity 0.2s;
+      }
+      .btn-copy-cmd:hover .copy-icon {
+        opacity: 1;
+      }
       .hero-stats {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 24px;
         padding-top: 16px;
+      }
+      @media (min-width: 768px) {
+        .hero-stats {
+          justify-content: flex-start;
+        }
       }
       .stat-item { display: flex; flex-direction: column; align-items: center; }
       .stat-value {
@@ -275,6 +317,49 @@
         width: 1px;
         height: 40px;
         background: rgba(133, 147, 153, 0.2);
+      }
+
+      /* ── What is Jay ── */
+      .whatjay-section { background: var(--color-surface); }
+      .whatjay-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+        margin-top: 48px;
+      }
+      @media (min-width: 768px) {
+        .whatjay-cards { grid-template-columns: repeat(3, 1fr); }
+      }
+      .whatjay-card {
+        padding: 32px;
+        border-radius: var(--radius-2xl);
+        display: flex;
+        flex-direction: column;
+      }
+      .whatjay-card img {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        margin-bottom: 24px;
+      }
+      .whatjay-card h3 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-bottom: 8px;
+      }
+      .whatjay-card .whatjay-tagline {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 19px;
+        margin-bottom: 16px;
+      }
+      .whatjay-card p.whatjay-desc {
+        color: var(--color-text-muted);
+        font-size: 15px;
+        line-height: 24px;
       }
 
       /* ── Feedback Loop ── */
@@ -946,15 +1031,53 @@
           <div class="hero-content">
             <div class="hero-logo-wrapper">
               <div class="hero-logo-glow"></div>
-              <img class="hero-logo" src="https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_500,h_500/file.webp" srcset="https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_51ffcdc7f6ba4fc0a70503ce77f355d6~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w" sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
+              <img class="hero-logo" src="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500,h_500/file.webp" srcset="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w" sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
             </div>
             <div>
-              <h1 class="hero-headline">The self-correcting visual ecosystem for AI-native web development.</h1>
-              <p class="hero-subtitle" style="margin-top: 32px;">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards. Through Jay's development-time feedback loop and the visual AIditor, the platform immediately validates agent actions, promotes smart code reuse, and enables seamless visual editing to ensure code is 100% production-ready before deployment.</p>
+              <h1 class="hero-headline">The web framework for AI Agents</h1>
+              <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps with AI agents. Jay combines strict code contracts, automated feedback loops, and a visual editor to guarantee bug-free code before deployment.</p>
               <div class="hero-buttons" style="margin-top: 32px;">
-                <a class="btn-primary" href="#cta">Initialize Project</a>
-                <a class="btn-secondary" href="https://github.com/nicenathapong/jay-framework">View on GitHub</a>
+                <a class="btn-primary" href="#cta">Get Started</a>
+                <jay:clipboard-copy text="npm create jay@latest">
+                  <button ref="copyBtn" class="btn-secondary btn-copy-cmd" style="font-family: var(--font-mono);">
+                    <span>npm create jay@latest</span>
+                    <span if="!copied" class="copy-icon" aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
+                    <span if="copied" class="copy-icon" aria-live="polite"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                  </button>
+                </jay:clipboard-copy>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- What is Jay                                  -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="what-is-jay" class="section whatjay-section">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="headline-lg">What is Jay</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Engineered from the ground up for AI web development.</p>
+          </div>
+          <div class="whatjay-cards">
+            <div class="whatjay-card glass-panel">
+              <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Jay contracts — strict separation of UI and backend logic" width="400" height="225" loading="lazy">
+              <h3>AI-First Contracts</h3>
+              <p class="whatjay-tagline">Decouple UI from backend logic.</p>
+              <p class="whatjay-desc">Jay uses strict .jay-contract files to separate visual templates (.jay-html) from backend code (page.ts). AI agents can completely redesign your interface without breaking underlying business logic.</p>
+            </div>
+            <div class="whatjay-card glass-panel">
+              <img src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Jay AIditor — visual editing by intent" width="400" height="225" loading="lazy">
+              <h3>Visual AIditor</h3>
+              <p class="whatjay-tagline">Edit web apps visually by intent.</p>
+              <p class="whatjay-desc">Convert screenshots or live URLs into contract-bound sites. Simply point at any element on screen, describe your change, and let the AI update production code directly.</p>
+            </div>
+            <div class="whatjay-card glass-panel">
+              <img src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Lighthouse scores — automated validation guardrails" width="400" height="225" loading="lazy">
+              <h3>Self-Correcting Loop</h3>
+              <p class="whatjay-tagline">Automated guardrails prevent broken code.</p>
+              <p class="whatjay-desc">An automated engine validates AI output across contracts, SEO, accessibility, and performance. When an agent makes a mistake, it receives targeted error feedback to self-correct instantly before deployment.</p>
             </div>
           </div>
         </div>

@@ -1,24 +1,22 @@
 import {JayElement, RenderElement, RenderElementOptions, JayContract} from "@jay-framework/runtime";
-import {ClipboardCopyViewState, ClipboardCopyRefs, ClipboardCopyInteractiveViewState} from "../../node_modules/@jay-framework/ui-kit/dist/clipboard-copy.jay-contract";
-import {clipboardCopy} from "@jay-framework/ui-kit";
+import {MarkdownPagesViewState, MarkdownPagesRefs, TagOfMarkdownPagesViewState} from "../../../../node_modules/@jay-framework/markdown/dist/contracts/markdown-pages.jay-contract";
 
 import './page.css';
 
 export interface PageViewState {
-  title: string,
-  description: string
+  post?: MarkdownPagesViewState
 }
 
 
 export interface PageElementRefs {
-  ar0: ClipboardCopyRefs
+  post: MarkdownPagesRefs
 }
 
-export type PageSlowViewState = Pick<PageViewState, 'title' | 'description'>;
+export type DesignLogPostSlowViewState = {};
 
-export type PageFastViewState = {};
+export type DesignLogPostFastViewState = {};
 
-export type PageInteractiveViewState = {};
+export type DesignLogPostInteractiveViewState = {};
 
 export type PageElement = JayElement<PageViewState, PageElementRefs>
 export type PageElementRender = RenderElement<PageViewState, PageElementRefs, PageElement>

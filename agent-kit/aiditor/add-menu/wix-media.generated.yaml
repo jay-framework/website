@@ -114,6 +114,37 @@ items:
       Folder: Media Root
       Full media index: agent-kit/references/wix-media/MEDIA-INDEX.md
       See agent-kit/designer/wix-media.md for fit/fill/crop transforms.
+  - id: wix-media:contract-png
+    title: contract.png
+    category: Media
+    pluginName: wix-media
+    packageName: '@jay-framework/wix-media'
+    thumbnail: https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |-
+        Place this image at the marker location on the page.
+        URL: https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png
+    prompt: >-
+      Use this Wix Media Manager asset in jay-html (do not copy to public/):
+
+      URL: https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png
+
+      Media id: c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png
+
+      Slug: contract-png
+
+      Type: image · -
+
+      Folder: Media Root
+
+      Labels: contracts, product flow center, sale and purchase contract, interconnecting, protocol, contract, interface
+      icons, payments, contractual, java, interconnected, component, components, interconnect, connector, partnerships,
+      partnership, digital content software, computer game control, computer-aided manufacturing
+
+      Full media index: agent-kit/references/wix-media/MEDIA-INDEX.md
+
+      See agent-kit/designer/wix-media.md for fit/fill/crop transforms.
   - id: wix-media:designer-spider-icon-png
     title: designer spider icon.png
     category: Media
@@ -636,6 +667,36 @@ items:
       Labels: artificial intelligence, personal data assistant, jai, laser welder, agent, jan, personal digital
       assistant, java, antivirus software, atari, cybersecurity, agents, autonomous technology, rewired, malware, audio
       electronics, web banner, agencies, new article, network security
+
+      Full media index: agent-kit/references/wix-media/MEDIA-INDEX.md
+
+      See agent-kit/designer/wix-media.md for fit/fill/crop transforms.
+  - id: wix-media:jay-logo-3-png
+    title: Jay Logo 3.png
+    category: Media
+    pluginName: wix-media
+    packageName: '@jay-framework/wix-media'
+    thumbnail: https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: |-
+        Place this image at the marker location on the page.
+        URL: https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png
+    prompt: >-
+      Use this Wix Media Manager asset in jay-html (do not copy to public/):
+
+      URL: https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png
+
+      Media id: c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png
+
+      Slug: jay-logo-3-png
+
+      Type: image · -
+
+      Folder: Media Root
+
+      Labels: arachnid, spider, tarantula, invaders, cybernetic, tick symbol, arthropod, cyborg, virus organism,
+      injector, tick, sub, electro, insectivore, portal, webhost, raid, virus, destroy, widow
 
       Full media index: agent-kit/references/wix-media/MEDIA-INDEX.md
 
