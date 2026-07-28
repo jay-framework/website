@@ -1,0 +1,307 @@
+<html lang="en">
+  <head>
+    <title>Design Log Methodology | Jay Framework</title>
+    <meta name="description" content="The Jay Framework is built using the Design Log methodology — a rigorous, document-first approach to software architecture that keeps AI agents and human developers aligned.">
+    <script type="application/jay-data" contract="./page.jay-contract"></script>
+    <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
+    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+    <link rel="stylesheet" href="../../styles/theme.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      /* ── Shared ── */
+      .section { padding: 96px 0; }
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        color: var(--color-primary);
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+      }
+      .text-muted { color: var(--color-text-muted); }
+      .text-primary { color: var(--color-primary); }
+      .text-center { text-align: center; }
+
+      .glass-panel {
+        background: rgba(10, 15, 30, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 210, 255, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .glass-panel:hover {
+        border-color: rgba(0, 210, 255, 0.3);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+      }
+
+      /* ── Hero ── */
+      .dl-hero {
+        position: relative;
+        padding: 96px 0; /* design-system: allow */
+        padding-top: 160px; /* design-system: allow */
+        overflow: hidden;
+      }
+      .dl-hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .dl-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .dl-hero-badge {
+        display: inline-block;
+        background: rgba(165, 231, 255, 0.1);
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        margin-bottom: 24px;
+      }
+      .dl-hero-headline {
+        font-family: var(--font-display);
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-primary);
+        text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+      }
+      .dl-hero-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--color-text-muted);
+        max-width: 700px;
+        margin: 32px auto 0;
+      }
+      .dl-hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 16px 32px;
+        border: none;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: box-shadow 0.3s, transform 0.2s;
+        text-decoration: none;
+      }
+      .btn-primary:hover {
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        text-decoration: none;
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(165, 231, 255, 0.3);
+        background: rgba(165, 231, 255, 0.05);
+        color: var(--color-text);
+        padding: 16px 32px;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-decoration: none;
+      }
+      .btn-secondary:hover {
+        background: rgba(165, 231, 255, 0.1);
+        text-decoration: none;
+      }
+
+      /* ── Intro Section ── */
+      .intro-section { background: var(--color-surface); }
+      .intro-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 64px;
+        align-items: start;
+      }
+      @media (min-width: 1024px) {
+        .intro-layout { grid-template-columns: 1fr 1fr; }
+      }
+      .intro-text h2 { margin-bottom: 24px; }
+      .intro-text p {
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 24px;
+      }
+      .intro-text p:last-child { margin-bottom: 0; }
+      .intro-highlight-box {
+        padding: 32px;
+        border-radius: var(--radius-2xl);
+      }
+      .intro-highlight-box h3 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-bottom: 16px;
+        color: var(--color-primary);
+      }
+      .intro-highlight-box p {
+        color: var(--color-text-muted);
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+      @media (min-width: 768px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (min-width: 1024px) {
+        .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+      }
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+      .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+      .footer-links a:hover { color: var(--color-secondary-dim); text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="page-root">
+
+    <jay:SiteHeader />
+
+    <main>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Hero                                        -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="dl-hero">
+        <div class="dl-hero-grid"></div>
+        <div class="container">
+          <div class="dl-hero-content">
+            <span class="dl-hero-badge">METHODOLOGY</span>
+            <h1 class="dl-hero-headline">Design Log Methodology</h1>
+            <p class="dl-hero-subtitle">Jay is built using the Design Log methodology — a rigorous, document-first approach to software architecture. Every significant feature is designed in writing before a single line of code is written.</p>
+            <div class="dl-hero-buttons">
+              <a class="btn-primary" href="/design-log/index">Browse Jay's Design Logs</a>
+              <a class="btn-secondary" href="https://github.com/yoavaa/design-log-methodology" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- What is the Design Log Methodology          -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="section intro-section">
+        <div class="container">
+          <div class="intro-layout">
+            <div class="intro-text">
+              <span class="section-label">Overview</span>
+              <h2 class="headline-lg" style="margin-top: 16px;">What is a Design Log?</h2>
+              <p>A Design Log is a structured document that captures the full decision-making process for a feature or architectural change. It's not a spec, not a ticket, and not documentation — it's a living record of <strong style="color: var(--color-text);">why</strong> things are built the way they are.</p>
+              <p>Unlike traditional design documents that become stale, design logs are written <strong style="color: var(--color-text);">before implementation begins</strong> and serve as the single source of truth throughout the development process. They capture the context, constraints, trade-offs, and decisions that code alone cannot convey.</p>
+              <p>The methodology was born out of the need to give AI agents — and human developers — a reliable reference point. When multiple agents collaborate on a complex system, ambiguity is the enemy. The design log eliminates ambiguity by making intent explicit and verifiable.</p>
+            </div>
+            <div class="intro-highlight-box glass-panel">
+              <h3>The Design Log is the Source of Truth</h3>
+              <p>Any plan — whether provided by the user, generated during plan mode, or inferred by an AI agent — must be validated against the design log before implementation. If a plan deviates from the design log, the deviation must be flagged. The design log takes precedence over guesses, assumptions, or blind code searches.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- Footer                                      -->
+    <!-- ════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Jay Framework</div>
+            <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Community</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Legal</h3>
+            <ul class="footer-links">
+              <li><a href="#">Security Policy</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Learn More</h3>
+            <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    </div>
+  </body>
+</html>
