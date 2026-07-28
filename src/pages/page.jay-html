@@ -756,123 +756,6 @@
         display: block;
       }
 
-      /* ── Full Stack ── */
-      .fullstack-section {
-        background: #0A0F1E;
-        position: relative;
-        overflow: hidden;
-      }
-      .fullstack-layout {
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
-      }
-      @media (min-width: 1024px) {
-        .fullstack-layout {
-          flex-direction: row;
-          align-items: stretch;
-          gap: 48px;
-        }
-      }
-      .fullstack-image {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-      }
-      @media (min-width: 1024px) {
-        .fullstack-image {
-          flex-shrink: 0;
-          width: 45%;
-        }
-      }
-      .fullstack-image img {
-        width: 100%;
-        max-width: 500px;
-        filter: drop-shadow(0 0 50px rgba(255, 170, 0, 0.2));
-      }
-      /* Vertical tabs for layers */
-      .fullstack-tabs { display: flex; flex-direction: column; gap: 0; flex: 1; min-width: 0; }
-      .fullstack-tabs input[type="radio"] { display: none; }
-      .fullstack-tabs-inner {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      @media (min-width: 768px) {
-        .fullstack-tabs-inner { flex-direction: row; }
-      }
-      .fullstack-tab-nav {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 0;
-        border-bottom: 1px solid rgba(60, 73, 78, 0.3);
-      }
-      @media (min-width: 768px) {
-        .fullstack-tab-nav {
-          flex-direction: column;
-          flex-shrink: 0;
-          width: 240px;
-          border-bottom: none;
-          border-right: 1px solid rgba(60, 73, 78, 0.3);
-          overflow-x: visible;
-        }
-      }
-      .fullstack-tab-label {
-        display: block;
-        padding: 16px 24px;
-        font-family: var(--font-display);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--color-text-muted);
-        cursor: pointer;
-        border-left: 3px solid transparent;
-        transition: color 0.2s, background 0.2s;
-        white-space: nowrap;
-      }
-      .fullstack-tab-label:hover {
-        color: var(--color-primary);
-        background: rgba(165, 231, 255, 0.03);
-      }
-      .fullstack-tab-panels {
-        flex: 1;
-        min-height: 200px;
-      }
-      .fullstack-tab-panel {
-        display: none;
-        padding: 24px 32px;
-      }
-      .fullstack-tab-panel h3 {
-        font-family: var(--font-display);
-        font-size: 22px;
-        line-height: 30px;
-        font-weight: 600;
-        color: var(--color-primary);
-        margin-bottom: 16px;
-      }
-      .fullstack-tab-panel p {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-      }
-      /* Tab checked states */
-      #fs-tab-1:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-1"],
-      #fs-tab-2:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-2"],
-      #fs-tab-3:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-3"],
-      #fs-tab-4:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-4"],
-      #fs-tab-5:checked ~ .fullstack-tabs-inner .fullstack-tab-nav label[for="fs-tab-5"] {
-        color: var(--color-primary);
-        background: rgba(165, 231, 255, 0.05);
-        border-left-color: var(--color-primary);
-      }
-      #fs-tab-1:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-1,
-      #fs-tab-2:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-2,
-      #fs-tab-3:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-3,
-      #fs-tab-4:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-4,
-      #fs-tab-5:checked ~ .fullstack-tabs-inner .fullstack-tab-panels #fs-panel-5 {
-        display: block;
-      }
-
       /* ── Real-World Value (Bento Grid) ── */
       .value-section { }
       .bento-grid {
@@ -1111,7 +994,7 @@
           <a href="#feedback-loop">Ecosystem</a>
           <a href="#agent-roles">Agents</a>
           <a href="#contract">The Contract</a>
-          <a href="#full-stack">Full Stack</a>
+
           <a href="#value">Performance</a>
         </div>
         <div class="header-actions">
@@ -1367,73 +1250,6 @@
       </section>
 
       <!-- ════════════════════════════════════════════ -->
-      <!-- Agent Roles                                 -->
-      <!-- ════════════════════════════════════════════ -->
-      <section id="agent-roles" class="section roles-section">
-        <div class="roles-grid-bg">
-          <div class="roles-grid-bg-inner">
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-          </div>
-        </div>
-        <div class="container" style="position: relative; z-index: 1;">
-          <div style="margin-bottom: 64px;">
-            <h2 class="headline-lg">Defined Agent Roles</h2>
-            <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
-          </div>
-          <div class="roles-image-frame glass-panel">
-            <img src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp" srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
-          </div>
-          <div class="roles-cards">
-            <div class="role-card glass-panel role-card--designer">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Designer" width="80" height="80" loading="lazy">
-              <h3>Designer</h3>
-              <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
-            </div>
-            <div class="role-card glass-panel role-card--developer">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Developer" width="80" height="80" loading="lazy">
-              <h3>Developer</h3>
-              <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
-            </div>
-            <div class="role-card glass-panel role-card--plugin">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
-              <h3>Plugin Developer</h3>
-              <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
-            </div>
-            <div class="role-card glass-panel role-card--devops">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI DevOps" width="80" height="80" loading="lazy">
-              <h3>DevOps</h3>
-              <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Plugins                                     -->
-      <!-- ════════════════════════════════════════════ -->
-      <section id="plugins" class="section plugins-section">
-        <div class="container">
-          <div class="plugins-layout">
-            <div class="plugins-image-frame glass-panel">
-              <img src="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_600%2Ch_450/file.webp 600w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800%2Ch_600/file.webp 800w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 800px" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
-            </div>
-            <div class="plugins-text">
-              <span class="section-label">Ecosystem</span>
-              <h2 class="headline-lg" style="margin-top: 16px;">Plugins</h2>
-              <p class="plugins-tagline">Why force AI to hallucinate complex business logic from scratch? Just like human developers, AI agents favor reusing code.</p>
-              <p class="plugins-body">Reusing battle-tested, pre-packaged capabilities reduces bugs, token costs, and maintenance overhead while improving accuracy and performance. Jay enables this through Plugins - installable NPM packages bundling headless components, server actions, and explicit data contracts.</p>
-              <ul class="plugins-features">
-                <li><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</li>
-                <li><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</li>
-                <li><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ════════════════════════════════════════════ -->
       <!-- The Contract                                -->
       <!-- ════════════════════════════════════════════ -->
       <section id="contract" class="section contract-section">
@@ -1528,56 +1344,68 @@
       </section>
 
       <!-- ════════════════════════════════════════════ -->
-      <!-- Full Stack of Solutions                     -->
+      <!-- Agent Roles                                 -->
       <!-- ════════════════════════════════════════════ -->
-      <section id="full-stack" class="section fullstack-section">
-        <div class="container text-center" style="margin-bottom: 64px;">
-          <h2 class="headline-lg" style="margin-bottom: 16px;">The Full Stack of Solutions</h2>
-          <p class="body-lg text-muted" style="max-width: 800px; margin: 0 auto;">From initial concept to lightning-fast, production-ready deployments through a comprehensive, AI-native infrastructure.</p>
-        </div>
-        <div class="container">
-          <div class="fullstack-layout">
-          <div class="fullstack-image">
-            <img src="https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_600,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_450%2Ch_450/file.webp 450w, https://static.wixstatic.com/media/c569b3_5508ffafa8ef4a9797032d51678f8a99~mv2.png/v1/fit/w_600%2Ch_600/file.webp 600w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 45vw" alt="Jay Full Stack of Solutions — five layers from contracts to AIditor" width="600" height="600" loading="lazy">
+      <section id="agent-roles" class="section roles-section">
+        <div class="roles-grid-bg">
+          <div class="roles-grid-bg-inner">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
           </div>
-          <div class="fullstack-tabs glass-panel" style="border-radius: var(--radius-2xl); overflow: hidden;">
-            <input type="radio" name="fs-tab" id="fs-tab-1" checked hidden>
-            <input type="radio" name="fs-tab" id="fs-tab-2" hidden>
-            <input type="radio" name="fs-tab" id="fs-tab-3" hidden>
-            <input type="radio" name="fs-tab" id="fs-tab-4" hidden>
-            <input type="radio" name="fs-tab" id="fs-tab-5" hidden>
-            <div class="fullstack-tabs-inner">
-              <div class="fullstack-tab-nav">
-                <label for="fs-tab-1" class="fullstack-tab-label">1. The Foundation</label>
-                <label for="fs-tab-2" class="fullstack-tab-label">2. Jay Framework</label>
-                <label for="fs-tab-3" class="fullstack-tab-label">3. Jay Stack</label>
-                <label for="fs-tab-4" class="fullstack-tab-label">4. Plugins</label>
-                <label for="fs-tab-5" class="fullstack-tab-label">5. The Jay AIditor</label>
-              </div>
-              <div class="fullstack-tab-panels">
-                <div class="fullstack-tab-panel" id="fs-panel-1">
-                  <h3>The Feedback Loop &amp; Contracts</h3>
-                  <p>The foundation of the ecosystem is the .jay-contract, establishing a strict boundary that completely decouples visual design templates (.jay-html) from backend application logic (page.ts). This separation powers a self-correcting feedback loop: an automated Validation Engine rigorously inspects AI-generated code, returning explicit, context-rich errors that guide agents back to the ground truth to guarantee high-quality results.</p>
-                </div>
-                <div class="fullstack-tab-panel" id="fs-panel-2">
-                  <h3>Jay Framework</h3>
-                  <p>A minimal, highly optimized client-side framework (roughly 1,200 lines of code) built specifically for contracts and AI agents. It relies on fine-grained reactive and immutable data, and enforces security by default through an architecture that safely executes logic-free "Jay Elements" on the main thread while isolating potentially untrusted 3rd-party component logic within a secure sandbox.</p>
-                </div>
-                <div class="fullstack-tab-panel" id="fs-panel-3">
-                  <h3>Jay Stack</h3>
-                  <p>The full-stack web framework that takes Jay to production, engineered around a strict three-phase rendering model: Slow (build-time / SSG), Fast (request-time / SSR), and Interactive (client-side). This guarantees that even the most dynamic, AI-generated applications ship with sub-second load times, predictable request latency, and perfect SEO compatibility.</p>
-                </div>
-                <div class="fullstack-tab-panel" id="fs-panel-4">
-                  <h3>Plugins</h3>
-                  <p>Acting as an ecosystem multiplier, Plugins are installable NPM packages that bundle headless components, server actions, services, and explicit contracts. By reusing these battle-tested packages, AI agents can instantly drop complex functionalities (like a storefront or a CMS) into a page without having to hallucinate logic from scratch, vastly reducing bugs, computing costs, and long-term maintenance overhead.</p>
-                </div>
-                <div class="fullstack-tab-panel" id="fs-panel-5">
-                  <h3>The Jay AIditor</h3>
-                  <p>The ultimate "AI-first" visual creation tool, built entirely as a Jay plugin. The AIditor allows users to upload a screenshot or paste a live URL and instantly convert it into a working, contract-bound Jay website. Editing is done through a seamless "point-and-shoot" experience that feels like a natural human review process, eliminating the need for complex side-panels, property inspectors, or manual element selection.</p>
-                </div>
-              </div>
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+          <div style="margin-bottom: 64px;">
+            <h2 class="headline-lg">Defined Agent Roles</h2>
+            <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
+          </div>
+          <div class="roles-image-frame glass-panel">
+            <img src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp" srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
+          </div>
+          <div class="roles-cards">
+            <div class="role-card glass-panel role-card--designer">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Designer" width="80" height="80" loading="lazy">
+              <h3>Designer</h3>
+              <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
+            </div>
+            <div class="role-card glass-panel role-card--developer">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Developer" width="80" height="80" loading="lazy">
+              <h3>Developer</h3>
+              <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
+            </div>
+            <div class="role-card glass-panel role-card--plugin">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
+              <h3>Plugin Developer</h3>
+              <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
+            </div>
+            <div class="role-card glass-panel role-card--devops">
+              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI DevOps" width="80" height="80" loading="lazy">
+              <h3>DevOps</h3>
+              <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Plugins                                     -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="plugins" class="section plugins-section">
+        <div class="container">
+          <div class="plugins-layout">
+            <div class="plugins-image-frame glass-panel">
+              <img src="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_600%2Ch_450/file.webp 600w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800%2Ch_600/file.webp 800w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 800px" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
+            </div>
+            <div class="plugins-text">
+              <span class="section-label">Ecosystem</span>
+              <h2 class="headline-lg" style="margin-top: 16px;">Plugins</h2>
+              <p class="plugins-tagline">Why force AI to hallucinate complex business logic from scratch? Just like human developers, AI agents favor reusing code.</p>
+              <p class="plugins-body">Reusing battle-tested, pre-packaged capabilities reduces bugs, token costs, and maintenance overhead while improving accuracy and performance. Jay enables this through Plugins - installable NPM packages bundling headless components, server actions, and explicit data contracts.</p>
+              <ul class="plugins-features">
+                <li><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</li>
+                <li><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</li>
+                <li><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -1638,7 +1466,13 @@
             <h2 class="headline-lg">Start Building the AI-Native Web</h2>
             <div class="cta-buttons">
               <a class="btn-cta-primary" href="#">Get Started</a>
-              <a class="btn-cta-secondary" href="https://github.com/jay-framework/jay/">View on GitHub</a>
+              <jay:clipboard-copy text="npm create jay@latest">
+                <button ref="copyBtn" class="btn-cta-secondary btn-copy-cmd" style="font-family: var(--font-mono);">
+                  <span>npm create jay@latest</span>
+                  <span if="!copied" class="copy-icon" aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
+                  <span if="copied" class="copy-icon" aria-live="polite"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                </button>
+              </jay:clipboard-copy>
             </div>
           </div>
         </div>
