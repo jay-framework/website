@@ -1,5 +1,7 @@
 import {JayElement, RenderElement, RenderElementOptions, JayContract} from "@jay-framework/runtime";
 import {MarkdownPagesViewState, MarkdownPagesRefs, TagOfMarkdownPagesViewState} from "../../../../node_modules/@jay-framework/markdown/dist/contracts/markdown-pages.jay-contract";
+import {SiteHeaderViewState, SiteHeaderRefs, SiteHeaderInteractiveViewState} from "../../../components/site-header/site-header.jay-contract";
+import {SiteHeader} from "../../../components/site-header/site-header";
 
 import './page.css';
 
@@ -9,6 +11,7 @@ export interface PageViewState {
 
 
 export interface PageElementRefs {
+  ar0: SiteHeaderRefs,
   post: MarkdownPagesRefs
 }
 

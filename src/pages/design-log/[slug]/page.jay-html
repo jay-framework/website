@@ -106,7 +106,6 @@
   <div class="page-root">
     <jay:SiteHeader />
     <main class="design-log">
-      <h1>{post.title}</h1>
       <div class="md">{post.content}</div>
     </main>
   </div>
