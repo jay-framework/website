@@ -8,6 +8,7 @@
     contentDir: content/design-log
     mediaMap: content/design-log/media-map.yaml
   </script>
+  <script type="application/jay-headfull" src="../../../components/site-header/site-header" names="SiteHeader" contract="../../../components/site-header/site-header.jay-contract"></script>
   <link rel="stylesheet" href="../../../styles/theme.css" />
   <style>
     body {
@@ -20,7 +21,7 @@
     .design-log {
       max-width: 800px;
       margin: 0 auto;
-      padding: 64px var(--margin-mobile) 96px;
+      padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
     }
     .design-log h1 {
       font-size: 2rem;
@@ -102,9 +103,12 @@
   </style>
 </head>
 <body>
-  <main class="design-log">
-    <h1>{post.title}</h1>
-    <div class="md">{post.content}</div>
-  </main>
+  <div class="page-root">
+    <jay:SiteHeader />
+    <main class="design-log">
+      <h1>{post.title}</h1>
+      <div class="md">{post.content}</div>
+    </main>
+  </div>
 </body>
 </html>
