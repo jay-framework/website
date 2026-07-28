@@ -426,10 +426,7 @@
           grid-column: span 2;
         }
       }
-      .eco-bento-card--with-image {
-        gap: 24px;
-      }
-      .eco-bento-card--with-image .eco-bento-card-text {
+      .eco-bento-card--with-image .eco-bento-card-header {
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -446,15 +443,23 @@
       }
       @media (min-width: 768px) {
         .eco-bento-card--with-image {
-          flex-direction: row;
-          align-items: center;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-template-rows: auto 1fr;
+          column-gap: 24px;
         }
-        .eco-bento-card--with-image .eco-bento-card-text {
-          flex: 1;
-          min-width: 0;
+        .eco-bento-card--with-image .eco-bento-card-header {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        .eco-bento-card--with-image .eco-bento-card-desc {
+          grid-column: 1;
+          grid-row: 2;
         }
         .eco-bento-card--with-image .eco-bento-card-image {
-          flex-shrink: 0;
+          grid-column: 2;
+          grid-row: 1 / -1;
+          align-self: center;
           width: 180px;
         }
       }
@@ -1098,26 +1103,26 @@
               <p>Validates templates against WCAG guidelines — image alt text, ARIA roles, keyboard navigation, and semantic HTML.</p>
             </div>
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-text">
+              <div class="eco-bento-card-header">
                 <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
                 <strong>Design System Validator</strong>
-                <p>Enforces DESIGN.md tokens across your CSS — colors, spacing, typography, contrast ratios, and component structure. Catches brand drift before it ships.</p>
               </div>
               <div class="eco-bento-card-image">
                 <img src="https://static.wixstatic.com/media/c569b3_a8c585bd797f434ca9646efc91b185c2~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Design System Validator" width="180" height="180" loading="lazy">
               </div>
+              <p class="eco-bento-card-desc">Enforces DESIGN.md tokens across your CSS — colors, spacing, typography, contrast ratios, and component structure. Catches brand drift before it ships.</p>
             </div>
 
             <!-- Wix Headless Integration -->
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-text">
+              <div class="eco-bento-card-header">
                 <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
                 <strong>Wix Stores &amp; Cart</strong>
-                <p>Full e-commerce stack — product catalogs, variant resolution, category browsing, and a complete cart with mini-cart drawer, line-item management, and checkout.</p>
               </div>
               <div class="eco-bento-card-image">
                 <img src="https://static.wixstatic.com/media/c569b3_3fc0153dea0d48b78458f46fd140725c~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Wix Stores and Cart" width="180" height="180" loading="lazy">
               </div>
+              <p class="eco-bento-card-desc">Full e-commerce stack — product catalogs, variant resolution, category browsing, and a complete cart with mini-cart drawer, line-item management, and checkout.</p>
             </div>
             <div class="eco-bento-card glass-panel">
               <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
@@ -1143,14 +1148,14 @@
 
             <!-- Content & UI -->
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-text">
+              <div class="eco-bento-card-header">
                 <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
                 <strong>Markdown</strong>
-                <p>Three rendering modes — directory-based page generation, static inline rendering, and live dynamic updates. Includes code highlighting, mermaid-to-SVG diagrams, and automatic SEO head tags from frontmatter.</p>
               </div>
               <div class="eco-bento-card-image">
                 <img src="https://static.wixstatic.com/media/c569b3_5917d5339da94329a78789b2d94d8011~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Markdown" width="180" height="180" loading="lazy">
               </div>
+              <p class="eco-bento-card-desc">Three rendering modes — directory-based page generation, static inline rendering, and live dynamic updates. Includes code highlighting, mermaid-to-SVG diagrams, and automatic SEO head tags from frontmatter.</p>
             </div>
             <div class="eco-bento-card glass-panel">
               <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>

@@ -11,7 +11,8 @@ export interface PageViewState {
 
 
 export interface PageElementRefs {
-  ar0: ClipboardCopyRefs
+  ar0: ClipboardCopyRefs,
+  ar1: ClipboardCopyRefs
 }
 
 export type PageSlowViewState = Pick<PageViewState, 'title' | 'description'>;
