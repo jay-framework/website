@@ -145,6 +145,11 @@
       @media (min-width: 1024px) {
         .intro-layout { grid-template-columns: 1fr 1fr; }
       }
+      .intro-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
       .intro-text h2 { margin-bottom: 24px; }
       .intro-text p {
         color: var(--color-text-muted);
@@ -259,9 +264,15 @@
               <p>Unlike traditional design documents that become stale, design logs are written <strong style="color: var(--color-text);">before implementation begins</strong> and serve as the single source of truth throughout the development process. They capture the context, constraints, trade-offs, and decisions that code alone cannot convey.</p>
               <p>The methodology was born out of the need to give AI agents — and human developers — a reliable reference point. When multiple agents collaborate on a complex system, ambiguity is the enemy. The design log eliminates ambiguity by making intent explicit and verifiable.</p>
             </div>
-            <div class="intro-highlight-box glass-panel">
-              <h3>The Design Log is the Source of Truth</h3>
-              <p>Any plan — whether provided by the user, generated during plan mode, or inferred by an AI agent — must be validated against the design log before implementation. If a plan deviates from the design log, the deviation must be flagged. The design log takes precedence over guesses, assumptions, or blind code searches.</p>
+`            <div class="intro-cards">
+              <div class="intro-highlight-box glass-panel">
+                <h3>The Design Log is the Source of Truth</h3>
+                <p>Any plan — whether provided by the user, generated during plan mode, or inferred by an AI agent — must be validated against the design log before implementation. If a plan deviates from the design log, the deviation must be flagged. The design log takes precedence over guesses, assumptions, or blind code searches.</p>
+              </div>
+              <div class="intro-highlight-box glass-panel">
+                <h3>Required for Every Contribution</h3>
+                <p>Every contribution to Jay — whether from a human developer or an AI agent — must follow the Design Log methodology. New features and architectural changes require a design log to be written and approved before implementation begins. No code is merged without it.</p>
+              </div>
             </div>
           </div>
         </div>
