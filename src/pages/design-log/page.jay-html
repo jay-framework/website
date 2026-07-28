@@ -264,7 +264,7 @@
               <p>Unlike traditional design documents that become stale, design logs are written <strong style="color: var(--color-text);">before implementation begins</strong> and serve as the single source of truth throughout the development process. They capture the context, constraints, trade-offs, and decisions that code alone cannot convey.</p>
               <p>The methodology was born out of the need to give AI agents — and human developers — a reliable reference point. When multiple agents collaborate on a complex system, ambiguity is the enemy. The design log eliminates ambiguity by making intent explicit and verifiable.</p>
             </div>
-`            <div class="intro-cards">
+            <div class="intro-cards">
               <div class="intro-highlight-box glass-panel">
                 <h3>The Design Log is the Source of Truth</h3>
                 <p>Any plan — whether provided by the user, generated during plan mode, or inferred by an AI agent — must be validated against the design log before implementation. If a plan deviates from the design log, the deviation must be flagged. The design log takes precedence over guesses, assumptions, or blind code searches.</p>

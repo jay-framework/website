@@ -59,6 +59,32 @@
       margin-bottom: 0.35rem;
     }
 
+    /* Tables */
+    .design-log .md table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .design-log .md th,
+    .design-log .md td {
+      border: 1px solid var(--color-outline-variant);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .design-log .md th {
+      background: var(--color-surface-high);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .design-log .md td {
+      color: var(--color-text-muted);
+    }
+    .design-log .md tr:hover td {
+      background: rgba(165, 231, 255, 0.03);
+    }
+
     /* Code blocks: background, spacing, and syntax highlighting */
     .design-log .md pre.md-code,
     .design-log .md pre {
