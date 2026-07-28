@@ -1,0 +1,95 @@
+{
+  "01 - what is Jay - overview.png": {
+    "normalized": "01-what-is-jay-overview.png"
+  },
+  "02 - Jay Element vs Component.png": {
+    "normalized": "02-jay-element-vs-component.png"
+  },
+  "02 - Jay Element vs Jay Component - secure model.png": {
+    "normalized": "02-jay-element-vs-jay-component-secure-model.png"
+  },
+  "12 - Secure Architecture 1.png": {
+    "normalized": "12-secure-architecture-1.png"
+  },
+  "12 - Secure Architecture 2.png": {
+    "normalized": "12-secure-architecture-2.png"
+  },
+  "12 - Secure Architecture 3.png": {
+    "normalized": "12-secure-architecture-3.png"
+  },
+  "12 - Secure Architecture 4.png": {
+    "normalized": "12-secure-architecture-4.png"
+  },
+  "15 - main to worker communication protocol - 1.md.png": {
+    "normalized": "15-main-to-worker-communication-protocol-1-md.png"
+  },
+  "15 - main to worker communication protocol - 2.md.png": {
+    "normalized": "15-main-to-worker-communication-protocol-2-md.png"
+  },
+  "15 - main to worker communication protocol - 3.md.png": {
+    "normalized": "15-main-to-worker-communication-protocol-3-md.png"
+  },
+  "22 - serialized mutable actual diagram.svg": {
+    "normalized": "22-serialized-mutable-actual-diagram.svg"
+  },
+  "22 - serialized mutable expected diagram.svg": {
+    "normalized": "22-serialized-mutable-expected-diagram.svg"
+  },
+  "22 - serialized mutable flow 2.svg": {
+    "normalized": "22-serialized-mutable-flow-2.svg"
+  },
+  "22 - serialized mutable flow 3.svg": {
+    "normalized": "22-serialized-mutable-flow-3.svg"
+  },
+  "22 - serialized mutable flow.svg": {
+    "normalized": "22-serialized-mutable-flow.svg"
+  },
+  "25 - building the compiler - code splitting ex 1 - 1.png": {
+    "normalized": "25-building-the-compiler-code-splitting-ex-1-1.png"
+  },
+  "25 - building the compiler - code splitting ex 1 - 2.png": {
+    "normalized": "25-building-the-compiler-code-splitting-ex-1-2.png"
+  },
+  "25 - building the compiler - code splitting ex 1 - 3.png": {
+    "normalized": "25-building-the-compiler-code-splitting-ex-1-3.png"
+  },
+  "25 - building the compiler - code splitting pattern.png": {
+    "normalized": "25-building-the-compiler-code-splitting-pattern.png"
+  },
+  "28 - generated code.png": {
+    "normalized": "28-generated-code.png"
+  },
+  "28 - inspect plugins.png": {
+    "normalized": "28-inspect-plugins.png"
+  },
+  "28 - source code.png": {
+    "normalized": "28-source-code.png"
+  },
+  "29 - algorithm to split safe code - 1.png": {
+    "normalized": "29-algorithm-to-split-safe-code-1.png"
+  },
+  "29 - algorithm to split safe code - 2.png": {
+    "normalized": "29-algorithm-to-split-safe-code-2.png"
+  },
+  "34 - jay stack - page data flow.svg": {
+    "normalized": "34-jay-stack-page-data-flow.svg"
+  },
+  "34 - jay stack - rendering flow - client rendering.svg": {
+    "normalized": "34-jay-stack-rendering-flow-client-rendering.svg"
+  },
+  "34 - jay stack - rendering flow - fast changing.svg": {
+    "normalized": "34-jay-stack-rendering-flow-fast-changing.svg"
+  },
+  "34 - jay stack - rendering flow - slowly changing.svg": {
+    "normalized": "34-jay-stack-rendering-flow-slowly-changing.svg"
+  },
+  "Into to Jay 1.png": {
+    "normalized": "into-to-jay-1.png"
+  },
+  "Into to Jay 2.png": {
+    "normalized": "into-to-jay-2.png"
+  },
+  "Into to Jay 3.png": {
+    "normalized": "into-to-jay-3.png"
+  }
+}

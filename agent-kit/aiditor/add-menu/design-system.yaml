@@ -1,1381 +1,1872 @@
 items:
   - id: design-system:color-surface
-    title: surface (#0e1322)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface" with value #0e1322 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface" (#0e1322) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#0e1322</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#0e1322</div>
+        </div></div>
   - id: design-system:color-surface-dim
-    title: surface-dim (#0e1322)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-dim
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-dim" with value #0e1322 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-dim" (#0e1322) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-dim</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#0e1322</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#0e1322</div>
+        </div></div>
   - id: design-system:color-surface-bright
-    title: surface-bright (#343949)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-bright
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-bright" with value #343949 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-bright" (#343949) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#343949;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-bright</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#343949</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#343949;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#343949</div>
+        </div></div>
   - id: design-system:color-surface-container-lowest
-    title: surface-container-lowest (#090e1c)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-container-lowest
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-container-lowest" with value #090e1c from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-container-lowest" (#090e1c) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#090e1c;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-container-lowest</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#090e1c</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#090e1c;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#090e1c</div>
+        </div></div>
   - id: design-system:color-surface-container-low
-    title: surface-container-low (#161b2b)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-container-low
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-container-low" with value #161b2b from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-container-low" (#161b2b) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#161b2b;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-container-low</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#161b2b</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#161b2b;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#161b2b</div>
+        </div></div>
   - id: design-system:color-surface-container
-    title: surface-container (#1a1f2f)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-container" with value #1a1f2f from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-container" (#1a1f2f) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#1a1f2f;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#1a1f2f</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#1a1f2f;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#1a1f2f</div>
+        </div></div>
   - id: design-system:color-surface-container-high
-    title: surface-container-high (#25293a)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-container-high
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-container-high" with value #25293a from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-container-high" (#25293a) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#25293a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-container-high</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#25293a</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#25293a;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#25293a</div>
+        </div></div>
   - id: design-system:color-surface-container-highest
-    title: surface-container-highest (#2f3445)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-container-highest
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-container-highest" with value #2f3445 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-container-highest" (#2f3445) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-container-highest</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#2f3445</div>
+        </div></div>
   - id: design-system:color-on-surface
-    title: on-surface (#dee1f7)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-surface
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-surface" with value #dee1f7 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-surface" (#dee1f7) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-surface</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div></div>
   - id: design-system:color-on-surface-variant
-    title: on-surface-variant (#bbc9cf)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-surface-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-surface-variant" with value #bbc9cf from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-surface-variant" (#bbc9cf) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#bbc9cf;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-surface-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#bbc9cf</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#bbc9cf;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#bbc9cf</div>
+        </div></div>
   - id: design-system:color-inverse-surface
-    title: inverse-surface (#dee1f7)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: inverse-surface
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "inverse-surface" with value #dee1f7 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "inverse-surface" (#dee1f7) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">inverse-surface</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div></div>
   - id: design-system:color-inverse-on-surface
-    title: inverse-on-surface (#2b3040)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: inverse-on-surface
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "inverse-on-surface" with value #2b3040 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "inverse-on-surface" (#2b3040) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#2b3040;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">inverse-on-surface</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#2b3040</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#2b3040;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#2b3040</div>
+        </div></div>
   - id: design-system:color-outline
-    title: outline (#859399)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: outline
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "outline" with value #859399 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "outline" (#859399) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#859399;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">outline</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#859399</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#859399;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#859399</div>
+        </div></div>
   - id: design-system:color-outline-variant
-    title: outline-variant (#3c494e)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: outline-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "outline-variant" with value #3c494e from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "outline-variant" (#3c494e) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#3c494e;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">outline-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#3c494e</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#3c494e;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#3c494e</div>
+        </div></div>
   - id: design-system:color-surface-tint
-    title: surface-tint (#47d6ff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-tint
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-tint" with value #47d6ff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-tint" (#47d6ff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-tint</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#47d6ff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#47d6ff</div>
+        </div></div>
   - id: design-system:color-primary
-    title: primary (#a5e7ff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: primary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "primary" with value #a5e7ff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "primary" (#a5e7ff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#a5e7ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">primary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#a5e7ff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#a5e7ff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#a5e7ff</div>
+        </div></div>
   - id: design-system:color-on-primary
-    title: on-primary (#003543)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-primary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-primary" with value #003543 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-primary" (#003543) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#003543;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-primary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#003543</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#003543;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#003543</div>
+        </div></div>
   - id: design-system:color-primary-container
-    title: primary-container (#00d2ff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: primary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "primary-container" with value #00d2ff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "primary-container" (#00d2ff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00d2ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">primary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00d2ff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00d2ff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#00d2ff</div>
+        </div></div>
   - id: design-system:color-on-primary-container
-    title: on-primary-container (#00566a)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-primary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-primary-container" with value #00566a from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-primary-container" (#00566a) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00566a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-primary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00566a</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00566a;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#00566a</div>
+        </div></div>
   - id: design-system:color-inverse-primary
-    title: inverse-primary (#00677f)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: inverse-primary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "inverse-primary" with value #00677f from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "inverse-primary" (#00677f) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00677f;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">inverse-primary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00677f</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00677f;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#00677f</div>
+        </div></div>
   - id: design-system:color-secondary
-    title: secondary (#e6feff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: secondary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "secondary" with value #e6feff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "secondary" (#e6feff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#e6feff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">secondary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#e6feff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#e6feff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#e6feff</div>
+        </div></div>
   - id: design-system:color-on-secondary
-    title: on-secondary (#003739)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-secondary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-secondary" with value #003739 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-secondary" (#003739) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#003739;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-secondary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#003739</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#003739;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#003739</div>
+        </div></div>
   - id: design-system:color-secondary-container
-    title: secondary-container (#00f4fe)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: secondary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "secondary-container" with value #00f4fe from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "secondary-container" (#00f4fe) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00f4fe;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">secondary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00f4fe</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00f4fe;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#00f4fe</div>
+        </div></div>
   - id: design-system:color-on-secondary-container
-    title: on-secondary-container (#006c71)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-secondary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-secondary-container" with value #006c71 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-secondary-container" (#006c71) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#006c71;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-secondary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#006c71</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#006c71;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#006c71</div>
+        </div></div>
   - id: design-system:color-tertiary
-    title: tertiary (#ffd2d1)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: tertiary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "tertiary" with value #ffd2d1 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "tertiary" (#ffd2d1) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffd2d1;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">tertiary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffd2d1</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffd2d1;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffd2d1</div>
+        </div></div>
   - id: design-system:color-on-tertiary
-    title: on-tertiary (#680012)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-tertiary
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-tertiary" with value #680012 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-tertiary" (#680012) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#680012;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-tertiary</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#680012</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#680012;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#680012</div>
+        </div></div>
   - id: design-system:color-tertiary-container
-    title: tertiary-container (#ffabaa)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: tertiary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "tertiary-container" with value #ffabaa from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "tertiary-container" (#ffabaa) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffabaa;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">tertiary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffabaa</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffabaa;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffabaa</div>
+        </div></div>
   - id: design-system:color-on-tertiary-container
-    title: on-tertiary-container (#a20022)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-tertiary-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-tertiary-container" with value #a20022 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-tertiary-container" (#a20022) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#a20022;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-tertiary-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#a20022</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#a20022;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#a20022</div>
+        </div></div>
   - id: design-system:color-error
-    title: error (#ffb4ab)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: error
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "error" with value #ffb4ab from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "error" (#ffb4ab) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffb4ab;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">error</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffb4ab</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffb4ab;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffb4ab</div>
+        </div></div>
   - id: design-system:color-on-error
-    title: on-error (#690005)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-error
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-error" with value #690005 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-error" (#690005) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#690005;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-error</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#690005</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#690005;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#690005</div>
+        </div></div>
   - id: design-system:color-error-container
-    title: error-container (#93000a)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: error-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "error-container" with value #93000a from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "error-container" (#93000a) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#93000a;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">error-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#93000a</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#93000a;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#93000a</div>
+        </div></div>
   - id: design-system:color-on-error-container
-    title: on-error-container (#ffdad6)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-error-container
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-error-container" with value #ffdad6 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-error-container" (#ffdad6) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffdad6;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-error-container</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffdad6</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffdad6;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffdad6</div>
+        </div></div>
   - id: design-system:color-primary-fixed
-    title: primary-fixed (#b6ebff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: primary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "primary-fixed" with value #b6ebff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "primary-fixed" (#b6ebff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#b6ebff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">primary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#b6ebff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#b6ebff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#b6ebff</div>
+        </div></div>
   - id: design-system:color-primary-fixed-dim
-    title: primary-fixed-dim (#47d6ff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: primary-fixed-dim
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "primary-fixed-dim" with value #47d6ff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "primary-fixed-dim" (#47d6ff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">primary-fixed-dim</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#47d6ff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#47d6ff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#47d6ff</div>
+        </div></div>
   - id: design-system:color-on-primary-fixed
-    title: on-primary-fixed (#001f28)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-primary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-primary-fixed" with value #001f28 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-primary-fixed" (#001f28) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#001f28;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-primary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#001f28</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#001f28;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#001f28</div>
+        </div></div>
   - id: design-system:color-on-primary-fixed-variant
-    title: on-primary-fixed-variant (#004e60)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-primary-fixed-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-primary-fixed-variant" with value #004e60 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-primary-fixed-variant" (#004e60) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#004e60;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-primary-fixed-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#004e60</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#004e60;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#004e60</div>
+        </div></div>
   - id: design-system:color-secondary-fixed
-    title: secondary-fixed (#63f7ff)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: secondary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "secondary-fixed" with value #63f7ff from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "secondary-fixed" (#63f7ff) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#63f7ff;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">secondary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#63f7ff</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#63f7ff;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#63f7ff</div>
+        </div></div>
   - id: design-system:color-secondary-fixed-dim
-    title: secondary-fixed-dim (#00dce5)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: secondary-fixed-dim
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "secondary-fixed-dim" with value #00dce5 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "secondary-fixed-dim" (#00dce5) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#00dce5;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">secondary-fixed-dim</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#00dce5</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#00dce5;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#00dce5</div>
+        </div></div>
   - id: design-system:color-on-secondary-fixed
-    title: on-secondary-fixed (#002021)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-secondary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-secondary-fixed" with value #002021 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-secondary-fixed" (#002021) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#002021;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-secondary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#002021</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#002021;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#002021</div>
+        </div></div>
   - id: design-system:color-on-secondary-fixed-variant
-    title: on-secondary-fixed-variant (#004f53)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-secondary-fixed-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-secondary-fixed-variant" with value #004f53 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-secondary-fixed-variant" (#004f53) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#004f53;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-secondary-fixed-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#004f53</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#004f53;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#004f53</div>
+        </div></div>
   - id: design-system:color-tertiary-fixed
-    title: tertiary-fixed (#ffdad8)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: tertiary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "tertiary-fixed" with value #ffdad8 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "tertiary-fixed" (#ffdad8) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffdad8;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">tertiary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffdad8</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffdad8;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffdad8</div>
+        </div></div>
   - id: design-system:color-tertiary-fixed-dim
-    title: tertiary-fixed-dim (#ffb3b2)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: tertiary-fixed-dim
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "tertiary-fixed-dim" with value #ffb3b2 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "tertiary-fixed-dim" (#ffb3b2) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#ffb3b2;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">tertiary-fixed-dim</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#ffb3b2</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#ffb3b2;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#ffb3b2</div>
+        </div></div>
   - id: design-system:color-on-tertiary-fixed
-    title: on-tertiary-fixed (#410008)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-tertiary-fixed
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-tertiary-fixed" with value #410008 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-tertiary-fixed" (#410008) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#410008;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-tertiary-fixed</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#410008</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#410008;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#410008</div>
+        </div></div>
   - id: design-system:color-on-tertiary-fixed-variant
-    title: on-tertiary-fixed-variant (#92001e)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-tertiary-fixed-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-tertiary-fixed-variant" with value #92001e from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-tertiary-fixed-variant" (#92001e) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#92001e;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-tertiary-fixed-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#92001e</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#92001e;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#92001e</div>
+        </div></div>
   - id: design-system:color-background
-    title: background (#0e1322)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: background
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "background" with value #0e1322 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "background" (#0e1322) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">background</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#0e1322</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#0e1322;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#0e1322</div>
+        </div></div>
   - id: design-system:color-on-background
-    title: on-background (#dee1f7)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: on-background
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "on-background" with value #dee1f7 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "on-background" (#dee1f7) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">on-background</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#dee1f7</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#dee1f7;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#dee1f7</div>
+        </div></div>
   - id: design-system:color-surface-variant
-    title: surface-variant (#2f3445)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: surface-variant
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "surface-variant" with value #2f3445 from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "surface-variant" (#2f3445) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">surface-variant</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#2f3445</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#2f3445;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#2f3445</div>
+        </div></div>
   - id: design-system:color-glass-bg
-    title: glass-bg (rgba(10, 15, 30, 0.7))
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: glass-bg
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: Use color token "glass-bg" with value rgba(10, 15, 30, 0.7) from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "glass-bg" (rgba(10, 15, 30, 0.7)) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:rgba(10, 15, 30, 0.7);border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">glass-bg</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">rgba(10, 15, 30, 0.7)</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:rgba(10, 15, 30, 0.7);border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">rgba(10, 15, 30, 0.7)</div>
+        </div></div>
   - id: design-system:color-deep-bg
-    title: deep-bg (#0A0F1E)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: deep-bg
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: 'Use color token "deep-bg" with value #0A0F1E from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "deep-bg" (#0A0F1E) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:#0A0F1E;border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">deep-bg</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">#0A0F1E</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#0A0F1E;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#0A0F1E</div>
+        </div></div>
   - id: design-system:color-white-subtle
-    title: white-subtle (rgba(255, 255, 255, 0.05))
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: white-subtle
     category: Cybernetic Web Intelligence
     subCategory: Colors
+    browse:
+      size: small
     prompt: Use color token "white-subtle" with value rgba(255, 255, 255, 0.05) from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "white-subtle" (rgba(255, 255, 255, 0.05)) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:6px;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(0,0,0,0.1);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:13px;font-weight:600;">white-subtle</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">rgba(255, 255, 255, 0.05)</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">rgba(255, 255, 255, 0.05)</div>
+        </div></div>
   - id: design-system:typography-headline-lg
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: headline-lg
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: >-
       Apply typography preset "headline-lg" from DESIGN.md: Sora, 48px, weight 700, line-height 56px, letter-spacing
       -0.02em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "headline-lg" (Sora, 48px, weight 700, line-height 56px, letter-spacing -0.02em)
+        from DESIGN.md at this location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:48px;font-weight:700;line-height:56px;letter-spacing:-0.02em;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-lg: Sora, 48px, weight 700, line-height 56px, letter-spacing -0.02em</div>
-        </div>
+        </div></div>
   - id: design-system:typography-headline-md
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: headline-md
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: >-
       Apply typography preset "headline-md" from DESIGN.md: Sora, 32px, weight 600, line-height 40px, letter-spacing
       -0.01em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "headline-md" (Sora, 32px, weight 600, line-height 40px, letter-spacing -0.01em)
+        from DESIGN.md at this location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;line-height:40px;letter-spacing:-0.01em;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-md: Sora, 32px, weight 600, line-height 40px, letter-spacing -0.01em</div>
-        </div>
+        </div></div>
   - id: design-system:typography-headline-sm
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: headline-sm
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "headline-sm" from DESIGN.md: Sora, 24px, weight 600, line-height 32px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "headline-sm" (Sora, 24px, weight 600, line-height 32px) from DESIGN.md at this
+        location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:24px;font-weight:600;line-height:32px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-sm: Sora, 24px, weight 600, line-height 32px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-hero-display
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: hero-display
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: >-
       Apply typography preset "hero-display" from DESIGN.md: Sora, clamp(32px, 5vw, 48px), weight 700, line-height 1.15,
       letter-spacing -0.02em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "hero-display" (Sora, clamp(32px, 5vw, 48px), weight 700, line-height 1.15,
+        letter-spacing -0.02em) from DESIGN.md at this location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:clamp(32px, 5vw, 48px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">hero-display: Sora, clamp(32px, 5vw, 48px), weight 700, line-height 1.15, letter-spacing -0.02em</div>
-        </div>
+        </div></div>
   - id: design-system:typography-heading-md
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: heading-md
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "heading-md" from DESIGN.md: Sora, 22px, weight 600, line-height 30px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "heading-md" (Sora, 22px, weight 600, line-height 30px) from DESIGN.md at this
+        location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;line-height:30px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">heading-md: Sora, 22px, weight 600, line-height 30px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-heading-sm
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: heading-sm
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "heading-sm" from DESIGN.md: Sora, 20px, weight 600, line-height 28px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "heading-sm" (Sora, 20px, weight 600, line-height 28px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:20px;font-weight:600;line-height:28px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">heading-sm: Sora, 20px, weight 600, line-height 28px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-body-lg
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: body-lg
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "body-lg" from DESIGN.md: Inter, 18px, weight 400, line-height 28px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "body-lg" (Inter, 18px, weight 400, line-height 28px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Inter,sans-serif;font-size:18px;font-weight:400;line-height:28px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-lg: Inter, 18px, weight 400, line-height 28px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-body-md
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: body-md
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "body-md" from DESIGN.md: Inter, 16px, weight 400, line-height 24px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "body-md" (Inter, 16px, weight 400, line-height 24px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Inter,sans-serif;font-size:16px;font-weight:400;line-height:24px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md: Inter, 16px, weight 400, line-height 24px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-body-md-relaxed
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: body-md-relaxed
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "body-md-relaxed" from DESIGN.md: Inter, 16px, weight 400, line-height 26px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "body-md-relaxed" (Inter, 16px, weight 400, line-height 26px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Inter,sans-serif;font-size:16px;font-weight:400;line-height:26px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-md-relaxed: Inter, 16px, weight 400, line-height 26px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-body-sm
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: body-sm
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "body-sm" from DESIGN.md: Inter, 15px, weight 400, line-height 24px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "body-sm" (Inter, 15px, weight 400, line-height 24px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Inter,sans-serif;font-size:15px;font-weight:400;line-height:24px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">body-sm: Inter, 15px, weight 400, line-height 24px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-code-md
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: code-md
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "code-md" from DESIGN.md: JetBrains Mono, 14px, weight 400, line-height 20px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "code-md" (JetBrains Mono, 14px, weight 400, line-height 20px) from DESIGN.md at
+        this location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:JetBrains Mono,sans-serif;font-size:14px;font-weight:400;line-height:20px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-md: JetBrains Mono, 14px, weight 400, line-height 20px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-code-sm
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: code-sm
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "code-sm" from DESIGN.md: JetBrains Mono, 13px, weight 400, line-height 19px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "code-sm" (JetBrains Mono, 13px, weight 400, line-height 19px) from DESIGN.md at
+        this location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:JetBrains Mono,sans-serif;font-size:13px;font-weight:400;line-height:19px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">code-sm: JetBrains Mono, 13px, weight 400, line-height 19px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-tooltip
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: tooltip
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "tooltip" from DESIGN.md: Inter, 13px, weight 400, line-height 18px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "tooltip" (Inter, 13px, weight 400, line-height 18px) from DESIGN.md at this
+        location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Inter,sans-serif;font-size:13px;font-weight:400;line-height:18px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">tooltip: Inter, 13px, weight 400, line-height 18px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-label-sm
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: label-sm
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: >-
       Apply typography preset "label-sm" from DESIGN.md: JetBrains Mono, 12px, weight 500, line-height 16px,
       letter-spacing 0.4em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "label-sm" (JetBrains Mono, 12px, weight 500, line-height 16px, letter-spacing
+        0.4em) from DESIGN.md at this location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:JetBrains Mono,sans-serif;font-size:12px;font-weight:500;line-height:16px;letter-spacing:0.4em;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm: JetBrains Mono, 12px, weight 500, line-height 16px, letter-spacing 0.4em</div>
-        </div>
+        </div></div>
   - id: design-system:typography-label-sm-spaced
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: label-sm-spaced
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: >-
       Apply typography preset "label-sm-spaced" from DESIGN.md: JetBrains Mono, 12px, weight 500, line-height 16px,
       letter-spacing 0.15em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "label-sm-spaced" (JetBrains Mono, 12px, weight 500, line-height 16px,
+        letter-spacing 0.15em) from DESIGN.md at this location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:JetBrains Mono,sans-serif;font-size:12px;font-weight:500;line-height:16px;letter-spacing:0.15em;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm-spaced: JetBrains Mono, 12px, weight 500, line-height 16px, letter-spacing 0.15em</div>
-        </div>
+        </div></div>
   - id: design-system:typography-label-sm-bold
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: label-sm-bold
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "label-sm-bold" from DESIGN.md: JetBrains Mono, 12px, weight 700, line-height 16px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "label-sm-bold" (JetBrains Mono, 12px, weight 700, line-height 16px) from DESIGN.md
+        at this location.
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:JetBrains Mono,sans-serif;font-size:12px;font-weight:700;line-height:16px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">label-sm-bold: JetBrains Mono, 12px, weight 700, line-height 16px</div>
-        </div>
+        </div></div>
   - id: design-system:typography-display-brand
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
     title: display-brand
     category: Cybernetic Web Intelligence
     subCategory: Typography
     prompt: 'Apply typography preset "display-brand" from DESIGN.md: Sora, 24px, weight 800, line-height 32px.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "display-brand" (Sora, 24px, weight 800, line-height 32px) from DESIGN.md at this
+        location.
+    browse:
+      size: large
     presentation:
       type: html-fragment
       html: |-
-        <div style="font-family:sans-serif;">
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
           <div style="font-family:Sora,sans-serif;font-size:24px;font-weight:800;line-height:32px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">display-brand: Sora, 24px, weight 800, line-height 32px</div>
-        </div>
+        </div></div>
   - id: design-system:spacing-3xs
-    title: 3xs (4px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 3xs
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "3xs" with value 4px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "3xs" (4px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:4px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">3xs</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">4px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">4px</div>
+        </div></div>
   - id: design-system:spacing-2xs
-    title: 2xs (8px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 2xs
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "2xs" with value 8px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "2xs" (8px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:8px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">2xs</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">8px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">8px</div>
+        </div></div>
   - id: design-system:spacing-xs
-    title: xs (10px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: xs
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "xs" with value 10px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "xs" (10px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:10px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">xs</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">10px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">10px</div>
+        </div></div>
   - id: design-system:spacing-sm
-    title: sm (12px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: sm
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "sm" with value 12px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "sm" (12px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:12px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">sm</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">12px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">12px</div>
+        </div></div>
   - id: design-system:spacing-sm-md
-    title: sm-md (14px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: sm-md
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "sm-md" with value 14px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "sm-md" (14px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:14px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">sm-md</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">14px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">14px</div>
+        </div></div>
   - id: design-system:spacing-md
-    title: md (16px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: md
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "md" with value 16px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "md" (16px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:16px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">md</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">16px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">16px</div>
+        </div></div>
   - id: design-system:spacing-md-lg
-    title: md-lg (20px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: md-lg
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "md-lg" with value 20px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "md-lg" (20px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:20px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">md-lg</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">20px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">20px</div>
+        </div></div>
   - id: design-system:spacing-lg
-    title: lg (24px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: lg
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "lg" with value 24px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: small
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "lg" (24px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:24px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">lg</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">24px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">24px</div>
+        </div></div>
   - id: design-system:spacing-xl
-    title: xl (32px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: xl
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "xl" with value 32px from DESIGN.md for padding, margin, or gap.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "xl" (32px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:32px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">32px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">32px</div>
+        </div></div>
   - id: design-system:spacing-2xl
-    title: 2xl (40px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 2xl
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "2xl" with value 40px from DESIGN.md for padding, margin, or gap.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "2xl" (40px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:40px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">2xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">40px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">40px</div>
+        </div></div>
   - id: design-system:spacing-3xl
-    title: 3xl (48px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 3xl
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "3xl" with value 48px from DESIGN.md for padding, margin, or gap.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "3xl" (48px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:48px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">3xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">48px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">48px</div>
+        </div></div>
   - id: design-system:spacing-4xl
-    title: 4xl (64px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 4xl
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "4xl" with value 64px from DESIGN.md for padding, margin, or gap.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "4xl" (64px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:64px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">4xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">64px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">64px</div>
+        </div></div>
   - id: design-system:spacing-5xl
-    title: 5xl (96px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 5xl
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "5xl" with value 96px from DESIGN.md for padding, margin, or gap.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "5xl" (96px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:96px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">5xl</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">96px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">96px</div>
+        </div></div>
   - id: design-system:spacing-max-width
-    title: max-width (1440px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: max-width
     category: Cybernetic Web Intelligence
     subCategory: Spacing
     prompt: Use spacing token "max-width" with value 1440px from DESIGN.md for padding, margin, or gap.
+    browse:
+      size: large
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the spacing token "max-width" (1440px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:8px;font-family:sans-serif;">
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
           <div style="display:flex;align-items:center;gap:0;">
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:2px 0 0 2px;"></div>
             <div style="width:1440px;height:24px;background:repeating-linear-gradient(45deg,#e0f2fe,#e0f2fe 2px,#bae6fd 2px,#bae6fd 4px);"></div>
             <div style="width:16px;height:24px;background:#cbd5e1;border-radius:0 2px 2px 0;"></div>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;">max-width</span>
-            <span style="font-size:11px;color:#888;font-family:monospace;margin-left:4px;">1440px</span>
-          </div>
-        </div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">1440px</div>
+        </div></div>
   - id: design-system:rounded-sm
-    title: sm (0.125rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: sm
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "sm" with value 0.125rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "sm" (0.125rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.125rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">sm</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.125rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:0.125rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">0.125rem</div>
+        </div></div>
   - id: design-system:rounded-DEFAULT
-    title: DEFAULT (0.25rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: DEFAULT
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "DEFAULT" with value 0.25rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "DEFAULT" (0.25rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.25rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">DEFAULT</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.25rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:0.25rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">0.25rem</div>
+        </div></div>
   - id: design-system:rounded-md
-    title: md (0.375rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: md
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "md" with value 0.375rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "md" (0.375rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.375rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">md</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.375rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:0.375rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">0.375rem</div>
+        </div></div>
   - id: design-system:rounded-lg
-    title: lg (0.5rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: lg
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "lg" with value 0.5rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "lg" (0.5rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">lg</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.5rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:0.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">0.5rem</div>
+        </div></div>
   - id: design-system:rounded-xl
-    title: xl (0.75rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: xl
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "xl" with value 0.75rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "xl" (0.75rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">xl</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">0.75rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:0.75rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">0.75rem</div>
+        </div></div>
   - id: design-system:rounded-2xl
-    title: 2xl (1rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 2xl
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "2xl" with value 1rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "2xl" (1rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:1rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">2xl</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">1rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:1rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">1rem</div>
+        </div></div>
   - id: design-system:rounded-3xl
-    title: 3xl (1.5rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 3xl
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "3xl" with value 1.5rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "3xl" (1.5rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:1.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">3xl</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">1.5rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:1.5rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">1.5rem</div>
+        </div></div>
   - id: design-system:rounded-4xl
-    title: 4xl (2rem)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: 4xl
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "4xl" with value 2rem from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "4xl" (2rem) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:2rem;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">4xl</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">2rem</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:2rem;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">2rem</div>
+        </div></div>
   - id: design-system:rounded-circle
-    title: circle (50%)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: circle
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "circle" with value 50% from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "circle" (50%) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:50%;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">circle</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">50%</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">50%</div>
+        </div></div>
   - id: design-system:rounded-full
-    title: full (9999px)
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: full
     category: Cybernetic Web Intelligence
     subCategory: Rounded
+    browse:
+      size: small
     prompt: Use border-radius token "full" with value 9999px from DESIGN.md.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the border-radius token "full" (9999px) from DESIGN.md at this location.
     presentation:
       type: html-fragment
-      html: |-
-        <div style="display:flex;align-items:center;gap:10px;font-family:sans-serif;">
-          <div style="width:40px;height:40px;border-radius:9999px;background:#e2e8f0;border:1.5px solid #94a3b8;flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:600;">full</div>
-            <div style="font-size:11px;color:#888;font-family:monospace;">9999px</div>
-          </div>
-        </div>
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:9999px;background:#e2e8f0;border:1.5px solid #94a3b8;"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">9999px</div>
+        </div></div>

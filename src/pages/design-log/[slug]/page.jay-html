@@ -5,7 +5,8 @@
           plugin="@jay-framework/markdown"
           contract="markdown-pages"
           key="post">
-    contentDir: src/pages/design-log/content
+    contentDir: content/design-log
+    mediaMap: content/design-log/media-map.yaml
   </script>
   <link rel="stylesheet" href="../../../styles/theme.css" />
   <style>

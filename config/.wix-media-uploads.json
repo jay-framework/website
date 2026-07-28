@@ -103,5 +103,206 @@
   },
   "public/contract.png": {
     "status": "uploaded"
+  },
+  "public/3-phase-rendering.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/01-what-is-jay-overview.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/02-jay-element-vs-component.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/02-jay-element-vs-jay-component-secure-model.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/12-secure-architecture-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/12-secure-architecture-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/12-secure-architecture-3.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/12-secure-architecture-4.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/15-main-to-worker-communication-protocol-1-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/15-main-to-worker-communication-protocol-2-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/15-main-to-worker-communication-protocol-3-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/22-serialized-mutable-actual-diagram.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/22-serialized-mutable-expected-diagram.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/22-serialized-mutable-flow-2.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/22-serialized-mutable-flow-3.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/22-serialized-mutable-flow.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/25-building-the-compiler-code-splitting-ex-1-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/25-building-the-compiler-code-splitting-ex-1-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/25-building-the-compiler-code-splitting-ex-1-3.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/25-building-the-compiler-code-splitting-pattern.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/28-generated-code.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/28-inspect-plugins.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/28-source-code.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/29-algorithm-to-split-safe-code-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/29-algorithm-to-split-safe-code-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/34-jay-stack-page-data-flow.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/34-jay-stack-rendering-flow-client-rendering.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/34-jay-stack-rendering-flow-fast-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/34-jay-stack-rendering-flow-slowly-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/into-to-jay-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/into-to-jay-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/into-to-jay-3.png": {
+    "status": "uploaded"
+  },
+  "public/markdown.png": {
+    "status": "uploaded"
+  },
+  "public/media.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/01-what-is-jay-overview.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/02-jay-element-vs-component.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/02-jay-element-vs-jay-component-secure-model.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/12-secure-architecture-1.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/12-secure-architecture-2.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/12-secure-architecture-3.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/12-secure-architecture-4.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/15-main-to-worker-communication-protocol-1.md.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/15-main-to-worker-communication-protocol-2.md.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/15-main-to-worker-communication-protocol-3.md.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/22-serialized-mutable-actual-diagram.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/22-serialized-mutable-expected-diagram.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/22-serialized-mutable-flow-2.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/22-serialized-mutable-flow-3.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/22-serialized-mutable-flow.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/25-building-the-compiler-code-splitting-ex-1-1.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/25-building-the-compiler-code-splitting-ex-1-2.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/25-building-the-compiler-code-splitting-ex-1-3.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/25-building-the-compiler-code-splitting-pattern.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/28-generated-code.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/28-inspect-plugins.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/28-source-code.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/29-algorithm-to-split-safe-code-1.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/29-algorithm-to-split-safe-code-2.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/34-jay-stack-page-data-flow.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/34-jay-stack-rendering-flow-client-rendering.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/34-jay-stack-rendering-flow-fast-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/34-jay-stack-rendering-flow-slowly-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/into-to-jay-1.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/into-to-jay-2.png": {
+    "status": "uploaded"
+  },
+  "public/src/pages/design-log/content/into-to-jay-3.png": {
+    "status": "uploaded"
+  },
+  "public/stores-icon.png": {
+    "status": "uploaded"
+  },
+  "public/validator.png": {
+    "status": "uploaded"
   }
 }

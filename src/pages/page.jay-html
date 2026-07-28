@@ -362,6 +362,107 @@
         line-height: 24px;
       }
 
+      /* ── Ecosystem & Plugins (Bento Grid) ── */
+      .ecosystem-section { background: var(--color-surface-lowest); position: relative; }
+      .eco-bento {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 48px;
+      }
+      @media (min-width: 768px) {
+        .eco-bento {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .eco-bento {
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-flow: dense;
+        }
+      }
+      .eco-bento-card {
+        padding: 24px 28px;
+        border-radius: var(--radius-xl);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .eco-bento-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.7;
+        margin-bottom: 4px;
+      }
+      .eco-bento-label--guardrails { color: #6ecfff; }
+      .eco-bento-label--wix { color: #a78bfa; }
+      .eco-bento-label--content { color: #34d399; }
+      .eco-bento-label--agents { color: #fb923c; }
+      .eco-bento-label--core { color: var(--color-primary); }
+      .eco-bento-card strong {
+        font-family: var(--font-display);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 24px;
+        color: var(--color-text);
+      }
+      .eco-bento-card p {
+        color: var(--color-text-muted);
+        font-size: 14px;
+        line-height: 22px;
+      }
+      .eco-bento-wide {
+        grid-column: span 1;
+      }
+      @media (min-width: 768px) {
+        .eco-bento-wide {
+          grid-column: span 2;
+        }
+      }
+      .eco-bento-card--with-image {
+        gap: 24px;
+      }
+      .eco-bento-card--with-image .eco-bento-card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .eco-bento-card--with-image .eco-bento-card-image {
+        align-self: center;
+        width: 140px;
+      }
+      .eco-bento-card--with-image .eco-bento-card-image img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-lg);
+        object-fit: contain;
+      }
+      @media (min-width: 768px) {
+        .eco-bento-card--with-image {
+          flex-direction: row;
+          align-items: center;
+        }
+        .eco-bento-card--with-image .eco-bento-card-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .eco-bento-card--with-image .eco-bento-card-image {
+          flex-shrink: 0;
+          width: 180px;
+        }
+      }
+      .eco-bento-tall {
+        grid-row: span 1;
+      }
+      @media (min-width: 768px) {
+        .eco-bento-tall {
+          grid-row: span 2;
+        }
+      }
+
       /* ── Feedback Loop ── */
       .feedback-section { background: var(--color-surface); }
       .feedback-image-frame {
@@ -1079,6 +1180,139 @@
               <p class="whatjay-tagline">Automated guardrails prevent broken code.</p>
               <p class="whatjay-desc">An automated engine validates AI output across contracts, SEO, accessibility, and performance. When an agent makes a mistake, it receives targeted error feedback to self-correct instantly before deployment.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Ecosystem & Plugins                          -->
+      <!-- ════════════════════════════════════════════ -->
+      <section id="ecosystem" class="section ecosystem-section">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">Ecosystem &amp; Plugins</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Extensible by design.<br>Built for zero-coding app assembly.</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 900px; margin-left: auto; margin-right: auto;">Jay plugins bundle pre-tested capabilities, server actions, and contracts into drop-in NPM packages.</p>
+          </div>
+          <div class="eco-bento">
+
+            <!-- AI Guardrails & Validation -->
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
+              <strong>SEO Validator</strong>
+              <p>Checks jay-html templates for SEO best practices — meta tags, heading hierarchy, canonical URLs, and Open Graph data.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
+              <strong>Accessibility Validator</strong>
+              <p>Validates templates against WCAG guidelines — image alt text, ARIA roles, keyboard navigation, and semantic HTML.</p>
+            </div>
+            <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
+              <div class="eco-bento-card-text">
+                <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
+                <strong>Design System Validator</strong>
+                <p>Enforces DESIGN.md tokens across your CSS — colors, spacing, typography, contrast ratios, and component structure. Catches brand drift before it ships.</p>
+              </div>
+              <div class="eco-bento-card-image">
+                <img src="https://static.wixstatic.com/media/c569b3_a8c585bd797f434ca9646efc91b185c2~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Design System Validator" width="180" height="180" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Wix Headless Integration -->
+            <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
+              <div class="eco-bento-card-text">
+                <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
+                <strong>Wix Stores &amp; Cart</strong>
+                <p>Full e-commerce stack — product catalogs, variant resolution, category browsing, and a complete cart with mini-cart drawer, line-item management, and checkout.</p>
+              </div>
+              <div class="eco-bento-card-image">
+                <img src="https://static.wixstatic.com/media/c569b3_3fc0153dea0d48b78458f46fd140725c~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Wix Stores and Cart" width="180" height="180" loading="lazy">
+              </div>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
+              <strong>Wix Members</strong>
+              <p>OAuth authentication with login indicators, protected page guards, and callback handling. Includes server-side member operations and client-side auth state.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
+              <strong>Wix Data</strong>
+              <p>Dynamic contract generation from collection schemas — automatically creates item, list, table, and card pages from your Wix CMS collections.</p>
+            </div>
+            <div class="eco-bento-card glass-panel eco-bento-tall">
+              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
+              <strong>Wix Media</strong>
+              <p>Media upload, optimization validation, CDN delivery, and index generation. Ensures every image URL carries proper optimization parameters.</p>
+              <img src="https://static.wixstatic.com/media/c569b3_3262d2cbcfa84865bb9d845e8829ae10~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Wix Media" width="180" height="180" loading="lazy" style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
+              <strong>Wix Deploy</strong>
+              <p>One-click deployment to Wix infrastructure — builds entry points, uploads backend code, and deploys the full application.</p>
+            </div>
+
+            <!-- Content & UI -->
+            <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
+              <div class="eco-bento-card-text">
+                <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
+                <strong>Markdown</strong>
+                <p>Three rendering modes — directory-based page generation, static inline rendering, and live dynamic updates. Includes code highlighting, mermaid-to-SVG diagrams, and automatic SEO head tags from frontmatter.</p>
+              </div>
+              <div class="eco-bento-card-image">
+                <img src="https://static.wixstatic.com/media/c569b3_5917d5339da94329a78789b2d94d8011~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Markdown" width="180" height="180" loading="lazy">
+              </div>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
+              <strong>UI Kit</strong>
+              <p>Headless UI primitives — popover menus via the Popover API, scroll-snap carousels, clipboard copy with feedback, and word/letter splitting for per-character animation and styling.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
+              <strong>AIditor Quill</strong>
+              <p>Ready-made add-menu assets and text components for the AIditor visual editor. Provides a catalog of drop-in content blocks.</p>
+            </div>
+
+            <!-- AI Agents & Protocols -->
+            <div class="eco-bento-card glass-panel eco-bento-wide">
+              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
+              <strong>AIditor</strong>
+              <p>Visual AI-driven code editor — agents create pages, manage plugins, edit live sites, and publish. 30+ server actions covering project info, visual editing, asset management, and deployment.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
+              <strong>Gemini Agent</strong>
+              <p>Embedded chat agent powered by Gemini with page automation and server action calling. Drops into any page as a headless component.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
+              <strong>WebMCP</strong>
+              <p>Automatically exposes page interactions as Model Context Protocol tools, resources, and prompts — connects your site natively to AI agents.</p>
+            </div>
+
+            <!-- Core Architecture -->
+            <div class="eco-bento-card glass-panel eco-bento-tall">
+              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
+              <strong>3-Phase Rendering</strong>
+              <p>Slow (data change), Fast (per-request), and Interactive (client) phases split work so pages load in sub-second time with near-zero JavaScript overhead.</p>
+              <img src="https://static.wixstatic.com/media/c569b3_c0a7f9f1c95e4676a93a4f68b7b04986~mv2.png/v1/fit/w_180,h_180/file.webp" alt="3-Phase Rendering" width="180" height="180" loading="lazy" style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
+              <strong>Contract-Driven Assembly</strong>
+              <p>Plugins expose typed contracts — agents and developers wire full-stack features without prop-drilling, custom glue code, or framework-specific knowledge.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
+              <strong>Agent-Optimized Token Costs</strong>
+              <p>Pre-built, tested packages replace generated boilerplate. Agents reuse established contracts instead of hallucinating integrations, cutting token usage and errors.</p>
+            </div>
+            <div class="eco-bento-card glass-panel">
+              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
+              <strong>File-Based Routing</strong>
+              <p>Directory structure defines routes, dynamic [slug] segments, and page-level contracts. Predictable for developers, trivial for agents to extend.</p>
+            </div>
+
           </div>
         </div>
       </section>
