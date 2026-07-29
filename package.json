@@ -11,7 +11,7 @@
     "clean": "rimraf dist && rimraf build && rimraf -g 'src/**/*.d.ts'",
     "definitions": "jay-cli definitions src",
     "build": "npm run agent-kit && npm run definitions",
-    "build:production": "npm run build && jay-stack-cli build",
+    "build:production": "npm run sync:design-log && npm run build && jay-stack-cli build",
     "build:check-types": "tsc",
     "serve": "jay-stack-cli serve",
     "wix:deploy": "jay-stack-cli run wix-deploy/deploy --exclude-plugins aiditor",

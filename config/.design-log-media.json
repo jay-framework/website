@@ -1,7 +1,4 @@
 {
-  "01 - what is Jay - overview.png": {
-    "normalized": "01-what-is-jay-overview.png"
-  },
   "02 - Jay Element vs Component.png": {
     "normalized": "02-jay-element-vs-component.png"
   },
@@ -28,21 +25,6 @@
   },
   "15 - main to worker communication protocol - 3.md.png": {
     "normalized": "15-main-to-worker-communication-protocol-3-md.png"
-  },
-  "22 - serialized mutable actual diagram.svg": {
-    "normalized": "22-serialized-mutable-actual-diagram.svg"
-  },
-  "22 - serialized mutable expected diagram.svg": {
-    "normalized": "22-serialized-mutable-expected-diagram.svg"
-  },
-  "22 - serialized mutable flow 2.svg": {
-    "normalized": "22-serialized-mutable-flow-2.svg"
-  },
-  "22 - serialized mutable flow 3.svg": {
-    "normalized": "22-serialized-mutable-flow-3.svg"
-  },
-  "22 - serialized mutable flow.svg": {
-    "normalized": "22-serialized-mutable-flow.svg"
   },
   "25 - building the compiler - code splitting ex 1 - 1.png": {
     "normalized": "25-building-the-compiler-code-splitting-ex-1-1.png"

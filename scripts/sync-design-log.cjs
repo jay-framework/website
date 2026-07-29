@@ -9,7 +9,7 @@ const SCRIPT_DIR = __dirname;
 const ROOT_DIR = path.resolve(path.join(SCRIPT_DIR, ".."));
 const CONTENT_DIR = path.join(ROOT_DIR, "content", "design-log");
 const PUBLIC_DIR = path.join(ROOT_DIR, "public", "design-log");
-const MEDIA_MAP_FILE = path.join(CONTENT_DIR, "media-map.yaml");
+const MEDIA_MAP_FILE = path.join(ROOT_DIR, "config", ".design-log-media-map.yaml");
 const MEDIA_CONFIG_FILE = path.join(ROOT_DIR, "config", ".design-log-media.json");
 const SYNC_HASH_FILE = path.join(CONTENT_DIR, ".sync-hash");
 const MEDIA_INDEX_FILE = path.join(ROOT_DIR, "agent-kit", "references", "wix-media", "MEDIA-INDEX.md");
@@ -26,53 +26,31 @@ const colors = {
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`${colors.yellow}Design Log Sync Script${colors.reset}`);
   console.log("");
-  console.log("Syncs the design-log folder from the jay repo into");
-  console.log("content/design-log/ for page generation.");
+  console.log("Syncs the design-log folder from the jay repo, uploads images");
+  console.log("to Wix Media, and generates the media map — all in one call.");
   console.log("");
   console.log("Usage:");
-  console.log("  node sync-design-log.cjs [--force] [--media-map]");
+  console.log("  node sync-design-log.cjs [--force]");
   console.log("");
   console.log("Options:");
-  console.log("  --force      Re-sync even if the commit hash hasn't changed");
-  console.log("  --media-map  Only regenerate the media map from MEDIA-INDEX (no git clone)");
-  console.log("");
-  console.log("After syncing, upload images with:");
-  console.log("  jay-stack-cli run wix-media/upload-public --folder design-log");
-  console.log("  jay-stack-cli run wix-media/rebuild-index");
-  console.log("  node scripts/sync-design-log.cjs --media-map");
+  console.log("  --force  Re-sync even if the commit hash hasn't changed");
   process.exit(0);
 }
 
 const forceSync = process.argv.includes("--force");
-const mediaMapOnly = process.argv.includes("--media-map");
 
-function getRemoteHash() {
-  const output = execSync(`git ls-remote ${REPO_URL} refs/heads/${BRANCH}`, {
-    encoding: "utf-8",
-    timeout: 15000,
-  });
-  const hash = output.split(/\s/)[0];
-  if (!hash) {
-    throw new Error("Could not resolve remote HEAD");
-  }
-  return hash;
-}
+// ── Filename normalization ──
 
-function getStoredHash() {
-  try {
-    return fs.readFileSync(SYNC_HASH_FILE, "utf-8").trim();
-  } catch {
-    return null;
-  }
-}
-
-function normalizeFilename(name) {
+function normalizeSlug(name) {
   return name
     .replace(/\.md$/, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    + ".md";
+    .replace(/^-|-$/g, "");
+}
+
+function normalizeFilename(name) {
+  return normalizeSlug(name) + ".md";
 }
 
 function normalizeImageFilename(name) {
@@ -84,6 +62,73 @@ function normalizeImageFilename(name) {
     .replace(/^-|-$/g, "")
     + ext.toLowerCase();
 }
+
+// ── Link rewriting ──
+
+function buildLinkMap(mdFiles, imageFiles) {
+  const map = {};
+
+  for (const original of mdFiles) {
+    const slug = normalizeSlug(original);
+    const base = original.replace(/\.md$/, "");
+    // All forms a link might use to reference this file
+    const variants = new Set([
+      base,                              // "01 - what is Jay"
+      `./${base}`,                       // "./01 - what is Jay"
+      original,                          // "01 - what is Jay.md"
+      `./${original}`,                   // "./01 - what is Jay.md"
+      encodeURIComponent(base),          // full encoding (rare)
+      base.replace(/ /g, "%20"),         // space-only encoding
+      `./${base.replace(/ /g, "%20")}`,  // with prefix
+      original.replace(/ /g, "%20"),
+      `./${original.replace(/ /g, "%20")}`,
+    ]);
+    for (const v of variants) {
+      map[v] = slug;
+    }
+  }
+
+  for (const original of imageFiles) {
+    const normalized = normalizeImageFilename(original);
+    const variants = new Set([
+      original,
+      `./${original}`,
+      original.replace(/ /g, "%20"),
+      `./${original.replace(/ /g, "%20")}`,
+    ]);
+    for (const v of variants) {
+      map[v] = normalized;
+    }
+  }
+
+  return map;
+}
+
+function rewriteLinks(content, linkMap) {
+  // Match markdown links: [text](target) and [text](target 'title')
+  // Also matches image links: ![alt](target) and ![alt](target 'title')
+  return content.replace(
+    /(!?\[[^\]]*\])\(([^)]+)\)/g,
+    (match, bracket, inside) => {
+      // Separate target from optional title: "target 'title'" or "target"
+      const titleMatch = inside.match(/^(.+?)\s+(['"])(.+?)\2$/);
+      const target = titleMatch ? titleMatch[1] : inside.trim();
+      const title = titleMatch ? ` ${titleMatch[2]}${titleMatch[3]}${titleMatch[2]}` : "";
+
+      if (target.startsWith("http") || target.startsWith("#") || target.startsWith("..")) {
+        return match;
+      }
+
+      const replacement = linkMap[target];
+      if (replacement) {
+        return `${bracket}(${replacement}${title})`;
+      }
+      return match;
+    }
+  );
+}
+
+// ── Frontmatter ──
 
 function titleCase(str) {
   return str.replace(
@@ -114,6 +159,8 @@ function addFrontmatter(content, filename) {
   lines.push(`---`, "", content);
   return lines.join("\n");
 }
+
+// ── Media config & map ──
 
 function loadMediaConfig() {
   try {
@@ -166,6 +213,58 @@ function generateMediaMap(mediaConfig) {
   console.log(`Media map: ${mapped} CDN, ${local} local fallback`);
 }
 
+// ── Wix Media upload ──
+
+function uploadAndRebuildIndex() {
+  console.log("\nUploading images to Wix Media...");
+  try {
+    execSync("jay-stack-cli run wix-media/upload-public --folder design-log", {
+      cwd: ROOT_DIR,
+      stdio: "inherit",
+      timeout: 120000,
+    });
+  } catch (e) {
+    console.log(`${colors.yellow}Upload failed or partially completed — media map will use local fallback${colors.reset}`);
+    return false;
+  }
+
+  console.log("\nRebuilding media index...");
+  try {
+    execSync("jay-stack-cli run wix-media/rebuild-index", {
+      cwd: ROOT_DIR,
+      stdio: "inherit",
+      timeout: 60000,
+    });
+  } catch (e) {
+    console.log(`${colors.yellow}Rebuild-index failed — media map will use local fallback${colors.reset}`);
+    return false;
+  }
+
+  return true;
+}
+
+// ── Helpers ──
+
+function getRemoteHash() {
+  const output = execSync(`git ls-remote ${REPO_URL} refs/heads/${BRANCH}`, {
+    encoding: "utf-8",
+    timeout: 15000,
+  });
+  const hash = output.split(/\s/)[0];
+  if (!hash) {
+    throw new Error("Could not resolve remote HEAD");
+  }
+  return hash;
+}
+
+function getStoredHash() {
+  try {
+    return fs.readFileSync(SYNC_HASH_FILE, "utf-8").trim();
+  } catch {
+    return null;
+  }
+}
+
 function clearDir(dir) {
   if (fs.existsSync(dir)) {
     fs.rmSync(dir, { recursive: true });
@@ -173,21 +272,10 @@ function clearDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
+// ── Main ──
+
 function main() {
   console.log(`${colors.yellow}Design Log Sync${colors.reset}`);
-
-  if (mediaMapOnly) {
-    console.log("Regenerating media map from MEDIA-INDEX...\n");
-    const mediaConfig = loadMediaConfig();
-    if (Object.keys(mediaConfig).length === 0) {
-      console.log(`${colors.red}No media config found. Run a full sync first.${colors.reset}`);
-      process.exit(1);
-    }
-    generateMediaMap(mediaConfig);
-    console.log(`${colors.green}Done${colors.reset}`);
-    return;
-  }
-
   console.log(`Repo: ${REPO_URL}\n`);
 
   const remoteHash = getRemoteHash();
@@ -223,50 +311,65 @@ function main() {
     clearDir(CONTENT_DIR);
     clearDir(PUBLIC_DIR);
 
+    // First pass: collect all filenames for link rewriting
     const entries = fs.readdirSync(sourceDir);
-    let mdCount = 0;
-    let imgCount = 0;
-    const mediaConfig = loadMediaConfig();
-    const newMediaConfig = {};
+    const mdFiles = [];
+    const imageFiles = [];
 
     for (const entry of entries) {
       const srcPath = path.join(sourceDir, entry);
       if (!fs.statSync(srcPath).isFile()) continue;
-
-      if (entry.endsWith(".md")) {
-        const content = fs.readFileSync(srcPath, "utf-8");
-        const processed = addFrontmatter(content, entry);
-        const normalName = normalizeFilename(entry);
-        fs.writeFileSync(path.join(CONTENT_DIR, normalName), processed);
-        mdCount++;
-      } else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry)) {
-        const normalName = normalizeImageFilename(entry);
-        fs.copyFileSync(srcPath, path.join(PUBLIC_DIR, normalName));
-        const publicPath = `public/design-log/${normalName}`;
-        const existing = mediaConfig[publicPath];
-        newMediaConfig[entry] = { normalized: normalName };
-        if (!existing || existing.status !== "uploaded") {
-          mediaConfig[publicPath] = { status: "ready" };
-        }
-        imgCount++;
-      }
+      if (entry.endsWith(".md")) mdFiles.push(entry);
+      else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry)) imageFiles.push(entry);
     }
 
+    const linkMap = buildLinkMap(mdFiles, imageFiles);
+
+    // Second pass: process files with link rewriting
+    let mdCount = 0;
+    let imgCount = 0;
+    const newMediaConfig = {};
+
+    for (const entry of mdFiles) {
+      const srcPath = path.join(sourceDir, entry);
+      let content = fs.readFileSync(srcPath, "utf-8");
+      content = rewriteLinks(content, linkMap);
+      content = addFrontmatter(content, entry);
+      const normalName = normalizeFilename(entry);
+      fs.writeFileSync(path.join(CONTENT_DIR, normalName), content);
+      mdCount++;
+    }
+
+    for (const entry of imageFiles) {
+      const srcPath = path.join(sourceDir, entry);
+      const normalName = normalizeImageFilename(entry);
+      fs.copyFileSync(srcPath, path.join(PUBLIC_DIR, normalName));
+      newMediaConfig[entry] = { normalized: normalName };
+      imgCount++;
+    }
+
+    const oldMediaConfig = loadMediaConfig();
+    const imagesChanged =
+      JSON.stringify(Object.keys(newMediaConfig).sort()) !==
+      JSON.stringify(Object.keys(oldMediaConfig).sort());
+
     saveMediaConfig(newMediaConfig);
-
-    generateMediaMap(newMediaConfig);
-
     fs.writeFileSync(SYNC_HASH_FILE, remoteHash + "\n");
 
-    console.log("");
-    console.log(`${colors.green}Done:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
+    console.log(`\n${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
     console.log(`Markdown: ${path.relative(ROOT_DIR, CONTENT_DIR)}`);
     console.log(`Images:   ${path.relative(ROOT_DIR, PUBLIC_DIR)}`);
+
+    if (imagesChanged) {
+      uploadAndRebuildIndex();
+    } else {
+      console.log("\nImages unchanged — skipping upload");
+    }
+
     console.log("");
-    console.log("Next: upload images to Wix Media:");
-    console.log("  jay-stack-cli run wix-media/upload-public --folder design-log");
-    console.log("  jay-stack-cli run wix-media/rebuild-index");
-    console.log("  node scripts/sync-design-log.cjs --media-map");
+    generateMediaMap(newMediaConfig);
+
+    console.log(`\n${colors.green}Done${colors.reset}`);
   } finally {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   }

@@ -6,7 +6,7 @@
           contract="markdown-pages"
           key="post">
     contentDir: content/design-log
-    mediaMap: content/design-log/media-map.yaml
+    mediaMap: config/.design-log-media-map.yaml
   </script>
   <script type="application/jay-headfull" src="../../../components/site-header/site-header" names="SiteHeader" contract="../../../components/site-header/site-header.jay-contract"></script>
   <link rel="stylesheet" href="../../../styles/theme.css" />
@@ -126,6 +126,24 @@
     .design-log .md .token.punctuation { color: #94a3b8; }
     .design-log .md .token.tag { color: #f87171; }
     .design-log .md .token.attribute { color: #fbbf24; }
+
+    /* Mermaid diagrams */
+    .design-log .md .md-mermaid {
+      margin: 1.5rem 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .design-log .md .md-mermaid svg {
+      --bg: var(--color-surface-bright) !important;
+      --fg: var(--color-text) !important;
+      --accent: var(--color-primary);
+      --border: var(--color-outline-variant);
+      --surface: var(--color-surface-lowest);
+      display: block;
+      max-width: 100%;
+      height: auto;
+      padding: 1.5rem;
+    }
   </style>
 </head>
 <body>
