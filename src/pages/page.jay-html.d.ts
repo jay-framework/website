@@ -3,6 +3,8 @@ import {ClipboardCopyViewState, ClipboardCopyRefs, ClipboardCopyInteractiveViewS
 import {clipboardCopy} from "@jay-framework/ui-kit";
 import {SiteHeaderViewState, SiteHeaderRefs, SiteHeaderInteractiveViewState} from "../components/site-header/site-header.jay-contract";
 import {SiteHeader} from "../components/site-header/site-header";
+import {SiteFooterViewState, SiteFooterRefs, SiteFooterInteractiveViewState} from "../components/site-footer/site-footer.jay-contract";
+import {SiteFooter} from "../components/site-footer/site-footer";
 
 import './page.css';
 

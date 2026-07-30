@@ -4,6 +4,7 @@
     <meta name="description" content="{description}">
     <script type="application/jay-data" contract="./page.jay-contract"></script>
     <script type="application/jay-headfull" src="../components/site-header/site-header" names="SiteHeader" contract="../components/site-header/site-header.jay-contract"></script>
+    <script type="application/jay-headfull" src="../components/site-footer/site-footer" names="SiteFooter" contract="../components/site-footer/site-footer.jay-contract"></script>
     <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
     <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
     <link rel="stylesheet" href="../styles/theme.css" />
@@ -102,13 +103,42 @@
         filter: brightness(1.1) drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
       }
       .hero-headline {
+        position: relative;
+        display: inline-block;
         font-family: var(--font-display);
         font-size: clamp(32px, 5vw, 48px);
         line-height: 1.15;
         font-weight: 700;
         letter-spacing: -0.02em;
+      }
+      .hero-headline .hero-headline-base {
         color: var(--color-primary);
         text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+      }
+      @keyframes hero-shimmer-pass {
+        0%   { background-position: -150% center; }
+        15%  { background-position: -150% center; }
+        35%  { background-position:  150% center; }
+        100% { background-position:  150% center; }
+      }
+      .hero-headline .hero-headline-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.6) 46%,
+          rgba(255, 255, 255, 0.95) 50%,
+          rgba(255, 255, 255, 0.6) 54%,
+          transparent 65%
+        );
+        background-size: 200% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: hero-shimmer-pass 5s ease-in-out infinite;
       }
       .hero-subtitle {
         font-size: 18px;
@@ -843,55 +873,6 @@
         text-decoration: none;
       }
 
-      /* ── Footer ── */
-      .site-footer {
-        background: var(--color-surface-lowest);
-        border-top: 1px solid rgba(60, 73, 78, 0.2);
-        padding: 48px 0;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-gutter);
-      }
-      @media (min-width: 768px) {
-        .footer-grid { grid-template-columns: 1fr 1fr; }
-      }
-      @media (min-width: 1024px) {
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
-      }
-      .footer-brand {
-        font-family: var(--font-display);
-        font-size: 24px;
-        font-weight: 800;
-        color: var(--color-primary);
-        margin-bottom: 24px;
-      }
-      .footer-copyright {
-        color: var(--color-text-muted);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        line-height: 16px;
-      }
-      .footer-heading {
-        color: var(--color-primary);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 24px;
-      }
-      .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-      .footer-links a {
-        color: var(--color-text-muted);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        transition: color 0.3s;
-        text-decoration: none;
-      }
-      .footer-links a:hover { color: var(--color-secondary-dim); text-decoration: none; }
     </style>
   </head>
   <body>
@@ -913,7 +894,7 @@
               <img class="hero-logo" src="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500,h_500/file.webp" srcset="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w" sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
             </div>
             <div>
-              <h1 class="hero-headline">The web framework for AI Agents</h1>
+              <h1 class="hero-headline"><span class="hero-headline-base">The web framework for AI Agents</span><span class="hero-headline-shine" aria-hidden="true">The web framework for AI Agents</span></h1>
               <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps with AI agents. Jay combines strict code contracts, automated feedback loops, and a visual editor to guarantee bug-free code before deployment.</p>
               <div class="hero-buttons" style="margin-top: 32px;">
                 <a class="btn-primary" href="#cta">Get Started</a>
@@ -1375,38 +1356,7 @@
 
     </main>
 
-    <!-- ════════════════════════════════════════════ -->
-    <!-- Footer                                      -->
-    <!-- ════════════════════════════════════════════ -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div>
-            <div class="footer-brand">Jay Framework</div>
-            <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
-          </div>
-          <div>
-            <h3 class="footer-heading">Resources</h3>
-            <ul class="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Community</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="footer-heading">Legal</h3>
-            <ul class="footer-links">
-              <li><a href="#">Security Policy</a></li>
-              <li><a href="#">Privacy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="footer-heading">Learn More</h3>
-            <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <jay:SiteFooter />
 
     </div>
   </body>

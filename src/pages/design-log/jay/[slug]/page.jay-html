@@ -5,11 +5,12 @@
           plugin="@jay-framework/markdown"
           contract="markdown-pages"
           key="post">
-    contentDir: content/design-log
-    mediaMap: config/.design-log-media-map.yaml
+    contentDir: content/design-log/jay
+    mediaMap: config/.design-log-media-map-jay.yaml
   </script>
-  <script type="application/jay-headfull" src="../../../components/site-header/site-header" names="SiteHeader" contract="../../../components/site-header/site-header.jay-contract"></script>
-  <link rel="stylesheet" href="../../../styles/theme.css" />
+  <script type="application/jay-headfull" src="../../../../components/site-header/site-header" names="SiteHeader" contract="../../../../components/site-header/site-header.jay-contract"></script>
+  <script type="application/jay-headfull" src="../../../../components/site-footer/site-footer" names="SiteFooter" contract="../../../../components/site-footer/site-footer.jay-contract"></script>
+  <link rel="stylesheet" href="../../../../styles/theme.css" />
   <style>
     body {
       background: var(--color-bg);
@@ -57,6 +58,21 @@
     }
     .design-log .md li {
       margin-bottom: 0.35rem;
+    }
+
+    /* Blockquotes */
+    .design-log .md blockquote {
+      border-left: 3px solid var(--color-primary);
+      margin: 1.5rem 0;
+      padding: 16px 24px;
+      background: rgba(0, 210, 255, 0.05);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+    .design-log .md blockquote p {
+      margin-bottom: 0;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
     }
 
     /* Tables */
@@ -152,6 +168,7 @@
     <main class="design-log">
       <div class="md">{post.content}</div>
     </main>
+    <jay:SiteFooter />
   </div>
 </body>
 </html>

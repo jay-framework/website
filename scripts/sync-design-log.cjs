@@ -7,27 +7,26 @@ const os = require("os");
 
 const SCRIPT_DIR = __dirname;
 const ROOT_DIR = path.resolve(path.join(SCRIPT_DIR, ".."));
-const CONTENT_DIR = path.join(ROOT_DIR, "content", "design-log");
-const PUBLIC_DIR = path.join(ROOT_DIR, "public", "design-log");
-const MEDIA_MAP_FILE = path.join(ROOT_DIR, "config", ".design-log-media-map.yaml");
-const MEDIA_CONFIG_FILE = path.join(ROOT_DIR, "config", ".design-log-media.json");
-const SYNC_HASH_FILE = path.join(CONTENT_DIR, ".sync-hash");
 const MEDIA_INDEX_FILE = path.join(ROOT_DIR, "agent-kit", "references", "wix-media", "MEDIA-INDEX.md");
-const REPO_URL = "git@github.com:jay-framework/jay.git";
-const BRANCH = "main";
+
+const REPOS = [
+  { name: "jay", url: "git@github.com:jay-framework/jay.git", folder: "design-log" },
+  { name: "wix", url: "git@github.com:jay-framework/wix.git", folder: "design-log" },
+];
 
 const colors = {
   red: "\x1b[31m",
   green: "\x1b[32m",
   yellow: "\x1b[33m",
+  cyan: "\x1b[36m",
   reset: "\x1b[0m",
 };
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`${colors.yellow}Design Log Sync Script${colors.reset}`);
   console.log("");
-  console.log("Syncs the design-log folder from the jay repo, uploads images");
-  console.log("to Wix Media, and generates the media map — all in one call.");
+  console.log("Syncs design-log folders from jay and wix repos, uploads images");
+  console.log("to Wix Media, and generates media maps — all in one call.");
   console.log("");
   console.log("Usage:");
   console.log("  node sync-design-log.cjs [--force]");
@@ -38,6 +37,18 @@ if (process.argv.includes("--help") || process.argv.includes("-h")) {
 }
 
 const forceSync = process.argv.includes("--force");
+
+// ── Repo paths ──
+
+function repoPaths(name) {
+  return {
+    contentDir: path.join(ROOT_DIR, "content", "design-log", name),
+    publicDir: path.join(ROOT_DIR, "public", "design-log", name),
+    mediaMapFile: path.join(ROOT_DIR, "config", `.design-log-media-map-${name}.yaml`),
+    mediaConfigFile: path.join(ROOT_DIR, "config", `.design-log-media-${name}.json`),
+    syncHashFile: path.join(ROOT_DIR, "content", "design-log", name, ".sync-hash"),
+  };
+}
 
 // ── Filename normalization ──
 
@@ -71,15 +82,14 @@ function buildLinkMap(mdFiles, imageFiles) {
   for (const original of mdFiles) {
     const slug = normalizeSlug(original);
     const base = original.replace(/\.md$/, "");
-    // All forms a link might use to reference this file
     const variants = new Set([
-      base,                              // "01 - what is Jay"
-      `./${base}`,                       // "./01 - what is Jay"
-      original,                          // "01 - what is Jay.md"
-      `./${original}`,                   // "./01 - what is Jay.md"
-      encodeURIComponent(base),          // full encoding (rare)
-      base.replace(/ /g, "%20"),         // space-only encoding
-      `./${base.replace(/ /g, "%20")}`,  // with prefix
+      base,
+      `./${base}`,
+      original,
+      `./${original}`,
+      encodeURIComponent(base),
+      base.replace(/ /g, "%20"),
+      `./${base.replace(/ /g, "%20")}`,
       original.replace(/ /g, "%20"),
       `./${original.replace(/ /g, "%20")}`,
     ]);
@@ -105,12 +115,9 @@ function buildLinkMap(mdFiles, imageFiles) {
 }
 
 function rewriteLinks(content, linkMap) {
-  // Match markdown links: [text](target) and [text](target 'title')
-  // Also matches image links: ![alt](target) and ![alt](target 'title')
   return content.replace(
     /(!?\[[^\]]*\])\(([^)]+)\)/g,
     (match, bracket, inside) => {
-      // Separate target from optional title: "target 'title'" or "target"
       const titleMatch = inside.match(/^(.+?)\s+(['"])(.+?)\2$/);
       const target = titleMatch ? titleMatch[1] : inside.trim();
       const title = titleMatch ? ` ${titleMatch[2]}${titleMatch[3]}${titleMatch[2]}` : "";
@@ -146,6 +153,14 @@ function parseTitleFromFilename(name) {
   return { number: null, title: titleCase(base.trim()) };
 }
 
+const AGENT_NOTE_SHORT = `> *Written for AI agents. See [Log Methodology Note](#log-methodology-note) below for details.*`;
+
+const AGENT_NOTE_FULL = `---
+
+## Log Methodology Note
+
+**Note:** These design logs are written primarily for AI agents as part of the [Design Log methodology](/design-log) and made accessible here for human readers. The language and structure are optimized for machine consumption — expect precise, specification-style prose rather than narrative documentation.`;
+
 function addFrontmatter(content, filename) {
   if (content.trimStart().startsWith("---")) {
     return content;
@@ -160,18 +175,32 @@ function addFrontmatter(content, filename) {
   return lines.join("\n");
 }
 
+function injectNotes(content) {
+  const firstHeadingIndex = content.search(/^#\s+.+$/m);
+  if (firstHeadingIndex === -1) {
+    return content + "\n\n" + AGENT_NOTE_SHORT + "\n" + AGENT_NOTE_FULL + "\n";
+  }
+  const afterHeading = content.indexOf("\n", firstHeadingIndex);
+  if (afterHeading === -1) {
+    return content + "\n\n" + AGENT_NOTE_SHORT + "\n" + AGENT_NOTE_FULL + "\n";
+  }
+  const before = content.slice(0, afterHeading + 1);
+  const after = content.slice(afterHeading + 1);
+  return before + "\n" + AGENT_NOTE_SHORT + "\n" + after + "\n" + AGENT_NOTE_FULL + "\n";
+}
+
 // ── Media config & map ──
 
-function loadMediaConfig() {
+function loadMediaConfig(filePath) {
   try {
-    return JSON.parse(fs.readFileSync(MEDIA_CONFIG_FILE, "utf-8"));
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
   } catch {
     return {};
   }
 }
 
-function saveMediaConfig(config) {
-  fs.writeFileSync(MEDIA_CONFIG_FILE, JSON.stringify(config, null, 2) + "\n");
+function saveMediaConfig(filePath, config) {
+  fs.writeFileSync(filePath, JSON.stringify(config, null, 2) + "\n");
 }
 
 function parseMediaIndex() {
@@ -192,7 +221,7 @@ function parseMediaIndex() {
   return urlByDisplayName;
 }
 
-function generateMediaMap(mediaConfig) {
+function generateMediaMap(mediaMapFile, mediaConfig) {
   const cdnUrls = parseMediaIndex();
 
   const yamlLines = ["# Auto-generated by sync-design-log.cjs"];
@@ -208,27 +237,27 @@ function generateMediaMap(mediaConfig) {
     else local++;
   }
 
-  fs.mkdirSync(path.dirname(MEDIA_MAP_FILE), { recursive: true });
-  fs.writeFileSync(MEDIA_MAP_FILE, yamlLines.join("\n") + "\n");
-  console.log(`Media map: ${mapped} CDN, ${local} local fallback`);
+  fs.mkdirSync(path.dirname(mediaMapFile), { recursive: true });
+  fs.writeFileSync(mediaMapFile, yamlLines.join("\n") + "\n");
+  console.log(`  Media map: ${mapped} CDN, ${local} local fallback`);
 }
 
 // ── Wix Media upload ──
 
-function uploadAndRebuildIndex() {
-  console.log("\nUploading images to Wix Media...");
+function uploadAndRebuildIndex(repoName) {
+  console.log("\n  Uploading images to Wix Media...");
   try {
-    execSync("jay-stack-cli run wix-media/upload-public --folder design-log", {
+    execSync(`jay-stack-cli run wix-media/upload-public --folder design-log/${repoName}`, {
       cwd: ROOT_DIR,
       stdio: "inherit",
       timeout: 120000,
     });
   } catch (e) {
-    console.log(`${colors.yellow}Upload failed or partially completed — media map will use local fallback${colors.reset}`);
+    console.log(`  ${colors.yellow}Upload failed — media map will use local fallback${colors.reset}`);
     return false;
   }
 
-  console.log("\nRebuilding media index...");
+  console.log("\n  Rebuilding media index...");
   try {
     execSync("jay-stack-cli run wix-media/rebuild-index", {
       cwd: ROOT_DIR,
@@ -236,7 +265,7 @@ function uploadAndRebuildIndex() {
       timeout: 60000,
     });
   } catch (e) {
-    console.log(`${colors.yellow}Rebuild-index failed — media map will use local fallback${colors.reset}`);
+    console.log(`  ${colors.yellow}Rebuild-index failed — media map will use local fallback${colors.reset}`);
     return false;
   }
 
@@ -245,21 +274,21 @@ function uploadAndRebuildIndex() {
 
 // ── Helpers ──
 
-function getRemoteHash() {
-  const output = execSync(`git ls-remote ${REPO_URL} refs/heads/${BRANCH}`, {
+function getRemoteHash(repoUrl, branch) {
+  const output = execSync(`git ls-remote ${repoUrl} refs/heads/${branch}`, {
     encoding: "utf-8",
     timeout: 15000,
   });
   const hash = output.split(/\s/)[0];
   if (!hash) {
-    throw new Error("Could not resolve remote HEAD");
+    throw new Error(`Could not resolve HEAD for ${repoUrl}`);
   }
   return hash;
 }
 
-function getStoredHash() {
+function getStoredHash(hashFile) {
   try {
-    return fs.readFileSync(SYNC_HASH_FILE, "utf-8").trim();
+    return fs.readFileSync(hashFile, "utf-8").trim();
   } catch {
     return null;
   }
@@ -272,46 +301,49 @@ function clearDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-// ── Main ──
+// ── Sync one repo ──
 
-function main() {
-  console.log(`${colors.yellow}Design Log Sync${colors.reset}`);
-  console.log(`Repo: ${REPO_URL}\n`);
+function syncRepo(repo) {
+  const { name, url, folder } = repo;
+  const paths = repoPaths(name);
+  const branch = "main";
 
-  const remoteHash = getRemoteHash();
-  const storedHash = getStoredHash();
+  console.log(`\n${colors.cyan}[${name}]${colors.reset} ${url}`);
+
+  const remoteHash = getRemoteHash(url, branch);
+  const storedHash = getStoredHash(paths.syncHashFile);
 
   if (!forceSync && remoteHash === storedHash) {
-    console.log(`${colors.green}Already up to date${colors.reset} (${remoteHash.slice(0, 8)})`);
-    process.exit(0);
+    console.log(`  ${colors.green}Already up to date${colors.reset} (${remoteHash.slice(0, 8)})`);
+    return;
   }
 
-  console.log(`Remote: ${remoteHash.slice(0, 8)}${storedHash ? `, local: ${storedHash.slice(0, 8)}` : " (no local hash)"}`);
-  console.log("Cloning design-log folder...");
+  console.log(`  Remote: ${remoteHash.slice(0, 8)}${storedHash ? `, local: ${storedHash.slice(0, 8)}` : " (no local hash)"}`);
+  console.log("  Cloning...");
 
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "jay-design-log-"));
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), `jay-dl-${name}-`));
 
   try {
     execSync(
-      `git clone --depth 1 --filter=blob:none --sparse "${REPO_URL}" "${tmpDir}"`,
+      `git clone --depth 1 --filter=blob:none --sparse "${url}" "${tmpDir}"`,
       { stdio: "pipe", timeout: 60000 }
     );
-    execSync("git sparse-checkout set design-log", {
+    execSync(`git sparse-checkout set ${folder}`, {
       cwd: tmpDir,
       stdio: "pipe",
       timeout: 15000,
     });
 
-    const sourceDir = path.join(tmpDir, "design-log");
+    const sourceDir = path.join(tmpDir, folder);
     if (!fs.existsSync(sourceDir)) {
-      console.log(`${colors.red}Error: design-log folder not found in repo${colors.reset}`);
-      process.exit(1);
+      console.log(`  ${colors.red}Error: ${folder}/ not found in repo${colors.reset}`);
+      return;
     }
 
-    clearDir(CONTENT_DIR);
-    clearDir(PUBLIC_DIR);
+    clearDir(paths.contentDir);
+    clearDir(paths.publicDir);
 
-    // First pass: collect all filenames for link rewriting
+    // First pass: collect filenames
     const entries = fs.readdirSync(sourceDir);
     const mdFiles = [];
     const imageFiles = [];
@@ -325,7 +357,7 @@ function main() {
 
     const linkMap = buildLinkMap(mdFiles, imageFiles);
 
-    // Second pass: process files with link rewriting
+    // Second pass: process files
     let mdCount = 0;
     let imgCount = 0;
     const newMediaConfig = {};
@@ -334,45 +366,54 @@ function main() {
       const srcPath = path.join(sourceDir, entry);
       let content = fs.readFileSync(srcPath, "utf-8");
       content = rewriteLinks(content, linkMap);
+      content = injectNotes(content);
       content = addFrontmatter(content, entry);
       const normalName = normalizeFilename(entry);
-      fs.writeFileSync(path.join(CONTENT_DIR, normalName), content);
+      fs.writeFileSync(path.join(paths.contentDir, normalName), content);
       mdCount++;
     }
 
     for (const entry of imageFiles) {
       const srcPath = path.join(sourceDir, entry);
       const normalName = normalizeImageFilename(entry);
-      fs.copyFileSync(srcPath, path.join(PUBLIC_DIR, normalName));
+      fs.copyFileSync(srcPath, path.join(paths.publicDir, normalName));
       newMediaConfig[entry] = { normalized: normalName };
       imgCount++;
     }
 
-    const oldMediaConfig = loadMediaConfig();
+    const oldMediaConfig = loadMediaConfig(paths.mediaConfigFile);
     const imagesChanged =
       JSON.stringify(Object.keys(newMediaConfig).sort()) !==
       JSON.stringify(Object.keys(oldMediaConfig).sort());
 
-    saveMediaConfig(newMediaConfig);
-    fs.writeFileSync(SYNC_HASH_FILE, remoteHash + "\n");
+    saveMediaConfig(paths.mediaConfigFile, newMediaConfig);
+    fs.writeFileSync(paths.syncHashFile, remoteHash + "\n");
 
-    console.log(`\n${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
-    console.log(`Markdown: ${path.relative(ROOT_DIR, CONTENT_DIR)}`);
-    console.log(`Images:   ${path.relative(ROOT_DIR, PUBLIC_DIR)}`);
+    console.log(`  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
 
-    if (imagesChanged) {
-      uploadAndRebuildIndex();
-    } else {
-      console.log("\nImages unchanged — skipping upload");
+    if (imgCount > 0) {
+      if (imagesChanged) {
+        uploadAndRebuildIndex(name);
+      } else {
+        console.log("  Images unchanged — skipping upload");
+      }
+      generateMediaMap(paths.mediaMapFile, newMediaConfig);
     }
-
-    console.log("");
-    generateMediaMap(newMediaConfig);
-
-    console.log(`\n${colors.green}Done${colors.reset}`);
   } finally {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   }
+}
+
+// ── Main ──
+
+function main() {
+  console.log(`${colors.yellow}Design Log Sync${colors.reset}`);
+
+  for (const repo of REPOS) {
+    syncRepo(repo);
+  }
+
+  console.log(`\n${colors.green}Done${colors.reset}`);
 }
 
 main();

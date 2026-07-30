@@ -70,14 +70,45 @@
         border-radius: 9999px;
         margin-bottom: 24px;
       }
+      @keyframes shimmer-pass {
+        0%   { background-position: -150% center; }
+        15%  { background-position: -150% center; }
+        35%  { background-position:  150% center; }
+        100% { background-position:  150% center; }
+      }
       .dl-hero-headline {
         font-family: var(--font-display);
         font-size: clamp(32px, 5vw, 48px);
         line-height: 1.15;
         font-weight: 700;
         letter-spacing: -0.02em;
+      }
+      .shimmer-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .dl-hero-headline .shimmer-base {
         color: var(--color-primary);
         text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+      }
+      .dl-hero-headline .shimmer-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.5) 46%,
+          rgba(255, 255, 255, 0.85) 50%,
+          rgba(255, 255, 255, 0.5) 54%,
+          transparent 65%
+        );
+        background-size: 200% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer-pass 5s ease-in-out infinite;
       }
       .dl-hero-subtitle {
         font-size: 18px;
@@ -176,6 +207,22 @@
         line-height: 24px;
       }
 
+      /* ── Transparency Section ── */
+      .transparency-section { background: var(--color-surface-lowest); }
+      .transparency-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .transparency-content h2 { margin-bottom: 24px; }
+      .transparency-content p {
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 24px;
+      }
+      .transparency-content p:last-child { margin-bottom: 0; }
+
       /* ── Footer ── */
       .site-footer {
         background: var(--color-surface-lowest);
@@ -241,11 +288,11 @@
         <div class="container">
           <div class="dl-hero-content">
             <span class="dl-hero-badge">METHODOLOGY</span>
-            <h1 class="dl-hero-headline">Design Log Methodology</h1>
+            <h1 class="dl-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">Design Log Methodology</span><span class="shimmer-shine" aria-hidden="true">Design Log Methodology</span></span></h1>
             <p class="dl-hero-subtitle">Jay is built using the Design Log methodology — a rigorous, document-first approach to software architecture. Every significant feature is designed in writing before a single line of code is written.</p>
             <div class="dl-hero-buttons">
-              <a class="btn-primary" href="/design-log/index">Browse Jay's Design Logs</a>
-              <a class="btn-secondary" href="https://github.com/yoavaa/design-log-methodology" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+              <a class="btn-primary" href="/design-log/jay/index">Jay Framework Logs</a>
+              <a class="btn-secondary" href="/design-log/wix/index">Wix Integration Logs</a>
             </div>
           </div>
         </div>
@@ -274,6 +321,20 @@
                 <p>Every contribution to Jay — whether from a human developer or an AI agent — must follow the Design Log methodology. New features and architectural changes require a design log to be written and approved before implementation begins. No code is merged without it.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- Transparency                                -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="section transparency-section">
+        <div class="container">
+          <div class="transparency-content">
+            <span class="section-label">Transparency</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Open Design, Not Just Open Source</h2>
+            <p>We believe open source frameworks should be transparent beyond the code. That means publishing not just what we built, but how we designed it — what we tried, what failed, and how the system evolved over time.</p>
+            <p>Jay's design logs are a public record of every architectural decision, dead end, and trade-off. They show the reasoning behind the code, not just the result. If you want to understand why Jay works the way it does, the answer is always in the design log.</p>
           </div>
         </div>
       </section>
