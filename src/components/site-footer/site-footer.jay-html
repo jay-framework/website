@@ -1,5 +1,6 @@
 <html>
   <head>
+    <script type="application/jay-data" contract="./site-footer.jay-contract"></script>
     <style>
       /* ── Footer ── */
       .site-footer {
