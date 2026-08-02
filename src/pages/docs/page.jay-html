@@ -335,17 +335,17 @@
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">2</div>
               <h4>Understand</h4>
-              <p>Read materialized contracts for exact tag schemas, data types, and prop definitions. These are the source of truth for what data is available.</p>
+              <p>Read materialized contracts for exact tag schemas, data types, and prop definitions. Read references for real project data — product catalogs, collection schemas.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">3</div>
-              <h4>Follow patterns</h4>
-              <p>Read the role-specific guides for implementation patterns, conventions, and examples tailored to each agent's responsibilities.</p>
+              <h4>Execute</h4>
+              <p>Write code that follows the contracts. Run CLI commands like <code>jay-stack action</code> for live data discovery and code generation.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">4</div>
-              <h4>Execute</h4>
-              <p>Run CLI commands for live data, generate code that follows the contracts, and validate with <code>jay-stack validate</code>.</p>
+              <h4>Validate</h4>
+              <p>Run <code>jay-stack validate</code> to check correctness. When validation fails, the agent-kit guides explain the fix — a feedback loop back to the contracts and patterns.</p>
             </div>
           </div>
         </div>

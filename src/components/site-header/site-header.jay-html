@@ -209,7 +209,7 @@
         <div class="header-nav">
           <a href="#what-is-jay">AIditor</a>
           <a href="#ecosystem">Ecosystem</a>
-          <a href="#agent-roles">Documentation</a>
+          <a href="/docs">Documentation</a>
           <a href="/design-log">Design Log</a>
         </div>
         <div class="header-actions">
