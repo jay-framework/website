@@ -1,0 +1,242 @@
+<html lang="en">
+<head>
+  <title>Documentation — The Agent Kit | Jay Framework</title>
+  <meta name="description" content="The Jay Stack Agent Kit — documentation written for AI agents, readable by humans. Role-specific guides for Designer, Developer, Plugin Developer, and DevOps.">
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
+  <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
+  <link rel="stylesheet" href="../../styles/theme.css" />
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Hero ── */
+    .docs-hero {
+      position: relative;
+      padding: 96px 0; /* design-system: allow */
+      padding-top: 160px; /* design-system: allow */
+      overflow: hidden;
+    }
+    .docs-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .docs-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .docs-hero-badge {
+      display: inline-block;
+      background: rgba(165, 231, 255, 0.1);
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+    .docs-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+    }
+    .docs-hero-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 32px auto 0;
+    }
+
+    /* ── Intro ── */
+    .docs-intro { background: var(--color-surface); }
+    .docs-intro-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .docs-intro-content p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+    }
+    .docs-intro-content p:last-child { margin-bottom: 0; }
+
+    /* ── Role Cards ── */
+    .docs-roles { background: var(--color-surface-lowest); }
+    .docs-roles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .docs-roles-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .glass-panel {
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-panel:hover {
+      border-color: rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+    }
+
+    .docs-role-card {
+      display: flex;
+      gap: 20px;
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      text-decoration: none;
+      color: inherit;
+    }
+    .docs-role-card:hover { text-decoration: none; }
+    .docs-role-card--designer { box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15); }
+    .docs-role-card--developer { box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15); }
+    .docs-role-card--plugin { box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15); }
+    .docs-role-card--devops { box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15); }
+    .docs-role-card--contracts { box-shadow: 0 0 20px rgba(0, 210, 255, 0.2), 0 0 4px rgba(0, 210, 255, 0.1); }
+    .docs-role-card--contracts { grid-column: 1 / -1; }
+
+    .docs-role-icon {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .docs-role-body h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .docs-role-body p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+      margin: 0;
+    }
+    .docs-role-body .docs-role-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-primary);
+    }
+
+    .section { padding: 96px 0; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--color-primary);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-root">
+    <jay:SiteHeader />
+
+    <main>
+      <section class="docs-hero">
+        <div class="docs-hero-grid"></div>
+        <div class="container">
+          <div class="docs-hero-content">
+            <span class="docs-hero-badge">DOCUMENTATION</span>
+            <h1 class="docs-hero-headline">The Agent Kit</h1>
+            <p class="docs-hero-subtitle">Documentation written for AI agents, readable by humans. The Agent Kit tells each agent exactly what it can do, what files to touch, and what patterns to follow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section docs-intro">
+        <div class="container">
+          <div class="docs-intro-content">
+            <span class="section-label">Overview</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Why documentation for agents?</h2>
+            <p>Traditional documentation explains concepts to humans. The Agent Kit takes a different approach — it provides <strong style="color: var(--color-text);">precise, specification-style instructions</strong> that AI agents can follow mechanically. Each role gets only the information relevant to its task, reducing hallucination and keeping agents within their boundaries.</p>
+            <p>The Agent Kit is generated from the framework's source packages by running <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack-cli agent-kit</code>. It reflects the exact capabilities and contracts available in your project — not generic documentation, but a precise map of what's possible right now.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section docs-roles">
+        <div class="container">
+          <div style="margin-bottom: 48px;">
+            <span class="section-label">Guides</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Browse by Role</h2>
+          </div>
+          <div class="docs-roles-grid">
+            <a class="docs-role-card glass-panel docs-role-card--designer" href="/docs/designer/instructions">
+              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Designer" width="64" height="64" loading="lazy">
+              <div class="docs-role-body">
+                <h3>Designer</h3>
+                <p>Creates <code>.jay-html</code> pages and templates. Binds to contract data using template syntax — data bindings, conditions, loops, and refs. Styles pages with CSS.</p>
+                <span class="docs-role-link">25 guides &rarr;</span>
+              </div>
+            </a>
+            <a class="docs-role-card glass-panel docs-role-card--developer" href="/docs/developer/instructions">
+              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Developer" width="64" height="64" loading="lazy">
+              <div class="docs-role-body">
+                <h3>Developer</h3>
+                <p>Creates page components, defines page contracts, configures routing, and sets up project services. Builds the full-stack logic — unburdened from HTML or CSS.</p>
+                <span class="docs-role-link">13 guides &rarr;</span>
+              </div>
+            </a>
+            <a class="docs-role-card glass-panel docs-role-card--plugin" href="/docs/plugin/instructions">
+              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Plugin Developer" width="64" height="64" loading="lazy">
+              <div class="docs-role-body">
+                <h3>Plugin Developer</h3>
+                <p>Creates reusable headless components packaged as plugins. Defines contracts, actions, services, and CLI commands that other projects consume.</p>
+                <span class="docs-role-link">20 guides &rarr;</span>
+              </div>
+            </a>
+            <a class="docs-role-card glass-panel docs-role-card--devops" href="/docs/devops/instructions">
+              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="DevOps" width="64" height="64" loading="lazy">
+              <div class="docs-role-body">
+                <h3>DevOps</h3>
+                <p>Handles production builds, deployment configuration, serving modes, and cache invalidation. Manages the Two-Server Architecture.</p>
+                <span class="docs-role-link">6 guides &rarr;</span>
+              </div>
+            </a>
+            <a class="docs-role-card glass-panel docs-role-card--contracts" href="/docs/contracts/guide">
+              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Contracts" width="64" height="64" loading="lazy">
+              <div class="docs-role-body">
+                <h3>Contracts</h3>
+                <p>Contract authoring guide shared across all roles. Covers YAML syntax, page contracts, component contracts, linked contracts, and graduated examples. The contract is the source of truth for both Designer and Developer.</p>
+                <span class="docs-role-link">5 guides &rarr;</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <jay:SiteFooter />
+  </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<html lang="en">
+<head>
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless"
+          plugin="@jay-framework/markdown"
+          contract="markdown-pages"
+          key="post">
+    contentDir: content/docs/developer
+  </script>
+  <script type="application/jay-headfull" src="../../../../components/site-header/site-header" names="SiteHeader" contract="../../../../components/site-header/site-header.jay-contract"></script>
+  <script type="application/jay-headfull" src="../../../../components/site-footer/site-footer" names="SiteFooter" contract="../../../../components/site-footer/site-footer.jay-contract"></script>
+  <link rel="stylesheet" href="../../../../styles/theme.css" />
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+    }
+    .docs {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
+    }
+    .docs .md {
+      line-height: 1.7;
+    }
+    .docs .md h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .docs .md h2,
+    .docs .md h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .docs .md h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .docs .md h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .docs .md p {
+      margin-bottom: 1rem;
+    }
+    .docs .md ul,
+    .docs .md ol {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    .docs .md li {
+      margin-bottom: 0.35rem;
+    }
+    .docs .md blockquote {
+      border-left: 3px solid var(--color-primary);
+      margin: 1.5rem 0;
+      padding: 16px 24px;
+      background: rgba(0, 210, 255, 0.05);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+    .docs .md blockquote p {
+      margin-bottom: 0;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .docs .md table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .docs .md th,
+    .docs .md td {
+      border: 1px solid var(--color-outline-variant);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .docs .md th {
+      background: var(--color-surface-high);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .docs .md td {
+      color: var(--color-text-muted);
+    }
+    .docs .md tr:hover td {
+      background: rgba(165, 231, 255, 0.03);
+    }
+    .docs .md pre.md-code,
+    .docs .md pre {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+    .docs .md pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      color: var(--color-text);
+    }
+    .docs .md code {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      padding: 0.15em 0.4em;
+      border-radius: var(--radius-default);
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+    }
+    .docs .md .token.keyword { color: #c084fc; }
+    .docs .md .token.string { color: #34d399; }
+    .docs .md .token.comment { color: #94a3b8; font-style: italic; }
+    .docs .md .token.number { color: #fbbf24; }
+    .docs .md .token.function { color: #60a5fa; }
+    .docs .md .token.operator { color: #94a3b8; }
+    .docs .md .token.punctuation { color: #94a3b8; }
+    .docs .md .token.tag { color: #f87171; }
+    .docs .md .token.attribute { color: #fbbf24; }
+    .docs .md .md-mermaid {
+      margin: 1.5rem 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .docs .md .md-mermaid svg {
+      --bg: var(--color-surface-bright) !important;
+      --fg: var(--color-text) !important;
+      --accent: var(--color-primary);
+      --border: var(--color-outline-variant);
+      --surface: var(--color-surface-lowest);
+      display: block;
+      max-width: 100%;
+      height: auto;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-root">
+    <jay:SiteHeader />
+    <main class="docs">
+      <div class="md">{post.content}</div>
+    </main>
+    <jay:SiteFooter />
+  </div>
+</body>
+</html>

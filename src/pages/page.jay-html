@@ -522,6 +522,13 @@
       @media (min-width: 1024px) {
         .roles-cards { grid-template-columns: repeat(4, 1fr); }
       }
+      a.role-card {
+        text-decoration: none;
+        color: inherit;
+      }
+      a.role-card:hover {
+        text-decoration: none;
+      }
       .role-card {
         padding: 32px;
         border-radius: var(--radius-2xl);
@@ -1238,26 +1245,26 @@
             <img src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp" srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
           </div>
           <div class="roles-cards">
-            <div class="role-card glass-panel role-card--designer">
+            <a class="role-card glass-panel role-card--designer" href="/docs/designer/instructions">
               <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Designer" width="80" height="80" loading="lazy">
               <h3>Designer</h3>
               <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
-            </div>
-            <div class="role-card glass-panel role-card--developer">
+            </a>
+            <a class="role-card glass-panel role-card--developer" href="/docs/developer/instructions">
               <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Developer" width="80" height="80" loading="lazy">
               <h3>Developer</h3>
               <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
-            </div>
-            <div class="role-card glass-panel role-card--plugin">
+            </a>
+            <a class="role-card glass-panel role-card--plugin" href="/docs/plugin/instructions">
               <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
               <h3>Plugin Developer</h3>
               <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
-            </div>
-            <div class="role-card glass-panel role-card--devops">
+            </a>
+            <a class="role-card glass-panel role-card--devops" href="/docs/devops/instructions">
               <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI DevOps" width="80" height="80" loading="lazy">
               <h3>DevOps</h3>
               <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
-            </div>
+            </a>
           </div>
         </div>
       </section>
