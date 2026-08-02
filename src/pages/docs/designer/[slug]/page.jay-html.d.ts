@@ -4,11 +4,14 @@ import {SiteHeaderViewState, SiteHeaderRefs, SiteHeaderInteractiveViewState} fro
 import {SiteHeader} from "../../../../components/site-header/site-header";
 import {SiteFooterViewState, SiteFooterRefs, SiteFooterInteractiveViewState} from "../../../../components/site-footer/site-footer.jay-contract";
 import {SiteFooter} from "../../../../components/site-footer/site-footer";
+import {DocsSidebarViewState, DocsSidebarRefs, ActivePage, DocsSidebarInteractiveViewState} from "../../../../components/docs-sidebar/docs-sidebar.jay-contract";
+import {DocsSidebar} from "../../../../components/docs-sidebar/docs-sidebar";
 
 import './page.css';
 
 export interface PageViewState {
-  post?: MarkdownPagesViewState
+  post?: MarkdownPagesViewState,
+  activePage: string
 }
 
 
@@ -17,7 +20,7 @@ export interface PageElementRefs {
   post: MarkdownPagesRefs
 }
 
-export type DocsDesignerPageSlowViewState = {};
+export type DocsDesignerPageSlowViewState = Pick<PageViewState, 'activePage'>;
 
 export type DocsDesignerPageFastViewState = {};
 

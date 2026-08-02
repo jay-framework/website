@@ -9,6 +9,7 @@
   </script>
   <script type="application/jay-headfull" src="../../../../components/site-header/site-header" names="SiteHeader" contract="../../../../components/site-header/site-header.jay-contract"></script>
   <script type="application/jay-headfull" src="../../../../components/site-footer/site-footer" names="SiteFooter" contract="../../../../components/site-footer/site-footer.jay-contract"></script>
+  <script type="application/jay-headfull" src="../../../../components/docs-sidebar/docs-sidebar" names="DocsSidebar" contract="../../../../components/docs-sidebar/docs-sidebar.jay-contract"></script>
   <link rel="stylesheet" href="../../../../styles/theme.css" />
   <style>
     body {
@@ -20,8 +21,14 @@
     }
     .docs {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0;
       padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
+    }
+    @media (min-width: 1024px) {
+      .docs { margin-left: 280px; }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .docs { margin-left: 240px; }
     }
     .docs .md {
       line-height: 1.7;
@@ -148,6 +155,7 @@
 <body>
   <div class="page-root">
     <jay:SiteHeader />
+    <jay:DocsSidebar activePage="{activePage}" />
     <main class="docs">
       <div class="md">{post.content}</div>
     </main>

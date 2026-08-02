@@ -1,2 +1,6 @@
 name: docs-developer-page
-tags: []
+tags:
+  - tag: activePage
+    type: data
+    dataType: string
+    phase: slow
