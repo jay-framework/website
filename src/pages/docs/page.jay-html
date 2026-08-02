@@ -81,6 +81,98 @@
     }
     .docs-intro-content p:last-child { margin-bottom: 0; }
 
+    /* ── What's in the Kit ── */
+    .docs-kit { background: var(--color-surface-lowest); }
+    .docs-kit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (min-width: 768px) {
+      .docs-kit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .docs-kit-card {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .docs-kit-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .docs-kit-card code {
+      display: inline-block;
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.8em;
+    }
+    .docs-kit-card p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    /* ── How Agents Use It ── */
+    .docs-workflow { background: var(--color-surface); }
+    .docs-workflow-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+    @media (min-width: 768px) {
+      .docs-workflow-steps { grid-template-columns: repeat(4, 1fr); }
+    }
+    .docs-workflow-step {
+      padding: 28px;
+      border-radius: var(--radius-2xl);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .docs-workflow-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 210, 255, 0.15);
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .docs-workflow-step h4 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .docs-workflow-step p {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 22px;
+      margin: 0;
+    }
+    .docs-workflow-step code {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+
     /* ── Role Cards ── */
     .docs-roles { background: var(--color-surface-lowest); }
     .docs-roles-grid {
@@ -90,6 +182,23 @@
     }
     @media (min-width: 768px) {
       .docs-roles-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .docs-extensibility {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      background: rgba(0, 210, 255, 0.03);
+    }
+    .docs-extensibility p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+      margin: 0;
+    }
+    .docs-extensibility strong {
+      color: var(--color-text);
     }
 
     .glass-panel {
@@ -179,7 +288,65 @@
             <span class="section-label">Overview</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Why documentation for agents?</h2>
             <p>Traditional documentation explains concepts to humans. The Agent Kit takes a different approach — it provides <strong style="color: var(--color-text);">precise, specification-style instructions</strong> that AI agents can follow mechanically. Each role gets only the information relevant to its task, reducing hallucination and keeping agents within their boundaries.</p>
-            <p>The Agent Kit is generated from the framework's source packages by running <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack-cli agent-kit</code>. It reflects the exact capabilities and contracts available in your project — not generic documentation, but a precise map of what's possible right now.</p>
+            <p>The Agent Kit is generated into the <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">agent-kit/</code> folder in your project root by running <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack setup</code> followed by <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack agent-kit</code>. Setup initializes your project's services; agent-kit then executes plugin generators against those live services to produce contracts that reflect your project's actual configured state. The result isn't generic documentation — it's a machine-readable manifest of what your project can do right now.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section docs-kit">
+        <div class="container">
+          <span class="section-label">Generated Artifacts</span>
+          <h2 class="headline-lg" style="margin-top: 16px;">What's in the Kit</h2>
+          <div class="docs-kit-grid">
+            <div class="docs-kit-card glass-panel">
+              <h3>Plugins Index</h3>
+              <p><code>plugins-index.yaml</code></p>
+              <p>The master discovery index. Lists every installed plugin's contracts, actions, services, contexts, routes, and CLI commands. This is how an agent finds out what's available — a single machine-readable manifest for the entire project.</p>
+            </div>
+            <div class="docs-kit-card glass-panel">
+              <h3>Materialized Contracts</h3>
+              <p><code>materialized-contracts/</code></p>
+              <p>Static contracts copied and dynamic contracts generated by executing plugin code against your project's live services. These aren't just docs — they're the actual tag schemas, data types, and props that agents bind to when writing templates and components.</p>
+            </div>
+            <div class="docs-kit-card glass-panel">
+              <h3>References</h3>
+              <p><code>references/</code></p>
+              <p>Plugin-generated reference data from your project's data sources — product catalogs, collection schemas, media indexes. Agents use these to produce realistic, grounded content instead of placeholder data.</p>
+            </div>
+            <div class="docs-kit-card glass-panel">
+              <h3>Role Guides</h3>
+              <p><code>designer/</code> <code>developer/</code> <code>plugin/</code> <code>devops/</code></p>
+              <p>Each role gets its own directory with an <code>INSTRUCTIONS.md</code> entry point and topic-specific guides — template syntax, routing, component state, deployment, and more. Agents read only the guides relevant to their role.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section docs-workflow">
+        <div class="container">
+          <span class="section-label">Discovery</span>
+          <h2 class="headline-lg" style="margin-top: 16px;">How Agents Use It</h2>
+          <div class="docs-workflow-steps">
+            <div class="docs-workflow-step glass-panel">
+              <div class="docs-workflow-number">1</div>
+              <h4>Discover</h4>
+              <p>Read <code>plugins-index.yaml</code> and the role's <code>INSTRUCTIONS.md</code> to learn what's available and how to work with it.</p>
+            </div>
+            <div class="docs-workflow-step glass-panel">
+              <div class="docs-workflow-number">2</div>
+              <h4>Understand</h4>
+              <p>Read materialized contracts for exact tag schemas, data types, and prop definitions. These are the source of truth for what data is available.</p>
+            </div>
+            <div class="docs-workflow-step glass-panel">
+              <div class="docs-workflow-number">3</div>
+              <h4>Follow patterns</h4>
+              <p>Read the role-specific guides for implementation patterns, conventions, and examples tailored to each agent's responsibilities.</p>
+            </div>
+            <div class="docs-workflow-step glass-panel">
+              <div class="docs-workflow-number">4</div>
+              <h4>Execute</h4>
+              <p>Run CLI commands for live data, generate code that follows the contracts, and validate with <code>jay-stack validate</code>.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -189,6 +356,7 @@
           <div style="margin-bottom: 48px;">
             <span class="section-label">Guides</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Browse by Role</h2>
+            <p style="color: var(--color-text-muted); font-size: 15px; line-height: 24px; max-width: 700px; margin-top: 16px;">These guides are published here for the curious human. AI agents read them directly from the <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">agent-kit/</code> folder in your project root, generated locally by the CLI.</p>
           </div>
           <div class="docs-roles-grid">
             <a class="docs-role-card glass-panel docs-role-card--designer" href="/docs/designer/instructions">
@@ -227,10 +395,13 @@
               <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Contracts" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>Contracts</h3>
-                <p>Contract authoring guide shared across all roles. Covers YAML syntax, page contracts, component contracts, linked contracts, and graduated examples. The contract is the source of truth for both Designer and Developer.</p>
+                <p>The central binding concept. Contracts are the source of truth that connects plugin logic to designer templates — the agent-kit materializes them into a discoverable form. Covers YAML syntax, page and component contracts, linked contracts, and graduated examples.</p>
                 <span class="docs-role-link">5 guides &rarr;</span>
               </div>
             </a>
+          </div>
+          <div class="docs-extensibility">
+            <p><strong>Extensible by plugins.</strong> The agent-kit isn't static framework docs — plugins can extend it with their own role-specific guides. When you install a plugin, its guides are automatically included in the kit alongside the framework's own documentation, growing the kit with your project.</p>
           </div>
         </div>
       </section>
