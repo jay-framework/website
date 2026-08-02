@@ -63,9 +63,8 @@
           <div>
             <h3 class="footer-heading">Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Community</a></li>
+              <li><a href="/docs">Documentation</a></li>
+              <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
             </ul>
           </div>
           <div>
