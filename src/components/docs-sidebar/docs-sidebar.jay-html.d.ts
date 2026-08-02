@@ -74,13 +74,22 @@ export enum ActivePage {
   contracts_page_contracts
 }
 
+export enum ActiveRole {
+  designer,
+  developer,
+  plugin,
+  devops,
+  contracts
+}
+
 export interface DocsSidebarViewState {
-  activePage: ActivePage
+  activePage: ActivePage,
+  activeRole: ActiveRole
 }
 
 export interface DocsSidebarElementRefs {}
 
-export type DocsSidebarSlowViewState = Pick<DocsSidebarViewState, 'activePage'>;
+export type DocsSidebarSlowViewState = Pick<DocsSidebarViewState, 'activePage' | 'activeRole'>;
 
 export type DocsSidebarFastViewState = {};
 

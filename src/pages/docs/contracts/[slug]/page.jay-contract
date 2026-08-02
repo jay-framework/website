@@ -4,3 +4,7 @@ tags:
     type: data
     dataType: string
     phase: slow
+  - tag: activeRole
+    type: data
+    dataType: string
+    phase: slow

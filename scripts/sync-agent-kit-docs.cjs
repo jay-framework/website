@@ -133,6 +133,7 @@ function generateSidebarContract(roles) {
     }
   }
   const enumValues = allPages.join(" | ");
+  const roleValues = roles.map((r) => r.role).join(" | ");
   return `# GENERATED FILE — do not edit manually. Run: node scripts/sync-agent-kit-docs.cjs
 name: docs-sidebar
 description: Documentation sidebar navigation with collapsible role sections.
@@ -141,8 +142,14 @@ tags:
     type: variant
     dataType: enum (${enumValues})
     phase: slow
+  - tag: activeRole
+    type: variant
+    dataType: enum (${roleValues})
+    phase: slow
 props:
   - name: activePage
+    kind: optional
+  - name: activeRole
     kind: optional
 `;
 }
@@ -153,9 +160,9 @@ import { makeJayStackComponent, phaseOutput } from '@jay-framework/fullstack-com
 import type { DocsSidebarContract } from './docs-sidebar.jay-contract.generated';
 
 export const DocsSidebar = makeJayStackComponent<DocsSidebarContract>()
-  .withProps<{ activePage?: string }>()
+  .withProps<{ activePage?: string; activeRole?: string }>()
   .withSlowlyRender(async (props) => {
-    return phaseOutput({ activePage: props.activePage ?? '' }, {});
+    return phaseOutput({ activePage: props.activePage ?? '', activeRole: props.activeRole ?? '' }, {});
   });
 `;
 }
@@ -163,8 +170,7 @@ export const DocsSidebar = makeJayStackComponent<DocsSidebarContract>()
 function generateSidebarHtml(roles) {
   const roleBlocks = [];
   for (const r of roles) {
-    const pageIds = r.guides.map((g) => `activePage===${toEnumId(r.role, g.slug)}`);
-    const openExpr = pageIds.join(" || ");
+    const openExpr = `activeRole===${r.role}`;
     const guideItems = r.guides
       .map(
         (g) =>
@@ -372,7 +378,7 @@ function main() {
 
       let content = fs.readFileSync(srcPath, "utf-8");
       content = injectNotes(content, role);
-      fs.writeFileSync(path.join(destDir, file), content);
+      fs.writeFileSync(path.join(destDir, file.toLowerCase()), content);
       count++;
     }
 

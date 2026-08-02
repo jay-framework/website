@@ -73,11 +73,20 @@ export enum ActivePage {
   contracts_page_contracts
 }
 
-export interface DocsSidebarViewState {
-  activePage: ActivePage
+export enum ActiveRole {
+  designer,
+  developer,
+  plugin,
+  devops,
+  contracts
 }
 
-export type DocsSidebarSlowViewState = Pick<DocsSidebarViewState, 'activePage'>;
+export interface DocsSidebarViewState {
+  activePage: ActivePage,
+  activeRole: ActiveRole
+}
+
+export type DocsSidebarSlowViewState = Pick<DocsSidebarViewState, 'activePage' | 'activeRole'>;
 
 export type DocsSidebarFastViewState = {};
 
@@ -89,6 +98,7 @@ export interface DocsSidebarRepeatedRefs {}
 
 export interface DocsSidebarProps {
   activePage?: string;
+  activeRole?: string;
 }
 
 export type DocsSidebarContract = JayContract<DocsSidebarViewState, DocsSidebarRefs, DocsSidebarSlowViewState, DocsSidebarFastViewState, DocsSidebarInteractiveViewState, DocsSidebarProps>

@@ -139,7 +139,7 @@
       <nav>
         <a href="/docs" class="sidebar-home">&larr; Documentation</a>
 
-      <details class="sidebar-role" open="activePage===designer_instructions || activePage===designer_accordion || activePage===designer_cli_commands || activePage===designer_click_popover || activePage===designer_clipboard_copy || activePage===designer_contracts_and_plugins || activePage===designer_design_system || activePage===designer_routing || activePage===designer_jay_html_syntax || activePage===designer_jay_html_components || activePage===designer_jay_html_styling || activePage===designer_jay_html_template_syntax || activePage===designer_letter_split || activePage===designer_markdown_usage || activePage===designer_popover_menu || activePage===designer_project_structure || activePage===designer_script_tags || activePage===designer_scroll_carousel || activePage===designer_spring_button_hover || activePage===designer_sticky_header_scroll || activePage===designer_tabs || activePage===designer_toggle_switch || activePage===designer_tooltip || activePage===designer_wix_media || activePage===designer_word_split">
+      <details class="sidebar-role" open="activeRole===designer">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Designer</span>
@@ -174,7 +174,7 @@
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activePage===developer_instructions || activePage===developer_cli_commands || activePage===developer_component_refs || activePage===developer_component_state || activePage===developer_configuration || activePage===developer_dev_server_service || activePage===developer_routing || activePage===developer_component_data || activePage===developer_page_components || activePage===developer_page_contracts || activePage===developer_project_structure || activePage===developer_render_results || activePage===developer_seo_guide">
+      <details class="sidebar-role" open="activeRole===developer">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Developer</span>
@@ -197,7 +197,7 @@
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activePage===plugin_instructions || activePage===plugin_aiditor_add_menu || activePage===plugin_add_menu_guide || activePage===plugin_commands_guide || activePage===plugin_component_context || activePage===plugin_component_refs || activePage===plugin_component_state || activePage===plugin_component_structure || activePage===plugin_dev_server_service || activePage===plugin_component_data || activePage===plugin_contracts_guide || activePage===plugin_plugin_routes || activePage===plugin_setup_guide || activePage===plugin_plugin_structure || activePage===plugin_validation || activePage===plugin_render_results || activePage===plugin_seo_guide || activePage===plugin_actions_guide || activePage===plugin_services_guide || activePage===plugin_webhooks_guide">
+      <details class="sidebar-role" open="activeRole===plugin">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Plugin Developer</span>
@@ -227,7 +227,7 @@
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activePage===devops_instructions || activePage===devops_wix_baas_deployment || activePage===devops_fetch_handler || activePage===devops_invalidation || activePage===devops_production_build || activePage===devops_serving_modes">
+      <details class="sidebar-role" open="activeRole===devops">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">DevOps</span>
@@ -243,7 +243,7 @@
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activePage===contracts_guide || activePage===contracts_syntax || activePage===contracts_component_contracts || activePage===contracts_linked_contracts || activePage===contracts_page_contracts">
+      <details class="sidebar-role" open="activeRole===contracts">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Contracts</span>

@@ -2,10 +2,11 @@ import {JayContract} from "@jay-framework/runtime";
 
 
 export interface DocsDevopsPageViewState {
-  activePage: string
+  activePage: string,
+  activeRole: string
 }
 
-export type DocsDevopsPageSlowViewState = Pick<DocsDevopsPageViewState, 'activePage'>;
+export type DocsDevopsPageSlowViewState = Pick<DocsDevopsPageViewState, 'activePage' | 'activeRole'>;
 
 export type DocsDevopsPageFastViewState = {};
 

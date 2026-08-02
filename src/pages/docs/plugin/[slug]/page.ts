@@ -3,5 +3,5 @@ import type { PageContract } from './page.jay-contract';
 
 export const page = makeJayStackComponent<PageContract>()
   .withSlowlyRender(async (props) => {
-    return phaseOutput({ activePage: `plugin_${props.slug.replace(/-/g, '_')}` }, {});
+    return phaseOutput({ activePage: `plugin_${props.slug.replace(/-/g, '_')}`, activeRole: 'plugin' }, {});
   });

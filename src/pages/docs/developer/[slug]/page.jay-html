@@ -155,7 +155,7 @@
 <body>
   <div class="page-root">
     <jay:SiteHeader />
-    <jay:DocsSidebar activePage="{activePage}" />
+    <jay:DocsSidebar activePage="{activePage}" activeRole="{activeRole}" />
     <main class="docs">
       <div class="md">{post.content}</div>
     </main>
