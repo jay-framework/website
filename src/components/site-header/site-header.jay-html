@@ -19,7 +19,7 @@
         margin: 0 auto;
         padding: 16px var(--margin-mobile);
       }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .header-inner { padding: 16px var(--margin-desktop); }
       }
       @keyframes brand-shimmer {
@@ -68,7 +68,7 @@
         align-items: center;
         gap: 32px;
       }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .header-nav { display: flex; }
       }
       .header-nav a {
@@ -192,7 +192,7 @@
       .mobile-menu .mobile-menu-github svg {
         flex-shrink: 0;
       }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .header-actions .btn-get-started { display: inline-flex; }
         .header-actions .header-github { display: flex; }
         .hamburger-toggle { display: none; }
