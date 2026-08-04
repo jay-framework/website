@@ -146,10 +146,16 @@ tags:
     type: variant
     dataType: enum (${roleValues})
     phase: slow
+  - tag: activePageTitle
+    type: data
+    dataType: string
+    phase: slow
 props:
   - name: activePage
     kind: optional
   - name: activeRole
+    kind: optional
+  - name: activePageTitle
     kind: optional
 `;
 }
@@ -157,18 +163,23 @@ props:
 function generateSidebarTs() {
   return `// GENERATED FILE — do not edit manually. Run: node scripts/sync-agent-kit-docs.cjs
 import { makeJayStackComponent, phaseOutput } from '@jay-framework/fullstack-component';
-import type { DocsSidebarContract } from './docs-sidebar.jay-contract.generated';
+import type { DocsSidebarContract } from './docs-sidebar.jay-contract';
+import { ActivePage, ActiveRole } from './docs-sidebar.jay-contract';
 
 export const DocsSidebar = makeJayStackComponent<DocsSidebarContract>()
-  .withProps<{ activePage?: string; activeRole?: string }>()
+  .withProps<{ activePage?: string; activeRole?: string; activePageTitle?: string }>()
   .withSlowlyRender(async (props) => {
-    return phaseOutput({ activePage: props.activePage ?? '', activeRole: props.activeRole ?? '' }, {});
+    return phaseOutput({
+      activePage: (props.activePage ?? '') as unknown as ActivePage,
+      activeRole: (props.activeRole ?? '') as unknown as ActiveRole,
+    }, {});
   });
 `;
 }
 
 function generateSidebarHtml(roles) {
   const roleBlocks = [];
+  const mobileRoleBlocks = [];
   for (const r of roles) {
     const openExpr = `activeRole===${r.role}`;
     const guideItems = r.guides
@@ -177,7 +188,7 @@ function generateSidebarHtml(roles) {
           `          <li><a href="${g.href}" class="sidebar-link {activePage === ${toEnumId(r.role, g.slug)} ? active}">${escapeHtml(g.title)}</a></li>`
       )
       .join("\n");
-    roleBlocks.push(`
+    const block = `
       <details class="sidebar-role" open="${openExpr}">
         <summary class="sidebar-role-header">
           <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon">
@@ -187,8 +198,20 @@ function generateSidebarHtml(roles) {
         <ul class="sidebar-guides">
 ${guideItems}
         </ul>
-      </details>`);
+      </details>`;
+    roleBlocks.push(block);
+    mobileRoleBlocks.push(block);
   }
+
+  // Generate conditional role labels for the mobile nav summary
+  const mobileSummaryLabels = roles
+    .map(
+      (r) =>
+        `        <img if="activeRole===${r.role}" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon">\n        <span if="activeRole===${r.role}" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
+    )
+    .join("\n");
+
+  // activePageTitle is passed as a prop and bound directly in the template
 
   return `<!-- GENERATED FILE — do not edit manually. Run: node scripts/sync-agent-kit-docs.cjs -->
 <html>
@@ -287,46 +310,99 @@ ${guideItems}
       font-weight: 500;
     }
 
-    /* ── Mobile toggle ── */
-    .sidebar-toggle { display: none; }
-    .sidebar-hamburger {
+    /* ── Mobile navigation dropdown ── */
+    .mobile-nav {
       display: none;
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      z-index: 41;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--color-primary-container);
-      color: var(--color-on-primary-container);
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-    .sidebar-hamburger svg { width: 20px; height: 20px; }
     @media (max-width: 767px) {
-      .sidebar-hamburger { display: flex; }
-      .sidebar-toggle:checked ~ .sidebar {
+      .mobile-nav {
         display: block;
-        width: 100%;
-        z-index: 48;
-        background: var(--color-surface-lowest);
+        padding-top: 64px; /* design-system: allow — clears fixed header */
       }
-      .sidebar-toggle:checked ~ .sidebar-hamburger .icon-open { display: none; }
-      .sidebar-toggle:checked ~ .sidebar-hamburger .icon-close { display: block; }
-      .icon-close { display: none; }
+    }
+    .mobile-nav-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      background: var(--color-surface-lowest);
+      border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+    }
+    .mobile-nav-toggle::-webkit-details-marker { display: none; }
+    .mobile-nav-toggle::marker { display: none; content: ''; }
+    .mobile-nav-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .mobile-nav-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .mobile-nav-page {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-muted);
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .mobile-nav-page::before {
+      content: '·';
+      margin: 0 6px;
+    }
+    .mobile-nav-chevron {
+      margin-left: auto;
+      width: 16px;
+      height: 16px;
+      color: var(--color-text-muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .mobile-nav[open] .mobile-nav-chevron {
+      transform: rotate(180deg);
+    }
+    .mobile-nav-panel {
+      max-height: 60vh;
+      overflow-y: auto;
+      background: var(--color-surface-lowest);
+      border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      padding-bottom: 12px;
+    }
+    .mobile-nav-panel .sidebar-home {
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(60, 73, 78, 0.15);
+    }
+    .mobile-nav-panel .sidebar-role-header {
+      padding: 8px 16px;
+    }
+    .mobile-nav-panel .sidebar-link {
+      padding: 5px 16px 5px 44px;
     }
   </style>
 </head>
 <body>
   <div>
-    <input type="checkbox" id="docs-sidebar-toggle" class="sidebar-toggle">
-    <label for="docs-sidebar-toggle" class="sidebar-hamburger" aria-label="Toggle navigation">
-      <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </label>
+    <details class="mobile-nav">
+      <summary class="mobile-nav-toggle">
+${mobileSummaryLabels}
+        <span class="mobile-nav-page">{activePageTitle}</span>
+        <svg class="mobile-nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="mobile-nav-panel">
+        <a href="/docs" class="sidebar-home">&larr; Documentation</a>
+${mobileRoleBlocks.join("\n")}
+      </div>
+    </details>
     <aside class="sidebar">
       <nav>
         <a href="/docs" class="sidebar-home">&larr; Documentation</a>

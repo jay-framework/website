@@ -10,8 +10,14 @@ tags:
     type: variant
     dataType: enum (designer | developer | plugin | devops | contracts)
     phase: slow
+  - tag: activePageTitle
+    type: data
+    dataType: string
+    phase: slow
 props:
   - name: activePage
     kind: optional
   - name: activeRole
+    kind: optional
+  - name: activePageTitle
     kind: optional

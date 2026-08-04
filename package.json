@@ -7,7 +7,7 @@
     "setup": "jay-stack-cli setup",
     "dev": "jay-stack-cli dev",
     "agent-kit": "jay-stack-cli agent-kit",
-    "validate": "jay-stack-cli validate",
+    "validate": "npm run build:check-types && jay-stack-cli validate",
     "clean": "rimraf dist && rimraf build && rimraf -g 'src/**/*.d.ts'",
     "definitions": "jay-cli definitions src",
     "build": "npm run agent-kit && npm run definitions",
