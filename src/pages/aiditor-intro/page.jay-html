@@ -401,8 +401,8 @@
               </div>
               <div class="aid-video-frame" style="margin-top: 32px;">
                 <video
-                  src="/videos/aiditor-intro/welcome-aiditor.mp4"
-                  aria-label="Demo: AIditor orientation — live preview, top bar, add menu, and agent panel"
+                  src="/videos/aiditor-intro/full-movie-fast.mp4"
+                  aria-label="Demo: AIditor fast-forward overview clip showing all editor workflows in action"
                   muted
                   playsinline
                   controls
