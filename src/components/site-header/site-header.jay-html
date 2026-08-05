@@ -207,7 +207,7 @@
       <nav class="header-inner">
         <a href="/" class="header-brand"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
         <div class="header-nav">
-          <a href="#what-is-jay">AIditor</a>
+          <a href="/aiditor-intro">AIditor</a>
           <a href="#ecosystem">Ecosystem</a>
           <a href="/docs">Documentation</a>
           <a href="/design-log">Design Log</a>
@@ -222,7 +222,7 @@
       </nav>
     </header>
     <div class="mobile-menu">
-      <a href="#what-is-jay" onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a>
+      <a href="/aiditor-intro" onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a>
       <a href="#ecosystem" onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a>
       <a href="#agent-roles" onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a>
       <a href="/design-log">Design Log</a>
