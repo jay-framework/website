@@ -62,6 +62,21 @@
       color: var(--color-text);
       flex: 1;
     }
+    .sidebar-role-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      flex: 1;
+      min-width: 0;
+    }
+    .sidebar-role-link:hover .sidebar-role-label {
+      color: var(--color-primary);
+    }
+    .sidebar-role-link.active .sidebar-role-label {
+      color: var(--color-primary);
+    }
     .sidebar-role-count {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -197,12 +212,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Designer</span>
+          <a href="/docs/designer/instructions" class="sidebar-role-link {currentPath === '/docs/designer/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Designer</span>
+          </a>
           <span class="sidebar-role-count">26</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/designer/instructions" class="sidebar-link {currentPath === '/docs/designer/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/designer/accordion" class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a></li>
           <li><a href="/docs/designer/cli-commands" class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI Commands Reference</a></li>
           <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
@@ -233,12 +249,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Developer</span>
+          <a href="/docs/developer/instructions" class="sidebar-role-link {currentPath === '/docs/developer/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Developer</span>
+          </a>
           <span class="sidebar-role-count">13</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/developer/instructions" class="sidebar-link {currentPath === '/docs/developer/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/developer/cli-commands" class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI Commands Reference</a></li>
           <li><a href="/docs/developer/component-refs" class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component Refs</a></li>
           <li><a href="/docs/developer/component-state" class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component State Hooks</a></li>
@@ -256,12 +273,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Plugin Developer</span>
+          <a href="/docs/plugin/instructions" class="sidebar-role-link {currentPath === '/docs/plugin/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Plugin Developer</span>
+          </a>
           <span class="sidebar-role-count">20</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/plugin/instructions" class="sidebar-link {currentPath === '/docs/plugin/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
           <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
           <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
@@ -286,12 +304,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">DevOps</span>
+          <a href="/docs/devops/instructions" class="sidebar-role-link {currentPath === '/docs/devops/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">DevOps</span>
+          </a>
           <span class="sidebar-role-count">6</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/devops/instructions" class="sidebar-link {currentPath === '/docs/devops/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying to Wix BaaS</a></li>
           <li><a href="/docs/devops/fetch-handler" class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch Handler Package</a></li>
           <li><a href="/docs/devops/invalidation" class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation &amp; Rebuild</a></li>
@@ -302,12 +321,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Contracts</span>
+          <a href="/docs/contracts/guide" class="sidebar-role-link {currentPath === '/docs/contracts/guide' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Contracts</span>
+          </a>
           <span class="sidebar-role-count">5</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/contracts/guide" class="sidebar-link {currentPath === '/docs/contracts/guide' ? active}">Guide</a></li>
           <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
           <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
           <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>
@@ -322,12 +342,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Designer</span>
+          <a href="/docs/designer/instructions" class="sidebar-role-link {currentPath === '/docs/designer/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Designer</span>
+          </a>
           <span class="sidebar-role-count">26</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/designer/instructions" class="sidebar-link {currentPath === '/docs/designer/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/designer/accordion" class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a></li>
           <li><a href="/docs/designer/cli-commands" class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI Commands Reference</a></li>
           <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
@@ -358,12 +379,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Developer</span>
+          <a href="/docs/developer/instructions" class="sidebar-role-link {currentPath === '/docs/developer/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Developer</span>
+          </a>
           <span class="sidebar-role-count">13</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/developer/instructions" class="sidebar-link {currentPath === '/docs/developer/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/developer/cli-commands" class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI Commands Reference</a></li>
           <li><a href="/docs/developer/component-refs" class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component Refs</a></li>
           <li><a href="/docs/developer/component-state" class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component State Hooks</a></li>
@@ -381,12 +403,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Plugin Developer</span>
+          <a href="/docs/plugin/instructions" class="sidebar-role-link {currentPath === '/docs/plugin/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Plugin Developer</span>
+          </a>
           <span class="sidebar-role-count">20</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/plugin/instructions" class="sidebar-link {currentPath === '/docs/plugin/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
           <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
           <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
@@ -411,12 +434,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">DevOps</span>
+          <a href="/docs/devops/instructions" class="sidebar-role-link {currentPath === '/docs/devops/instructions' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">DevOps</span>
+          </a>
           <span class="sidebar-role-count">6</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/devops/instructions" class="sidebar-link {currentPath === '/docs/devops/instructions' ? active}">Instructions</a></li>
           <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying to Wix BaaS</a></li>
           <li><a href="/docs/devops/fetch-handler" class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch Handler Package</a></li>
           <li><a href="/docs/devops/invalidation" class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation &amp; Rebuild</a></li>
@@ -427,12 +451,13 @@
 
       <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
         <summary class="sidebar-role-header">
-          <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">Contracts</span>
+          <a href="/docs/contracts/guide" class="sidebar-role-link {currentPath === '/docs/contracts/guide' ? active}">
+            <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">Contracts</span>
+          </a>
           <span class="sidebar-role-count">5</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/contracts/guide" class="sidebar-link {currentPath === '/docs/contracts/guide' ? active}">Guide</a></li>
           <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
           <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
           <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>

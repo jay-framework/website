@@ -167,7 +167,10 @@ function generateSidebarHtml(roles) {
   const mobileRoleBlocks = [];
   for (const r of roles) {
     const sectionPath = `/docs/${r.role}`;
-    const guideItems = r.guides
+    const entryGuide = r.guides.find(g => g.isEntry);
+    const entryHref = entryGuide ? entryGuide.href : `${sectionPath}/instructions`;
+    const nonEntryGuides = r.guides.filter(g => !g.isEntry);
+    const guideItems = nonEntryGuides
       .map(
         (g) =>
           `          <li><a href="${g.href}" class="sidebar-link {currentPath === '${g.href}' ? active}">${escapeHtml(g.title)}</a></li>`
@@ -176,8 +179,10 @@ function generateSidebarHtml(roles) {
     const block = `
       <details class="sidebar-role" open="currentPath ^= '${sectionPath}'">
         <summary class="sidebar-role-header">
-          <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon">
-          <span class="sidebar-role-label">${escapeHtml(r.label)}</span>
+          <a href="${entryHref}" class="sidebar-role-link {currentPath === '${entryHref}' ? active}">
+            <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon">
+            <span class="sidebar-role-label">${escapeHtml(r.label)}</span>
+          </a>
           <span class="sidebar-role-count">${r.guides.length}</span>
         </summary>
         <ul class="sidebar-guides">
@@ -260,6 +265,21 @@ ${guideItems}
       font-weight: 600;
       color: var(--color-text);
       flex: 1;
+    }
+    .sidebar-role-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      flex: 1;
+      min-width: 0;
+    }
+    .sidebar-role-link:hover .sidebar-role-label {
+      color: var(--color-primary);
+    }
+    .sidebar-role-link.active .sidebar-role-label {
+      color: var(--color-primary);
     }
     .sidebar-role-count {
       font-family: var(--font-mono);

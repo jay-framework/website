@@ -5,7 +5,6 @@ import type { DocsSidebarContract } from './docs-sidebar.jay-contract';
 export const DocsSidebar = makeJayStackComponent<DocsSidebarContract>()
   .withProps<{ currentPath?: string; activePageTitle?: string }>()
   .withSlowlyRender(async (props: { currentPath?: string; activePageTitle?: string }) => {
-      console.log('\nprops:', props);
     return phaseOutput({
       currentPath: props.currentPath ?? '',
       activePageTitle: props.activePageTitle ?? '',

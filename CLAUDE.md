@@ -4,13 +4,13 @@ This is a Jay Stack project — the official website for the Jay Framework.
 
 ## Getting Started
 
-Run `yarn setup` then `yarn agent-kit` to generate the agent kit.
+Run `npm run setup` then `npm run agent-kit` to generate the agent kit.
 
 Read `agent-kit/` for contracts, plugin references, and role guides. See the `/jay` skill for full details on the agent kit structure, CLI commands, and project organization.
 
 Before making changes, read `agent-kit/plugins-index.yaml` and the relevant role guide (`agent-kit/designer/`, `agent-kit/developer/`, etc.).
 
-Run `yarn validate` after changes.
+Run `npm run validate` after changes.
 
 ## Design Log
 
@@ -18,7 +18,7 @@ This project syncs the design log from the jay framework repo (`jay-framework/ja
 
 ### Syncing
 
-Run `yarn sync:design-log` to pull the latest design log. This clones the design-log folder from the jay repo, processes markdown files into `content/design-log/`, copies images to `public/design-log/`, uploads new images to Wix Media, and generates the media map. The script caches the commit hash and skips re-cloning when up to date. Use `--force` to re-sync regardless.
+Run `npm run sync:design-log` to pull the latest design log. This clones the design-log folder from the jay repo, processes markdown files into `content/design-log/`, copies images to `public/design-log/`, uploads new images to Wix Media, and generates the media map. The script caches the commit hash and skips re-cloning when up to date. Use `--force` to re-sync regardless.
 
 ### Reading Design Logs
 
