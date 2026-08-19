@@ -179,138 +179,139 @@
   <div>
     <details class="mobile-nav">
       <summary class="mobile-nav-toggle">
-        <img if="activeRole===designer" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
-        <span if="activeRole===designer" class="mobile-nav-label">Designer</span>
-        <img if="activeRole===developer" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
-        <span if="activeRole===developer" class="mobile-nav-label">Developer</span>
-        <img if="activeRole===plugin" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
-        <span if="activeRole===plugin" class="mobile-nav-label">Plugin Developer</span>
-        <img if="activeRole===devops" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
-        <span if="activeRole===devops" class="mobile-nav-label">DevOps</span>
-        <img if="activeRole===contracts" src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
-        <span if="activeRole===contracts" class="mobile-nav-label">Contracts</span>
+        <img if="currentPath ^= '/docs/designer'" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
+        <span if="currentPath ^= '/docs/designer'" class="mobile-nav-label">Designer</span>
+        <img if="currentPath ^= '/docs/developer'" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
+        <span if="currentPath ^= '/docs/developer'" class="mobile-nav-label">Developer</span>
+        <img if="currentPath ^= '/docs/plugin'" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
+        <span if="currentPath ^= '/docs/plugin'" class="mobile-nav-label">Plugin Developer</span>
+        <img if="currentPath ^= '/docs/devops'" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
+        <span if="currentPath ^= '/docs/devops'" class="mobile-nav-label">DevOps</span>
+        <img if="currentPath ^= '/docs/contracts'" src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="18" height="18" class="mobile-nav-icon">
+        <span if="currentPath ^= '/docs/contracts'" class="mobile-nav-label">Contracts</span>
         <span class="mobile-nav-page">{activePageTitle}</span>
         <svg class="mobile-nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="mobile-nav-panel">
         <a href="/docs" class="sidebar-home">&larr; Documentation</a>
 
-      <details class="sidebar-role" open="activeRole===designer">
+      <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Designer</span>
-          <span class="sidebar-role-count">25</span>
+          <span class="sidebar-role-count">26</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/designer/instructions" class="sidebar-link {activePage === designer_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/designer/accordion" class="sidebar-link {activePage === designer_accordion ? active}">Accordion</a></li>
-          <li><a href="/docs/designer/cli-commands" class="sidebar-link {activePage === designer_cli_commands ? active}">CLI Commands Reference</a></li>
-          <li><a href="/docs/designer/click-popover" class="sidebar-link {activePage === designer_click_popover ? active}">Click Popover</a></li>
-          <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {activePage === designer_clipboard_copy ? active}">Clipboard Copy</a></li>
-          <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {activePage === designer_contracts_and_plugins ? active}">Contracts and Plugins</a></li>
-          <li><a href="/docs/designer/design-system" class="sidebar-link {activePage === designer_design_system ? active}">Design System (DESIGN.md)</a></li>
-          <li><a href="/docs/designer/routing" class="sidebar-link {activePage === designer_routing ? active}">Directory-Based Routing</a></li>
-          <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {activePage === designer_jay_html_syntax ? active}">Jay-HTML — AI Designer Instructions</a></li>
-          <li><a href="/docs/designer/jay-html-components" class="sidebar-link {activePage === designer_jay_html_components ? active}">Jay-HTML Component Imports</a></li>
-          <li><a href="/docs/designer/jay-html-styling" class="sidebar-link {activePage === designer_jay_html_styling ? active}">Jay-HTML Styling</a></li>
-          <li><a href="/docs/designer/jay-html-template-syntax" class="sidebar-link {activePage === designer_jay_html_template_syntax ? active}">Jay-HTML Template Syntax</a></li>
-          <li><a href="/docs/designer/letter-split" class="sidebar-link {activePage === designer_letter_split ? active}">Letter Split</a></li>
-          <li><a href="/docs/designer/markdown-usage" class="sidebar-link {activePage === designer_markdown_usage ? active}">Markdown Plugin</a></li>
-          <li><a href="/docs/designer/popover-menu" class="sidebar-link {activePage === designer_popover_menu ? active}">Popover Menu</a></li>
-          <li><a href="/docs/designer/project-structure" class="sidebar-link {activePage === designer_project_structure ? active}">Project Structure</a></li>
-          <li><a href="/docs/designer/script-tags" class="sidebar-link {activePage === designer_script_tags ? active}">Script Tags in Jay-HTML</a></li>
-          <li><a href="/docs/designer/scroll-carousel" class="sidebar-link {activePage === designer_scroll_carousel ? active}">Scroll Carousel</a></li>
-          <li><a href="/docs/designer/spring-button-hover" class="sidebar-link {activePage === designer_spring_button_hover ? active}">Spring button hover</a></li>
-          <li><a href="/docs/designer/sticky-header-scroll" class="sidebar-link {activePage === designer_sticky_header_scroll ? active}">Sticky header that “sticks” (scroll-driven)</a></li>
-          <li><a href="/docs/designer/tabs" class="sidebar-link {activePage === designer_tabs ? active}">Tabs</a></li>
-          <li><a href="/docs/designer/toggle-switch" class="sidebar-link {activePage === designer_toggle_switch ? active}">Toggle Switch</a></li>
-          <li><a href="/docs/designer/tooltip" class="sidebar-link {activePage === designer_tooltip ? active}">Tooltip</a></li>
-          <li><a href="/docs/designer/wix-media" class="sidebar-link {activePage === designer_wix_media ? active}">Using Wix Media</a></li>
-          <li><a href="/docs/designer/word-split" class="sidebar-link {activePage === designer_word_split ? active}">Word Split</a></li>
+          <li><a href="/docs/designer/instructions" class="sidebar-link {currentPath === '/docs/designer/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/designer/accordion" class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a></li>
+          <li><a href="/docs/designer/cli-commands" class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI Commands Reference</a></li>
+          <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
+          <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard Copy</a></li>
+          <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts and Plugins</a></li>
+          <li><a href="/docs/designer/design-system" class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design System (DESIGN.md)</a></li>
+          <li><a href="/docs/designer/routing" class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based Routing</a></li>
+          <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML — AI Designer Instructions</a></li>
+          <li><a href="/docs/designer/jay-html-components" class="sidebar-link {currentPath === '/docs/designer/jay-html-components' ? active}">Jay-HTML Component Imports</a></li>
+          <li><a href="/docs/designer/jay-html-styling" class="sidebar-link {currentPath === '/docs/designer/jay-html-styling' ? active}">Jay-HTML Styling</a></li>
+          <li><a href="/docs/designer/jay-html-template-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-template-syntax' ? active}">Jay-HTML Template Syntax</a></li>
+          <li><a href="/docs/designer/letter-split" class="sidebar-link {currentPath === '/docs/designer/letter-split' ? active}">Letter Split</a></li>
+          <li><a href="/docs/designer/markdown-usage" class="sidebar-link {currentPath === '/docs/designer/markdown-usage' ? active}">Markdown Plugin</a></li>
+          <li><a href="/docs/designer/navigation-patterns" class="sidebar-link {currentPath === '/docs/designer/navigation-patterns' ? active}">Navigation Patterns</a></li>
+          <li><a href="/docs/designer/popover-menu" class="sidebar-link {currentPath === '/docs/designer/popover-menu' ? active}">Popover Menu</a></li>
+          <li><a href="/docs/designer/project-structure" class="sidebar-link {currentPath === '/docs/designer/project-structure' ? active}">Project Structure</a></li>
+          <li><a href="/docs/designer/script-tags" class="sidebar-link {currentPath === '/docs/designer/script-tags' ? active}">Script Tags in Jay-HTML</a></li>
+          <li><a href="/docs/designer/scroll-carousel" class="sidebar-link {currentPath === '/docs/designer/scroll-carousel' ? active}">Scroll Carousel</a></li>
+          <li><a href="/docs/designer/spring-button-hover" class="sidebar-link {currentPath === '/docs/designer/spring-button-hover' ? active}">Spring button hover</a></li>
+          <li><a href="/docs/designer/sticky-header-scroll" class="sidebar-link {currentPath === '/docs/designer/sticky-header-scroll' ? active}">Sticky header that “sticks” (scroll-driven)</a></li>
+          <li><a href="/docs/designer/tabs" class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a></li>
+          <li><a href="/docs/designer/toggle-switch" class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle Switch</a></li>
+          <li><a href="/docs/designer/tooltip" class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a></li>
+          <li><a href="/docs/designer/wix-media" class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using Wix Media</a></li>
+          <li><a href="/docs/designer/word-split" class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word Split</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===developer">
+      <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Developer</span>
           <span class="sidebar-role-count">13</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/developer/instructions" class="sidebar-link {activePage === developer_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/developer/cli-commands" class="sidebar-link {activePage === developer_cli_commands ? active}">CLI Commands Reference</a></li>
-          <li><a href="/docs/developer/component-refs" class="sidebar-link {activePage === developer_component_refs ? active}">Component Refs</a></li>
-          <li><a href="/docs/developer/component-state" class="sidebar-link {activePage === developer_component_state ? active}">Component State Hooks</a></li>
-          <li><a href="/docs/developer/configuration" class="sidebar-link {activePage === developer_configuration ? active}">Configuration</a></li>
-          <li><a href="/docs/developer/dev-server-service" class="sidebar-link {activePage === developer_dev_server_service ? active}">Dev Server Service API</a></li>
-          <li><a href="/docs/developer/routing" class="sidebar-link {activePage === developer_routing ? active}">Directory-Based Routing</a></li>
-          <li><a href="/docs/developer/component-data" class="sidebar-link {activePage === developer_component_data ? active}">Immutable Data and Patching</a></li>
-          <li><a href="/docs/developer/page-components" class="sidebar-link {activePage === developer_page_components ? active}">Page Components</a></li>
-          <li><a href="/docs/developer/page-contracts" class="sidebar-link {activePage === developer_page_contracts ? active}">Page Contracts</a></li>
-          <li><a href="/docs/developer/project-structure" class="sidebar-link {activePage === developer_project_structure ? active}">Project Structure</a></li>
-          <li><a href="/docs/developer/render-results" class="sidebar-link {activePage === developer_render_results ? active}">Render Results</a></li>
-          <li><a href="/docs/developer/seo-guide" class="sidebar-link {activePage === developer_seo_guide ? active}">SEO Head Tags</a></li>
+          <li><a href="/docs/developer/instructions" class="sidebar-link {currentPath === '/docs/developer/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/developer/cli-commands" class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI Commands Reference</a></li>
+          <li><a href="/docs/developer/component-refs" class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component Refs</a></li>
+          <li><a href="/docs/developer/component-state" class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component State Hooks</a></li>
+          <li><a href="/docs/developer/configuration" class="sidebar-link {currentPath === '/docs/developer/configuration' ? active}">Configuration</a></li>
+          <li><a href="/docs/developer/dev-server-service" class="sidebar-link {currentPath === '/docs/developer/dev-server-service' ? active}">Dev Server Service API</a></li>
+          <li><a href="/docs/developer/routing" class="sidebar-link {currentPath === '/docs/developer/routing' ? active}">Directory-Based Routing</a></li>
+          <li><a href="/docs/developer/component-data" class="sidebar-link {currentPath === '/docs/developer/component-data' ? active}">Immutable Data and Patching</a></li>
+          <li><a href="/docs/developer/page-components" class="sidebar-link {currentPath === '/docs/developer/page-components' ? active}">Page Components</a></li>
+          <li><a href="/docs/developer/page-contracts" class="sidebar-link {currentPath === '/docs/developer/page-contracts' ? active}">Page Contracts</a></li>
+          <li><a href="/docs/developer/project-structure" class="sidebar-link {currentPath === '/docs/developer/project-structure' ? active}">Project Structure</a></li>
+          <li><a href="/docs/developer/render-results" class="sidebar-link {currentPath === '/docs/developer/render-results' ? active}">Render Results</a></li>
+          <li><a href="/docs/developer/seo-guide" class="sidebar-link {currentPath === '/docs/developer/seo-guide' ? active}">SEO Head Tags</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===plugin">
+      <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Plugin Developer</span>
           <span class="sidebar-role-count">20</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/plugin/instructions" class="sidebar-link {activePage === plugin_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {activePage === plugin_aiditor_add_menu ? active}">AIditor Add Menu — plugin contributor guide</a></li>
-          <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {activePage === plugin_add_menu_guide ? active}">AIditor Add-Menu Items</a></li>
-          <li><a href="/docs/plugin/commands-guide" class="sidebar-link {activePage === plugin_commands_guide ? active}">CLI Commands</a></li>
-          <li><a href="/docs/plugin/component-context" class="sidebar-link {activePage === plugin_component_context ? active}">Component Context</a></li>
-          <li><a href="/docs/plugin/component-refs" class="sidebar-link {activePage === plugin_component_refs ? active}">Component Refs</a></li>
-          <li><a href="/docs/plugin/component-state" class="sidebar-link {activePage === plugin_component_state ? active}">Component State Hooks</a></li>
-          <li><a href="/docs/plugin/component-structure" class="sidebar-link {activePage === plugin_component_structure ? active}">Component Structure</a></li>
-          <li><a href="/docs/plugin/dev-server-service" class="sidebar-link {activePage === plugin_dev_server_service ? active}">Dev Server Service API</a></li>
-          <li><a href="/docs/plugin/component-data" class="sidebar-link {activePage === plugin_component_data ? active}">Immutable Data and Patching</a></li>
-          <li><a href="/docs/plugin/contracts-guide" class="sidebar-link {activePage === plugin_contracts_guide ? active}">Plugin Contract Guide</a></li>
-          <li><a href="/docs/plugin/plugin-routes" class="sidebar-link {activePage === plugin_plugin_routes ? active}">Plugin Routes</a></li>
-          <li><a href="/docs/plugin/setup-guide" class="sidebar-link {activePage === plugin_setup_guide ? active}">Plugin Setup &amp; Agent-Kit</a></li>
-          <li><a href="/docs/plugin/plugin-structure" class="sidebar-link {activePage === plugin_plugin_structure ? active}">Plugin Structure</a></li>
-          <li><a href="/docs/plugin/validation" class="sidebar-link {activePage === plugin_validation ? active}">Plugin Validation</a></li>
-          <li><a href="/docs/plugin/render-results" class="sidebar-link {activePage === plugin_render_results ? active}">Render Results</a></li>
-          <li><a href="/docs/plugin/seo-guide" class="sidebar-link {activePage === plugin_seo_guide ? active}">SEO Head Tags</a></li>
-          <li><a href="/docs/plugin/actions-guide" class="sidebar-link {activePage === plugin_actions_guide ? active}">Server Actions</a></li>
-          <li><a href="/docs/plugin/services-guide" class="sidebar-link {activePage === plugin_services_guide ? active}">Services and Initialization</a></li>
-          <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {activePage === plugin_webhooks_guide ? active}">Webhooks &amp; Data Change Invalidation</a></li>
+          <li><a href="/docs/plugin/instructions" class="sidebar-link {currentPath === '/docs/plugin/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
+          <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
+          <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
+          <li><a href="/docs/plugin/component-context" class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component Context</a></li>
+          <li><a href="/docs/plugin/component-refs" class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component Refs</a></li>
+          <li><a href="/docs/plugin/component-state" class="sidebar-link {currentPath === '/docs/plugin/component-state' ? active}">Component State Hooks</a></li>
+          <li><a href="/docs/plugin/component-structure" class="sidebar-link {currentPath === '/docs/plugin/component-structure' ? active}">Component Structure</a></li>
+          <li><a href="/docs/plugin/dev-server-service" class="sidebar-link {currentPath === '/docs/plugin/dev-server-service' ? active}">Dev Server Service API</a></li>
+          <li><a href="/docs/plugin/component-data" class="sidebar-link {currentPath === '/docs/plugin/component-data' ? active}">Immutable Data and Patching</a></li>
+          <li><a href="/docs/plugin/contracts-guide" class="sidebar-link {currentPath === '/docs/plugin/contracts-guide' ? active}">Plugin Contract Guide</a></li>
+          <li><a href="/docs/plugin/plugin-routes" class="sidebar-link {currentPath === '/docs/plugin/plugin-routes' ? active}">Plugin Routes</a></li>
+          <li><a href="/docs/plugin/setup-guide" class="sidebar-link {currentPath === '/docs/plugin/setup-guide' ? active}">Plugin Setup &amp; Agent-Kit</a></li>
+          <li><a href="/docs/plugin/plugin-structure" class="sidebar-link {currentPath === '/docs/plugin/plugin-structure' ? active}">Plugin Structure</a></li>
+          <li><a href="/docs/plugin/validation" class="sidebar-link {currentPath === '/docs/plugin/validation' ? active}">Plugin Validation</a></li>
+          <li><a href="/docs/plugin/render-results" class="sidebar-link {currentPath === '/docs/plugin/render-results' ? active}">Render Results</a></li>
+          <li><a href="/docs/plugin/seo-guide" class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO Head Tags</a></li>
+          <li><a href="/docs/plugin/actions-guide" class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server Actions</a></li>
+          <li><a href="/docs/plugin/services-guide" class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services and Initialization</a></li>
+          <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks &amp; Data Change Invalidation</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===devops">
+      <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">DevOps</span>
           <span class="sidebar-role-count">6</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/devops/instructions" class="sidebar-link {activePage === devops_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {activePage === devops_wix_baas_deployment ? active}">Deploying to Wix BaaS</a></li>
-          <li><a href="/docs/devops/fetch-handler" class="sidebar-link {activePage === devops_fetch_handler ? active}">Fetch Handler Package</a></li>
-          <li><a href="/docs/devops/invalidation" class="sidebar-link {activePage === devops_invalidation ? active}">Invalidation &amp; Rebuild</a></li>
-          <li><a href="/docs/devops/production-build" class="sidebar-link {activePage === devops_production_build ? active}">Production Build</a></li>
-          <li><a href="/docs/devops/serving-modes" class="sidebar-link {activePage === devops_serving_modes ? active}">Serving Modes</a></li>
+          <li><a href="/docs/devops/instructions" class="sidebar-link {currentPath === '/docs/devops/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying to Wix BaaS</a></li>
+          <li><a href="/docs/devops/fetch-handler" class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch Handler Package</a></li>
+          <li><a href="/docs/devops/invalidation" class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation &amp; Rebuild</a></li>
+          <li><a href="/docs/devops/production-build" class="sidebar-link {currentPath === '/docs/devops/production-build' ? active}">Production Build</a></li>
+          <li><a href="/docs/devops/serving-modes" class="sidebar-link {currentPath === '/docs/devops/serving-modes' ? active}">Serving Modes</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===contracts">
+      <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Contracts</span>
           <span class="sidebar-role-count">5</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/contracts/guide" class="sidebar-link {activePage === contracts_guide ? active}">Guide</a></li>
-          <li><a href="/docs/contracts/syntax" class="sidebar-link {activePage === contracts_syntax ? active}">Contract Syntax Reference</a></li>
-          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {activePage === contracts_component_contracts ? active}">Headfull Component Contracts</a></li>
-          <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {activePage === contracts_linked_contracts ? active}">Linked and Composed Contracts</a></li>
-          <li><a href="/docs/contracts/page-contracts" class="sidebar-link {activePage === contracts_page_contracts ? active}">Page Contracts</a></li>
+          <li><a href="/docs/contracts/guide" class="sidebar-link {currentPath === '/docs/contracts/guide' ? active}">Guide</a></li>
+          <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
+          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
+          <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>
+          <li><a href="/docs/contracts/page-contracts" class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page Contracts</a></li>
         </ul>
       </details>
       </div>
@@ -319,122 +320,123 @@
       <nav>
         <a href="/docs" class="sidebar-home">&larr; Documentation</a>
 
-      <details class="sidebar-role" open="activeRole===designer">
+      <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Designer</span>
-          <span class="sidebar-role-count">25</span>
+          <span class="sidebar-role-count">26</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/designer/instructions" class="sidebar-link {activePage === designer_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/designer/accordion" class="sidebar-link {activePage === designer_accordion ? active}">Accordion</a></li>
-          <li><a href="/docs/designer/cli-commands" class="sidebar-link {activePage === designer_cli_commands ? active}">CLI Commands Reference</a></li>
-          <li><a href="/docs/designer/click-popover" class="sidebar-link {activePage === designer_click_popover ? active}">Click Popover</a></li>
-          <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {activePage === designer_clipboard_copy ? active}">Clipboard Copy</a></li>
-          <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {activePage === designer_contracts_and_plugins ? active}">Contracts and Plugins</a></li>
-          <li><a href="/docs/designer/design-system" class="sidebar-link {activePage === designer_design_system ? active}">Design System (DESIGN.md)</a></li>
-          <li><a href="/docs/designer/routing" class="sidebar-link {activePage === designer_routing ? active}">Directory-Based Routing</a></li>
-          <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {activePage === designer_jay_html_syntax ? active}">Jay-HTML — AI Designer Instructions</a></li>
-          <li><a href="/docs/designer/jay-html-components" class="sidebar-link {activePage === designer_jay_html_components ? active}">Jay-HTML Component Imports</a></li>
-          <li><a href="/docs/designer/jay-html-styling" class="sidebar-link {activePage === designer_jay_html_styling ? active}">Jay-HTML Styling</a></li>
-          <li><a href="/docs/designer/jay-html-template-syntax" class="sidebar-link {activePage === designer_jay_html_template_syntax ? active}">Jay-HTML Template Syntax</a></li>
-          <li><a href="/docs/designer/letter-split" class="sidebar-link {activePage === designer_letter_split ? active}">Letter Split</a></li>
-          <li><a href="/docs/designer/markdown-usage" class="sidebar-link {activePage === designer_markdown_usage ? active}">Markdown Plugin</a></li>
-          <li><a href="/docs/designer/popover-menu" class="sidebar-link {activePage === designer_popover_menu ? active}">Popover Menu</a></li>
-          <li><a href="/docs/designer/project-structure" class="sidebar-link {activePage === designer_project_structure ? active}">Project Structure</a></li>
-          <li><a href="/docs/designer/script-tags" class="sidebar-link {activePage === designer_script_tags ? active}">Script Tags in Jay-HTML</a></li>
-          <li><a href="/docs/designer/scroll-carousel" class="sidebar-link {activePage === designer_scroll_carousel ? active}">Scroll Carousel</a></li>
-          <li><a href="/docs/designer/spring-button-hover" class="sidebar-link {activePage === designer_spring_button_hover ? active}">Spring button hover</a></li>
-          <li><a href="/docs/designer/sticky-header-scroll" class="sidebar-link {activePage === designer_sticky_header_scroll ? active}">Sticky header that “sticks” (scroll-driven)</a></li>
-          <li><a href="/docs/designer/tabs" class="sidebar-link {activePage === designer_tabs ? active}">Tabs</a></li>
-          <li><a href="/docs/designer/toggle-switch" class="sidebar-link {activePage === designer_toggle_switch ? active}">Toggle Switch</a></li>
-          <li><a href="/docs/designer/tooltip" class="sidebar-link {activePage === designer_tooltip ? active}">Tooltip</a></li>
-          <li><a href="/docs/designer/wix-media" class="sidebar-link {activePage === designer_wix_media ? active}">Using Wix Media</a></li>
-          <li><a href="/docs/designer/word-split" class="sidebar-link {activePage === designer_word_split ? active}">Word Split</a></li>
+          <li><a href="/docs/designer/instructions" class="sidebar-link {currentPath === '/docs/designer/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/designer/accordion" class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a></li>
+          <li><a href="/docs/designer/cli-commands" class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI Commands Reference</a></li>
+          <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
+          <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard Copy</a></li>
+          <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts and Plugins</a></li>
+          <li><a href="/docs/designer/design-system" class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design System (DESIGN.md)</a></li>
+          <li><a href="/docs/designer/routing" class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based Routing</a></li>
+          <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML — AI Designer Instructions</a></li>
+          <li><a href="/docs/designer/jay-html-components" class="sidebar-link {currentPath === '/docs/designer/jay-html-components' ? active}">Jay-HTML Component Imports</a></li>
+          <li><a href="/docs/designer/jay-html-styling" class="sidebar-link {currentPath === '/docs/designer/jay-html-styling' ? active}">Jay-HTML Styling</a></li>
+          <li><a href="/docs/designer/jay-html-template-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-template-syntax' ? active}">Jay-HTML Template Syntax</a></li>
+          <li><a href="/docs/designer/letter-split" class="sidebar-link {currentPath === '/docs/designer/letter-split' ? active}">Letter Split</a></li>
+          <li><a href="/docs/designer/markdown-usage" class="sidebar-link {currentPath === '/docs/designer/markdown-usage' ? active}">Markdown Plugin</a></li>
+          <li><a href="/docs/designer/navigation-patterns" class="sidebar-link {currentPath === '/docs/designer/navigation-patterns' ? active}">Navigation Patterns</a></li>
+          <li><a href="/docs/designer/popover-menu" class="sidebar-link {currentPath === '/docs/designer/popover-menu' ? active}">Popover Menu</a></li>
+          <li><a href="/docs/designer/project-structure" class="sidebar-link {currentPath === '/docs/designer/project-structure' ? active}">Project Structure</a></li>
+          <li><a href="/docs/designer/script-tags" class="sidebar-link {currentPath === '/docs/designer/script-tags' ? active}">Script Tags in Jay-HTML</a></li>
+          <li><a href="/docs/designer/scroll-carousel" class="sidebar-link {currentPath === '/docs/designer/scroll-carousel' ? active}">Scroll Carousel</a></li>
+          <li><a href="/docs/designer/spring-button-hover" class="sidebar-link {currentPath === '/docs/designer/spring-button-hover' ? active}">Spring button hover</a></li>
+          <li><a href="/docs/designer/sticky-header-scroll" class="sidebar-link {currentPath === '/docs/designer/sticky-header-scroll' ? active}">Sticky header that “sticks” (scroll-driven)</a></li>
+          <li><a href="/docs/designer/tabs" class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a></li>
+          <li><a href="/docs/designer/toggle-switch" class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle Switch</a></li>
+          <li><a href="/docs/designer/tooltip" class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a></li>
+          <li><a href="/docs/designer/wix-media" class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using Wix Media</a></li>
+          <li><a href="/docs/designer/word-split" class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word Split</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===developer">
+      <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Developer</span>
           <span class="sidebar-role-count">13</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/developer/instructions" class="sidebar-link {activePage === developer_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/developer/cli-commands" class="sidebar-link {activePage === developer_cli_commands ? active}">CLI Commands Reference</a></li>
-          <li><a href="/docs/developer/component-refs" class="sidebar-link {activePage === developer_component_refs ? active}">Component Refs</a></li>
-          <li><a href="/docs/developer/component-state" class="sidebar-link {activePage === developer_component_state ? active}">Component State Hooks</a></li>
-          <li><a href="/docs/developer/configuration" class="sidebar-link {activePage === developer_configuration ? active}">Configuration</a></li>
-          <li><a href="/docs/developer/dev-server-service" class="sidebar-link {activePage === developer_dev_server_service ? active}">Dev Server Service API</a></li>
-          <li><a href="/docs/developer/routing" class="sidebar-link {activePage === developer_routing ? active}">Directory-Based Routing</a></li>
-          <li><a href="/docs/developer/component-data" class="sidebar-link {activePage === developer_component_data ? active}">Immutable Data and Patching</a></li>
-          <li><a href="/docs/developer/page-components" class="sidebar-link {activePage === developer_page_components ? active}">Page Components</a></li>
-          <li><a href="/docs/developer/page-contracts" class="sidebar-link {activePage === developer_page_contracts ? active}">Page Contracts</a></li>
-          <li><a href="/docs/developer/project-structure" class="sidebar-link {activePage === developer_project_structure ? active}">Project Structure</a></li>
-          <li><a href="/docs/developer/render-results" class="sidebar-link {activePage === developer_render_results ? active}">Render Results</a></li>
-          <li><a href="/docs/developer/seo-guide" class="sidebar-link {activePage === developer_seo_guide ? active}">SEO Head Tags</a></li>
+          <li><a href="/docs/developer/instructions" class="sidebar-link {currentPath === '/docs/developer/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/developer/cli-commands" class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI Commands Reference</a></li>
+          <li><a href="/docs/developer/component-refs" class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component Refs</a></li>
+          <li><a href="/docs/developer/component-state" class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component State Hooks</a></li>
+          <li><a href="/docs/developer/configuration" class="sidebar-link {currentPath === '/docs/developer/configuration' ? active}">Configuration</a></li>
+          <li><a href="/docs/developer/dev-server-service" class="sidebar-link {currentPath === '/docs/developer/dev-server-service' ? active}">Dev Server Service API</a></li>
+          <li><a href="/docs/developer/routing" class="sidebar-link {currentPath === '/docs/developer/routing' ? active}">Directory-Based Routing</a></li>
+          <li><a href="/docs/developer/component-data" class="sidebar-link {currentPath === '/docs/developer/component-data' ? active}">Immutable Data and Patching</a></li>
+          <li><a href="/docs/developer/page-components" class="sidebar-link {currentPath === '/docs/developer/page-components' ? active}">Page Components</a></li>
+          <li><a href="/docs/developer/page-contracts" class="sidebar-link {currentPath === '/docs/developer/page-contracts' ? active}">Page Contracts</a></li>
+          <li><a href="/docs/developer/project-structure" class="sidebar-link {currentPath === '/docs/developer/project-structure' ? active}">Project Structure</a></li>
+          <li><a href="/docs/developer/render-results" class="sidebar-link {currentPath === '/docs/developer/render-results' ? active}">Render Results</a></li>
+          <li><a href="/docs/developer/seo-guide" class="sidebar-link {currentPath === '/docs/developer/seo-guide' ? active}">SEO Head Tags</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===plugin">
+      <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Plugin Developer</span>
           <span class="sidebar-role-count">20</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/plugin/instructions" class="sidebar-link {activePage === plugin_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {activePage === plugin_aiditor_add_menu ? active}">AIditor Add Menu — plugin contributor guide</a></li>
-          <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {activePage === plugin_add_menu_guide ? active}">AIditor Add-Menu Items</a></li>
-          <li><a href="/docs/plugin/commands-guide" class="sidebar-link {activePage === plugin_commands_guide ? active}">CLI Commands</a></li>
-          <li><a href="/docs/plugin/component-context" class="sidebar-link {activePage === plugin_component_context ? active}">Component Context</a></li>
-          <li><a href="/docs/plugin/component-refs" class="sidebar-link {activePage === plugin_component_refs ? active}">Component Refs</a></li>
-          <li><a href="/docs/plugin/component-state" class="sidebar-link {activePage === plugin_component_state ? active}">Component State Hooks</a></li>
-          <li><a href="/docs/plugin/component-structure" class="sidebar-link {activePage === plugin_component_structure ? active}">Component Structure</a></li>
-          <li><a href="/docs/plugin/dev-server-service" class="sidebar-link {activePage === plugin_dev_server_service ? active}">Dev Server Service API</a></li>
-          <li><a href="/docs/plugin/component-data" class="sidebar-link {activePage === plugin_component_data ? active}">Immutable Data and Patching</a></li>
-          <li><a href="/docs/plugin/contracts-guide" class="sidebar-link {activePage === plugin_contracts_guide ? active}">Plugin Contract Guide</a></li>
-          <li><a href="/docs/plugin/plugin-routes" class="sidebar-link {activePage === plugin_plugin_routes ? active}">Plugin Routes</a></li>
-          <li><a href="/docs/plugin/setup-guide" class="sidebar-link {activePage === plugin_setup_guide ? active}">Plugin Setup &amp; Agent-Kit</a></li>
-          <li><a href="/docs/plugin/plugin-structure" class="sidebar-link {activePage === plugin_plugin_structure ? active}">Plugin Structure</a></li>
-          <li><a href="/docs/plugin/validation" class="sidebar-link {activePage === plugin_validation ? active}">Plugin Validation</a></li>
-          <li><a href="/docs/plugin/render-results" class="sidebar-link {activePage === plugin_render_results ? active}">Render Results</a></li>
-          <li><a href="/docs/plugin/seo-guide" class="sidebar-link {activePage === plugin_seo_guide ? active}">SEO Head Tags</a></li>
-          <li><a href="/docs/plugin/actions-guide" class="sidebar-link {activePage === plugin_actions_guide ? active}">Server Actions</a></li>
-          <li><a href="/docs/plugin/services-guide" class="sidebar-link {activePage === plugin_services_guide ? active}">Services and Initialization</a></li>
-          <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {activePage === plugin_webhooks_guide ? active}">Webhooks &amp; Data Change Invalidation</a></li>
+          <li><a href="/docs/plugin/instructions" class="sidebar-link {currentPath === '/docs/plugin/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
+          <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
+          <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
+          <li><a href="/docs/plugin/component-context" class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component Context</a></li>
+          <li><a href="/docs/plugin/component-refs" class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component Refs</a></li>
+          <li><a href="/docs/plugin/component-state" class="sidebar-link {currentPath === '/docs/plugin/component-state' ? active}">Component State Hooks</a></li>
+          <li><a href="/docs/plugin/component-structure" class="sidebar-link {currentPath === '/docs/plugin/component-structure' ? active}">Component Structure</a></li>
+          <li><a href="/docs/plugin/dev-server-service" class="sidebar-link {currentPath === '/docs/plugin/dev-server-service' ? active}">Dev Server Service API</a></li>
+          <li><a href="/docs/plugin/component-data" class="sidebar-link {currentPath === '/docs/plugin/component-data' ? active}">Immutable Data and Patching</a></li>
+          <li><a href="/docs/plugin/contracts-guide" class="sidebar-link {currentPath === '/docs/plugin/contracts-guide' ? active}">Plugin Contract Guide</a></li>
+          <li><a href="/docs/plugin/plugin-routes" class="sidebar-link {currentPath === '/docs/plugin/plugin-routes' ? active}">Plugin Routes</a></li>
+          <li><a href="/docs/plugin/setup-guide" class="sidebar-link {currentPath === '/docs/plugin/setup-guide' ? active}">Plugin Setup &amp; Agent-Kit</a></li>
+          <li><a href="/docs/plugin/plugin-structure" class="sidebar-link {currentPath === '/docs/plugin/plugin-structure' ? active}">Plugin Structure</a></li>
+          <li><a href="/docs/plugin/validation" class="sidebar-link {currentPath === '/docs/plugin/validation' ? active}">Plugin Validation</a></li>
+          <li><a href="/docs/plugin/render-results" class="sidebar-link {currentPath === '/docs/plugin/render-results' ? active}">Render Results</a></li>
+          <li><a href="/docs/plugin/seo-guide" class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO Head Tags</a></li>
+          <li><a href="/docs/plugin/actions-guide" class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server Actions</a></li>
+          <li><a href="/docs/plugin/services-guide" class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services and Initialization</a></li>
+          <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks &amp; Data Change Invalidation</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===devops">
+      <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">DevOps</span>
           <span class="sidebar-role-count">6</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/devops/instructions" class="sidebar-link {activePage === devops_instructions ? active}">Instructions</a></li>
-          <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {activePage === devops_wix_baas_deployment ? active}">Deploying to Wix BaaS</a></li>
-          <li><a href="/docs/devops/fetch-handler" class="sidebar-link {activePage === devops_fetch_handler ? active}">Fetch Handler Package</a></li>
-          <li><a href="/docs/devops/invalidation" class="sidebar-link {activePage === devops_invalidation ? active}">Invalidation &amp; Rebuild</a></li>
-          <li><a href="/docs/devops/production-build" class="sidebar-link {activePage === devops_production_build ? active}">Production Build</a></li>
-          <li><a href="/docs/devops/serving-modes" class="sidebar-link {activePage === devops_serving_modes ? active}">Serving Modes</a></li>
+          <li><a href="/docs/devops/instructions" class="sidebar-link {currentPath === '/docs/devops/instructions' ? active}">Instructions</a></li>
+          <li><a href="/docs/devops/wix-baas-deployment" class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying to Wix BaaS</a></li>
+          <li><a href="/docs/devops/fetch-handler" class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch Handler Package</a></li>
+          <li><a href="/docs/devops/invalidation" class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation &amp; Rebuild</a></li>
+          <li><a href="/docs/devops/production-build" class="sidebar-link {currentPath === '/docs/devops/production-build' ? active}">Production Build</a></li>
+          <li><a href="/docs/devops/serving-modes" class="sidebar-link {currentPath === '/docs/devops/serving-modes' ? active}">Serving Modes</a></li>
         </ul>
       </details>
 
-      <details class="sidebar-role" open="activeRole===contracts">
+      <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
         <summary class="sidebar-role-header">
           <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">Contracts</span>
           <span class="sidebar-role-count">5</span>
         </summary>
         <ul class="sidebar-guides">
-          <li><a href="/docs/contracts/guide" class="sidebar-link {activePage === contracts_guide ? active}">Guide</a></li>
-          <li><a href="/docs/contracts/syntax" class="sidebar-link {activePage === contracts_syntax ? active}">Contract Syntax Reference</a></li>
-          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {activePage === contracts_component_contracts ? active}">Headfull Component Contracts</a></li>
-          <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {activePage === contracts_linked_contracts ? active}">Linked and Composed Contracts</a></li>
-          <li><a href="/docs/contracts/page-contracts" class="sidebar-link {activePage === contracts_page_contracts ? active}">Page Contracts</a></li>
+          <li><a href="/docs/contracts/guide" class="sidebar-link {currentPath === '/docs/contracts/guide' ? active}">Guide</a></li>
+          <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
+          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
+          <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>
+          <li><a href="/docs/contracts/page-contracts" class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page Contracts</a></li>
         </ul>
       </details>
       </nav>

@@ -4,15 +4,13 @@ import {SiteHeaderViewState, SiteHeaderRefs, SiteHeaderInteractiveViewState} fro
 import {SiteHeader} from "../../../../components/site-header/site-header";
 import {SiteFooterViewState, SiteFooterRefs, SiteFooterInteractiveViewState} from "../../../../components/site-footer/site-footer.jay-contract";
 import {SiteFooter} from "../../../../components/site-footer/site-footer";
-import {DocsSidebarViewState, DocsSidebarRefs, ActivePage, ActiveRole, DocsSidebarInteractiveViewState} from "../../../../components/docs-sidebar/docs-sidebar.jay-contract";
+import {DocsSidebarViewState, DocsSidebarRefs, DocsSidebarInteractiveViewState} from "../../../../components/docs-sidebar/docs-sidebar.jay-contract";
 import {DocsSidebar} from "../../../../components/docs-sidebar/docs-sidebar";
 
 import './page.css';
 
 export interface PageViewState {
-  post?: MarkdownPagesViewState,
-  activePage: string,
-  activeRole: string
+  post?: MarkdownPagesViewState
 }
 
 
@@ -21,7 +19,7 @@ export interface PageElementRefs {
   post: MarkdownPagesRefs
 }
 
-export type DocsContractsPageSlowViewState = Pick<PageViewState, 'activePage' | 'activeRole'>;
+export type DocsContractsPageSlowViewState = {};
 
 export type DocsContractsPageFastViewState = {};
 

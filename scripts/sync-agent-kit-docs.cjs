@@ -125,35 +125,21 @@ function collectSidebarData() {
   return roles;
 }
 
-function generateSidebarContract(roles) {
-  const allPages = [];
-  for (const r of roles) {
-    for (const g of r.guides) {
-      allPages.push(toEnumId(r.role, g.slug));
-    }
-  }
-  const enumValues = allPages.join(" | ");
-  const roleValues = roles.map((r) => r.role).join(" | ");
+function generateSidebarContract() {
   return `# GENERATED FILE — do not edit manually. Run: node scripts/sync-agent-kit-docs.cjs
 name: docs-sidebar
 description: Documentation sidebar navigation with collapsible role sections.
 tags:
-  - tag: activePage
-    type: variant
-    dataType: enum (${enumValues})
-    phase: slow
-  - tag: activeRole
-    type: variant
-    dataType: enum (${roleValues})
+  - tag: currentPath
+    type: data
+    dataType: string
     phase: slow
   - tag: activePageTitle
     type: data
     dataType: string
     phase: slow
 props:
-  - name: activePage
-    kind: optional
-  - name: activeRole
+  - name: currentPath
     kind: optional
   - name: activePageTitle
     kind: optional
@@ -164,14 +150,13 @@ function generateSidebarTs() {
   return `// GENERATED FILE — do not edit manually. Run: node scripts/sync-agent-kit-docs.cjs
 import { makeJayStackComponent, phaseOutput } from '@jay-framework/fullstack-component';
 import type { DocsSidebarContract } from './docs-sidebar.jay-contract';
-import { ActivePage, ActiveRole } from './docs-sidebar.jay-contract';
 
 export const DocsSidebar = makeJayStackComponent<DocsSidebarContract>()
-  .withProps<{ activePage?: string; activeRole?: string; activePageTitle?: string }>()
-  .withSlowlyRender(async (props) => {
+  .withProps<{ currentPath?: string; activePageTitle?: string }>()
+  .withSlowlyRender(async (props: { currentPath?: string; activePageTitle?: string }) => {
     return phaseOutput({
-      activePage: (props.activePage ?? '') as unknown as ActivePage,
-      activeRole: (props.activeRole ?? '') as unknown as ActiveRole,
+      currentPath: props.currentPath ?? '',
+      activePageTitle: props.activePageTitle ?? '',
     }, {});
   });
 `;
@@ -181,15 +166,15 @@ function generateSidebarHtml(roles) {
   const roleBlocks = [];
   const mobileRoleBlocks = [];
   for (const r of roles) {
-    const openExpr = `activeRole===${r.role}`;
+    const sectionPath = `/docs/${r.role}`;
     const guideItems = r.guides
       .map(
         (g) =>
-          `          <li><a href="${g.href}" class="sidebar-link {activePage === ${toEnumId(r.role, g.slug)} ? active}">${escapeHtml(g.title)}</a></li>`
+          `          <li><a href="${g.href}" class="sidebar-link {currentPath === '${g.href}' ? active}">${escapeHtml(g.title)}</a></li>`
       )
       .join("\n");
     const block = `
-      <details class="sidebar-role" open="${openExpr}">
+      <details class="sidebar-role" open="currentPath ^= '${sectionPath}'">
         <summary class="sidebar-role-header">
           <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon">
           <span class="sidebar-role-label">${escapeHtml(r.label)}</span>
@@ -203,11 +188,10 @@ ${guideItems}
     mobileRoleBlocks.push(block);
   }
 
-  // Generate conditional role labels for the mobile nav summary
   const mobileSummaryLabels = roles
     .map(
       (r) =>
-        `        <img if="activeRole===${r.role}" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon">\n        <span if="activeRole===${r.role}" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
+        `        <img if="currentPath ^= '/docs/${r.role}'" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon">\n        <span if="currentPath ^= '/docs/${r.role}'" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
     )
     .join("\n");
 
@@ -423,7 +407,7 @@ function generateSidebarComponent() {
   const roles = collectSidebarData();
   const totalGuides = roles.reduce((sum, r) => sum + r.guides.length, 0);
   fs.mkdirSync(SIDEBAR_DIR, { recursive: true });
-  fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.jay-contract"), generateSidebarContract(roles));
+  fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.jay-contract"), generateSidebarContract());
   fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.ts"), generateSidebarTs());
   fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.jay-html"), generateSidebarHtml(roles));
   console.log(`\n${colors.cyan}[sidebar]${colors.reset} generated component (${totalGuides} pages across ${roles.length} roles)`);

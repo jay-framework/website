@@ -1,12 +1,9 @@
 import {JayContract} from "@jay-framework/runtime";
 
 
-export interface DocsDesignerPageViewState {
-  activePage: string,
-  activeRole: string
-}
+export interface DocsDesignerPageViewState {}
 
-export type DocsDesignerPageSlowViewState = Pick<DocsDesignerPageViewState, 'activePage' | 'activeRole'>;
+export type DocsDesignerPageSlowViewState = {};
 
 export type DocsDesignerPageFastViewState = {};
 
