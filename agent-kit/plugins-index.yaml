@@ -191,6 +191,13 @@ plugins:
   - name: design-system-validator
     path: ./node_modules/@jay-framework/design-system-validator
     contracts: []
+    actions:
+      - name: fontFallback
+        description: >
+          Generate a metric-matched fallback @font-face for a web font to
+          prevent layout shift (CLS). Uses pre-computed metrics from
+          @capsizecss/metrics for known Google and system fonts.
+        path: ./node_modules/@jay-framework/design-system-validator/dist/actions/font-fallback.jay-action
   - name: seo-validator
     path: ./node_modules/@jay-framework/seo-validator
     contracts: []

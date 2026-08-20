@@ -17,6 +17,7 @@ export interface DocsSidebarRefs {}
 export interface DocsSidebarRepeatedRefs {}
 
 export interface DocsSidebarProps {
+  jc?: string;
   currentPath?: string;
   activePageTitle?: string;
 }

@@ -13,4 +13,8 @@ export interface SiteFooterRefs {}
 
 export interface SiteFooterRepeatedRefs {}
 
-export type SiteFooterContract = JayContract<SiteFooterViewState, SiteFooterRefs, SiteFooterSlowViewState, SiteFooterFastViewState, SiteFooterInteractiveViewState>
+export interface SiteFooterProps {
+  jc?: string;
+}
+
+export type SiteFooterContract = JayContract<SiteFooterViewState, SiteFooterRefs, SiteFooterSlowViewState, SiteFooterFastViewState, SiteFooterInteractiveViewState, SiteFooterProps>

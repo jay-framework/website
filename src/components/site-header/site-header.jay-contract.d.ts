@@ -13,4 +13,8 @@ export interface SiteHeaderRefs {}
 
 export interface SiteHeaderRepeatedRefs {}
 
-export type SiteHeaderContract = JayContract<SiteHeaderViewState, SiteHeaderRefs, SiteHeaderSlowViewState, SiteHeaderFastViewState, SiteHeaderInteractiveViewState>
+export interface SiteHeaderProps {
+  jc?: string;
+}
+
+export type SiteHeaderContract = JayContract<SiteHeaderViewState, SiteHeaderRefs, SiteHeaderSlowViewState, SiteHeaderFastViewState, SiteHeaderInteractiveViewState, SiteHeaderProps>
