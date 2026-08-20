@@ -152,4 +152,5 @@ jay-stack dev
 | [word-split.md](word-split.md) | ui-kit | Splits dynamic text into one span per word for individual word styling. Headless component — requires import. |
 | [a11y-patterns.md](a11y-patterns.md) | a11y-validator | Common accessibility patterns and how to fix validation errors. Each section corresponds to an a11y-validator rule. |
 | [design-system.md](design-system.md) | design-system-validator | The project uses a `DESIGN.md` file to define design tokens — colors, typography, spacing, rounded corners, and component specs. The validator enforces these tokens across all `.jay-html` pages. |
+| [font-fallback-patterns.md](font-fallback-patterns.md) | design-system-validator | ## Why metric-matched fallbacks matter |
 | [wix-media.md](wix-media.md) | wix-media | How to use images, video, documents, and audio from Wix Media Manager in jay-html templates. |

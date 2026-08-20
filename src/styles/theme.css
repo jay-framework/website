@@ -1,6 +1,31 @@
 /* ── Fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
+/* ── Metric-matched font fallbacks (reduces CLS during font swap) ── */
+@font-face {
+  font-family: "Sora Fallback";
+  src: local('Arial'), local('ArialMT');
+  ascent-override: 85.2913%;
+  descent-override: 25.4995%;
+  line-gap-override: 0%;
+  size-adjust: 113.7279%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local('Arial'), local('ArialMT');
+  ascent-override: 90.4365%;
+  descent-override: 22.518%;
+  line-gap-override: 0%;
+  size-adjust: 107.1194%;
+}
+@font-face {
+  font-family: "JetBrains Mono Fallback";
+  src: local('Courier New'), local('CourierNewPSMT');
+  ascent-override: 102.0166%;
+  descent-override: 30.0049%;
+  size-adjust: 99.9837%;
+}
+
 /* ── Design Tokens ── */
 :root {
   /* Surface palette */
@@ -45,9 +70,9 @@
   --color-border: #3c494e;
 
   /* Typography stacks */
-  --font-display: 'Sora', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Sora', 'Sora Fallback', system-ui, sans-serif;
+  --font-body: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', monospace;
 
   /* Spacing */
   --space-base: 8px;
