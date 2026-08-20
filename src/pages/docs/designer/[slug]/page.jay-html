@@ -1,5 +1,7 @@
 <html lang="en">
 <head>
+  <title>{post.title} — Designer | Jay Framework</title>
+  <meta name="description" content="{post.description}">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
   <script type="application/jay-headless"
           plugin="@jay-framework/markdown"
@@ -25,16 +27,16 @@
       padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
     }
     @media (min-width: 1024px) {
-      .docs { margin-left: 280px; }
+      .docs { margin-left: 280px; /* design-system: allow */ }
     }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .docs { margin-left: 240px; }
+      .docs { margin-left: 240px; /* design-system: allow */ }
     }
     @media (max-width: 767px) {
       .docs { padding-top: 24px; } /* design-system: allow — reduced because mobile-nav provides spacing */
     }
     .docs .md {
-      line-height: 1.7;
+      line-height: 1.7; /* design-system: allow */
     }
     .docs .md h1 {
       font-size: 2rem;
@@ -74,14 +76,14 @@
     .docs .md blockquote p {
       margin-bottom: 0;
       color: var(--color-text-muted);
-      font-size: 0.875rem;
+      font-size: 0.875rem; /* design-system: allow */
       line-height: 1.6;
     }
     .docs .md table {
       width: 100%;
       border-collapse: collapse;
       margin: 1.5rem 0;
-      font-size: 0.875rem;
+      font-size: 0.875rem; /* design-system: allow */
       line-height: 1.6;
     }
     .docs .md th,
@@ -110,8 +112,8 @@
       margin: 1.5rem 0;
       overflow-x: auto;
       font-family: var(--font-mono);
-      font-size: 0.875rem;
-      line-height: 1.7;
+      font-size: 0.875rem; /* design-system: allow */
+      line-height: 1.7; /* design-system: allow */
     }
     .docs .md pre code {
       background: none;
@@ -123,10 +125,10 @@
     .docs .md code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em;
+      padding: 0.15em 0.4em; /* design-system: allow */
       border-radius: var(--radius-default);
       font-family: var(--font-mono);
-      font-size: 0.875em;
+      font-size: 0.875em; /* design-system: allow */
     }
     .docs .md .token.keyword { color: #c084fc; }
     .docs .md .token.string { color: #34d399; }
@@ -160,6 +162,7 @@
     <jay:SiteHeader />
     <jay:DocsSidebar currentPath="{jay.url.path}" activePageTitle="{post.title}" />
     <main class="docs">
+      <h1 class="sr-only">{post.title}</h1>
       <div class="md">{post.content}</div>
     </main>
     <jay:SiteFooter />

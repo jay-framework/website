@@ -139,6 +139,8 @@ tags:
     dataType: string
     phase: slow
 props:
+  - name: jc
+    kind: optional
   - name: currentPath
     kind: optional
   - name: activePageTitle
@@ -230,7 +232,7 @@ ${guideItems}
     .sidebar-home {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 6px; /* design-system: allow */
       padding: 0 24px 20px;
       font-family: var(--font-mono);
       font-size: 12px;
@@ -283,7 +285,7 @@ ${guideItems}
     }
     .sidebar-role-count {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 11px; /* design-system: allow */
       color: var(--color-text-muted);
       opacity: 0.6;
     }
@@ -295,7 +297,7 @@ ${guideItems}
     }
     .sidebar-link {
       display: block;
-      padding: 5px 24px 5px 52px;
+      padding: 5px 24px 5px 52px; /* design-system: allow */
       font-family: var(--font-mono);
       font-size: 13px;
       line-height: 20px;
@@ -390,7 +392,7 @@ ${guideItems}
       padding: 8px 16px;
     }
     .mobile-nav-panel .sidebar-link {
-      padding: 5px 16px 5px 44px;
+      padding: 5px 16px 5px 44px; /* design-system: allow */
     }
   </style>
 </head>

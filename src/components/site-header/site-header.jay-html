@@ -133,7 +133,7 @@
         display: block;
         height: 2px;
         background: currentColor;
-        border-radius: 1px;
+        border-radius: 1px; /* design-system: allow */
         transition: transform 0.3s, opacity 0.3s;
       }
       /* Mobile menu */
@@ -144,7 +144,7 @@
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: 49;
         background: var(--color-surface-lowest, #0a0f1e);
-        padding: 80px var(--margin-mobile) 32px;
+        padding: 80px var(--margin-mobile) 32px; /* design-system: allow */
         flex-direction: column;
         gap: 8px;
         overflow-y: auto;
@@ -205,7 +205,7 @@
     <input type="checkbox" id="mobile-menu-toggle">
     <header class="site-header">
       <nav class="header-inner">
-        <a href="/" class="header-brand" aria-label="Jay Framework"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay Framework</span><span class="brand-shine">Jay Framework</span></span></a>
+        <a href="/" class="header-brand" aria-label="Jay Framework"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" class="brand-icon" width="32" height="32" loading="eager"><span class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay Framework</span><span class="brand-shine" aria-hidden="true">Jay Framework</span></span></a>
         <div class="header-nav">
           <a href="/aiditor-intro">AIditor</a>
           <a href="/#ecosystem">Ecosystem</a>

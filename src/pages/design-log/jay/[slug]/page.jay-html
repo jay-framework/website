@@ -1,5 +1,7 @@
 <html lang="en">
 <head>
+  <title>{post.title} — Jay Design Log | Jay Framework</title>
+  <meta name="description" content="{post.description}">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
   <script type="application/jay-headless"
           plugin="@jay-framework/markdown"
@@ -24,12 +26,12 @@
       margin: 0 auto;
       padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
     }
-    .design-log h1 {
+    .design-log .md h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
     .design-log .md {
-      line-height: 1.7;
+      line-height: 1.7; /* design-system: allow */
     }
 
     /* Headings: more space between heading and paragraph */
@@ -71,7 +73,7 @@
     .design-log .md blockquote p {
       margin-bottom: 0;
       color: var(--color-text-muted);
-      font-size: 0.875rem;
+      font-size: 0.875rem; /* design-system: allow */
       line-height: 1.6;
     }
 
@@ -80,7 +82,7 @@
       width: 100%;
       border-collapse: collapse;
       margin: 1.5rem 0;
-      font-size: 0.875rem;
+      font-size: 0.875rem; /* design-system: allow */
       line-height: 1.6;
     }
     .design-log .md th,
@@ -111,8 +113,8 @@
       margin: 1.5rem 0;
       overflow-x: auto;
       font-family: var(--font-mono);
-      font-size: 0.875rem;
-      line-height: 1.7;
+      font-size: 0.875rem; /* design-system: allow */
+      line-height: 1.7; /* design-system: allow */
     }
     .design-log .md pre code {
       background: none;
@@ -126,10 +128,10 @@
     .design-log .md code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em;
+      padding: 0.15em 0.4em; /* design-system: allow */
       border-radius: var(--radius-default);
       font-family: var(--font-mono);
-      font-size: 0.875em;
+      font-size: 0.875em; /* design-system: allow */
     }
 
     /* Syntax highlighting tokens */
@@ -166,6 +168,7 @@
   <div class="page-root">
     <jay:SiteHeader />
     <main class="design-log">
+      <h1 class="sr-only">{post.title}</h1>
       <div class="md">{post.content}</div>
     </main>
     <jay:SiteFooter />

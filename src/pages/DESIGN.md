@@ -51,6 +51,11 @@ colors:
   glass-bg: 'rgba(10, 15, 30, 0.7)'
   deep-bg: '#0A0F1E'
   white-subtle: 'rgba(255, 255, 255, 0.05)'
+  accent-guardrails: '#6ecfff'
+  accent-wix: '#a78bfa'
+  accent-content: '#34d399'
+  accent-agents: '#fb923c'
+  video-bg: '#05070d'
 typography:
   headline-lg:
     fontFamily: Sora
@@ -137,6 +142,44 @@ typography:
     fontSize: 12px
     fontWeight: '700'
     lineHeight: 16px
+  label-xs:
+    fontFamily: JetBrains Mono
+    fontSize: 10px
+    fontWeight: 600
+    lineHeight: 14px
+    letterSpacing: 0.1em
+  label-count:
+    fontFamily: JetBrains Mono
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 16px
+  heading-card:
+    fontFamily: Sora
+    fontSize: 17px
+    fontWeight: '600'
+    lineHeight: 24px
+  body-sm-compact:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 22px
+  markdown-body:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 1.7
+  cta-heading:
+    fontFamily: Sora
+    fontSize: clamp(28px, 4vw, 40px)
+    fontWeight: '700'
+    lineHeight: 1.2
+    letterSpacing: -0.02em
+  hero-title:
+    fontFamily: Sora
+    fontSize: clamp(32px, 5vw, 48px)
+    fontWeight: '700'
+    lineHeight: 1.1
+    letterSpacing: -0.02em
   display-brand:
     fontFamily: Sora
     fontSize: 24px
@@ -162,11 +205,14 @@ spacing:
   md: 16px
   md-lg: 20px
   lg: 24px
+  lg-xl: 28px
   xl: 32px
   2xl: 40px
   3xl: 48px
   4xl: 64px
+  section: 80px
   5xl: 96px
+  hero: 160px
   max-width: 1440px
 ---
 

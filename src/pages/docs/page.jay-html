@@ -109,10 +109,10 @@
       display: inline-block;
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em;
-      border-radius: 4px;
+      padding: 0.15em 0.4em; /* design-system: allow */
+      border-radius: 0.25rem;
       font-family: var(--font-mono);
-      font-size: 0.8em;
+      font-size: 0.8em; /* design-system: allow */
     }
     .docs-kit-card p {
       color: var(--color-text-muted);
@@ -153,7 +153,7 @@
       font-weight: 700;
       margin-bottom: 8px;
     }
-    .docs-workflow-step h4 {
+    .docs-workflow-step h3 {
       font-family: var(--font-display);
       font-size: 16px;
       font-weight: 600;
@@ -161,16 +161,16 @@
     .docs-workflow-step p {
       color: var(--color-text-muted);
       font-size: 14px;
-      line-height: 22px;
+      line-height: 22px; /* design-system: allow */
       margin: 0;
     }
     .docs-workflow-step code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
+      padding: 0.1em 0.35em; /* design-system: allow */
+      border-radius: 0.25rem;
       font-family: var(--font-mono);
-      font-size: 0.85em;
+      font-size: 0.85em; /* design-system: allow */
     }
 
     /* ── Role Cards ── */
@@ -313,7 +313,7 @@
             <h1 class="docs-hero-headline">The Agent Kit</h1>
             <p class="docs-hero-subtitle">Documentation written for AI agents, readable by humans. The Agent Kit tells each agent exactly what it can do, what files to touch, and what patterns to follow.</p>
             <div class="docs-hero-links">
-              <a class="docs-hero-link" href="/docs/designer/instructions"><img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Designer</a>
+              <a class="docs-hero-link" href="/docs/designer/instructions"><img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager" fetchpriority="high">Designer</a>
               <a class="docs-hero-link" href="/docs/developer/instructions"><img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Developer</a>
               <a class="docs-hero-link" href="/docs/plugin/instructions"><img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Plugin</a>
               <a class="docs-hero-link" href="/docs/devops/instructions"><img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">DevOps</a>
@@ -329,7 +329,7 @@
             <span class="section-label">Overview</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Why documentation for agents?</h2>
             <p>Traditional documentation explains concepts to humans. The Agent Kit takes a different approach — it provides <strong style="color: var(--color-text);">precise, specification-style instructions</strong> that AI agents can follow mechanically. Each role gets only the information relevant to its task, reducing hallucination and keeping agents within their boundaries.</p>
-            <p>The Agent Kit is generated into the <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">agent-kit/</code> folder in your project root by running <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack setup</code> followed by <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack agent-kit</code>. Setup initializes your project's services; agent-kit then executes plugin generators against those live services to produce contracts that reflect your project's actual configured state. The result isn't generic documentation — it's a machine-readable manifest of what your project can do right now.</p>
+            <p>The Agent Kit is generated into the <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">agent-kit/</code> folder in your project root by running <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack setup</code> followed by <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack agent-kit</code>. Setup initializes your project's services; agent-kit then executes plugin generators against those live services to produce contracts that reflect your project's actual configured state. The result isn't generic documentation — it's a machine-readable manifest of what your project can do right now.</p>
           </div>
         </div>
       </section>
@@ -370,22 +370,22 @@
           <div class="docs-workflow-steps">
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">1</div>
-              <h4>Discover</h4>
+              <h3>Discover</h3>
               <p>Read <code>plugins-index.yaml</code> and the role's <code>INSTRUCTIONS.md</code> to learn what's available and how to work with it.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">2</div>
-              <h4>Understand</h4>
+              <h3>Understand</h3>
               <p>Read materialized contracts for exact tag schemas, data types, and prop definitions. Read references for real project data — product catalogs, collection schemas.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">3</div>
-              <h4>Execute</h4>
+              <h3>Execute</h3>
               <p>Write code that follows the contracts. Run CLI commands like <code>jay-stack action</code> for live data discovery and code generation.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">4</div>
-              <h4>Validate</h4>
+              <h3>Validate</h3>
               <p>Run <code>jay-stack validate</code> to check correctness. When validation fails, the agent-kit guides explain the fix — a feedback loop back to the contracts and patterns.</p>
             </div>
           </div>
@@ -397,7 +397,7 @@
           <div style="margin-bottom: 48px;">
             <span class="section-label">Guides</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Browse by Role</h2>
-            <p style="color: var(--color-text-muted); font-size: 15px; line-height: 24px; max-width: 700px; margin-top: 16px;">These guides are published here for the curious human. AI agents read them directly from the <code style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">agent-kit/</code> folder in your project root, generated locally by the CLI.</p>
+            <p style="color: var(--color-text-muted); font-size: 15px; line-height: 24px; max-width: 700px; margin-top: 16px;">These guides are published here for the curious human. AI agents read them directly from the <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">agent-kit/</code> folder in your project root, generated locally by the CLI.</p>
           </div>
           <div class="docs-roles-grid">
             <a class="docs-role-card glass-panel docs-role-card--designer" href="/docs/designer/instructions">

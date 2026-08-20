@@ -14,6 +14,10 @@ const REPOS = [
   { name: "wix", url: "git@github.com:jay-framework/wix.git", folder: "design-log" },
 ];
 
+const LOCAL_SOURCES = [
+  { name: "website", folder: "design-log" },
+];
+
 const colors = {
   red: "\x1b[31m",
   green: "\x1b[32m",
@@ -404,6 +408,62 @@ function syncRepo(repo) {
   }
 }
 
+// ── Sync local source (no git clone) ──
+
+function syncLocal(source) {
+  const { name, folder } = source;
+  const paths = repoPaths(name);
+  const sourceDir = path.join(ROOT_DIR, folder);
+
+  console.log(`\n${colors.cyan}[${name}]${colors.reset} local: ${folder}/`);
+
+  if (!fs.existsSync(sourceDir)) {
+    console.log(`  ${colors.red}Error: ${folder}/ not found${colors.reset}`);
+    return;
+  }
+
+  clearDir(paths.contentDir);
+
+  const entries = fs.readdirSync(sourceDir);
+  const mdFiles = [];
+  const imageFiles = [];
+
+  for (const entry of entries) {
+    const srcPath = path.join(sourceDir, entry);
+    if (!fs.statSync(srcPath).isFile()) continue;
+    if (entry.endsWith(".md")) mdFiles.push(entry);
+    else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry)) imageFiles.push(entry);
+  }
+
+  const linkMap = buildLinkMap(mdFiles, imageFiles);
+
+  let mdCount = 0;
+  let imgCount = 0;
+
+  for (const entry of mdFiles) {
+    const srcPath = path.join(sourceDir, entry);
+    let content = fs.readFileSync(srcPath, "utf-8");
+    content = rewriteLinks(content, linkMap);
+    content = injectNotes(content);
+    content = addFrontmatter(content, entry);
+    const normalName = normalizeFilename(entry);
+    fs.writeFileSync(path.join(paths.contentDir, normalName), content);
+    mdCount++;
+  }
+
+  if (imageFiles.length > 0) {
+    fs.mkdirSync(paths.publicDir, { recursive: true });
+    for (const entry of imageFiles) {
+      const srcPath = path.join(sourceDir, entry);
+      const normalName = normalizeImageFilename(entry);
+      fs.copyFileSync(srcPath, path.join(paths.publicDir, normalName));
+      imgCount++;
+    }
+  }
+
+  console.log(`  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
+}
+
 // ── Main ──
 
 function main() {
@@ -411,6 +471,10 @@ function main() {
 
   for (const repo of REPOS) {
     syncRepo(repo);
+  }
+
+  for (const source of LOCAL_SOURCES) {
+    syncLocal(source);
   }
 
   console.log(`\n${colors.green}Done${colors.reset}`);

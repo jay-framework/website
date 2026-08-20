@@ -11,6 +11,8 @@ tags:
     dataType: string
     phase: slow
 props:
+  - name: jc
+    kind: optional
   - name: currentPath
     kind: optional
   - name: activePageTitle

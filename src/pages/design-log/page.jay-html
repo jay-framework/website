@@ -117,65 +117,59 @@
         max-width: 700px;
         margin: 32px auto 0;
       }
-      .dl-hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-        margin-top: 32px;
-      }
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--color-primary-container);
-        color: var(--color-on-primary-container);
-        padding: 16px 32px;
-        border: none;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 16px;
-        cursor: pointer;
-        transition: box-shadow 0.3s, transform 0.2s;
-        text-decoration: none;
-      }
-      .btn-primary:hover {
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-        text-decoration: none;
-      }
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid rgba(165, 231, 255, 0.3);
-        background: rgba(165, 231, 255, 0.05);
-        color: var(--color-text);
-        padding: 16px 32px;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.3s;
-        text-decoration: none;
-      }
-      .btn-secondary:hover {
-        background: rgba(165, 231, 255, 0.1);
-        text-decoration: none;
-      }
-      .dl-hero-link {
+      .dl-hero-methodology-link {
         margin-top: 24px;
       }
-      .dl-hero-link a {
+      .dl-hero-methodology-link a {
         color: var(--color-text-muted);
         font-family: var(--font-mono);
-        font-size: 14px;
+        font-size: 13px;
         text-decoration: none;
         transition: color 0.2s;
       }
-      .dl-hero-link a:hover {
+      .dl-hero-methodology-link a:hover {
         color: var(--color-primary);
+      }
+      .dl-browse-title {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        letter-spacing: 0.02em; /* design-system: allow */
+        margin-bottom: 16px;
+        margin-top: 40px;
+      }
+      .dl-hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .dl-hero-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 20px;
+        border-radius: 9999px;
+        border: 1px solid rgba(165, 231, 255, 0.15);
+        background: rgba(165, 231, 255, 0.05);
+        color: var(--color-text);
+        text-decoration: none;
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 500;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .dl-hero-link:hover {
+        border-color: rgba(165, 231, 255, 0.35);
+        background: rgba(165, 231, 255, 0.1);
+        text-decoration: none;
+      }
+      .dl-hero-link img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
       }
 
       /* ── Intro Section ── */
@@ -303,12 +297,14 @@
             <span class="dl-hero-badge">METHODOLOGY</span>
             <h1 class="dl-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">Design Log Methodology</span><span class="shimmer-shine" aria-hidden="true">Design Log Methodology</span></span></h1>
             <p class="dl-hero-subtitle">Jay is built using the Design Log methodology — a rigorous, document-first approach to software architecture. Every significant feature is designed in writing before a single line of code is written.</p>
-            <div class="dl-hero-buttons">
-              <a class="btn-primary" href="/design-log/jay/index">Jay Framework Logs</a>
-              <a class="btn-secondary" href="/design-log/wix/index">Wix Integration Logs</a>
+            <h2 class="dl-browse-title">Browse Design Logs</h2>
+            <div class="dl-hero-links">
+              <a class="dl-hero-link" href="/design-log/jay/index"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" width="20" height="20" loading="eager" fetchpriority="high">Jay Framework</a>
+              <a class="dl-hero-link" href="/design-log/wix/index"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Wix Integration</a>
+              <a class="dl-hero-link" href="/design-log/website/index"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website</a>
             </div>
-            <div class="dl-hero-link">
-              <a href="https://github.com/yoavaa/design-log-methodology" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg> Design Log Methodology on GitHub &rarr;</a>
+            <div class="dl-hero-methodology-link">
+              <a href="https://github.com/yoavaa/design-log-methodology" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg> Design Log Methodology on GitHub &rarr;</a>
             </div>
           </div>
         </div>

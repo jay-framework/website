@@ -1,3 +1,6 @@
 name: site-footer
 description: Site-wide footer with navigation links and branding.
 tags: []
+props:
+  - name: jc
+    kind: optional
