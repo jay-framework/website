@@ -182,7 +182,7 @@ function generateSidebarHtml(roles) {
       <details class="sidebar-role" open="currentPath ^= '${sectionPath}'">
         <summary class="sidebar-role-header">
           <a href="${entryHref}" class="sidebar-role-link {currentPath === '${entryHref}' ? active}">
-            <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon">
+            <img src="${r.image}" alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy">
             <span class="sidebar-role-label">${escapeHtml(r.label)}</span>
           </a>
           <span class="sidebar-role-count">${r.guides.length}</span>
@@ -198,7 +198,7 @@ ${guideItems}
   const mobileSummaryLabels = roles
     .map(
       (r) =>
-        `        <img if="currentPath ^= '/docs/${r.role}'" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon">\n        <span if="currentPath ^= '/docs/${r.role}'" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
+        `        <img if="currentPath ^= '/docs/${r.role}'" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy">\n        <span if="currentPath ^= '/docs/${r.role}'" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
     )
     .join("\n");
 

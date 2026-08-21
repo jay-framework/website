@@ -61,21 +61,21 @@
             <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
           </div>
           <div>
-            <h3 class="footer-heading">Resources</h3>
+            <h2 class="footer-heading">Resources</h2>
             <ul class="footer-links">
               <li><a href="/docs">Documentation</a></li>
               <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
             </ul>
           </div>
           <div>
-            <h3 class="footer-heading">Legal</h3>
+            <h2 class="footer-heading">Legal</h2>
             <ul class="footer-links">
               <li><a href="#">Security Policy</a></li>
               <li><a href="#">Privacy</a></li>
             </ul>
           </div>
           <div>
-            <h3 class="footer-heading">Learn More</h3>
+            <h2 class="footer-heading">Learn More</h2>
             <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
           </div>
         </div>
