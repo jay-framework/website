@@ -174,6 +174,26 @@
         outline-offset: 2px;
       }
 
+      .aid-btn-cmd {
+        font-family: var(--font-mono);
+      }
+      .aid-copy-icon {
+        display: inline-flex;
+        align-items: center;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+      }
+      .aid-btn-cmd:hover .aid-copy-icon { opacity: 1; }
+
+      .aid-hero-micro {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 20px;
+        color: #859399;
+        text-align: center;
+        margin-top: 8px;
+      }
+
       /* ── Video frame ── */
       .aid-video-frame {
         position: relative;
@@ -196,76 +216,6 @@
         height: 100%;
         display: block;
         object-fit: cover;
-      }
-
-      /* ── Install strip ── */
-      .aid-install {
-        padding: 24px;
-        margin-top: 48px;
-      }
-      @media (min-width: 768px) {
-        .aid-install { padding: 32px; }
-      }
-      .aid-install h2 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
-        color: var(--color-text);
-        margin-bottom: 8px;
-      }
-      .aid-install p {
-        font-size: 14px;
-        line-height: 22px;
-        color: #859399;
-        margin-bottom: 16px;
-      }
-      .aid-code-block {
-        background: #05070d;
-        border: 1px solid rgba(60, 73, 78, 0.3);
-        border-radius: var(--radius-lg);
-        padding: 16px 20px;
-        font-family: var(--font-mono);
-        font-size: 14px;
-        line-height: 22px;
-        color: #a5e7ff;
-        overflow-x: auto;
-      }
-      .aid-code-block .aid-code-line { white-space: pre; }
-      .aid-code-block .aid-code-comment { color: #859399; }
-      .aid-install-copy {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-top: 16px;
-        background: rgba(165, 231, 255, 0.05);
-        border: 1px solid rgba(165, 231, 255, 0.25);
-        color: var(--color-text);
-        padding: 8px 16px;
-        border-radius: var(--radius-lg);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .aid-install-copy:hover { background: rgba(165, 231, 255, 0.12); }
-      .aid-install-copy:focus-visible {
-        outline: 2px solid var(--color-primary-dim);
-        outline-offset: 2px;
-      }
-      .aid-copy-icon { display: inline-flex; align-items: center; opacity: 0.7; }
-      .aid-install-help {
-        margin-top: 16px;
-        font-size: 13px;
-        line-height: 20px;
-        color: #859399;
-      }
-      .aid-install-help code {
-        font-family: var(--font-mono);
-        background: rgba(165, 231, 255, 0.08);
-        padding: 2px 6px; /* design-system: allow */
-        border-radius: 0.25rem;
-        color: var(--color-primary);
       }
 
       /* ── Feature section ── */
@@ -293,17 +243,53 @@
         max-width: 65ch;
         margin: 16px auto 0;
       }
-      .aid-feature-note {
-        font-family: var(--font-body);
-        font-size: 18px;
-        line-height: 28px;
-        color: #bbc9cf;
-        max-width: 65ch;
-        margin: 32px auto 0;
-        text-align: center;
+      /* ── Side-by-side feature layout (text 1/3 + video 2/3) ── */
+      .aid-feature-side {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
       }
       @media (min-width: 768px) {
-        .aid-feature-note { margin-top: 48px; }
+        .aid-feature-side {
+          flex-direction: row;
+          align-items: center;
+          gap: 48px;
+        }
+      }
+      .aid-feature-side-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .aid-feature-side-text .aid-label {
+        display: block;
+        margin-bottom: 12px;
+      }
+      .aid-feature-side-text h2 {
+        font-family: var(--font-display);
+        font-size: 28px;
+        line-height: 36px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--color-text);
+        margin: 0 0 16px;
+      }
+      .aid-feature-side-text p {
+        font-size: 16px;
+        line-height: 26px;
+        color: #bbc9cf;
+        margin: 0;
+      }
+      .aid-feature-side-video {
+        flex: 2;
+        min-width: 0;
+      }
+      .aid-feature-side-video .aid-video-frame {
+        max-width: none;
+      }
+      @media (min-width: 768px) {
+        .aid-feature-side--reverse {
+          flex-direction: row-reverse;
+        }
       }
 
       /* ── Closing CTA ── */
@@ -368,6 +354,156 @@
         .aid-cta-buttons > * { width: 100%; justify-content: center; }
       }
 
+      /* ── Comparison grid ── */
+      .aid-compare-section .aid-container {
+        max-width: 1200px;
+      }
+      .aid-compare-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      @media (min-width: 768px) {
+        .aid-compare-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 32px;
+        }
+      }
+      .aid-compare-card {
+        background: rgba(22, 30, 50, 0.9); /* design-system: allow */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .aid-compare-card:hover {
+        border-color: rgba(0, 210, 255, 0.3);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+      }
+      .aid-compare-card h3 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 0;
+      }
+      .aid-compare-card p {
+        font-size: 15px;
+        line-height: 24px;
+        color: #bbc9cf;
+        margin: 0;
+        flex: 1;
+      }
+      .aid-compare-img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: #ffffff;
+        padding: 6px; /* design-system: allow */
+      }
+      .aid-compare-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: calc(var(--radius-lg) - 6px); /* design-system: allow */
+      }
+      .aid-compare-verdict {
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        color: var(--color-tertiary-container);
+      }
+
+      /* ── Intent layout: video 2/3 + tabs 1/3 ── */
+      .aid-intent-section .aid-container {
+        max-width: 1200px;
+      }
+      .aid-intent-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      @media (min-width: 768px) {
+        .aid-intent-layout {
+          flex-direction: row;
+          gap: 32px;
+          align-items: stretch;
+        }
+      }
+      .aid-intent-layout .aid-video-frame {
+        flex: 2;
+        min-width: 0;
+        aspect-ratio: 16 / 9;
+      }
+      .aid-intent-tabs {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .aid-intent-tabs input[type="radio"] { display: none; }
+      .aid-tab-bar {
+        display: flex;
+        gap: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 0;
+      }
+      .aid-tab-label {
+        flex: 1;
+        cursor: pointer;
+        padding: 12px 8px;
+        font-family: var(--font-display);
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 600;
+        color: #859399;
+        text-align: center;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
+        margin-bottom: -1px; /* design-system: allow */
+      }
+      .aid-tab-label:hover { color: var(--color-text); }
+      #aid-tab-canvas:checked ~ .aid-tab-bar label[for="aid-tab-canvas"],
+      #aid-tab-design:checked ~ .aid-tab-bar label[for="aid-tab-design"],
+      #aid-tab-vision:checked ~ .aid-tab-bar label[for="aid-tab-vision"] {
+        color: var(--color-text);
+        border-bottom-color: var(--color-primary);
+      }
+      .aid-tab-panels {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .aid-tab-panel {
+        display: none;
+        padding: 24px 0;
+        flex: 1;
+      }
+      #aid-tab-canvas:checked ~ .aid-tab-panels #aid-panel-canvas { display: flex; flex-direction: column; justify-content: flex-start; }
+      #aid-tab-design:checked ~ .aid-tab-panels #aid-panel-design { display: flex; flex-direction: column; justify-content: flex-start; }
+      #aid-tab-vision:checked ~ .aid-tab-panels #aid-panel-vision { display: flex; flex-direction: column; justify-content: flex-start; }
+      .aid-tab-panel h3 {
+        font-family: var(--font-display);
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 0 0 12px;
+      }
+      .aid-tab-panel p {
+        font-size: 15px;
+        line-height: 24px;
+        color: #bbc9cf;
+        margin: 0;
+      }
+
       @media (prefers-reduced-motion: reduce) {
         .aid-video-frame { transition: none; }
         .aid-video-frame:hover { box-shadow: none; }
@@ -388,18 +524,116 @@
           <div class="aid-hero-grid"></div>
           <div class="aid-container">
             <div class="aid-hero-content">
-              <span class="aid-label">Visual editor for Jay Stack</span>
-              <h1>Edit your site by pointing at it</h1>
+              <span class="aid-label">The first visual-intent web editor</span>
+              <h1>Build &amp; Edit Websites by Intent. Visually.</h1>
               <p class="aid-hero-subhead">
-                AIditor is a Jay Stack plugin that runs your project live in the browser.
-                Point at any element, describe what you want, and send the request to your
-                AI agent — integrated with <strong>Claude Code</strong> today.
+                Describe your vision directly on canvas—just like giving natural feedback to a designer—and let the AI agent craft the content, layout, and animations to bring it to life. Enjoy complete creative freedom with zero constraints from complex panels or blind text prompts.
               </p>
               <div class="aid-hero-buttons">
                 <a class="aid-btn-primary" href="/#cta">Get Started</a>
-                <a class="aid-btn-secondary" href="/docs">View documentation</a>
+                <jay:clipboard-copy text="npm create jay@latest">
+                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd">
+                    <span>npm create jay@latest</span>
+                    <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </span>
+                    <span if="copied" class="aid-copy-icon" aria-live="polite">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                  </button>
+                </jay:clipboard-copy>
               </div>
-              <div class="aid-video-frame" style="margin-top: 32px;">
+              <p class="aid-hero-micro">Run dev server and open <code style="font-family: var(--font-mono); color: var(--color-primary);">/aiditor</code> to start</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- Why Traditional Web Builders Fall Short      -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="aid-section aid-section--alt aid-compare-section">
+          <div class="aid-container">
+            <div class="aid-feature-header">
+              <h2>Why Traditional Web Builders Fall Short</h2>
+            </div>
+            <div class="aid-compare-grid">
+              <div class="aid-compare-card">
+                <div class="aid-compare-img">
+                  <img
+                    src="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400,h_300/file.webp"
+                    srcset="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
+                            https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
+                            https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    alt="Selection-based editor interface with complex panels and nested layers"
+                    loading="lazy"
+                  />
+                </div>
+                <h3>Selection-Based Editors</h3>
+                <p>
+                  Requires clicking through complex panels, endless nested layers, and
+                  manual CSS tweaks for every minor change.
+                </p>
+                <span class="aid-compare-verdict">❌ High friction, slow iteration</span>
+              </div>
+              <div class="aid-compare-card">
+                <div class="aid-compare-img">
+                  <img
+                    src="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400,h_300/file.webp"
+                    srcset="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
+                            https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
+                            https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    alt="Non-visual AI agent chat panel with imprecise results"
+                    loading="lazy"
+                  />
+                </div>
+                <h3>Non-Visual AI Agents</h3>
+                <p>
+                  Prompting in a side-panel chat makes it difficult to pinpoint specific
+                  visual elements or fine-tune micro-interactions like animations and
+                  transitions.
+                </p>
+                <span class="aid-compare-verdict">❌ Imprecise, low visual control</span>
+              </div>
+              <div class="aid-compare-card">
+                <div class="aid-compare-img">
+                  <img
+                    src="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400,h_300/file.webp"
+                    srcset="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
+                            https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
+                            https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    alt="CMS content editing split with custom code development"
+                    loading="lazy"
+                  />
+                </div>
+                <h3>CMS &amp; Custom Code</h3>
+                <p>
+                  Decouples the content from the design. Requires heavy development
+                  overhead for UI updates and limits creative freedom.
+                </p>
+                <span class="aid-compare-verdict">❌ Rigid, engineer-dependent</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- Intent-Driven Intelligence                  -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="aid-section aid-intent-section">
+          <div class="aid-container">
+            <div class="aid-feature-header">
+              <h2>Intent-Driven Intelligence Meets Canvas Precision</h2>
+            </div>
+            <div class="aid-intent-layout">
+              <div class="aid-video-frame">
                 <video
                   src="/videos/aiditor-intro/full-movie-fast.mp4"
                   aria-label="Demo: AIditor fast-forward overview clip showing all editor workflows in action"
@@ -409,48 +643,46 @@
                   loop
                   autoplay
                   preload="metadata"
-                  loading="eager"
+                  loading="lazy"
                 ></video>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- Install strip                               -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section" style="padding-top: 0;">
-          <div class="aid-container">
-            <div class="aid-glass aid-install">
-              <h2>Install the plugin</h2>
-              <p>For developers who want to try AIditor in a Jay project right now.</p>
-              <div class="aid-code-block">
-                <div class="aid-code-line">yarn add @jay-framework/aiditor</div>
-                <div class="aid-code-line">yarn agent-kit</div>
-                <div class="aid-code-line">yarn dev</div>
+              <div class="aid-intent-tabs">
+                <input type="radio" name="aid-tab" id="aid-tab-canvas" checked />
+                <input type="radio" name="aid-tab" id="aid-tab-design" />
+                <input type="radio" name="aid-tab" id="aid-tab-vision" />
+                <nav class="aid-tab-bar" role="tablist">
+                  <label for="aid-tab-canvas" class="aid-tab-label" role="tab">On-Canvas</label>
+                  <label for="aid-tab-design" class="aid-tab-label" role="tab">Design &amp; Motion</label>
+                  <label for="aid-tab-vision" class="aid-tab-label" role="tab">Visual Context</label>
+                </nav>
+                <div class="aid-tab-panels">
+                  <div class="aid-tab-panel" id="aid-panel-canvas" role="tabpanel">
+                    <h3>Direct On-Canvas Context</h3>
+                    <p>
+                      Point at any section, element, or interaction directly on the page.
+                      No need to describe where things are in a text chat — AIditor sees
+                      exactly what you see and sends full visual context to your agent.
+                    </p>
+                  </div>
+                  <div class="aid-tab-panel" id="aid-panel-design" role="tabpanel">
+                    <h3>Design System &amp; Animations</h3>
+                    <p>
+                      Request design tokens, hover effects, scroll animations, and transitions
+                      by dragging from the Add menu or typing an @mention. Every request
+                      carries ready-made agent context so changes follow your project's
+                      design language automatically.
+                    </p>
+                  </div>
+                  <div class="aid-tab-panel" id="aid-panel-vision" role="tabpanel">
+                    <h3>An Agent That Actually Sees Your Screen</h3>
+                    <p>
+                      Aiditor pairs natural conversation with real-time visual perception.
+                      Your agent doesn't just read your prompt—it sees your screen, understands
+                      the layout in context, and applies changes with pixel-level precision.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <jay:clipboard-copy text="yarn add @jay-framework/aiditor && yarn agent-kit && yarn dev">
-                <button ref="copyBtn" class="aid-install-copy" aria-label="Copy install commands">
-                  <span if="!copied">Copy commands</span>
-                  <span if="copied">Copied</span>
-                  <span if="!copied" class="aid-copy-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                  </span>
-                  <span if="copied" class="aid-copy-icon" aria-live="polite">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                </button>
-              </jay:clipboard-copy>
-              <p class="aid-install-help">
-                Then open <code>/aiditor</code> in the browser. AIditor does not ship an agent —
-                it connects to the agent you already use (<strong>Claude Code</strong> via
-                <code>claude login</code> or <code>ANTHROPIC_API_KEY</code>).
-              </p>
             </div>
           </div>
         </section>
@@ -460,265 +692,295 @@
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section aid-section--alt">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">01 · Welcome</span>
-              <h2>What is AIditor?</h2>
-              <p>
-                AIditor is the visual editor for Jay Stack. Open your project, preview any
-                page live, annotate on the canvas, and send change requests to your AI agent.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/welcome-aiditor.mp4"
-                aria-label="Demo: What is AIditor — orientation tour"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">01 · Welcome</span>
+                <h2>What is AIditor?</h2>
+                <p>
+                  AIditor is the visual editor for Jay Stack. Open your project, preview any
+                  page live, annotate on the canvas, and send change requests to your AI agent.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/welcome-aiditor-2.mp4"
+                    aria-label="Demo: What is AIditor — orientation tour"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 2. Live preview                             -->
+        <!-- 2. Live preview (video left, text right)    -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">02 · Live preview</span>
-              <h2>Every page, live in the editor</h2>
-              <p>
-                Your whole project runs inside AIditor. Switch routes from the Pages panel —
-                what you see is the real site, not a mockup.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/live-preview-pages.mp4"
-                aria-label="Demo: switching routes in the live preview"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side aid-feature-side--reverse">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">02 · Live preview</span>
+                <h2>Every page, live in the editor</h2>
+                <p>
+                  Your whole project runs inside AIditor. Switch routes from the Pages panel —
+                  what you see is the real site, not a mockup.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/live-preview-pages.mp4"
+                    aria-label="Demo: switching routes in the live preview"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 3. Point and shoot                          -->
+        <!-- 3. Point and shoot (text left, video right) -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section aid-section--alt">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">03 · Point &amp; shoot</span>
-              <h2>Point and shoot</h2>
-              <p>
-                Click what you want to change and write a short instruction. AIditor captures
-                context and screenshots so your agent knows exactly what you mean.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/change-request-1.mp4"
-                aria-label="Demo: point and shoot annotation — placing the first pin comment"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">03 · By intent</span>
+                <h2>Point, describe, done</h2>
+                <p>
+                  Click what you want to change and write a short instruction. AIditor captures
+                  context and screenshots so your agent knows exactly what you mean.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/change-request-1.mp4"
+                    aria-label="Demo: point and shoot annotation — placing the first pin comment"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 4. Stack multiple comments                  -->
+        <!-- 4. Stack multiple comments (video left)     -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">04 · Multi-pin</span>
-              <h2>Add more pins before you send</h2>
-              <p>
-                Keep annotating — place another pin on a different element and write a second
-                instruction. AIditor collects every marker so you can send several changes in
-                one request.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/change-request-2.mp4"
-                aria-label="Demo: stacking multiple pin comments before sending"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side aid-feature-side--reverse">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">04 · Multi-pin</span>
+                <h2>Add more pins before you send</h2>
+                <p>
+                  Keep annotating — place another pin on a different element and write a second
+                  instruction. AIditor collects every marker so you can send several changes in
+                  one request.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/change-request-2.mp4"
+                    aria-label="Demo: stacking multiple pin comments before sending"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 5. Send to your agent                       -->
+        <!-- 5. Send to your agent (text left)           -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section aid-section--alt">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">05 · Send to agent</span>
-              <h2>Send to your agent</h2>
-              <p>
-                When your annotations are ready, send them all at once. Your agent reads every
-                marker, screenshot, and instruction — then implements the changes in code.
-                Watch the preview update when the agent finishes.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/send-to-agent.mp4"
-                aria-label="Demo: sending annotations to the AI agent and viewing the result"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">05 · Send to agent</span>
+                <h2>Send to your agent</h2>
+                <p>
+                  When your annotations are ready, send them all at once. Your agent reads every
+                  marker, screenshot, and instruction — then implements the changes in code.
+                  Watch the preview update when the agent finishes.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/send-to-agent.mp4"
+                    aria-label="Demo: sending annotations to the AI agent and viewing the result"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 6. Add Menu — drag from the catalog         -->
+        <!-- 6. Add Menu — drag from the catalog (video left) -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">06 · Add menu</span>
-              <h2>Drag from the catalog</h2>
-              <p>
-                The <strong>+ Add</strong> menu lists ready-made change requests packaged by
-                Jay plugins integrated with AIditor — each item is an instruction for your agent.
-                Drag one onto the page to start a request.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/add-menu-request.mp4"
-                aria-label="Demo: dragging a change request from the Add Menu onto the page"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side aid-feature-side--reverse">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">06 · Add menu</span>
+                <h2>Drag from the catalog</h2>
+                <p>
+                  The <strong>+ Add</strong> menu lists ready-made change requests packaged by
+                  Jay plugins integrated with AIditor — each item is an instruction for your agent.
+                  Drag one onto the page to start a request.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/add-menu-request.mp4"
+                    aria-label="Demo: dragging a change request from the Add Menu onto the page"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 7. Add Menu — @ mentions                    -->
+        <!-- 7. Add Menu — @ mentions (text left)        -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section aid-section--alt">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">07 · @ mentions</span>
-              <h2>Autocomplete with @</h2>
-              <p>
-                Type <code style="font-family: var(--font-mono); color: var(--color-primary);">@</code>
-                in any instruction to open autocomplete. It lists every <strong>+ Add</strong> menu item
-                and more — non-visual references plugins choose to expose, like e-commerce categories
-                or page routes. When you select an item, your agent gets ready-made change context
-                for that choice; behind the scenes, the request can point the agent to the right
-                skills and implementation guidance.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/auto-complete.mp4"
-                aria-label="Demo: @ autocomplete for Add Menu items, routes, and plugin context"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">07 · @ mentions</span>
+                <h2>@ Autocomplete</h2>
+                <p>
+                  Type <code style="font-family: var(--font-mono); color: var(--color-primary);">@</code>
+                  in any instruction to open autocomplete. It lists every <strong>+ Add</strong> menu item
+                  and more — non-visual references plugins choose to expose, like e-commerce categories
+                  or page routes. When you select an item, your agent gets ready-made change context
+                  for that choice.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/auto-complete.mp4"
+                    aria-label="Demo: @ autocomplete for Add Menu items, routes, and plugin context"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 8. Record interactions                      -->
+        <!-- 8. Record interactions (video left)         -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">08 · Recording</span>
-              <h2>Capture motion and hover states</h2>
-              <p>
-                Hover states, motion, and animations do not show up in a still screenshot.
-                Hit <strong>REC</strong>, interact with the page, then pin and annotate the
-                moments that matter.
-              </p>
-            </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/capture-video.mp4"
-                aria-label="Demo: recording page interactions with the REC button"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
+            <div class="aid-feature-side aid-feature-side--reverse">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">08 · Recording</span>
+                <h2>Capture motion and hover states</h2>
+                <p>
+                  Hover states, motion, and animations do not show up in a still screenshot.
+                  Hit <strong>REC</strong>, interact with the page, then pin and annotate the
+                  moments that matter.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/capture-video.mp4"
+                    aria-label="Demo: recording page interactions with the REC button"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!-- 9. Comment on a recording + send to agent   -->
+        <!-- 9. Comment on a recording (text left)       -->
         <!-- ═══════════════════════════════════════════ -->
         <section class="aid-section aid-section--alt">
           <div class="aid-container">
-            <div class="aid-feature-header">
-              <span class="aid-label">09 · Recording · agent · result</span>
-              <h2>From recording to implementation</h2>
-              <p>
-                Scrub the timeline, add pins at key frames, and leave notes at any timestamp.
-                Send the recording with your annotations — your agent reads the video plus
-                context at every moment you mark, implements the change, and the preview
-                updates with the result.
-              </p>
+            <div class="aid-feature-side">
+              <div class="aid-feature-side-text">
+                <span class="aid-label">09 · Record to ship</span>
+                <h2>From recording to implementation</h2>
+                <p>
+                  Scrub the timeline, add pins at key frames, and leave notes at any timestamp.
+                  Send the recording with your annotations — your agent reads the video plus
+                  context at every moment you mark, implements the change, and the preview
+                  updates with the result.
+                </p>
+              </div>
+              <div class="aid-feature-side-video">
+                <div class="aid-video-frame">
+                  <video
+                    src="/videos/aiditor-intro/video-preview-commenting-agent.mp4"
+                    aria-label="Demo: commenting on a video capture, sending to the agent, and seeing the applied result"
+                    muted
+                    playsinline
+                    controls
+                    loop
+                    preload="metadata"
+                    loading="lazy"
+                  ></video>
+                </div>
+              </div>
             </div>
-            <div class="aid-video-frame">
-              <video
-                src="/videos/aiditor-intro/video-preview-commenting-agent.mp4"
-                aria-label="Demo: commenting on a video capture, sending to the agent, and seeing the applied result"
-                muted
-                playsinline
-                controls
-                loop
-                preload="metadata"
-                loading="lazy"
-              ></video>
-            </div>
-            <p class="aid-feature-note">
-              Recording is also ideal when you want to review multi-page flows or complex
-              application scenarios. Capture a longer session, scrub to the keyframes that
-              matter, and annotate each moment before you send.
-            </p>
           </div>
         </section>
 
@@ -738,8 +1000,22 @@
               </p>
               <div class="aid-cta-buttons">
                 <a class="aid-btn-primary" href="/#cta">Get Started</a>
-                <a class="aid-btn-secondary" href="/docs">Read the docs</a>
-                <a class="aid-btn-secondary" href="https://github.com/jay-framework/jay" target="_blank" rel="noopener">View on GitHub</a>
+                <jay:clipboard-copy text="npm create jay@latest">
+                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd">
+                    <span>npm create jay@latest</span>
+                    <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </span>
+                    <span if="copied" class="aid-copy-icon" aria-live="polite">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                  </button>
+                </jay:clipboard-copy>
               </div>
             </div>
           </div>

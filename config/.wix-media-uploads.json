@@ -304,5 +304,122 @@
   },
   "public/validator.png": {
     "status": "uploaded"
+  },
+  "public/aiditor/aiditor hero.png": {
+    "status": "uploaded"
+  },
+  "public/aiditor/cms and custom code.png": {
+    "status": "uploaded"
+  },
+  "public/aiditor/non visual ai agent.png": {
+    "status": "uploaded"
+  },
+  "public/aiditor/selection based editors.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/02-jay-element-vs-component.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/02-jay-element-vs-jay-component-secure-model.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/12-secure-architecture-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/12-secure-architecture-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/12-secure-architecture-3.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/12-secure-architecture-4.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/15-main-to-worker-communication-protocol-1-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/15-main-to-worker-communication-protocol-2-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/15-main-to-worker-communication-protocol-3-md.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/25-building-the-compiler-code-splitting-ex-1-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/25-building-the-compiler-code-splitting-ex-1-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/25-building-the-compiler-code-splitting-ex-1-3.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/25-building-the-compiler-code-splitting-pattern.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/28-generated-code.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/28-inspect-plugins.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/28-source-code.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/29-algorithm-to-split-safe-code-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/29-algorithm-to-split-safe-code-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/34-jay-stack-page-data-flow.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/34-jay-stack-rendering-flow-client-rendering.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/34-jay-stack-rendering-flow-fast-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/34-jay-stack-rendering-flow-slowly-changing.svg": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/into-to-jay-1.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/into-to-jay-2.png": {
+    "status": "uploaded"
+  },
+  "public/design-log/jay/into-to-jay-3.png": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/add-menu-request.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/auto-complete.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/capture-video.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/change-request-1.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/change-request-2.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/full-movie-fast.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/live-preview-pages.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/send-to-agent.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/video-preview-commenting-agent.mp4": {
+    "status": "uploaded"
+  },
+  "public/videos/aiditor-intro/welcome-aiditor.mp4": {
+    "status": "uploaded"
   }
 }

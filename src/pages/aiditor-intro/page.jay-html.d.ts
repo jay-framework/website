@@ -12,7 +12,8 @@ export interface PageViewState {}
 
 
 export interface PageElementRefs {
-  ar0: SiteHeaderRefs
+  ar0: SiteHeaderRefs,
+  ar1: ClipboardCopyRefs
 }
 
 export type AiditorIntroSlowViewState = {};
