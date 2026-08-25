@@ -1,0 +1,29 @@
+name: templates-data-pages
+description: Per-item pages for templates
+
+props:
+  - name: contentDir
+    kind: required
+  - name: file
+    kind: required
+
+params:
+  - name: slug
+    kind: required
+
+tags:
+  - tag: slug
+    type: data
+    dataType: string
+  - tag: name
+    type: data
+    dataType: string
+  - tag: githubUrl
+    type: data
+    dataType: string
+  - tag: exampleUrl
+    type: data
+    dataType: string
+  - tag: coverImage
+    type: data
+    dataType: string

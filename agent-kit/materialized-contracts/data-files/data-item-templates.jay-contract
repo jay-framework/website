@@ -1,0 +1,27 @@
+name: templates-data-item
+description: Single item view for templates
+
+props:
+  - name: contentDir
+    kind: required
+  - name: file
+    kind: required
+  - name: slug
+    kind: required
+
+tags:
+  - tag: slug
+    type: data
+    dataType: string
+  - tag: name
+    type: data
+    dataType: string
+  - tag: githubUrl
+    type: data
+    dataType: string
+  - tag: exampleUrl
+    type: data
+    dataType: string
+  - tag: coverImage
+    type: data
+    dataType: string

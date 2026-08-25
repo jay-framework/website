@@ -1,7 +1,31 @@
 plugins:
   - name: data-files
     path: ./node_modules/@jay-framework/data-files
-    contracts: []
+    contracts:
+      - name: data-pages/plugins
+        description: Per-item pages for plugins
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-pages-plugins.jay-contract
+      - name: data-pages/templates
+        description: Per-item pages for templates
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-pages-templates.jay-contract
+      - name: data-list/plugins
+        description: List view for plugins
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-list-plugins.jay-contract
+      - name: data-list/templates
+        description: List view for templates
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-list-templates.jay-contract
+      - name: data-item/plugins
+        description: Single item view for plugins
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-item-plugins.jay-contract
+      - name: data-item/templates
+        description: Single item view for templates
+        type: dynamic
+        path: ./agent-kit/materialized-contracts/data-files/data-item-templates.jay-contract
     commands:
       - name: generate-schema
   - name: markdown

@@ -5,6 +5,8 @@ config/.wix.yaml
 .idea
 wix.config.json
 serve.mjs
-content
+content/design-log
+content/home
+content/docs
 public
 .aiditor

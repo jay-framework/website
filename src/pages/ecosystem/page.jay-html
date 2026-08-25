@@ -1,0 +1,355 @@
+<html lang="en">
+  <head>
+    <title>Ecosystem | Jay Framework</title>
+    <meta name="description" content="Jay Framework ecosystem — templates, plugins, and tools for building AI-native web applications.">
+    <script type="application/jay-data" contract="./page.jay-contract"></script>
+    <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
+    <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
+    <script type="application/jay-headless" plugin="@jay-framework/data-files" contract="data-list/templates" key="templates">
+      contentDir: content/templates
+      file: data.yaml
+    </script>
+    <script type="application/jay-headless" plugin="@jay-framework/data-files" contract="data-list/plugins" key="plugins">
+      contentDir: content/plugins
+      file: data.yaml
+    </script>
+    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+    <link rel="stylesheet" href="../../styles/theme.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      .section { padding: 96px 0; }
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        color: var(--color-primary);
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+      }
+      .text-muted { color: var(--color-text-muted); }
+      .text-center { text-align: center; }
+
+      .glass-panel {
+        background: rgba(10, 15, 30, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 210, 255, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .glass-panel:hover {
+        border-color: rgba(0, 210, 255, 0.3);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+      }
+
+      /* ── Hero ── */
+      .eco-hero {
+        position: relative;
+        padding: 96px 0;
+        padding-top: 160px;
+        overflow: hidden;
+      }
+      .eco-hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .eco-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      @keyframes shimmer-pass {
+        0%   { background-position: -150% center; }
+        15%  { background-position: -150% center; }
+        35%  { background-position:  150% center; }
+        100% { background-position:  150% center; }
+      }
+      .eco-hero-headline {
+        font-family: var(--font-display);
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .shimmer-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .eco-hero-headline .shimmer-base {
+        color: var(--color-primary);
+        text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+      }
+      .eco-hero-headline .shimmer-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.5) 46%,
+          rgba(255, 255, 255, 0.85) 50%,
+          rgba(255, 255, 255, 0.5) 54%,
+          transparent 65%
+        );
+        background-size: 200% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer-pass 5s ease-in-out infinite;
+      }
+      .eco-hero-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--color-text-muted);
+        max-width: 700px;
+        margin: 32px auto 0;
+      }
+
+      /* ── Templates ── */
+      .templates-section { background: var(--color-surface); }
+      .templates-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+        margin-top: 48px;
+      }
+      @media (min-width: 768px) {
+        .templates-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (min-width: 1024px) {
+        .templates-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      .template-card {
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .template-card-image {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+      .template-card-body {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+      }
+      .template-card-name {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+      }
+      .template-card-links {
+        display: flex;
+        gap: 12px;
+        margin-top: auto;
+      }
+      .template-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .template-link:hover { text-decoration: none; }
+      .template-link--github {
+        border: 1px solid rgba(165, 231, 255, 0.15);
+        background: rgba(165, 231, 255, 0.05);
+        color: var(--color-text);
+      }
+      .template-link--github:hover {
+        border-color: rgba(165, 231, 255, 0.35);
+        background: rgba(165, 231, 255, 0.1);
+      }
+      .template-link--example {
+        border: 1px solid rgba(52, 211, 153, 0.2);
+        background: rgba(52, 211, 153, 0.05);
+        color: #34d399;
+      }
+      .template-link--example:hover {
+        border-color: rgba(52, 211, 153, 0.4);
+        background: rgba(52, 211, 153, 0.1);
+      }
+
+      /* ── Plugins ── */
+      .packages-section { background: var(--color-surface-lowest); }
+      .packages-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+        margin-top: 48px;
+      }
+      @media (min-width: 640px) {
+        .packages-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (min-width: 1024px) {
+        .packages-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      .package-card {
+        padding: 28px;
+        border-radius: var(--radius-2xl);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .package-name {
+        font-family: var(--font-display);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 24px;
+        color: var(--color-text);
+      }
+      .package-desc {
+        color: var(--color-text-muted);
+        font-size: 14px;
+        line-height: 22px; /* design-system: allow */
+        flex: 1;
+      }
+      .package-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 4px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(0, 210, 255, 0.06);
+      }
+      .package-npm {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        background: rgba(255, 210, 209, 0.06);
+        border: 1px solid rgba(255, 171, 170, 0.15);
+        color: var(--color-tertiary);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+      .package-npm svg { flex-shrink: 0; }
+      .package-github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        border: 1px solid rgba(165, 231, 255, 0.12);
+        background: rgba(165, 231, 255, 0.04);
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s;
+        white-space: nowrap;
+        margin-left: auto;
+      }
+      .package-github-link:hover {
+        border-color: rgba(165, 231, 255, 0.35);
+        background: rgba(165, 231, 255, 0.1);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-root">
+
+    <jay:SiteHeader />
+
+    <main>
+
+      <section class="eco-hero">
+        <div class="eco-hero-grid"></div>
+        <div class="container">
+          <div class="eco-hero-content">
+            <span class="section-label">Ecosystem</span>
+            <h1 class="eco-hero-headline" style="margin-top: 16px;"><span class="shimmer-wrap"><span class="shimmer-base">Templates &amp; Plugins</span><span class="shimmer-shine" aria-hidden="true">Templates &amp; Plugins</span></span></h1>
+            <p class="eco-hero-subtitle">Starter templates and reusable plugins for building with Jay. Everything you need to get productive fast.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section templates-section">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">Starter Templates</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Start from a Template</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Production-ready project templates with pre-configured plugins, design systems, and example pages.</p>
+          </div>
+          <div class="templates-grid">
+            <div forEach="templates.items" trackBy="slug" class="template-card glass-panel">
+              <img class="template-card-image" src="{coverImage}" alt="{name} template" width="480" height="300" loading="lazy">
+              <div class="template-card-body">
+                <h3 class="template-card-name">{name}</h3>
+                <div class="template-card-links">
+                  <a class="template-link template-link--github" href="{githubUrl}" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                  </a>
+                  <a class="template-link template-link--example" href="{exampleUrl}" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section packages-section">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">Plugins</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Jay Plugins</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Installable NPM packages bundling headless components, server actions, and data contracts.</p>
+          </div>
+          <div class="packages-grid">
+            <div forEach="plugins.items" trackBy="slug" class="package-card glass-panel">
+              <h3 class="package-name">{name}</h3>
+              <p class="package-desc">{description}</p>
+              <div class="package-footer">
+                <span class="package-npm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  {npmPackage}
+                </span>
+                <a class="package-github-link" href="{githubUrl}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  Source
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <jay:SiteFooter />
+
+    </div>
+  </body>
+</html>

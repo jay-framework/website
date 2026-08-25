@@ -1,0 +1,31 @@
+name: plugins-data-list
+description: List view for plugins
+
+props:
+  - name: contentDir
+    kind: required
+  - name: file
+    kind: required
+
+tags:
+  - tag: items
+    type: sub-contract
+    repeated: true
+    trackBy: slug
+    phase: slow
+    tags:
+      - tag: slug
+        type: data
+        dataType: string
+      - tag: name
+        type: data
+        dataType: string
+      - tag: githubUrl
+        type: data
+        dataType: string
+      - tag: description
+        type: data
+        dataType: string
+      - tag: npmPackage
+        type: data
+        dataType: string

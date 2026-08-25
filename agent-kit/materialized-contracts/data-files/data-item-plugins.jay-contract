@@ -1,0 +1,27 @@
+name: plugins-data-item
+description: Single item view for plugins
+
+props:
+  - name: contentDir
+    kind: required
+  - name: file
+    kind: required
+  - name: slug
+    kind: required
+
+tags:
+  - tag: slug
+    type: data
+    dataType: string
+  - tag: name
+    type: data
+    dataType: string
+  - tag: githubUrl
+    type: data
+    dataType: string
+  - tag: description
+    type: data
+    dataType: string
+  - tag: npmPackage
+    type: data
+    dataType: string

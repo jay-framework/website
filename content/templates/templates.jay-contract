@@ -1,0 +1,20 @@
+name: templates
+description: Jay project templates
+tags:
+  - tag: slug
+    type: data
+    dataType: string
+    meta:
+      slug: 'true'
+  - tag: name
+    type: data
+    dataType: string
+  - tag: githubUrl
+    type: data
+    dataType: string
+  - tag: exampleUrl
+    type: data
+    dataType: string
+  - tag: coverImage
+    type: data
+    dataType: string

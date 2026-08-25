@@ -1,0 +1,120 @@
+# Jay Framework Plugins
+# Source: ../jay/packages/plugins/
+
+- slug: a11y-validator
+  name: Accessibility Validator
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/a11y-validator
+  description: Checks jay-html templates for WCAG best practices — image alt text, ARIA roles, keyboard navigation, and semantic HTML.
+  npmPackage: "@jay-framework/a11y-validator"
+
+- slug: data-files
+  name: Data Files
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/data-files
+  description: Render structured data from CSV, YAML, JSON, or JSONL files as lists, item pages, or single items.
+  npmPackage: "@jay-framework/data-files"
+
+- slug: design-system-validator
+  name: Design System Validator
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/design-system-validator
+  description: Validates jay-html CSS against DESIGN.md tokens — colors, spacing, typography, contrast ratios, and component structure.
+  npmPackage: "@jay-framework/design-system-validator"
+
+- slug: gemini-agent
+  name: Gemini Agent
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/gemini-agent
+  description: Embedded chat agent powered by Gemini with page automation and server action calling.
+  npmPackage: "@jay-framework/gemini-agent-plugin"
+
+- slug: markdown
+  name: Markdown
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/markdown
+  description: Three rendering modes — directory pages, static inline, and live dynamic. Includes code highlighting and mermaid-to-SVG diagrams.
+  npmPackage: "@jay-framework/markdown"
+
+- slug: seo-validator
+  name: SEO Validator
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/seo-validator
+  description: Checks jay-html templates for SEO best practices — meta tags, heading hierarchy, canonical URLs, and Open Graph data.
+  npmPackage: "@jay-framework/seo-validator"
+
+- slug: ui-kit
+  name: UI Kit
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/ui-kit
+  description: Headless UI primitives — popover menus, scroll carousels, clipboard copy, word/letter splitting, tabs, tooltips, and more.
+  npmPackage: "@jay-framework/ui-kit"
+
+- slug: webmcp
+  name: WebMCP
+  githubUrl: https://github.com/jay-framework/jay/tree/main/packages/plugins/webmcp
+  description: Automatically exposes page interactions as Model Context Protocol tools, resources, and prompts.
+  npmPackage: "@jay-framework/webmcp-plugin"
+
+# Source: ../wix/packages/
+
+- slug: wix-server-client
+  name: Wix Server Client
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-server-client
+  description: Core Wix SDK client with API key authentication — foundation for all Wix headless integrations.
+  npmPackage: "@jay-framework/wix-server-client"
+
+- slug: wix-deploy
+  name: Wix Deploy
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-deploy
+  description: One-click deployment to Wix infrastructure — builds entry points, uploads backend code, and deploys.
+  npmPackage: "@jay-framework/wix-deploy"
+
+- slug: wix-media
+  name: Wix Media
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-media
+  description: Media upload, optimization validation, CDN delivery, and index generation for Wix Media Manager.
+  npmPackage: "@jay-framework/wix-media"
+
+- slug: wix-stores
+  name: Wix Stores
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-stores
+  description: Wix Stores API client and headless components — product catalogs, variant resolution, and category browsing.
+  npmPackage: "@jay-framework/wix-stores"
+
+- slug: wix-stores-v1
+  name: Wix Stores V1
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-stores-v1
+  description: Wix Stores Catalog V1 API client and headless components.
+  npmPackage: "@jay-framework/wix-stores-v1"
+
+- slug: wix-cart
+  name: Wix Cart
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-cart
+  description: Complete cart with mini-cart drawer, line-item management, and checkout integration.
+  npmPackage: "@jay-framework/wix-cart"
+
+- slug: wix-members
+  name: Wix Members
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-members
+  description: OAuth authentication with login indicators, protected page guards, and callback handling.
+  npmPackage: "@jay-framework/wix-members"
+
+- slug: wix-data
+  name: Wix Data
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-data
+  description: Dynamic contract generation from Wix CMS collection schemas — automatically creates item, list, table, and card pages.
+  npmPackage: "@jay-framework/wix-data"
+
+- slug: wix-utils
+  name: Wix Utils
+  githubUrl: https://github.com/jay-framework/wix/tree/main/packages/wix-utils
+  description: Shared utilities for Wix integrations in Jay Framework.
+  npmPackage: "@jay-framework/wix-utils"
+
+# Source: ../aiditor/packages/
+
+- slug: aiditor
+  name: AIditor
+  githubUrl: https://github.com/wix-incubator/jay-aiditor/tree/main/packages/aiditor
+  description: Visual AI-driven code editor — agents create pages, manage plugins, edit live sites, and publish.
+  npmPackage: "@jay-framework/aiditor"
+
+- slug: aiditor-quill
+  name: AIditor Quill
+  githubUrl: https://github.com/wix-incubator/jay-aiditor/tree/main/packages/aiditor-quill
+  description: Ready-made add-menu assets and text components for the AIditor visual editor.
+  npmPackage: "@jay-framework/aiditor-quill"

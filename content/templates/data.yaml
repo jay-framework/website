@@ -1,0 +1,25 @@
+# Jay Templates & Examples
+
+- slug: onsko-shop
+  name: Onsko Shop
+  githubUrl: https://github.com/jay-framework/onsko-shop-template
+  exampleUrl: https://jay-onsko-52654f57-yoav68.wix-site-host.com
+  coverImage: https://raw.githubusercontent.com/jay-framework/onsko-shop-template/main/docs/homepage.png
+
+- slug: studio-store
+  name: Studio Store
+  githubUrl: https://github.com/jay-framework/example-studio-store
+  exampleUrl: https://jay-studio-9b80199d-yoav68.wix-site-host.com
+  coverImage: https://raw.githubusercontent.com/jay-framework/example-studio-store/main/docs/screenshot-homepage.png
+
+- slug: store-light
+  name: Store Light
+  githubUrl: https://github.com/jay-framework/example-store-light
+  exampleUrl: https://jay-store-736aca87-yoav68.wix-site-host.com
+  coverImage: https://raw.githubusercontent.com/jay-framework/example-store-light/main/docs/screenshot-collection.png
+
+- slug: jay-website
+  name: Jay Website
+  githubUrl: https://github.com/jay-framework/website
+  exampleUrl: https://jay-websit-72a2c580-yoav68.wix-site-host.com
+  coverImage: https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500,h_500/file.webp
