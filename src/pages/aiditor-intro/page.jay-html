@@ -98,8 +98,39 @@
         line-height: 1.1;
         font-weight: 700;
         letter-spacing: -0.02em;
-        color: var(--color-text);
+        color: var(--color-primary);
         max-width: 800px;
+      }
+
+      /* ── Shimmer pass on hero title ── */
+      @keyframes aid-shimmer-pass {
+        0%   { background-position: -150% center; }
+        15%  { background-position: -150% center; }
+        35%  { background-position:  150% center; }
+        100% { background-position:  150% center; }
+      }
+      .aid-hero-title-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .aid-hero-title-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.4) 46%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(255, 255, 255, 0.4) 54%,
+          transparent 65%
+        );
+        background-size: 200% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: aid-shimmer-pass 5s ease-in-out infinite;
       }
       .aid-hero-subhead {
         font-family: var(--font-body);
@@ -525,7 +556,7 @@
           <div class="aid-container">
             <div class="aid-hero-content">
               <span class="aid-label">The first visual-intent web editor</span>
-              <h1>Build &amp; Edit Websites by Intent. Visually.</h1>
+              <h1><span class="aid-hero-title-wrap"><span class="aid-hero-title-base">Build &amp; Edit Websites by Intent. Visually.</span><span class="aid-hero-title-shine" aria-hidden="true">Build &amp; Edit Websites by Intent. Visually.</span></span></h1>
               <p class="aid-hero-subhead">
                 Describe your vision directly on canvas—just like giving natural feedback to a designer—and let the AI agent craft the content, layout, and animations to bring it to life. Enjoy complete creative freedom with zero constraints from complex panels or blind text prompts.
               </p>
