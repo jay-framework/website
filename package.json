@@ -21,6 +21,7 @@
     "aiditor:publish": "npm run build:production && npm run wix:deploy"
   },
   "dependencies": {
+    "@jay-framework/data-files": "^0.23.1",
     "@jay-framework/fullstack-component": "^0.23.1",
     "@jay-framework/jay-stack-cli": "^0.23.1",
     "@jay-framework/markdown": "^0.23.1",

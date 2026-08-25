@@ -1,4 +1,9 @@
 plugins:
+  - name: data-files
+    path: ./node_modules/@jay-framework/data-files
+    contracts: []
+    commands:
+      - name: generate-schema
   - name: markdown
     path: ./node_modules/@jay-framework/markdown
     contracts:

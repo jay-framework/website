@@ -138,6 +138,7 @@ jay-stack dev
 
 | File | Plugin | Description |
 | --- | --- | --- |
+| [data-files-usage.md](data-files-usage.md) | data-files | Render structured data from CSV, YAML, JSON, or JSONL files as lists, item pages, or single items. |
 | [markdown-usage.md](markdown-usage.md) | markdown | The `@jay-framework/markdown` plugin renders markdown content as HTML in jay-html pages. It provides three headless components. |
 | [accordion.md](accordion.md) | ui-kit | Collapsible sections using native `<details>` / `<summary>`. Pure HTML, no component needed. |
 | [click-popover.md](click-popover.md) | ui-kit | Popup dialog on button click with auto-dismiss on click outside. Pure HTML using `popovertarget`, no component needed. |
