@@ -271,6 +271,159 @@
         background: rgba(165, 231, 255, 0.1);
         text-decoration: none;
       }
+
+      /* ── Contribute CTA ── */
+      .contribute-section {
+        padding: 96px 0;
+        background: var(--color-surface);
+      }
+      .contribute-box {
+        padding: 48px;
+        border-radius: 2rem;
+        border: 2px solid rgba(52, 211, 153, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+      @media (max-width: 639px) {
+        .contribute-box { padding: 32px 24px; }
+      }
+      .contribute-glow-tl {
+        position: absolute;
+        top: -96px; /* design-system: allow */
+        left: -96px; /* design-system: allow */
+        width: 256px; height: 256px;
+        background: rgba(52, 211, 153, 0.12);
+        border-radius: 50%;
+        filter: blur(48px);
+        pointer-events: none;
+      }
+      .contribute-glow-br {
+        position: absolute;
+        bottom: -96px; /* design-system: allow */
+        right: -96px; /* design-system: allow */
+        width: 256px; height: 256px;
+        background: rgba(165, 231, 255, 0.08);
+        border-radius: 50%;
+        filter: blur(48px);
+        pointer-events: none;
+      }
+      .contribute-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      @media (min-width: 768px) {
+        .contribute-content {
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: start;
+        }
+      }
+      .contribute-intro h2 {
+        font-family: var(--font-display);
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+      .contribute-intro h2 span {
+        color: #34d399;
+      }
+      .contribute-intro > p {
+        color: var(--color-text-muted);
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 32px;
+      }
+      .contribute-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(52, 211, 153, 0.12);
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        color: #34d399;
+        padding: 14px 28px;
+        border-radius: var(--radius-xl);
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        text-decoration: none;
+      }
+      .contribute-btn:hover {
+        background: rgba(52, 211, 153, 0.2);
+        border-color: rgba(52, 211, 153, 0.5);
+        text-decoration: none;
+      }
+      .contribute-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .contribute-step {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        position: relative;
+      }
+      .contribute-step-marker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .contribute-step-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(52, 211, 153, 0.12);
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        color: #34d399;
+        flex-shrink: 0;
+      }
+      .contribute-step-line {
+        width: 1px;
+        flex: 1;
+        background: rgba(52, 211, 153, 0.15);
+        min-height: 24px;
+      }
+      .contribute-step:last-child .contribute-step-line { display: none; }
+      .contribute-step-body {
+        padding-bottom: 24px;
+      }
+      .contribute-step:last-child .contribute-step-body { padding-bottom: 0; }
+      .contribute-step-body h4 {
+        font-family: var(--font-display);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 4px;
+        padding-top: 4px;
+      }
+      .contribute-step-body p {
+        color: var(--color-text-muted);
+        font-size: 14px;
+        line-height: 22px; /* design-system: allow */
+        margin: 0;
+      }
+      .contribute-step-body code {
+        background: var(--color-surface-high);
+        border: 1px solid var(--color-outline-variant);
+        padding: 0.1em 0.4em; /* design-system: allow */
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.85em; /* design-system: allow */
+      }
     </style>
   </head>
   <body>
@@ -339,6 +492,66 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                   Source
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contribute-section">
+        <div class="container">
+          <div class="contribute-box glass-panel">
+            <div class="contribute-glow-tl"></div>
+            <div class="contribute-glow-br"></div>
+            <div class="contribute-content">
+              <div class="contribute-intro">
+                <h2>Add to the <span>Ecosystem</span></h2>
+                <p>Built a Jay plugin or starter template? This page is powered by simple YAML data files — add your project by opening a pull request to the Jay website repo.</p>
+                <a class="contribute-btn" href="https://github.com/jay-framework/website" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  Open the Repo
+                </a>
+              </div>
+              <div class="contribute-steps">
+                <div class="contribute-step">
+                  <div class="contribute-step-marker">
+                    <div class="contribute-step-dot">1</div>
+                    <div class="contribute-step-line"></div>
+                  </div>
+                  <div class="contribute-step-body">
+                    <h4>Fork &amp; clone the website repo</h4>
+                    <p>Fork <code jay-design="allow">jay-framework/website</code> on GitHub and clone your fork locally.</p>
+                  </div>
+                </div>
+                <div class="contribute-step">
+                  <div class="contribute-step-marker">
+                    <div class="contribute-step-dot">2</div>
+                    <div class="contribute-step-line"></div>
+                  </div>
+                  <div class="contribute-step-body">
+                    <h4>Edit the data file</h4>
+                    <p>Add your entry to <code jay-design="allow">content/plugins/data.yaml</code> for plugins or <code jay-design="allow">content/templates/data.yaml</code> for templates. Follow the existing YAML format — slug, name, description, and links.</p>
+                  </div>
+                </div>
+                <div class="contribute-step">
+                  <div class="contribute-step-marker">
+                    <div class="contribute-step-dot">3</div>
+                    <div class="contribute-step-line"></div>
+                  </div>
+                  <div class="contribute-step-body">
+                    <h4>Validate locally</h4>
+                    <p>Run <code jay-design="allow">npm run setup</code>, <code jay-design="allow">npm run agent-kit</code>, then <code jay-design="allow">npm run validate</code> to confirm everything compiles.</p>
+                  </div>
+                </div>
+                <div class="contribute-step">
+                  <div class="contribute-step-marker">
+                    <div class="contribute-step-dot">4</div>
+                  </div>
+                  <div class="contribute-step-body">
+                    <h4>Open a pull request</h4>
+                    <p>Push your branch and open a PR. Your plugin or template will appear on this page once merged.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
