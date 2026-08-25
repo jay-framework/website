@@ -225,8 +225,8 @@
       }
       .package-footer {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
         margin-top: 4px;
         padding-top: 16px;
@@ -265,7 +265,6 @@
         text-decoration: none;
         transition: border-color 0.2s, background 0.2s;
         white-space: nowrap;
-        margin-left: auto;
       }
       .package-github-link:hover {
         border-color: rgba(165, 231, 255, 0.35);
