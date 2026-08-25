@@ -198,12 +198,20 @@ plugins:
           prevent layout shift (CLS). Uses pre-computed metrics from
           @capsizecss/metrics for known Google and system fonts.
         path: ./node_modules/@jay-framework/design-system-validator/dist/actions/font-fallback.jay-action
+    routes:
+      - path: /design-system/settings
+        description: Design system project settings — token overview, analysis report,
+          add-menu regeneration
   - name: seo-validator
     path: ./node_modules/@jay-framework/seo-validator
     contracts: []
   - name: wix-media
     path: ./node_modules/@jay-framework/wix-media
     contracts: []
+    routes:
+      - path: /wix-media/settings
+        description: Wix Media Manager project settings — connection health and catalog
+          rebuild
     commands:
       - name: upload-public
       - name: rebuild-index
