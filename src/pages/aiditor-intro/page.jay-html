@@ -563,7 +563,7 @@
               <div class="aid-hero-buttons">
                 <a class="aid-btn-primary" href="/#cta">Get Started</a>
                 <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd">
+                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
                     <span>npm create jay@latest</span>
                     <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -571,11 +571,12 @@
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                       </svg>
                     </span>
-                    <span if="copied" class="aid-copy-icon" aria-live="polite">
+                    <span if="copied" class="aid-copy-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </span>
+                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
                   </button>
                 </jay:clipboard-copy>
               </div>
@@ -1032,7 +1033,7 @@
               <div class="aid-cta-buttons">
                 <a class="aid-btn-primary" href="/#cta">Get Started</a>
                 <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd">
+                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
                     <span>npm create jay@latest</span>
                     <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1040,11 +1041,12 @@
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                       </svg>
                     </span>
-                    <span if="copied" class="aid-copy-icon" aria-live="polite">
+                    <span if="copied" class="aid-copy-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </span>
+                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
                   </button>
                 </jay:clipboard-copy>
               </div>

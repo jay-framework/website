@@ -273,6 +273,39 @@ Inputs are dark-filled glass containers with a bottom-only border by default. Up
 ### Chips & Tags
 Used for status and categories. They should look like "modules" with monospace text. "Zero Trust" verified tags use the Ruby Red accent for high visibility.
 
+### Copy Tooltip (clipboard-copy feedback)
+When using `<jay:clipboard-copy>`, add a "Copied!" tooltip that appears above the button on click. Use the shared `.copy-tooltip-anchor` and `.copy-tooltip` utility classes from `theme.css`.
+
+**Pattern (icon-only button):**
+```html
+<jay:clipboard-copy text="...">
+  <button ref="copyBtn" class="my-copy-btn copy-tooltip-anchor">
+    <span if="!copied"><!-- copy icon --></span>
+    <span if="copied"><!-- check icon --></span>
+    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
+  </button>
+</jay:clipboard-copy>
+```
+
+**Pattern (button with label):**
+```html
+<jay:clipboard-copy text="...">
+  <button ref="copyBtn" class="my-btn copy-tooltip-anchor">
+    <span>npm create jay@latest</span>
+    <span if="!copied" class="copy-icon"><!-- copy icon --></span>
+    <span if="copied" class="copy-icon"><!-- check icon --></span>
+    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
+  </button>
+</jay:clipboard-copy>
+```
+
+Key rules:
+- The button must have `copy-tooltip-anchor` (sets `position: relative`).
+- The tooltip uses `copy-tooltip` class (styled in `theme.css` with the `tooltip` typography token).
+- Move `aria-live="polite"` to the tooltip span (not the icon span) so screen readers announce "Copied!" text.
+- The button should have `overflow: visible` if it clips child content (e.g. small icon buttons).
+- The tooltip uses the `micro` animation preset (150ms, ease-in-out) and respects `prefers-reduced-motion`.
+
 ### Cards
 Cards are the primary structural unit. They must feature a subtle grid-pattern background (low opacity) and a 1px border. The header of the card should be separated by a hairline stroke.
 
