@@ -203,21 +203,54 @@
         background: rgba(165, 231, 255, 0.1);
         text-decoration: none;
       }
-      .btn-copy-cmd {
-        cursor: pointer;
-      }
-      .copy-icon {
+      /* ── Command Bar (copy-to-clipboard) ── */
+      .cmd-bar {
         display: inline-flex;
         align-items: center;
-        opacity: 0.6;
-        transition: opacity 0.2s;
-        flex-shrink: 0;
-      }
-      .copy-icon svg {
+        gap: 8px;
+        background: var(--color-surface-high);
+        border: 1px solid var(--color-outline-variant);
+        border-radius: var(--radius-xl);
+        padding: 8px 8px 8px 20px;
+        transition: border-color 0.2s;
         overflow: visible;
       }
-      .btn-copy-cmd:hover .copy-icon {
-        opacity: 1;
+      .cmd-bar:hover {
+        border-color: rgba(165, 231, 255, 0.25);
+      }
+      .cmd-bar-text {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--color-text-muted);
+        white-space: nowrap;
+        line-height: 20px;
+      }
+      .cmd-bar > :not(.cmd-bar-text) {
+        flex-shrink: 0;
+        overflow: visible;
+      }
+      .cmd-bar-copy {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: var(--radius-md);
+        border: none;
+        background: transparent;
+        color: var(--color-text-muted);
+        cursor: pointer;
+        transition: background 0.15s, color 0.15s;
+        overflow: visible;
+      }
+      .cmd-bar-copy:hover {
+        background: rgba(165, 231, 255, 0.1);
+        color: var(--color-primary);
+      }
+      .cmd-bar-copy .copy-tooltip {
+        bottom: calc(100% + 12px);
       }
       .hero-stats {
         display: flex;
@@ -802,6 +835,33 @@
         color: var(--color-text);
       }
 
+      /* ── Sponsors ── */
+      .sponsors-section {
+        padding: 64px 0;
+      }
+      .sponsors-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 48px;
+        margin-top: 24px;
+      }
+      .sponsor-link {
+        display: inline-flex;
+        align-items: center;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+        text-decoration: none;
+      }
+      .sponsor-link:hover {
+        opacity: 0.8;
+        text-decoration: none;
+      }
+      .sponsor-link svg {
+        height: 32px;
+        width: auto;
+      }
+
       /* ── CTA ── */
       .cta-section { padding: 96px 0; }
       .cta-box {
@@ -858,26 +918,6 @@
         text-decoration: none;
       }
       .btn-cta-primary:hover { transform: scale(1.05); text-decoration: none; }
-      .btn-cta-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--color-text);
-        padding: 20px 40px;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 18px;
-        cursor: pointer;
-        transition: background 0.3s;
-        text-decoration: none;
-      }
-      .btn-cta-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        text-decoration: none;
-      }
 
     </style>
   </head>
@@ -904,14 +944,16 @@
               <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps with AI agents. Jay combines strict code contracts, automated feedback loops, and a visual editor to guarantee bug-free code before deployment.</p>
               <div class="hero-buttons" style="margin-top: 32px;">
                 <a class="btn-primary" href="#cta">Get Started</a>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="btn-secondary btn-copy-cmd copy-tooltip-anchor" style="font-family: var(--font-mono);">
-                    <span>npm create jay@latest</span>
-                    <span if="!copied" class="copy-icon" aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                    <span if="copied" class="copy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
+                <div class="cmd-bar">
+                  <span class="cmd-bar-text">npm create jay@latest</span>
+                  <jay:clipboard-copy text="npm create jay@latest">
+                    <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
+                      <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
+                      <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                      <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
+                    </button>
+                  </jay:clipboard-copy>
+                </div>
               </div>
             </div>
           </div>
@@ -1339,6 +1381,20 @@
       </section>
 
       <!-- ════════════════════════════════════════════ -->
+      <!-- Sponsors                                    -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="sponsors-section">
+        <div class="container text-center">
+          <span class="section-label">Sponsored By</span>
+          <div class="sponsors-logos">
+            <a class="sponsor-link" href="https://www.wix.com" target="_blank" rel="noopener noreferrer" aria-label="Wix">
+              <svg fill="#ffffff" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Wix</title><path d="m0 7.354 2.113 9.292h.801a1.54 1.54 0 0 0 1.506-1.218l1.351-6.34a.171.171 0 0 1 .167-.137c.08 0 .15.058.167.137l1.352 6.34a1.54 1.54 0 0 0 1.506 1.218h.805l2.113-9.292h-.565c-.62 0-1.159.43-1.296 1.035l-1.26 5.545-1.106-5.176a1.76 1.76 0 0 0-2.19-1.324c-.639.176-1.113.716-1.251 1.365l-1.094 5.127-1.26-5.537A1.33 1.33 0 0 0 .563 7.354H0zm13.992 0a.951.951 0 0 0-.951.95v8.342h.635a.952.952 0 0 0 .951-.95V7.353h-.635zm1.778 0 3.158 4.66-3.14 4.632h1.325c.368 0 .712-.181.918-.486l1.756-2.59a.12.12 0 0 1 .197 0l1.754 2.59c.206.305.55.486.918.486h1.326l-3.14-4.632L24 7.354h-1.326c-.368 0-.712.181-.918.486l-1.772 2.617a.12.12 0 0 1-.197 0L18.014 7.84a1.108 1.108 0 0 0-.918-.486H15.77z"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
       <!-- CTA                                         -->
       <!-- ════════════════════════════════════════════ -->
       <section id="cta" class="cta-section">
@@ -1349,14 +1405,16 @@
             <h2 class="headline-lg">Start Building the AI-Native Web</h2>
             <div class="cta-buttons">
               <a class="btn-cta-primary" href="#">Get Started</a>
-              <jay:clipboard-copy text="npm create jay@latest">
-                <button ref="copyBtn" class="btn-cta-secondary btn-copy-cmd copy-tooltip-anchor" style="font-family: var(--font-mono);">
-                  <span>npm create jay@latest</span>
-                  <span if="!copied" class="copy-icon" aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                  <span if="copied" class="copy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                  <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                </button>
-              </jay:clipboard-copy>
+              <div class="cmd-bar">
+                <span class="cmd-bar-text">npm create jay@latest</span>
+                <jay:clipboard-copy text="npm create jay@latest">
+                  <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
+                    <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
+                    <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
+                  </button>
+                </jay:clipboard-copy>
+              </div>
             </div>
           </div>
         </div>

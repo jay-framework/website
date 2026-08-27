@@ -273,37 +273,49 @@ Inputs are dark-filled glass containers with a bottom-only border by default. Up
 ### Chips & Tags
 Used for status and categories. They should look like "modules" with monospace text. "Zero Trust" verified tags use the Ruby Red accent for high visibility.
 
-### Copy Tooltip (clipboard-copy feedback)
-When using `<jay:clipboard-copy>`, add a "Copied!" tooltip that appears above the button on click. Use the shared `.copy-tooltip-anchor` and `.copy-tooltip` utility classes from `theme.css`.
+### Command Bar (copy-to-clipboard)
+All copy-to-clipboard commands use the **command bar** pattern: a read-only command string displayed in a bar, with a small icon-only copy button at the end. The "Copied!" tooltip appears above the button on click.
 
-**Pattern (icon-only button):**
+**HTML pattern:**
 ```html
-<jay:clipboard-copy text="...">
-  <button ref="copyBtn" class="my-copy-btn copy-tooltip-anchor">
-    <span if="!copied"><!-- copy icon --></span>
-    <span if="copied"><!-- check icon --></span>
-    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-  </button>
-</jay:clipboard-copy>
+<div class="cmd-bar">
+  <span class="cmd-bar-text">npm create jay@latest</span>
+  <jay:clipboard-copy text="npm create jay@latest">
+    <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
+      <span if="!copied"><!-- copy icon --></span>
+      <span if="copied"><!-- check icon --></span>
+      <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
+    </button>
+  </jay:clipboard-copy>
+</div>
 ```
 
-**Pattern (button with label):**
+**Canonical SVGs (Lucide, 24×24 viewBox):**
+
+Copy icon:
 ```html
-<jay:clipboard-copy text="...">
-  <button ref="copyBtn" class="my-btn copy-tooltip-anchor">
-    <span>npm create jay@latest</span>
-    <span if="!copied" class="copy-icon"><!-- copy icon --></span>
-    <span if="copied" class="copy-icon"><!-- check icon --></span>
-    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-  </button>
-</jay:clipboard-copy>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
 ```
 
-Key rules:
-- The button must have `copy-tooltip-anchor` (sets `position: relative`).
-- The tooltip uses `copy-tooltip` class (styled in `theme.css` with the `tooltip` typography token).
-- Move `aria-live="polite"` to the tooltip span (not the icon span) so screen readers announce "Copied!" text.
-- The button should have `overflow: visible` if it clips child content (e.g. small icon buttons).
+Check icon (green, shown after copy):
+```html
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+```
+
+Use `width="14" height="14"` in compact contexts (e.g. package card install bars).
+
+**CSS classes:**
+- `.cmd-bar` — the outer bar (`inline-flex`, surface-high background, outline-variant border, `border-radius: var(--radius-xl)`, `overflow: visible`).
+- `.cmd-bar-text` — the command string (mono font, muted color, `font-size: 14px`).
+- `.cmd-bar-copy` — the icon-only copy button (32×32, transparent background, `border-radius: var(--radius-md)`, `overflow: visible`). Highlights on hover.
+- `.copy-tooltip-anchor` — on the button (sets `position: relative`).
+- `.copy-tooltip` — on the "Copied!" span (styled in `theme.css`, absolute-positioned above the button).
+
+**Key rules:**
+- The command text is a plain `<span>`, NOT inside the `<button>`. Only the copy icon is the button.
+- The check icon uses `stroke="#34d399"` (accent-content green) — never `currentColor`.
+- `aria-live="polite"` goes on the tooltip span, not the icon span.
+- Both the bar and button must have `overflow: visible` so the tooltip renders above without clipping.
 - The tooltip uses the `micro` animation preset (150ms, ease-in-out) and respects `prefers-reduced-motion`.
 
 ### Cards
