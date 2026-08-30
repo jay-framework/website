@@ -561,7 +561,7 @@
                 Describe your vision directly on canvas—just like giving natural feedback to a designer—and let the AI agent craft the content, layout, and animations to bring it to life. Enjoy complete creative freedom with zero constraints from complex panels or blind text prompts.
               </p>
               <div class="aid-hero-buttons">
-                <a class="aid-btn-primary" href="/#cta">Get Started</a>
+                <a class="aid-btn-primary" href="/get-started">Get Started</a>
                 <jay:clipboard-copy text="npm create jay@latest">
                   <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
                     <span>npm create jay@latest</span>
@@ -1031,7 +1031,7 @@
                 Your agent does the coding — you point and describe.
               </p>
               <div class="aid-cta-buttons">
-                <a class="aid-btn-primary" href="/#cta">Get Started</a>
+                <a class="aid-btn-primary" href="/get-started">Get Started</a>
                 <jay:clipboard-copy text="npm create jay@latest">
                   <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
                     <span>npm create jay@latest</span>

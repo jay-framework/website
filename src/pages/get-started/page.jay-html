@@ -910,7 +910,7 @@
                   <div class="gs-wix-step-num">1</div>
                   <div class="gs-wix-step-body">
                     <h4>Initialize Wix Credentials</h4>
-                    <p>Run <code class="gs-code" jay-design="allow">npm create @wix/new@latest init</code> to generate a <code class="gs-code" jay-design="allow">wix.config.json</code> with your site ID and client ID.</p>
+                    <p>Run <code class="gs-code" jay-design="allow">npm create @wix/new@latest init</code> to log in to Wix (or register for Wix Headless), connect your site, and generate the <code class="gs-code" jay-design="allow">wix.config.json</code> required for deployment — containing your site ID and client ID.</p>
                   </div>
                 </div>
                 <div class="gs-wix-step">

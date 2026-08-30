@@ -943,7 +943,7 @@
               <h1 class="hero-headline"><span class="hero-headline-base">The web framework for AI Agents</span><span class="hero-headline-shine" aria-hidden="true">The web framework for AI Agents</span></h1>
               <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps with AI agents. Jay combines strict code contracts, automated feedback loops, and a visual editor to guarantee bug-free code before deployment.</p>
               <div class="hero-buttons" style="margin-top: 32px;">
-                <a class="btn-primary" href="#cta">Get Started</a>
+                <a class="btn-primary" href="/get-started">Get Started</a>
                 <div class="cmd-bar">
                   <span class="cmd-bar-text">npm create jay@latest</span>
                   <jay:clipboard-copy text="npm create jay@latest">
@@ -1404,7 +1404,7 @@
             <div class="cta-glow-br"></div>
             <h2 class="headline-lg">Start Building the AI-Native Web</h2>
             <div class="cta-buttons">
-              <a class="btn-cta-primary" href="#">Get Started</a>
+              <a class="btn-cta-primary" href="/get-started">Get Started</a>
               <div class="cmd-bar">
                 <span class="cmd-bar-text">npm create jay@latest</span>
                 <jay:clipboard-copy text="npm create jay@latest">
