@@ -326,50 +326,7 @@
         margin: 0;
       }
 
-      /* ── Plugins Section ── */
-      .gs-plugins { background: var(--color-surface-lowest); }
-      .gs-plugin-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin-top: 48px;
-      }
-      @media (min-width: 640px) {
-        .gs-plugin-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (min-width: 1024px) {
-        .gs-plugin-grid { grid-template-columns: repeat(3, 1fr); }
-      }
-      .gs-plugin-card {
-        padding: 24px;
-        border-radius: var(--radius-xl);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .gs-plugin-label {
-        font-family: var(--font-mono);
-        font-size: 10px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        opacity: 0.7;
-        margin-bottom: 4px;
-      }
-      .gs-plugin-label--jay { color: #6ecfff; }
-      .gs-plugin-label--wix { color: #a78bfa; }
-      .gs-plugin-card strong {
-        font-family: var(--font-display);
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 24px;
-        color: var(--color-text);
-      }
-      .gs-plugin-card p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-        line-height: 22px; /* design-system: allow */
-      }
+
 
       /* ── Structure Section ── */
       .gs-structure { background: var(--color-surface); }
@@ -418,6 +375,10 @@
         margin: 0;
         overflow-x: auto;
       }
+      .gs-tree-ln {
+        white-space: pre;
+        min-height: 24px;
+      }
       .gs-tree-body .gs-tree-file { color: var(--color-primary); }
       .gs-tree-body .gs-tree-dir { color: var(--color-secondary-dim); }
       .gs-tree-body .gs-tree-comment { color: var(--color-outline); }
@@ -456,114 +417,25 @@
       }
       .gs-struct-list li strong { color: var(--color-text); }
 
-      /* ── Roles Section ── */
-      .gs-roles { background: var(--color-surface-lowest); }
-      .gs-roles-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-gutter);
-        margin-top: 48px;
-      }
-      @media (min-width: 768px) {
-        .gs-roles-grid { grid-template-columns: 1fr 1fr; }
-      }
-      @media (min-width: 1024px) {
-        .gs-roles-grid { grid-template-columns: repeat(4, 1fr); }
-      }
-      a.gs-role-card { text-decoration: none; color: inherit; }
-      a.gs-role-card:hover { text-decoration: none; }
-      .gs-role-card {
-        padding: 32px;
+      /* ── Non-Interactive Mode Section ── */
+      .gs-noninteractive-section { background: var(--color-surface); }
+      .gs-noninteractive-card {
+        max-width: 900px;
+        margin: 48px auto 0;
+        padding: 32px 40px;
         border-radius: var(--radius-2xl);
-        display: flex;
-        flex-direction: column;
       }
-      .gs-role-card--designer { box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15); }
-      .gs-role-card--developer { box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15); }
-      .gs-role-card--plugin { box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15); }
-      .gs-role-card--devops { box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15); }
-      .gs-role-icon {
-        width: 64px;
-        height: 64px;
-        object-fit: contain;
-        margin-bottom: 20px;
+      @media (max-width: 639px) {
+        .gs-noninteractive-card { padding: 24px; }
       }
-      .gs-role-card h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .gs-role-card .gs-role-files {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        line-height: 16px;
-        color: var(--color-primary);
-        margin-bottom: 12px;
-      }
-      .gs-role-card p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-        line-height: 22px; /* design-system: allow */
-      }
-
-      /* ── Commands & Non-Interactive Section ── */
-      .gs-commands { background: var(--color-surface); }
-      .gs-commands-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 48px;
-        margin-top: 48px;
-      }
-      @media (min-width: 1024px) {
-        .gs-commands-layout { grid-template-columns: 1fr 1fr; }
-      }
-      .gs-table-wrap {
-        border-radius: var(--radius-2xl);
-        overflow: hidden;
-        border: 1px solid var(--color-outline-variant);
-      }
-      .gs-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-      }
-      .gs-table th {
-        text-align: left;
-        padding: 12px 20px;
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-outline);
-        background: var(--color-surface-lowest);
-        border-bottom: 1px solid var(--color-outline-variant);
-      }
-      .gs-table td {
-        padding: 12px 20px;
-        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
-        vertical-align: top;
-      }
-      .gs-table tr:last-child td { border-bottom: none; }
-      .gs-table td:first-child {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        color: var(--color-secondary-dim);
-        white-space: nowrap;
-      }
-      .gs-table td:last-child {
-        color: var(--color-text-muted);
-      }
-      .gs-noninteractive h3 {
+      .gs-noninteractive-card h3 {
         font-family: var(--font-display);
         font-size: 20px;
         font-weight: 600;
         line-height: 28px;
         margin-bottom: 12px;
       }
-      .gs-noninteractive p {
+      .gs-noninteractive-card p {
         color: var(--color-text-muted);
         font-size: 15px;
         line-height: 24px;
@@ -580,6 +452,48 @@
         color: var(--color-text-muted);
         overflow-x: auto;
         white-space: pre;
+      }
+
+      /* ── Commands Section ── */
+      .gs-commands { background: var(--color-surface-lowest); }
+      .gs-table-wrap {
+        max-width: 700px;
+        margin: 48px auto 0;
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        border: 1px solid var(--color-outline-variant);
+      }
+      .gs-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      .gs-table th {
+        text-align: left;
+        padding: 12px 24px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-outline);
+        background: var(--color-surface-lowest);
+        border-bottom: 1px solid var(--color-outline-variant);
+      }
+      .gs-table td {
+        padding: 12px 24px;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        vertical-align: top;
+      }
+      .gs-table tr:last-child td { border-bottom: none; }
+      .gs-table td:first-child {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--color-secondary-dim);
+        white-space: nowrap;
+      }
+      .gs-table td:last-child {
+        color: var(--color-text-muted);
       }
 
       /* ── Wix Config Section ── */
@@ -889,6 +803,23 @@
       </section>
 
       <!-- ════════════════════════════════════════════ -->
+      <!-- Non-Interactive Mode                        -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="section gs-noninteractive-section">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">For AI Agents</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Non-Interactive Mode</h2>
+            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">AI agents can create projects without prompts. Pass all options as flags to skip the interactive CLI.</p>
+          </div>
+          <div class="gs-noninteractive-card glass-panel">
+            <div class="gs-code-block">npm create jay@latest -- --name my-store --plugins "UI Kit,SEO validator,Design system validator"</div>
+            <p style="margin-top: 16px; margin-bottom: 0;">Use exact plugin names, comma-separated, in quotes. All plugins from the interactive selector are available.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
       <!-- What Gets Created                           -->
       <!-- ════════════════════════════════════════════ -->
       <section class="section gs-structure">
@@ -903,17 +834,18 @@
                 <span class="gs-tree-dot"></span>
                 <span class="gs-tree-title">my-store/</span>
               </div>
-              <pre class="gs-tree-body">
-<span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">src/</span>
-<span class="gs-dim">&#x2502;   &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-dir">pages/</span>
-<span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-html</span>      <span class="gs-tree-comment">&#x2190; your first page</span>
-<span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.ts</span>             <span class="gs-tree-comment">&#x2190; page component</span>
-<span class="gs-dim">&#x2502;       &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-contract</span>   <span class="gs-tree-comment">&#x2190; data contract</span>
-<span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">public/</span>                     <span class="gs-tree-comment">&#x2190; static assets</span>
-<span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">agent-kit/</span>                  <span class="gs-tree-comment">&#x2190; AI agent index</span>
-<span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">.jay</span>                        <span class="gs-tree-comment">&#x2190; project config</span>
-<span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">package.json</span>
-<span class="gs-dim">&#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">tsconfig.json</span></pre>
+              <div class="gs-tree-body">
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">src/</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;   &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-dir">pages/</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-html</span>      <span class="gs-tree-comment">&#x2190; your first page</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.ts</span>             <span class="gs-tree-comment">&#x2190; page component</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-contract</span>   <span class="gs-tree-comment">&#x2190; data contract</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">public/</span>                     <span class="gs-tree-comment">&#x2190; static assets</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">agent-kit/</span>                  <span class="gs-tree-comment">&#x2190; AI agent index</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">.jay</span>                        <span class="gs-tree-comment">&#x2190; project config</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">package.json</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">tsconfig.json</span></div>
+              </div>
             </div>
             <div class="gs-struct-desc">
               <h3>Everything in One Place</h3>
@@ -930,118 +862,7 @@
       </section>
 
       <!-- ════════════════════════════════════════════ -->
-      <!-- Available Plugins                           -->
-      <!-- ════════════════════════════════════════════ -->
-      <section class="section gs-plugins">
-        <div class="container">
-          <div class="text-center">
-            <span class="section-label">Ecosystem</span>
-            <h2 class="headline-lg" style="margin-top: 16px;">Available Plugins</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Select the capabilities you need during project creation. Each plugin bundles headless components, server actions, and data contracts.</p>
-          </div>
-          <div class="gs-plugin-grid">
-            <!-- Jay Framework -->
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>UI Kit</strong>
-              <p>Headless primitives: popover, carousel, tabs, clipboard, split text.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>Accessibility Validator</strong>
-              <p>WCAG accessibility checks for jay-html templates.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>SEO Validator</strong>
-              <p>SEO best practices: meta tags, heading hierarchy, image optimization.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>Design System Validator</strong>
-              <p>Validates CSS against DESIGN.md tokens for colors, spacing, and typography.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>Markdown</strong>
-              <p>Render markdown files as pages — documentation, blogs, changelogs.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--jay">Jay Framework</span>
-              <strong>Data Files</strong>
-              <p>CSV/YAML/JSON data sources — team pages, FAQ, feature lists.</p>
-            </div>
-            <!-- Wix -->
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--wix">Wix Headless</span>
-              <strong>Wix Stores</strong>
-              <p>E-commerce: products, categories, search, product pages.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--wix">Wix Headless</span>
-              <strong>Wix Members</strong>
-              <p>Authentication: login, register, member profiles.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--wix">Wix Headless</span>
-              <strong>Wix Media</strong>
-              <p>Image optimization, media galleries, responsive images.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--wix">Wix Headless</span>
-              <strong>Wix Data</strong>
-              <p>CMS collections: dynamic pages, content management.</p>
-            </div>
-            <div class="gs-plugin-card glass-panel">
-              <span class="gs-plugin-label gs-plugin-label--wix">Wix Headless</span>
-              <strong>Wix Deploy</strong>
-              <p>Deployment to Wix infrastructure: CDN, hosting, domains.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Four Roles                                  -->
-      <!-- ════════════════════════════════════════════ -->
-      <section class="section gs-roles">
-        <div class="container">
-          <div class="text-center">
-            <span class="section-label">Architecture</span>
-            <h2 class="headline-lg" style="margin-top: 16px;">Four Roles</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Jay projects are built by four roles — human or AI. Each role has its own agent-kit guide.</p>
-          </div>
-          <div class="gs-roles-grid">
-            <a class="gs-role-card glass-panel gs-role-card--designer" href="/docs/designer/instructions">
-              <img class="gs-role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_64,h_64/file.webp" alt="Designer role" width="64" height="64" loading="lazy">
-              <h3>Designer</h3>
-              <div class="gs-role-files">.jay-html, CSS, DESIGN.md</div>
-              <p>Pages, layouts, styling, and data bindings. Generates purely declarative, logic-free visual templates.</p>
-            </a>
-            <a class="gs-role-card glass-panel gs-role-card--developer" href="/docs/developer/instructions">
-              <img class="gs-role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_64,h_64/file.webp" alt="Developer role" width="64" height="64" loading="lazy">
-              <h3>Developer</h3>
-              <div class="gs-role-files">page.ts, .jay-contract, .jay-action</div>
-              <p>Components, services, state management, and server actions. Builds the full-stack application logic.</p>
-            </a>
-            <a class="gs-role-card glass-panel gs-role-card--plugin" href="/docs/plugin/instructions">
-              <img class="gs-role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_64,h_64/file.webp" alt="Plugin Developer role" width="64" height="64" loading="lazy">
-              <h3>Plugin Developer</h3>
-              <div class="gs-role-files">plugin.yaml, contracts, actions</div>
-              <p>Headless components and plugin packages. Reusable capabilities bundled as installable NPM packages.</p>
-            </a>
-            <a class="gs-role-card glass-panel gs-role-card--devops" href="/docs/devops/instructions">
-              <img class="gs-role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_64,h_64/file.webp" alt="DevOps role" width="64" height="64" loading="lazy">
-              <h3>DevOps</h3>
-              <div class="gs-role-files">.jay, CI/CD, jay-stack build</div>
-              <p>Build, deploy, and production config. Manages the deployment lifecycle and caching infrastructure.</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Key Commands + Non-Interactive Mode         -->
+      <!-- Key Commands                                -->
       <!-- ════════════════════════════════════════════ -->
       <section class="section gs-commands">
         <div class="container">
@@ -1049,29 +870,20 @@
             <span class="section-label">Reference</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Key Commands</h2>
           </div>
-          <div class="gs-commands-layout">
-            <div>
-              <div class="gs-table-wrap glass-panel">
-                <table class="gs-table">
-                  <thead>
-                    <tr><th>Command</th><th>Description</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>npm run dev</td><td>Start dev server with hot reload</td></tr>
-                    <tr><td>npm run build</td><td>Production build (SSR + static)</td></tr>
-                    <tr><td>npm run validate</td><td>Check templates, contracts, SEO, a11y</td></tr>
-                    <tr><td>npm run agent-kit</td><td>Regenerate AI agent discovery index</td></tr>
-                    <tr><td>npm run setup</td><td>Run plugin configuration</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="gs-noninteractive">
-              <h3>Non-Interactive Mode</h3>
-              <p>AI agents can create projects without prompts. Pass all options as flags:</p>
-              <div class="gs-code-block">npm create jay@latest -- --name my-store --plugins "UI Kit,SEO validator,Design system validator"</div>
-              <p style="margin-top: 16px;">All available plugins are listed above. Use exact names, comma-separated, in quotes.</p>
-            </div>
+          <div class="gs-table-wrap glass-panel">
+            <table class="gs-table">
+              <thead>
+                <tr><th>Command</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>npm run dev</td><td>Start dev server with hot reload</td></tr>
+                <tr><td>npm run build</td><td>Production build (SSR + static)</td></tr>
+                <tr><td>npm run serve</td><td>Serve the production build locally</td></tr>
+                <tr><td>npm run validate</td><td>Check templates, contracts, SEO, a11y</td></tr>
+                <tr><td>npm run agent-kit</td><td>Regenerate AI agent discovery index</td></tr>
+                <tr><td>npm run setup</td><td>Run plugin configuration</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
