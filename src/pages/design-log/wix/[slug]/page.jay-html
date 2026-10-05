@@ -1,17 +1,18 @@
 <html lang="en">
+
 <head>
   <title>{post.title} — Wix Design Log | Jay Framework</title>
   <meta name="description" content="{post.description}">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
-  <script type="application/jay-headless"
-          plugin="@jay-framework/markdown"
-          contract="markdown-pages"
-          key="post">
-    contentDir: content/design-log/wix
-  </script>
-  <script type="application/jay-headfull" src="../../../../components/site-header/site-header" names="SiteHeader" contract="../../../../components/site-header/site-header.jay-contract"></script>
-  <script type="application/jay-headfull" src="../../../../components/site-footer/site-footer" names="SiteFooter" contract="../../../../components/site-footer/site-footer.jay-contract"></script>
-  <link rel="stylesheet" href="../../../../styles/theme.css" />
+  <script type="application/jay-headless" plugin="@jay-framework/markdown" contract="markdown-pages"
+    key="post">contentDir: content/design-log/wix</script>
+  <script type="application/jay-headless" src="../../../../components/site-header/site-header"
+    contract="../../../../components/site-header/site-header.jay-contract"
+    template="../../../../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../../../../components/site-footer/site-footer"
+    contract="../../../../components/site-footer/site-footer.jay-contract"
+    template="../../../../components/site-footer/site-footer.jay-html"></script>
+  <link rel="stylesheet" href="../../../../styles/theme.css">
   <style>
     body {
       background: var(--color-bg);
@@ -20,17 +21,22 @@
       margin: 0;
       padding: 0;
     }
+
     .design-log {
       max-width: 800px;
       margin: 0 auto;
-      padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
+      padding: 96px var(--margin-mobile) 96px;
+      /* design-system: allow */
     }
+
     .design-log .md h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
+
     .design-log .md {
-      line-height: 1.7; /* design-system: allow */
+      line-height: 1.7;
+      /* design-system: allow */
     }
 
     /* Headings: more space between heading and paragraph */
@@ -39,14 +45,17 @@
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
+
     .design-log .md h2 {
       font-size: 1.5rem;
       font-weight: 600;
     }
+
     .design-log .md h3 {
       font-size: 1.2rem;
       font-weight: 600;
     }
+
     .design-log .md p {
       margin-bottom: 1rem;
     }
@@ -57,6 +66,7 @@
       padding-left: 2rem;
       margin-bottom: 1rem;
     }
+
     .design-log .md li {
       margin-bottom: 0.35rem;
     }
@@ -69,10 +79,12 @@
       background: rgba(0, 210, 255, 0.05);
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     }
+
     .design-log .md blockquote p {
       margin-bottom: 0;
       color: var(--color-text-muted);
-      font-size: 0.875rem; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
       line-height: 1.6;
     }
 
@@ -81,23 +93,28 @@
       width: 100%;
       border-collapse: collapse;
       margin: 1.5rem 0;
-      font-size: 0.875rem; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
       line-height: 1.6;
     }
+
     .design-log .md th,
     .design-log .md td {
       border: 1px solid var(--color-outline-variant);
       padding: 10px 12px;
       text-align: left;
     }
+
     .design-log .md th {
       background: var(--color-surface-high);
       font-weight: 600;
       color: var(--color-text);
     }
+
     .design-log .md td {
       color: var(--color-text-muted);
     }
+
     .design-log .md tr:hover td {
       background: rgba(165, 231, 255, 0.03);
     }
@@ -112,9 +129,12 @@
       margin: 1.5rem 0;
       overflow-x: auto;
       font-family: var(--font-mono);
-      font-size: 0.875rem; /* design-system: allow */
-      line-height: 1.7; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
+      line-height: 1.7;
+      /* design-system: allow */
     }
+
     .design-log .md pre code {
       background: none;
       border: none;
@@ -127,22 +147,51 @@
     .design-log .md code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em; /* design-system: allow */
+      padding: 0.15em 0.4em;
+      /* design-system: allow */
       border-radius: var(--radius-default);
       font-family: var(--font-mono);
-      font-size: 0.875em; /* design-system: allow */
+      font-size: 0.875em;
+      /* design-system: allow */
     }
 
     /* Syntax highlighting tokens */
-    .design-log .md .token.keyword { color: #c084fc; }
-    .design-log .md .token.string { color: #34d399; }
-    .design-log .md .token.comment { color: #94a3b8; font-style: italic; }
-    .design-log .md .token.number { color: #fbbf24; }
-    .design-log .md .token.function { color: #60a5fa; }
-    .design-log .md .token.operator { color: #94a3b8; }
-    .design-log .md .token.punctuation { color: #94a3b8; }
-    .design-log .md .token.tag { color: #f87171; }
-    .design-log .md .token.attribute { color: #fbbf24; }
+    .design-log .md .token.keyword {
+      color: #c084fc;
+    }
+
+    .design-log .md .token.string {
+      color: #34d399;
+    }
+
+    .design-log .md .token.comment {
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .design-log .md .token.number {
+      color: #fbbf24;
+    }
+
+    .design-log .md .token.function {
+      color: #60a5fa;
+    }
+
+    .design-log .md .token.operator {
+      color: #94a3b8;
+    }
+
+    .design-log .md .token.punctuation {
+      color: #94a3b8;
+    }
+
+    .design-log .md .token.tag {
+      color: #f87171;
+    }
+
+    .design-log .md .token.attribute {
+      color: #fbbf24;
+    }
 
     /* Mermaid diagrams */
     .design-log .md .md-mermaid {
@@ -150,6 +199,7 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
     }
+
     .design-log .md .md-mermaid svg {
       --bg: var(--color-surface-bright) !important;
       --fg: var(--color-text) !important;
@@ -161,16 +211,435 @@
       height: auto;
       padding: 1.5rem;
     }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
+      }
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
+        }
+      }
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
+      }
+
+      .header-brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand-text-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .header-brand .brand-base {
+        color: var(--color-primary);
+      }
+
+      .header-brand .brand-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brand-shimmer 5s linear infinite;
+      }
+
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
+      }
+
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn-get-started {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
+        border: none;
+        border-radius: var(--radius-default);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
+        text-decoration: none;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="page-root">
-    <jay:SiteHeader />
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
     <main class="design-log">
       <h1 class="sr-only">{post.title}</h1>
       <div class="md">{post.content}</div>
-    </main>
-    <jay:SiteFooter />
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
   </div>
 </body>
+
 </html>

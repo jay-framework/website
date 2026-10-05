@@ -1,18 +1,21 @@
 <html lang="en">
+
 <head>
   <title>{post.title} — Developer | Jay Framework</title>
   <meta name="description" content="{post.description}">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
-  <script type="application/jay-headless"
-          plugin="@jay-framework/markdown"
-          contract="markdown-pages"
-          key="post">
-    contentDir: content/docs/developer
-  </script>
-  <script type="application/jay-headfull" src="../../../../components/site-header/site-header" names="SiteHeader" contract="../../../../components/site-header/site-header.jay-contract"></script>
-  <script type="application/jay-headfull" src="../../../../components/site-footer/site-footer" names="SiteFooter" contract="../../../../components/site-footer/site-footer.jay-contract"></script>
-  <script type="application/jay-headfull" src="../../../../components/docs-sidebar/docs-sidebar" names="DocsSidebar" contract="../../../../components/docs-sidebar/docs-sidebar.jay-contract"></script>
-  <link rel="stylesheet" href="../../../../styles/theme.css" />
+  <script type="application/jay-headless" plugin="@jay-framework/markdown" contract="markdown-pages"
+    key="post">contentDir: content/docs/developer</script>
+  <script type="application/jay-headless" src="../../../../components/site-header/site-header"
+    contract="../../../../components/site-header/site-header.jay-contract"
+    template="../../../../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../../../../components/site-footer/site-footer"
+    contract="../../../../components/site-footer/site-footer.jay-contract"
+    template="../../../../components/site-footer/site-footer.jay-html"></script>
+  <script type="application/jay-headless" src="../../../../components/docs-sidebar/docs-sidebar"
+    contract="../../../../components/docs-sidebar/docs-sidebar.jay-contract"
+    template="../../../../components/docs-sidebar/docs-sidebar.jay-html"></script>
+  <link rel="stylesheet" href="../../../../styles/theme.css">
   <style>
     body {
       background: var(--color-bg);
@@ -21,51 +24,76 @@
       margin: 0;
       padding: 0;
     }
+
     .docs {
       max-width: 800px;
       margin: 0;
-      padding: 96px var(--margin-mobile) 96px; /* design-system: allow */
+      padding: 96px var(--margin-mobile) 96px;
+      /* design-system: allow */
     }
+
     @media (min-width: 1024px) {
-      .docs { margin-left: 280px; /* design-system: allow */ }
+      .docs {
+        margin-left: 280px;
+        /* design-system: allow */
+      }
     }
+
     @media (min-width: 768px) and (max-width: 1023px) {
-      .docs { margin-left: 240px; /* design-system: allow */ }
+      .docs {
+        margin-left: 240px;
+        /* design-system: allow */
+      }
     }
+
     @media (max-width: 767px) {
-      .docs { padding-top: 24px; } /* design-system: allow — reduced because mobile-nav provides spacing */
+      .docs {
+        padding-top: 24px;
+      }
+
+      /* design-system: allow — reduced because mobile-nav provides spacing */
     }
+
     .docs .md {
-      line-height: 1.7; /* design-system: allow */
+      line-height: 1.7;
+      /* design-system: allow */
     }
+
     .docs .md h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
+
     .docs .md h2,
     .docs .md h3 {
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
+
     .docs .md h2 {
       font-size: 1.5rem;
       font-weight: 600;
     }
+
     .docs .md h3 {
       font-size: 1.2rem;
       font-weight: 600;
     }
+
     .docs .md p {
       margin-bottom: 1rem;
     }
+
     .docs .md ul,
     .docs .md ol {
       padding-left: 2rem;
       margin-bottom: 1rem;
     }
+
     .docs .md li {
       margin-bottom: 0.35rem;
     }
+
     .docs .md blockquote {
       border-left: 3px solid var(--color-primary);
       margin: 1.5rem 0;
@@ -73,36 +101,45 @@
       background: rgba(0, 210, 255, 0.05);
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     }
+
     .docs .md blockquote p {
       margin-bottom: 0;
       color: var(--color-text-muted);
-      font-size: 0.875rem; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
       line-height: 1.6;
     }
+
     .docs .md table {
       width: 100%;
       border-collapse: collapse;
       margin: 1.5rem 0;
-      font-size: 0.875rem; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
       line-height: 1.6;
     }
+
     .docs .md th,
     .docs .md td {
       border: 1px solid var(--color-outline-variant);
       padding: 10px 12px;
       text-align: left;
     }
+
     .docs .md th {
       background: var(--color-surface-high);
       font-weight: 600;
       color: var(--color-text);
     }
+
     .docs .md td {
       color: var(--color-text-muted);
     }
+
     .docs .md tr:hover td {
       background: rgba(165, 231, 255, 0.03);
     }
+
     .docs .md pre.md-code,
     .docs .md pre {
       background: var(--color-surface-high);
@@ -112,9 +149,12 @@
       margin: 1.5rem 0;
       overflow-x: auto;
       font-family: var(--font-mono);
-      font-size: 0.875rem; /* design-system: allow */
-      line-height: 1.7; /* design-system: allow */
+      font-size: 0.875rem;
+      /* design-system: allow */
+      line-height: 1.7;
+      /* design-system: allow */
     }
+
     .docs .md pre code {
       background: none;
       border: none;
@@ -122,28 +162,61 @@
       font-size: inherit;
       color: var(--color-text);
     }
+
     .docs .md code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em; /* design-system: allow */
+      padding: 0.15em 0.4em;
+      /* design-system: allow */
       border-radius: var(--radius-default);
       font-family: var(--font-mono);
-      font-size: 0.875em; /* design-system: allow */
+      font-size: 0.875em;
+      /* design-system: allow */
     }
-    .docs .md .token.keyword { color: #c084fc; }
-    .docs .md .token.string { color: #34d399; }
-    .docs .md .token.comment { color: #94a3b8; font-style: italic; }
-    .docs .md .token.number { color: #fbbf24; }
-    .docs .md .token.function { color: #60a5fa; }
-    .docs .md .token.operator { color: #94a3b8; }
-    .docs .md .token.punctuation { color: #94a3b8; }
-    .docs .md .token.tag { color: #f87171; }
-    .docs .md .token.attribute { color: #fbbf24; }
+
+    .docs .md .token.keyword {
+      color: #c084fc;
+    }
+
+    .docs .md .token.string {
+      color: #34d399;
+    }
+
+    .docs .md .token.comment {
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .docs .md .token.number {
+      color: #fbbf24;
+    }
+
+    .docs .md .token.function {
+      color: #60a5fa;
+    }
+
+    .docs .md .token.operator {
+      color: #94a3b8;
+    }
+
+    .docs .md .token.punctuation {
+      color: #94a3b8;
+    }
+
+    .docs .md .token.tag {
+      color: #f87171;
+    }
+
+    .docs .md .token.attribute {
+      color: #fbbf24;
+    }
+
     .docs .md .md-mermaid {
       margin: 1.5rem 0;
       border-radius: var(--radius-lg);
       overflow: hidden;
     }
+
     .docs .md .md-mermaid svg {
       --bg: var(--color-surface-bright) !important;
       --fg: var(--color-text) !important;
@@ -155,17 +228,1217 @@
       height: auto;
       padding: 1.5rem;
     }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
+      }
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
+        }
+      }
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
+      }
+
+      .header-brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand-text-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .header-brand .brand-base {
+        color: var(--color-primary);
+      }
+
+      .header-brand .brand-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brand-shimmer 5s linear infinite;
+      }
+
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
+      }
+
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn-get-started {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
+        border: none;
+        border-radius: var(--radius-default);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+
+    @scope (.docsSidebar) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        background: var(--color-surface-lowest);
+        border-right: 1px solid rgba(60, 73, 78, 0.2);
+        overflow-y: auto;
+        padding: 80px 0 32px;
+        /* design-system: allow */
+        z-index: 40;
+        display: none;
+      }
+
+      @media (min-width: 1024px) {
+        .sidebar {
+          display: block;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .sidebar {
+          display: block;
+          width: 240px;
+        }
+      }
+
+      .sidebar-home {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        /* design-system: allow */
+        padding: 0 24px 20px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--color-primary);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        margin-bottom: 16px;
+      }
+
+      .sidebar-home:hover {
+        text-decoration: underline;
+      }
+
+      .sidebar-role {
+        margin-bottom: 4px;
+      }
+
+      .sidebar-role-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+      }
+
+      .sidebar-role-header::-webkit-details-marker {
+        display: none;
+      }
+
+      .sidebar-role-header::marker {
+        display: none;
+        content: '';
+      }
+
+      .sidebar-role-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .sidebar-role-label {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text);
+        flex: 1;
+      }
+
+      .sidebar-role-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: inherit;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .sidebar-role-link:hover .sidebar-role-label {
+        color: var(--color-primary);
+      }
+
+      .sidebar-role-link.active .sidebar-role-label {
+        color: var(--color-primary);
+      }
+
+      .sidebar-role-count {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        /* design-system: allow */
+        color: var(--color-text-muted);
+        opacity: 0.6;
+      }
+
+      .sidebar-guides {
+        list-style: none;
+        padding: 0 0 8px;
+        margin: 0;
+      }
+
+      .sidebar-link {
+        display: block;
+        padding: 5px 24px 5px 52px;
+        /* design-system: allow */
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 20px;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: color 0.15s, border-color 0.15s;
+      }
+
+      .sidebar-link:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .sidebar-link.active {
+        color: var(--color-primary);
+        border-left-color: var(--color-primary);
+        font-weight: 500;
+      }
+
+      /* ── Mobile navigation dropdown ── */
+      .mobile-nav {
+        display: none;
+      }
+
+      @media (max-width: 767px) {
+        .mobile-nav {
+          display: block;
+          padding-top: 64px;
+          /* design-system: allow — clears fixed header */
+        }
+      }
+
+      .mobile-nav-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+        background: var(--color-surface-lowest);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .mobile-nav-toggle::-webkit-details-marker {
+        display: none;
+      }
+
+      .mobile-nav-toggle::marker {
+        display: none;
+        content: '';
+      }
+
+      .mobile-nav-icon {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .mobile-nav-label {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      .mobile-nav-page {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--color-text-muted);
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
+
+      .mobile-nav-page::before {
+        content: '·';
+        margin: 0 6px;
+      }
+
+      .mobile-nav-chevron {
+        margin-left: auto;
+        width: 16px;
+        height: 16px;
+        color: var(--color-text-muted);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .mobile-nav[open] .mobile-nav-chevron {
+        transform: rotate(180deg);
+      }
+
+      .mobile-nav-panel {
+        max-height: 60vh;
+        overflow-y: auto;
+        background: var(--color-surface-lowest);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        padding-bottom: 12px;
+      }
+
+      .mobile-nav-panel .sidebar-home {
+        padding: 12px 16px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.15);
+      }
+
+      .mobile-nav-panel .sidebar-role-header {
+        padding: 8px 16px;
+      }
+
+      .mobile-nav-panel .sidebar-link {
+        padding: 5px 16px 5px 44px;
+        /* design-system: allow */
+      }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
+        text-decoration: none;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="page-root">
-    <jay:SiteHeader />
-    <jay:DocsSidebar currentPath="{jay.url.path}" activePageTitle="{post.title}" />
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header><jay:docs-sidebar ref="docsSidebar" currentPath="{jay.url.path}"
+      activePageTitle="{post.title}">
+      <div>
+        <details class="mobile-nav">
+          <summary class="mobile-nav-toggle"><img if="currentPath ^= '/docs/designer'"
+              src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp"
+              alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy"><span
+              if="currentPath ^= '/docs/designer'" class="mobile-nav-label">Designer</span><img
+              if="currentPath ^= '/docs/developer'"
+              src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp"
+              alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy"><span
+              if="currentPath ^= '/docs/developer'" class="mobile-nav-label">Developer</span><img
+              if="currentPath ^= '/docs/plugin'"
+              src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp"
+              alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy"><span
+              if="currentPath ^= '/docs/plugin'" class="mobile-nav-label">Plugin
+              Developer</span><img if="currentPath ^= '/docs/devops'"
+              src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp"
+              alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy"><span
+              if="currentPath ^= '/docs/devops'" class="mobile-nav-label">DevOps</span><img
+              if="currentPath ^= '/docs/contracts'"
+              src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp"
+              alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy"><span
+              if="currentPath ^= '/docs/contracts'" class="mobile-nav-label">Contracts</span><span
+              class="mobile-nav-page">{activePageTitle}</span><svg class="mobile-nav-chevron"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></summary>
+          <div class="mobile-nav-panel"><a href="/docs" class="sidebar-home">&larr;
+              Documentation</a>
+            <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
+              <summary class="sidebar-role-header"><a href="/docs/designer/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/designer/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Designer</span></a><span
+                  class="sidebar-role-count">28</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/designer/a11y-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/a11y-patterns' ? active}">Accessible
+                    Patterns for Jay-HTML</a></li>
+                <li><a href="/docs/designer/accordion"
+                    class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a>
+                </li>
+                <li><a href="/docs/designer/cli-commands"
+                    class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI
+                    Commands Reference</a></li>
+                <li><a href="/docs/designer/click-popover"
+                    class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click
+                    Popover</a></li>
+                <li><a href="/docs/designer/clipboard-copy"
+                    class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard
+                    Copy</a></li>
+                <li><a href="/docs/designer/contracts-and-plugins"
+                    class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts
+                    and Plugins</a></li>
+                <li><a href="/docs/designer/design-system"
+                    class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design
+                    System (DESIGN.md)</a></li>
+                <li><a href="/docs/designer/routing"
+                    class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based
+                    Routing</a></li>
+                <li><a href="/docs/designer/font-fallback-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/font-fallback-patterns' ? active}">Font
+                    Fallback Patterns</a></li>
+                <li><a href="/docs/designer/jay-html-syntax"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML
+                    — AI Designer Instructions</a></li>
+                <li><a href="/docs/designer/jay-html-components"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-components' ? active}">Jay-HTML
+                    Component Imports</a></li>
+                <li><a href="/docs/designer/jay-html-styling"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-styling' ? active}">Jay-HTML
+                    Styling</a></li>
+                <li><a href="/docs/designer/jay-html-template-syntax"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-template-syntax' ? active}">Jay-HTML
+                    Template Syntax</a></li>
+                <li><a href="/docs/designer/letter-split"
+                    class="sidebar-link {currentPath === '/docs/designer/letter-split' ? active}">Letter
+                    Split</a></li>
+                <li><a href="/docs/designer/markdown-usage"
+                    class="sidebar-link {currentPath === '/docs/designer/markdown-usage' ? active}">Markdown
+                    Plugin</a></li>
+                <li><a href="/docs/designer/navigation-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/navigation-patterns' ? active}">Navigation
+                    Patterns</a></li>
+                <li><a href="/docs/designer/popover-menu"
+                    class="sidebar-link {currentPath === '/docs/designer/popover-menu' ? active}">Popover
+                    Menu</a></li>
+                <li><a href="/docs/designer/project-structure"
+                    class="sidebar-link {currentPath === '/docs/designer/project-structure' ? active}">Project
+                    Structure</a></li>
+                <li><a href="/docs/designer/script-tags"
+                    class="sidebar-link {currentPath === '/docs/designer/script-tags' ? active}">Script
+                    Tags in Jay-HTML</a></li>
+                <li><a href="/docs/designer/scroll-carousel"
+                    class="sidebar-link {currentPath === '/docs/designer/scroll-carousel' ? active}">Scroll
+                    Carousel</a></li>
+                <li><a href="/docs/designer/spring-button-hover"
+                    class="sidebar-link {currentPath === '/docs/designer/spring-button-hover' ? active}">Spring
+                    button hover</a></li>
+                <li><a href="/docs/designer/sticky-header-scroll"
+                    class="sidebar-link {currentPath === '/docs/designer/sticky-header-scroll' ? active}">Sticky
+                    header that “sticks” (scroll-driven)</a></li>
+                <li><a href="/docs/designer/tabs"
+                    class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a>
+                </li>
+                <li><a href="/docs/designer/toggle-switch"
+                    class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle
+                    Switch</a></li>
+                <li><a href="/docs/designer/tooltip"
+                    class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a>
+                </li>
+                <li><a href="/docs/designer/wix-media"
+                    class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using
+                    Wix Media</a></li>
+                <li><a href="/docs/designer/word-split"
+                    class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word
+                    Split</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
+              <summary class="sidebar-role-header"><a href="/docs/developer/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/developer/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Developer</span></a><span
+                  class="sidebar-role-count">13</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/developer/cli-commands"
+                    class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI
+                    Commands Reference</a></li>
+                <li><a href="/docs/developer/component-refs"
+                    class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component
+                    Refs</a></li>
+                <li><a href="/docs/developer/component-state"
+                    class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component
+                    State Hooks</a></li>
+                <li><a href="/docs/developer/configuration"
+                    class="sidebar-link {currentPath === '/docs/developer/configuration' ? active}">Configuration</a>
+                </li>
+                <li><a href="/docs/developer/dev-server-service"
+                    class="sidebar-link {currentPath === '/docs/developer/dev-server-service' ? active}">Dev
+                    Server Service API</a></li>
+                <li><a href="/docs/developer/routing"
+                    class="sidebar-link {currentPath === '/docs/developer/routing' ? active}">Directory-Based
+                    Routing</a></li>
+                <li><a href="/docs/developer/component-data"
+                    class="sidebar-link {currentPath === '/docs/developer/component-data' ? active}">Immutable
+                    Data and Patching</a></li>
+                <li><a href="/docs/developer/page-components"
+                    class="sidebar-link {currentPath === '/docs/developer/page-components' ? active}">Page
+                    Components</a></li>
+                <li><a href="/docs/developer/page-contracts"
+                    class="sidebar-link {currentPath === '/docs/developer/page-contracts' ? active}">Page
+                    Contracts</a></li>
+                <li><a href="/docs/developer/project-structure"
+                    class="sidebar-link {currentPath === '/docs/developer/project-structure' ? active}">Project
+                    Structure</a></li>
+                <li><a href="/docs/developer/render-results"
+                    class="sidebar-link {currentPath === '/docs/developer/render-results' ? active}">Render
+                    Results</a></li>
+                <li><a href="/docs/developer/seo-guide"
+                    class="sidebar-link {currentPath === '/docs/developer/seo-guide' ? active}">SEO
+                    Head Tags</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
+              <summary class="sidebar-role-header"><a href="/docs/plugin/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/plugin/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Plugin Developer</span></a><span
+                  class="sidebar-role-count">20</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/plugin/aiditor-add-menu"
+                    class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor
+                    Add Menu — plugin contributor guide</a></li>
+                <li><a href="/docs/plugin/add-menu-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor
+                    Add-Menu Items</a></li>
+                <li><a href="/docs/plugin/commands-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI
+                    Commands</a></li>
+                <li><a href="/docs/plugin/component-context"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component
+                    Context</a></li>
+                <li><a href="/docs/plugin/component-refs"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component
+                    Refs</a></li>
+                <li><a href="/docs/plugin/component-state"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-state' ? active}">Component
+                    State Hooks</a></li>
+                <li><a href="/docs/plugin/component-structure"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-structure' ? active}">Component
+                    Structure</a></li>
+                <li><a href="/docs/plugin/dev-server-service"
+                    class="sidebar-link {currentPath === '/docs/plugin/dev-server-service' ? active}">Dev
+                    Server Service API</a></li>
+                <li><a href="/docs/plugin/component-data"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-data' ? active}">Immutable
+                    Data and Patching</a></li>
+                <li><a href="/docs/plugin/contracts-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/contracts-guide' ? active}">Plugin
+                    Contract Guide</a></li>
+                <li><a href="/docs/plugin/plugin-routes"
+                    class="sidebar-link {currentPath === '/docs/plugin/plugin-routes' ? active}">Plugin
+                    Routes</a></li>
+                <li><a href="/docs/plugin/setup-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/setup-guide' ? active}">Plugin
+                    Setup &amp; Agent-Kit</a></li>
+                <li><a href="/docs/plugin/plugin-structure"
+                    class="sidebar-link {currentPath === '/docs/plugin/plugin-structure' ? active}">Plugin
+                    Structure</a></li>
+                <li><a href="/docs/plugin/validation"
+                    class="sidebar-link {currentPath === '/docs/plugin/validation' ? active}">Plugin
+                    Validation</a></li>
+                <li><a href="/docs/plugin/render-results"
+                    class="sidebar-link {currentPath === '/docs/plugin/render-results' ? active}">Render
+                    Results</a></li>
+                <li><a href="/docs/plugin/seo-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO
+                    Head Tags</a></li>
+                <li><a href="/docs/plugin/actions-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server
+                    Actions</a></li>
+                <li><a href="/docs/plugin/services-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services
+                    and Initialization</a></li>
+                <li><a href="/docs/plugin/webhooks-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks
+                    &amp; Data Change Invalidation</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
+              <summary class="sidebar-role-header"><a href="/docs/devops/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/devops/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">DevOps</span></a><span
+                  class="sidebar-role-count">6</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/devops/wix-baas-deployment"
+                    class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying
+                    to Wix BaaS</a></li>
+                <li><a href="/docs/devops/fetch-handler"
+                    class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch
+                    Handler Package</a></li>
+                <li><a href="/docs/devops/invalidation"
+                    class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation
+                    &amp; Rebuild</a></li>
+                <li><a href="/docs/devops/production-build"
+                    class="sidebar-link {currentPath === '/docs/devops/production-build' ? active}">Production
+                    Build</a></li>
+                <li><a href="/docs/devops/serving-modes"
+                    class="sidebar-link {currentPath === '/docs/devops/serving-modes' ? active}">Serving
+                    Modes</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
+              <summary class="sidebar-role-header"><a href="/docs/contracts/guide"
+                  class="sidebar-role-link {currentPath === '/docs/contracts/guide' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Contracts</span></a><span
+                  class="sidebar-role-count">5</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/contracts/syntax"
+                    class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract
+                    Syntax Reference</a></li>
+                <li><a href="/docs/contracts/component-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull
+                    Component Contracts</a></li>
+                <li><a href="/docs/contracts/linked-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked
+                    and Composed Contracts</a></li>
+                <li><a href="/docs/contracts/page-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page
+                    Contracts</a></li>
+              </ul>
+            </details>
+          </div>
+        </details>
+        <aside class="sidebar">
+          <nav><a href="/docs" class="sidebar-home">&larr; Documentation</a>
+            <details class="sidebar-role" open="currentPath ^= '/docs/designer'">
+              <summary class="sidebar-role-header"><a href="/docs/designer/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/designer/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Designer</span></a><span
+                  class="sidebar-role-count">28</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/designer/a11y-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/a11y-patterns' ? active}">Accessible
+                    Patterns for Jay-HTML</a></li>
+                <li><a href="/docs/designer/accordion"
+                    class="sidebar-link {currentPath === '/docs/designer/accordion' ? active}">Accordion</a>
+                </li>
+                <li><a href="/docs/designer/cli-commands"
+                    class="sidebar-link {currentPath === '/docs/designer/cli-commands' ? active}">CLI
+                    Commands Reference</a></li>
+                <li><a href="/docs/designer/click-popover"
+                    class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click
+                    Popover</a></li>
+                <li><a href="/docs/designer/clipboard-copy"
+                    class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard
+                    Copy</a></li>
+                <li><a href="/docs/designer/contracts-and-plugins"
+                    class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts
+                    and Plugins</a></li>
+                <li><a href="/docs/designer/design-system"
+                    class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design
+                    System (DESIGN.md)</a></li>
+                <li><a href="/docs/designer/routing"
+                    class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based
+                    Routing</a></li>
+                <li><a href="/docs/designer/font-fallback-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/font-fallback-patterns' ? active}">Font
+                    Fallback Patterns</a></li>
+                <li><a href="/docs/designer/jay-html-syntax"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML
+                    — AI Designer Instructions</a></li>
+                <li><a href="/docs/designer/jay-html-components"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-components' ? active}">Jay-HTML
+                    Component Imports</a></li>
+                <li><a href="/docs/designer/jay-html-styling"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-styling' ? active}">Jay-HTML
+                    Styling</a></li>
+                <li><a href="/docs/designer/jay-html-template-syntax"
+                    class="sidebar-link {currentPath === '/docs/designer/jay-html-template-syntax' ? active}">Jay-HTML
+                    Template Syntax</a></li>
+                <li><a href="/docs/designer/letter-split"
+                    class="sidebar-link {currentPath === '/docs/designer/letter-split' ? active}">Letter
+                    Split</a></li>
+                <li><a href="/docs/designer/markdown-usage"
+                    class="sidebar-link {currentPath === '/docs/designer/markdown-usage' ? active}">Markdown
+                    Plugin</a></li>
+                <li><a href="/docs/designer/navigation-patterns"
+                    class="sidebar-link {currentPath === '/docs/designer/navigation-patterns' ? active}">Navigation
+                    Patterns</a></li>
+                <li><a href="/docs/designer/popover-menu"
+                    class="sidebar-link {currentPath === '/docs/designer/popover-menu' ? active}">Popover
+                    Menu</a></li>
+                <li><a href="/docs/designer/project-structure"
+                    class="sidebar-link {currentPath === '/docs/designer/project-structure' ? active}">Project
+                    Structure</a></li>
+                <li><a href="/docs/designer/script-tags"
+                    class="sidebar-link {currentPath === '/docs/designer/script-tags' ? active}">Script
+                    Tags in Jay-HTML</a></li>
+                <li><a href="/docs/designer/scroll-carousel"
+                    class="sidebar-link {currentPath === '/docs/designer/scroll-carousel' ? active}">Scroll
+                    Carousel</a></li>
+                <li><a href="/docs/designer/spring-button-hover"
+                    class="sidebar-link {currentPath === '/docs/designer/spring-button-hover' ? active}">Spring
+                    button hover</a></li>
+                <li><a href="/docs/designer/sticky-header-scroll"
+                    class="sidebar-link {currentPath === '/docs/designer/sticky-header-scroll' ? active}">Sticky
+                    header that “sticks” (scroll-driven)</a></li>
+                <li><a href="/docs/designer/tabs"
+                    class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a>
+                </li>
+                <li><a href="/docs/designer/toggle-switch"
+                    class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle
+                    Switch</a></li>
+                <li><a href="/docs/designer/tooltip"
+                    class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a>
+                </li>
+                <li><a href="/docs/designer/wix-media"
+                    class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using
+                    Wix Media</a></li>
+                <li><a href="/docs/designer/word-split"
+                    class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word
+                    Split</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/developer'">
+              <summary class="sidebar-role-header"><a href="/docs/developer/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/developer/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Developer</span></a><span
+                  class="sidebar-role-count">13</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/developer/cli-commands"
+                    class="sidebar-link {currentPath === '/docs/developer/cli-commands' ? active}">CLI
+                    Commands Reference</a></li>
+                <li><a href="/docs/developer/component-refs"
+                    class="sidebar-link {currentPath === '/docs/developer/component-refs' ? active}">Component
+                    Refs</a></li>
+                <li><a href="/docs/developer/component-state"
+                    class="sidebar-link {currentPath === '/docs/developer/component-state' ? active}">Component
+                    State Hooks</a></li>
+                <li><a href="/docs/developer/configuration"
+                    class="sidebar-link {currentPath === '/docs/developer/configuration' ? active}">Configuration</a>
+                </li>
+                <li><a href="/docs/developer/dev-server-service"
+                    class="sidebar-link {currentPath === '/docs/developer/dev-server-service' ? active}">Dev
+                    Server Service API</a></li>
+                <li><a href="/docs/developer/routing"
+                    class="sidebar-link {currentPath === '/docs/developer/routing' ? active}">Directory-Based
+                    Routing</a></li>
+                <li><a href="/docs/developer/component-data"
+                    class="sidebar-link {currentPath === '/docs/developer/component-data' ? active}">Immutable
+                    Data and Patching</a></li>
+                <li><a href="/docs/developer/page-components"
+                    class="sidebar-link {currentPath === '/docs/developer/page-components' ? active}">Page
+                    Components</a></li>
+                <li><a href="/docs/developer/page-contracts"
+                    class="sidebar-link {currentPath === '/docs/developer/page-contracts' ? active}">Page
+                    Contracts</a></li>
+                <li><a href="/docs/developer/project-structure"
+                    class="sidebar-link {currentPath === '/docs/developer/project-structure' ? active}">Project
+                    Structure</a></li>
+                <li><a href="/docs/developer/render-results"
+                    class="sidebar-link {currentPath === '/docs/developer/render-results' ? active}">Render
+                    Results</a></li>
+                <li><a href="/docs/developer/seo-guide"
+                    class="sidebar-link {currentPath === '/docs/developer/seo-guide' ? active}">SEO
+                    Head Tags</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/plugin'">
+              <summary class="sidebar-role-header"><a href="/docs/plugin/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/plugin/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Plugin Developer</span></a><span
+                  class="sidebar-role-count">20</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/plugin/aiditor-add-menu"
+                    class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor
+                    Add Menu — plugin contributor guide</a></li>
+                <li><a href="/docs/plugin/add-menu-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor
+                    Add-Menu Items</a></li>
+                <li><a href="/docs/plugin/commands-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI
+                    Commands</a></li>
+                <li><a href="/docs/plugin/component-context"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component
+                    Context</a></li>
+                <li><a href="/docs/plugin/component-refs"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component
+                    Refs</a></li>
+                <li><a href="/docs/plugin/component-state"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-state' ? active}">Component
+                    State Hooks</a></li>
+                <li><a href="/docs/plugin/component-structure"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-structure' ? active}">Component
+                    Structure</a></li>
+                <li><a href="/docs/plugin/dev-server-service"
+                    class="sidebar-link {currentPath === '/docs/plugin/dev-server-service' ? active}">Dev
+                    Server Service API</a></li>
+                <li><a href="/docs/plugin/component-data"
+                    class="sidebar-link {currentPath === '/docs/plugin/component-data' ? active}">Immutable
+                    Data and Patching</a></li>
+                <li><a href="/docs/plugin/contracts-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/contracts-guide' ? active}">Plugin
+                    Contract Guide</a></li>
+                <li><a href="/docs/plugin/plugin-routes"
+                    class="sidebar-link {currentPath === '/docs/plugin/plugin-routes' ? active}">Plugin
+                    Routes</a></li>
+                <li><a href="/docs/plugin/setup-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/setup-guide' ? active}">Plugin
+                    Setup &amp; Agent-Kit</a></li>
+                <li><a href="/docs/plugin/plugin-structure"
+                    class="sidebar-link {currentPath === '/docs/plugin/plugin-structure' ? active}">Plugin
+                    Structure</a></li>
+                <li><a href="/docs/plugin/validation"
+                    class="sidebar-link {currentPath === '/docs/plugin/validation' ? active}">Plugin
+                    Validation</a></li>
+                <li><a href="/docs/plugin/render-results"
+                    class="sidebar-link {currentPath === '/docs/plugin/render-results' ? active}">Render
+                    Results</a></li>
+                <li><a href="/docs/plugin/seo-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO
+                    Head Tags</a></li>
+                <li><a href="/docs/plugin/actions-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server
+                    Actions</a></li>
+                <li><a href="/docs/plugin/services-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services
+                    and Initialization</a></li>
+                <li><a href="/docs/plugin/webhooks-guide"
+                    class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks
+                    &amp; Data Change Invalidation</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/devops'">
+              <summary class="sidebar-role-header"><a href="/docs/devops/instructions"
+                  class="sidebar-role-link {currentPath === '/docs/devops/instructions' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">DevOps</span></a><span
+                  class="sidebar-role-count">6</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/devops/wix-baas-deployment"
+                    class="sidebar-link {currentPath === '/docs/devops/wix-baas-deployment' ? active}">Deploying
+                    to Wix BaaS</a></li>
+                <li><a href="/docs/devops/fetch-handler"
+                    class="sidebar-link {currentPath === '/docs/devops/fetch-handler' ? active}">Fetch
+                    Handler Package</a></li>
+                <li><a href="/docs/devops/invalidation"
+                    class="sidebar-link {currentPath === '/docs/devops/invalidation' ? active}">Invalidation
+                    &amp; Rebuild</a></li>
+                <li><a href="/docs/devops/production-build"
+                    class="sidebar-link {currentPath === '/docs/devops/production-build' ? active}">Production
+                    Build</a></li>
+                <li><a href="/docs/devops/serving-modes"
+                    class="sidebar-link {currentPath === '/docs/devops/serving-modes' ? active}">Serving
+                    Modes</a></li>
+              </ul>
+            </details>
+            <details class="sidebar-role" open="currentPath ^= '/docs/contracts'">
+              <summary class="sidebar-role-header"><a href="/docs/contracts/guide"
+                  class="sidebar-role-link {currentPath === '/docs/contracts/guide' ? active}"><img
+                    src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp"
+                    alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy"><span
+                    class="sidebar-role-label">Contracts</span></a><span
+                  class="sidebar-role-count">5</span></summary>
+              <ul class="sidebar-guides">
+                <li><a href="/docs/contracts/syntax"
+                    class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract
+                    Syntax Reference</a></li>
+                <li><a href="/docs/contracts/component-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull
+                    Component Contracts</a></li>
+                <li><a href="/docs/contracts/linked-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked
+                    and Composed Contracts</a></li>
+                <li><a href="/docs/contracts/page-contracts"
+                    class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page
+                    Contracts</a></li>
+              </ul>
+            </details>
+          </nav>
+        </aside>
+      </div>
+    </jay:docs-sidebar>
     <main class="docs">
       <h1 class="sr-only">{post.title}</h1>
       <div class="md">{post.content}</div>
-    </main>
-    <jay:SiteFooter />
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
   </div>
 </body>
+
 </html>

@@ -1,367 +1,796 @@
 <html lang="en">
-  <head>
-    <title>Design Log Methodology | Jay Framework</title>
-    <meta name="description" content="The Jay Framework is built using the Design Log methodology — a rigorous, document-first approach to software architecture that keeps AI agents and human developers aligned.">
-    <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
-    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
-    <link rel="stylesheet" href="../../styles/theme.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-      /* ── Shared ── */
-      .section { padding: 96px 0; }
-      .section-label {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 16px;
-        color: var(--color-primary);
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-      }
-      .text-muted { color: var(--color-text-muted); }
-      .text-primary { color: var(--color-primary); }
-      .text-center { text-align: center; }
 
-      .glass-panel {
-        background: rgba(10, 15, 30, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(0, 210, 255, 0.1);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .glass-panel:hover {
-        border-color: rgba(0, 210, 255, 0.3);
-        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+<head>
+  <title>Design Log Methodology | Jay Framework</title>
+  <meta name="description"
+    content="The Jay Framework is built using the Design Log methodology — a rigorous, document-first approach to software architecture that keeps AI agents and human developers aligned.">
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless" src="../../components/site-header/site-header"
+    contract="../../components/site-header/site-header.jay-contract"
+    template="../../components/site-header/site-header.jay-html"></script>
+  <link rel="icon" type="image/svg+xml"
+    href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ── Shared ── */
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--color-primary);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    .text-muted {
+      color: var(--color-text-muted);
+    }
+
+    .text-primary {
+      color: var(--color-primary);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .glass-panel {
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+    }
+
+    /* ── Hero ── */
+    .dl-hero {
+      position: relative;
+      padding: 96px 0;
+      /* design-system: allow */
+      padding-top: 160px;
+      /* design-system: allow */
+      overflow: hidden;
+    }
+
+    .dl-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .dl-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .dl-hero-badge {
+      display: inline-block;
+      background: rgba(165, 231, 255, 0.1);
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    @keyframes shimmer-pass {
+      0% {
+        background-position: -150% center;
       }
 
-      /* ── Hero ── */
-      .dl-hero {
-        position: relative;
-        padding: 96px 0; /* design-system: allow */
-        padding-top: 160px; /* design-system: allow */
-        overflow: hidden;
+      15% {
+        background-position: -150% center;
       }
-      .dl-hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        z-index: 0;
+
+      35% {
+        background-position: 150% center;
       }
-      .dl-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
+
+      100% {
+        background-position: 150% center;
+      }
+    }
+
+    .dl-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .shimmer-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dl-hero-headline .shimmer-base {
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+    }
+
+    .dl-hero-headline .shimmer-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.5) 46%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.5) 54%, transparent 65%);
+      background-size: 200% auto;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer-pass 5s ease-in-out infinite;
+    }
+
+    .dl-hero-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 32px auto 0;
+    }
+
+    .dl-hero-methodology-link {
+      margin-top: 24px;
+    }
+
+    .dl-hero-methodology-link a {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .dl-hero-methodology-link a:hover {
+      color: var(--color-primary);
+    }
+
+    .dl-browse-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      letter-spacing: 0.02em;
+      /* design-system: allow */
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    .dl-hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .dl-hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      border: 1px solid rgba(165, 231, 255, 0.15);
+      background: rgba(165, 231, 255, 0.05);
+      color: var(--color-text);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .dl-hero-link:hover {
+      border-color: rgba(165, 231, 255, 0.35);
+      background: rgba(165, 231, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .dl-hero-link img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    /* ── Intro Section ── */
+    .intro-section {
+      background: var(--color-surface);
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .intro-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .intro-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .intro-text h2 {
+      margin-bottom: 24px;
+    }
+
+    .intro-text p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-highlight-box {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+    }
+
+    .intro-highlight-box h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 16px;
+      color: var(--color-primary);
+    }
+
+    .intro-highlight-box p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    /* ── Transparency Section ── */
+    .transparency-section {
+      background: var(--color-surface-lowest);
+    }
+
+    .transparency-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .transparency-content h2 {
+      margin-bottom: 24px;
+    }
+
+    .transparency-content p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+    }
+
+    .transparency-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--color-surface-lowest);
+      border-top: 1px solid rgba(60, 73, 78, 0.2);
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-gutter);
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+    }
+
+    .footer-copyright {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .footer-heading {
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-secondary-dim);
+      text-decoration: none;
+    }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
         margin: 0 auto;
-        text-align: center;
+        padding: 16px var(--margin-mobile);
       }
-      .dl-hero-badge {
-        display: inline-block;
-        background: rgba(165, 231, 255, 0.1);
-        color: var(--color-primary);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 500;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        margin-bottom: 24px;
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
+        }
       }
-      @keyframes shimmer-pass {
-        0%   { background-position: -150% center; }
-        15%  { background-position: -150% center; }
-        35%  { background-position:  150% center; }
-        100% { background-position:  150% center; }
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
       }
-      .dl-hero-headline {
+
+      .header-brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         font-family: var(--font-display);
-        font-size: clamp(32px, 5vw, 48px);
-        line-height: 1.15;
+        font-size: 32px;
         font-weight: 700;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.01em;
+        text-decoration: none;
       }
-      .shimmer-wrap {
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand-text-wrap {
         position: relative;
         display: inline-block;
       }
-      .dl-hero-headline .shimmer-base {
+
+      .header-brand .brand-base {
         color: var(--color-primary);
-        text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
       }
-      .dl-hero-headline .shimmer-shine {
+
+      .header-brand .brand-shine {
         position: absolute;
         top: 0;
         left: 0;
-        background: linear-gradient(
-          105deg,
-          transparent 35%,
-          rgba(255, 255, 255, 0.5) 46%,
-          rgba(255, 255, 255, 0.85) 50%,
-          rgba(255, 255, 255, 0.5) 54%,
-          transparent 65%
-        );
-        background-size: 200% auto;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: shimmer-pass 5s ease-in-out infinite;
+        animation: brand-shimmer 5s linear infinite;
       }
-      .dl-hero-subtitle {
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--color-text-muted);
-        max-width: 700px;
-        margin: 32px auto 0;
+
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
       }
-      .dl-hero-methodology-link {
-        margin-top: 24px;
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
       }
-      .dl-hero-methodology-link a {
-        color: var(--color-text-muted);
+
+      .header-nav a {
         font-family: var(--font-mono);
-        font-size: 13px;
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .dl-hero-methodology-link a:hover {
-        color: var(--color-primary);
-      }
-      .dl-browse-title {
-        font-family: var(--font-display);
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 12px;
+        font-weight: 500;
         color: var(--color-text-muted);
-        letter-spacing: 0.02em; /* design-system: allow */
-        margin-bottom: 16px;
-        margin-top: 40px;
+        text-decoration: none;
+        transition: color 0.3s;
       }
-      .dl-hero-links {
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 16px;
+        align-items: center;
+        gap: 16px;
       }
-      .dl-hero-link {
+
+      .btn-get-started {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 8px 20px;
-        border-radius: 9999px;
-        border: 1px solid rgba(165, 231, 255, 0.15);
-        background: rgba(165, 231, 255, 0.05);
-        color: var(--color-text);
-        text-decoration: none;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
+        border: none;
+        border-radius: var(--radius-default);
         font-family: var(--font-display);
-        font-size: 14px;
-        font-weight: 500;
-        transition: border-color 0.2s, background 0.2s;
-      }
-      .dl-hero-link:hover {
-        border-color: rgba(165, 231, 255, 0.35);
-        background: rgba(165, 231, 255, 0.1);
-        text-decoration: none;
-      }
-      .dl-hero-link img {
-        width: 20px;
-        height: 20px;
-        object-fit: contain;
-      }
-
-      /* ── Intro Section ── */
-      .intro-section { background: var(--color-surface); }
-      .intro-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 64px;
-        align-items: start;
-      }
-      @media (min-width: 768px) {
-        .intro-layout { grid-template-columns: 1fr 1fr; }
-      }
-      .intro-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .intro-text h2 { margin-bottom: 24px; }
-      .intro-text p {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-        margin-bottom: 24px;
-      }
-      .intro-text p:last-child { margin-bottom: 0; }
-      .intro-highlight-box {
-        padding: 32px;
-        border-radius: var(--radius-2xl);
-      }
-      .intro-highlight-box h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-bottom: 16px;
-        color: var(--color-primary);
-      }
-      .intro-highlight-box p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-      }
-
-      /* ── Transparency Section ── */
-      .transparency-section { background: var(--color-surface-lowest); }
-      .transparency-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .transparency-content h2 { margin-bottom: 24px; }
-      .transparency-content p {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-        margin-bottom: 24px;
-      }
-      .transparency-content p:last-child { margin-bottom: 0; }
-
-      /* ── Footer ── */
-      .site-footer {
-        background: var(--color-surface-lowest);
-        border-top: 1px solid rgba(60, 73, 78, 0.2);
-        padding: 48px 0;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-gutter);
-      }
-      @media (min-width: 768px) {
-        .footer-grid { grid-template-columns: 1fr 1fr; }
-      }
-      @media (min-width: 1024px) {
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
-      }
-      .footer-brand {
-        font-family: var(--font-display);
-        font-size: 24px;
-        font-weight: 800;
-        color: var(--color-primary);
-        margin-bottom: 24px;
-      }
-      .footer-copyright {
-        color: var(--color-text-muted);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        line-height: 16px;
-      }
-      .footer-heading {
-        color: var(--color-primary);
-        font-family: var(--font-mono);
         font-size: 12px;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 24px;
-      }
-      .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-      .footer-links a {
-        color: var(--color-text-muted);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        transition: color 0.3s;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
         text-decoration: none;
       }
-      .footer-links a:hover { color: var(--color-secondary-dim); text-decoration: none; }
-    </style>
-  </head>
-  <body>
-    <div class="page-root">
 
-    <jay:SiteHeader />
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
 
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
     <main>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Hero                                        -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="dl-hero">
         <div class="dl-hero-grid"></div>
         <div class="container">
-          <div class="dl-hero-content">
-            <span class="dl-hero-badge">METHODOLOGY</span>
-            <h1 class="dl-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">Design Log Methodology</span><span class="shimmer-shine" aria-hidden="true">Design Log Methodology</span></span></h1>
-            <p class="dl-hero-subtitle">Jay is built using the Design Log methodology — a rigorous, document-first approach to software architecture. Every significant feature is designed in writing before a single line of code is written.</p>
+          <div class="dl-hero-content"><span class="dl-hero-badge">METHODOLOGY</span>
+            <h1 class="dl-hero-headline"><span class="shimmer-wrap"><span
+                  class="shimmer-base">Design Log Methodology</span><span class="shimmer-shine"
+                  aria-hidden="true">Design Log Methodology</span></span></h1>
+            <p class="dl-hero-subtitle">Jay is built using the Design Log methodology — a rigorous,
+              document-first approach to software architecture. Every significant feature is
+              designed in writing before a single line of code is written.</p>
             <h2 class="dl-browse-title">Browse Design Logs</h2>
-            <div class="dl-hero-links">
-              <a class="dl-hero-link" href="/design-log/jay/index"><img src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg" alt="" width="20" height="20" loading="eager" fetchpriority="high">Jay Framework</a>
-              <a class="dl-hero-link" href="/design-log/wix/index"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Wix Integration</a>
-              <a class="dl-hero-link" href="/design-log/website/index"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website</a>
-            </div>
-            <div class="dl-hero-methodology-link">
-              <a href="https://github.com/yoavaa/design-log-methodology" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg> Design Log Methodology on GitHub &rarr;</a>
-            </div>
+            <div class="dl-hero-links"><a class="dl-hero-link" href="/design-log/jay/index"><img
+                  src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                  alt="" width="20" height="20" loading="eager" fetchpriority="high">Jay
+                Framework</a><a class="dl-hero-link" href="/design-log/wix/index"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>Wix Integration</a><a class="dl-hero-link"
+                href="/design-log/website/index"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                  height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                  </path>
+                </svg>Website</a></div>
+            <div class="dl-hero-methodology-link"><a
+                href="https://github.com/yoavaa/design-log-methodology" target="_blank"
+                rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                  height="14" viewBox="0 0 24 24" fill="currentColor"
+                  style="vertical-align: -2px; margin-right: 4px;">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </svg> Design Log Methodology on GitHub &rarr;</a></div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- What is the Design Log Methodology          -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section intro-section">
         <div class="container">
           <div class="intro-layout">
-            <div class="intro-text">
-              <span class="section-label">Overview</span>
+            <div class="intro-text"><span class="section-label">Overview</span>
               <h2 class="headline-lg" style="margin-top: 16px;">What is a Design Log?</h2>
-              <p>A Design Log is a structured document that captures the full decision-making process for a feature or architectural change. It's not a spec, not a ticket, and not documentation — it's a living record of <strong style="color: var(--color-text);">why</strong> things are built the way they are.</p>
-              <p>Unlike traditional design documents that become stale, design logs are written <strong style="color: var(--color-text);">before implementation begins</strong> and serve as the single source of truth throughout the development process. They capture the context, constraints, trade-offs, and decisions that code alone cannot convey.</p>
-              <p>The methodology was born out of the need to give AI agents — and human developers — a reliable reference point. When multiple agents collaborate on a complex system, ambiguity is the enemy. The design log eliminates ambiguity by making intent explicit and verifiable.</p>
+              <p>A Design Log is a structured document that captures the full decision-making
+                process for a feature or architectural change. It's not a spec, not a ticket, and
+                not documentation — it's a living record of <strong
+                  style="color: var(--color-text);">why</strong> things are built the way they are.
+              </p>
+              <p>Unlike traditional design documents that become stale, design logs are
+                written<strong style="color: var(--color-text);">before implementation
+                  begins</strong> and serve as the single source of truth throughout the development
+                process. They capture the context, constraints, trade-offs, and decisions that code
+                alone cannot convey.</p>
+              <p>The methodology was born out of the need to give AI agents — and human developers —
+                a reliable reference point. When multiple agents collaborate on a complex system,
+                ambiguity is the enemy. The design log eliminates ambiguity by making intent
+                explicit and verifiable.</p>
             </div>
             <div class="intro-cards">
               <div class="intro-highlight-box glass-panel">
                 <h3>The Design Log is the Source of Truth</h3>
-                <p>Any plan — whether provided by the user, generated during plan mode, or inferred by an AI agent — must be validated against the design log before implementation. If a plan deviates from the design log, the deviation must be flagged. The design log takes precedence over guesses, assumptions, or blind code searches.</p>
+                <p>Any plan — whether provided by the user, generated during plan mode, or inferred
+                  by an AI agent — must be validated against the design log before implementation.
+                  If a plan deviates from the design log, the deviation must be flagged. The design
+                  log takes precedence over guesses, assumptions, or blind code searches.</p>
               </div>
               <div class="intro-highlight-box glass-panel">
                 <h3>Required for Every Contribution</h3>
-                <p>Every contribution to Jay — whether from a human developer or an AI agent — must follow the Design Log methodology. New features and architectural changes require a design log to be written and approved before implementation begins. No code is merged without it.</p>
+                <p>Every contribution to Jay — whether from a human developer or an AI agent — must
+                  follow the Design Log methodology. New features and architectural changes require
+                  a design log to be written and approved before implementation begins. No code is
+                  merged without it.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Transparency                                -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section transparency-section">
         <div class="container">
-          <div class="transparency-content">
-            <span class="section-label">Transparency</span>
+          <div class="transparency-content"><span class="section-label">Transparency</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Open Design, Not Just Open Source</h2>
-            <p>We believe open source frameworks should be transparent beyond the code. That means publishing not just what we built, but how we designed it — what we tried, what failed, and how the system evolved over time.</p>
-            <p>Jay's design logs are a public record of every architectural decision, dead end, and trade-off. They show the reasoning behind the code, not just the result. If you want to understand why Jay works the way it does, the answer is always in the design log.</p>
+            <p>We believe open source frameworks should be transparent beyond the code. That means
+              publishing not just what we built, but how we designed it — what we tried, what
+              failed, and how the system evolved over time.</p>
+            <p>Jay's design logs are a public record of every architectural decision, dead end, and
+              trade-off. They show the reasoning behind the code, not just the result. If you want
+              to understand why Jay works the way it does, the answer is always in the design log.
+            </p>
           </div>
         </div>
       </section>
-
     </main>
-
-    <!-- ════════════════════════════════════════════ -->
-    <!-- Footer                                      -->
-    <!-- ════════════════════════════════════════════ -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
           <div>
             <div class="footer-brand">Jay Framework</div>
-            <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem for AI-native web development.</p>
+            <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+              for AI-native web development.</p>
           </div>
           <div>
             <h3 class="footer-heading">Resources</h3>
@@ -380,12 +809,13 @@
           </div>
           <div>
             <h3 class="footer-heading">Learn More</h3>
-            <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards.</p>
+            <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+              deterministic engineering standards.</p>
           </div>
         </div>
       </div>
     </footer>
+  </div>
+</body>
 
-    </div>
-  </body>
 </html>

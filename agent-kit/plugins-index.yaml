@@ -111,12 +111,8 @@ plugins:
       - name: listFreezesAction
         description: List frozen page states for a given route
         path: ./node_modules/@jay-framework/aiditor/dist/actions/list-freezes.jay-action
-      - name: submitTaskAction
-        description: Submit a visual annotation task to the AI agent (Agent SDK) with
-          file uploads
-        path: ./node_modules/@jay-framework/aiditor/dist/actions/submit-task.jay-action
       - name: cancelAgentTaskAction
-        description: Cancel the in-flight AI agent task for a page route
+        description: Stop a live agent task or cancel a queued one
         path: ./node_modules/@jay-framework/aiditor/dist/actions/cancel-agent-task.jay-action
       - name: readFileAction
         description: Read a file from the project filesystem (text or image as base64)
@@ -138,8 +134,8 @@ plugins:
           request
         path: ./node_modules/@jay-framework/aiditor/dist/actions/reclassify-add-page-asset.jay-action
       - name: submitAddPageAction
-        description: Run the Add Page implementation agent and validate the result
-          (streaming)
+        description: Run the Add Page implementation agent as a task on the canvas agent
+          and stream its progress until it settles
         path: ./node_modules/@jay-framework/aiditor/dist/actions/submit-add-page.jay-action
       - name: checkPageAddPageBriefAction
         description: Check whether a Jay page has saved Add Page brief files next to its
@@ -221,7 +217,8 @@ plugins:
         description: Save or update a canvas document
         path: ./node_modules/@jay-framework/aiditor/dist/actions/save-canvas-document.jay-action
       - name: deleteCanvasDocumentAction
-        description: Delete a saved canvas document
+        description: Delete a saved canvas document and its machine-local agent history
+          (refused while its agent tasks are active)
         path: ./node_modules/@jay-framework/aiditor/dist/actions/delete-canvas-document.jay-action
       - name: renameCanvasDocumentAction
         description: Rename a saved canvas document

@@ -1,1067 +1,1410 @@
 <html lang="en">
-  <head>
-    <title>AIditor — Visual Editor for Jay Stack | Jay Framework</title>
-    <meta name="description" content="Learn how to use AIditor: live preview, point-and-shoot annotations, Add Menu, video capture, and AI agent integration for Jay Stack projects.">
-    <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
-    <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
-    <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
-    <script type="application/jay-validations">
-      seo:
-        no-lcp-image: true
-    </script>
-    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
-    <link rel="stylesheet" href="../../styles/theme.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-      /* ── Page background ── */
-      body {
-        background: #0e1322;
-        color: var(--color-text);
-        font-family: var(--font-body);
-        margin: 0;
+
+<head>
+  <title>AIditor — Visual Editor for Jay Stack | Jay Framework</title>
+  <meta name="description"
+    content="Learn how to use AIditor: live preview, point-and-shoot annotations, Add Menu, video capture, and AI agent integration for Jay Stack projects.">
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless" src="../../components/site-header/site-header"
+    contract="../../components/site-header/site-header.jay-contract"
+    template="../../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../../components/site-footer/site-footer"
+    contract="../../components/site-footer/site-footer.jay-contract"
+    template="../../components/site-footer/site-footer.jay-html"></script>
+  <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
+  <script type="application/jay-validations">
+seo:
+  no-lcp-image: true
+  </script>
+  <link rel="icon" type="image/svg+xml"
+    href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ── Page background ── */
+    body {
+      background: #0e1322;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      margin: 0;
+    }
+
+    /* ── Shared utilities ── */
+    .aid-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .aid-container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+
+    .aid-section {
+      padding: 48px 0;
+    }
+
+    @media (min-width: 768px) {
+      .aid-section {
+        padding: 80px 0;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .aid-section {
+        padding: 96px 0;
+      }
+    }
+
+    .aid-section--alt {
+      background: #161b2b;
+    }
+
+    .aid-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+      color: var(--color-primary-dim);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    .aid-text-muted {
+      color: #bbc9cf;
+    }
+
+    .aid-glass {
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-2xl);
+    }
+
+    /* ── Hero ── */
+    .aid-hero {
+      position: relative;
+      padding: 160px 0 64px;
+      overflow: hidden;
+      background: #0e1322;
+    }
+
+    .aid-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .aid-hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .aid-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-primary);
+      max-width: 800px;
+    }
+
+    /* ── Shimmer pass on hero title ── */
+    @keyframes aid-shimmer-pass {
+      0% {
+        background-position: -150% center;
       }
 
-      /* ── Shared utilities ── */
-      .aid-container {
-        width: 100%;
-        max-width: 960px;
-        margin: 0 auto;
-        padding-left: 16px;
-        padding-right: 16px;
+      15% {
+        background-position: -150% center;
       }
-      @media (min-width: 768px) {
-        .aid-container {
-          padding-left: 32px;
-          padding-right: 32px;
+
+      35% {
+        background-position: 150% center;
+      }
+
+      100% {
+        background-position: 150% center;
+      }
+    }
+
+    .aid-hero-title-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .aid-hero-title-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.4) 46%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.4) 54%, transparent 65%);
+      background-size: 200% auto;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: aid-shimmer-pass 5s ease-in-out infinite;
+    }
+
+    .aid-hero-subhead {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 28px;
+      color: #bbc9cf;
+      max-width: 720px;
+    }
+
+    .aid-hero-subhead strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .aid-hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 767px) {
+      .aid-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .aid-hero-buttons>* {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    .aid-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-primary-container);
+      color: var(--color-on-primary-container);
+      padding: 14px 28px;
+      border: none;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .aid-btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+      text-decoration: none;
+    }
+
+    .aid-btn-primary:focus-visible {
+      outline: 2px solid var(--color-primary-dim);
+      outline-offset: 2px;
+    }
+
+    .aid-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(165, 231, 255, 0.3);
+      background: rgba(165, 231, 255, 0.05);
+      color: var(--color-text);
+      padding: 14px 28px;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .aid-btn-secondary:hover {
+      background: rgba(165, 231, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .aid-btn-secondary:focus-visible {
+      outline: 2px solid var(--color-primary-dim);
+      outline-offset: 2px;
+    }
+
+    .aid-btn-cmd {
+      font-family: var(--font-mono);
+    }
+
+    .aid-copy-icon {
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .aid-btn-cmd:hover .aid-copy-icon {
+      opacity: 1;
+    }
+
+    .aid-hero-micro {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 20px;
+      color: #859399;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* ── Video frame ── */
+    .aid-video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(71, 214, 255, 0.15);
+      overflow: hidden;
+      background: #05070d;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .aid-video-frame:hover {
+      border-color: rgba(71, 214, 255, 0.35);
+      box-shadow: 0 0 24px rgba(0, 210, 255, 0.08);
+    }
+
+    .aid-video-frame video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ── Feature section ── */
+    .aid-feature-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .aid-feature-header {
+        margin-bottom: 48px;
+      }
+    }
+
+    .aid-feature-header h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+      margin-top: 12px;
+    }
+
+    .aid-feature-header p {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 28px;
+      color: #bbc9cf;
+      max-width: 65ch;
+      margin: 16px auto 0;
+    }
+
+    /* ── Side-by-side feature layout (text 1/3 + video 2/3) ── */
+    .aid-feature-side {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .aid-feature-side {
+        flex-direction: row;
+        align-items: center;
+        gap: 48px;
+      }
+    }
+
+    .aid-feature-side-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .aid-feature-side-text .aid-label {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .aid-feature-side-text h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+      margin: 0 0 16px;
+    }
+
+    .aid-feature-side-text p {
+      font-size: 16px;
+      line-height: 26px;
+      color: #bbc9cf;
+      margin: 0;
+    }
+
+    .aid-feature-side-video {
+      flex: 2;
+      min-width: 0;
+    }
+
+    .aid-feature-side-video .aid-video-frame {
+      max-width: none;
+    }
+
+    @media (min-width: 768px) {
+      .aid-feature-side--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    /* ── Closing CTA ── */
+    .aid-cta {
+      position: relative;
+      padding: 48px 32px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .aid-cta {
+        padding: 64px 48px;
+      }
+    }
+
+    .aid-cta-glow-tl,
+    .aid-cta-glow-br {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .aid-cta-glow-tl {
+      top: -80px;
+      /* design-system: allow */
+      left: -80px;
+      /* design-system: allow */
+      background: rgba(0, 210, 255, 0.5);
+    }
+
+    .aid-cta-glow-br {
+      bottom: -80px;
+      /* design-system: allow */
+      right: -80px;
+      /* design-system: allow */
+      background: rgba(71, 214, 255, 0.3);
+    }
+
+    .aid-cta h2 {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    .aid-cta p {
+      position: relative;
+      margin-top: 16px;
+      font-size: 18px;
+      line-height: 28px;
+      color: #bbc9cf;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .aid-cta-buttons {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 767px) {
+      .aid-cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .aid-cta-buttons>* {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ── Comparison grid ── */
+    .aid-compare-section .aid-container {
+      max-width: 1200px;
+    }
+
+    .aid-compare-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .aid-compare-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+    }
+
+    .aid-compare-card {
+      background: rgba(22, 30, 50, 0.9);
+      /* design-system: allow */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-2xl);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .aid-compare-card:hover {
+      border-color: rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+    }
+
+    .aid-compare-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .aid-compare-card p {
+      font-size: 15px;
+      line-height: 24px;
+      color: #bbc9cf;
+      margin: 0;
+      flex: 1;
+    }
+
+    .aid-compare-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #ffffff;
+      padding: 6px;
+      /* design-system: allow */
+    }
+
+    .aid-compare-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: calc(var(--radius-lg) - 6px);
+      /* design-system: allow */
+    }
+
+    .aid-compare-verdict {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: var(--color-tertiary-container);
+    }
+
+    /* ── Intent layout: video 2/3 + tabs 1/3 ── */
+    .aid-intent-section .aid-container {
+      max-width: 1200px;
+    }
+
+    .aid-intent-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .aid-intent-layout {
+        flex-direction: row;
+        gap: 32px;
+        align-items: stretch;
+      }
+    }
+
+    .aid-intent-layout .aid-video-frame {
+      flex: 2;
+      min-width: 0;
+      aspect-ratio: 16 / 9;
+    }
+
+    .aid-intent-tabs {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .aid-intent-tabs input[type="radio"] {
+      display: none;
+    }
+
+    .aid-tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 0;
+    }
+
+    .aid-tab-label {
+      flex: 1;
+      cursor: pointer;
+      padding: 12px 8px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 600;
+      color: #859399;
+      text-align: center;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px;
+      /* design-system: allow */
+    }
+
+    .aid-tab-label:hover {
+      color: var(--color-text);
+    }
+
+    #aid-tab-canvas:checked~.aid-tab-bar label[for="aid-tab-canvas"],
+    #aid-tab-design:checked~.aid-tab-bar label[for="aid-tab-design"],
+    #aid-tab-vision:checked~.aid-tab-bar label[for="aid-tab-vision"] {
+      color: var(--color-text);
+      border-bottom-color: var(--color-primary);
+    }
+
+    .aid-tab-panels {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .aid-tab-panel {
+      display: none;
+      padding: 24px 0;
+      flex: 1;
+    }
+
+    #aid-tab-canvas:checked~.aid-tab-panels #aid-panel-canvas {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    #aid-tab-design:checked~.aid-tab-panels #aid-panel-design {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    #aid-tab-vision:checked~.aid-tab-panels #aid-panel-vision {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .aid-tab-panel h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin: 0 0 12px;
+    }
+
+    .aid-tab-panel p {
+      font-size: 15px;
+      line-height: 24px;
+      color: #bbc9cf;
+      margin: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .aid-video-frame {
+        transition: none;
+      }
+
+      .aid-video-frame:hover {
+        box-shadow: none;
+      }
+    }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
+      }
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
         }
       }
 
-      .aid-section {
-        padding: 48px 0;
-      }
-      @media (min-width: 768px) {
-        .aid-section { padding: 80px 0; }
-      }
-      @media (min-width: 1280px) {
-        .aid-section { padding: 96px 0; }
-      }
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
 
-      .aid-section--alt { background: #161b2b; }
-
-      .aid-label {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 500;
-        color: var(--color-primary-dim);
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
+        100% {
+          background-position: 400% center;
+        }
       }
 
-      .aid-text-muted { color: #bbc9cf; }
-
-      .aid-glass {
-        background: rgba(10, 15, 30, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: var(--radius-2xl);
-      }
-
-      /* ── Hero ── */
-      .aid-hero {
+      .header-brand {
         position: relative;
-        padding: 160px 0 64px;
-        overflow: hidden;
-        background: #0e1322;
-      }
-      .aid-hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        z-index: 0;
-        pointer-events: none;
-      }
-      .aid-hero-content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
+        display: inline-flex;
         align-items: center;
-        gap: 24px;
-      }
-      .aid-hero h1 {
+        gap: 10px;
         font-family: var(--font-display);
-        font-size: clamp(32px, 5vw, 48px);
-        line-height: 1.1;
+        font-size: 32px;
         font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--color-primary);
-        max-width: 800px;
+        letter-spacing: -0.01em;
+        text-decoration: none;
       }
 
-      /* ── Shimmer pass on hero title ── */
-      @keyframes aid-shimmer-pass {
-        0%   { background-position: -150% center; }
-        15%  { background-position: -150% center; }
-        35%  { background-position:  150% center; }
-        100% { background-position:  150% center; }
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
       }
-      .aid-hero-title-wrap {
+
+      .brand-text-wrap {
         position: relative;
         display: inline-block;
       }
-      .aid-hero-title-shine {
+
+      .header-brand .brand-base {
+        color: var(--color-primary);
+      }
+
+      .header-brand .brand-shine {
         position: absolute;
         top: 0;
         left: 0;
-        background: linear-gradient(
-          105deg,
-          transparent 35%,
-          rgba(255, 255, 255, 0.4) 46%,
-          rgba(255, 255, 255, 0.7) 50%,
-          rgba(255, 255, 255, 0.4) 54%,
-          transparent 65%
-        );
-        background-size: 200% auto;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: aid-shimmer-pass 5s ease-in-out infinite;
-      }
-      .aid-hero-subhead {
-        font-family: var(--font-body);
-        font-size: 18px;
-        line-height: 28px;
-        color: #bbc9cf;
-        max-width: 720px;
-      }
-      .aid-hero-subhead strong {
-        color: var(--color-text);
-        font-weight: 600;
-      }
-      .aid-hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
-        margin-top: 8px;
-      }
-      @media (max-width: 767px) {
-        .aid-hero-buttons { flex-direction: column; align-items: stretch; width: 100%; }
-        .aid-hero-buttons > * { width: 100%; justify-content: center; }
+        animation: brand-shimmer 5s linear infinite;
       }
 
-      .aid-btn-primary {
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
+      }
+
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn-get-started {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         background: var(--color-primary-container);
         color: var(--color-on-primary-container);
-        padding: 14px 28px;
+        padding: 8px 24px;
         border: none;
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-default);
         font-family: var(--font-display);
+        font-size: 12px;
         font-weight: 700;
-        font-size: 15px;
         cursor: pointer;
-        transition: box-shadow 0.3s, transform 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
         text-decoration: none;
-      }
-      .aid-btn-primary:hover {
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-        text-decoration: none;
-      }
-      .aid-btn-primary:focus-visible {
-        outline: 2px solid var(--color-primary-dim);
-        outline-offset: 2px;
       }
 
-      .aid-btn-secondary {
-        display: inline-flex;
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid rgba(165, 231, 255, 0.3);
-        background: rgba(165, 231, 255, 0.05);
-        color: var(--color-text);
-        padding: 14px 28px;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background 0.3s;
-        text-decoration: none;
-      }
-      .aid-btn-secondary:hover {
-        background: rgba(165, 231, 255, 0.1);
-        text-decoration: none;
-      }
-      .aid-btn-secondary:focus-visible {
-        outline: 2px solid var(--color-primary-dim);
-        outline-offset: 2px;
-      }
-
-      .aid-btn-cmd {
+        color: var(--color-text-muted);
         font-family: var(--font-mono);
-      }
-      .aid-copy-icon {
-        display: inline-flex;
-        align-items: center;
-        opacity: 0.5;
-        transition: opacity 0.2s;
-      }
-      .aid-btn-cmd:hover .aid-copy-icon { opacity: 1; }
-
-      .aid-hero-micro {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        line-height: 20px;
-        color: #859399;
-        text-align: center;
-        margin-top: 8px;
+        font-size: 14px;
       }
 
-      /* ── Video frame ── */
-      .aid-video-frame {
-        position: relative;
-        width: 100%;
-        max-width: 880px;
-        margin: 0 auto;
-        aspect-ratio: 16 / 9;
-        border-radius: var(--radius-xl);
-        border: 1px solid rgba(71, 214, 255, 0.15);
-        overflow: hidden;
-        background: #05070d;
-        transition: box-shadow 0.3s ease, border-color 0.3s ease;
-      }
-      .aid-video-frame:hover {
-        border-color: rgba(71, 214, 255, 0.35);
-        box-shadow: 0 0 24px rgba(0, 210, 255, 0.08);
-      }
-      .aid-video-frame video {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
       }
 
-      /* ── Feature section ── */
-      .aid-feature-header {
-        text-align: center;
-        margin-bottom: 32px;
-      }
-      @media (min-width: 768px) {
-        .aid-feature-header { margin-bottom: 48px; }
-      }
-      .aid-feature-header h2 {
-        font-family: var(--font-display);
-        font-size: 32px;
-        line-height: 40px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        color: var(--color-text);
-        margin-top: 12px;
-      }
-      .aid-feature-header p {
-        font-family: var(--font-body);
-        font-size: 18px;
-        line-height: 28px;
-        color: #bbc9cf;
-        max-width: 65ch;
-        margin: 16px auto 0;
-      }
-      /* ── Side-by-side feature layout (text 1/3 + video 2/3) ── */
-      .aid-feature-side {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-      }
-      @media (min-width: 768px) {
-        .aid-feature-side {
-          flex-direction: row;
-          align-items: center;
-          gap: 48px;
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
         }
       }
-      .aid-feature-side-text {
-        flex: 1;
-        min-width: 0;
-      }
-      .aid-feature-side-text .aid-label {
-        display: block;
-        margin-bottom: 12px;
-      }
-      .aid-feature-side-text h2 {
-        font-family: var(--font-display);
-        font-size: 28px;
-        line-height: 36px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        color: var(--color-text);
-        margin: 0 0 16px;
-      }
-      .aid-feature-side-text p {
-        font-size: 16px;
-        line-height: 26px;
-        color: #bbc9cf;
-        margin: 0;
-      }
-      .aid-feature-side-video {
-        flex: 2;
-        min-width: 0;
-      }
-      .aid-feature-side-video .aid-video-frame {
-        max-width: none;
-      }
-      @media (min-width: 768px) {
-        .aid-feature-side--reverse {
-          flex-direction: row-reverse;
-        }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
       }
 
-      /* ── Closing CTA ── */
-      .aid-cta {
-        position: relative;
-        padding: 48px 32px;
-        text-align: center;
-        overflow: hidden;
-      }
-      @media (min-width: 768px) {
-        .aid-cta { padding: 64px 48px; }
-      }
-      .aid-cta-glow-tl,
-      .aid-cta-glow-br {
-        position: absolute;
-        width: 240px;
-        height: 240px;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.3;
-        pointer-events: none;
-      }
-      .aid-cta-glow-tl {
-        top: -80px; /* design-system: allow */
-        left: -80px; /* design-system: allow */
-        background: rgba(0, 210, 255, 0.5);
-      }
-      .aid-cta-glow-br {
-        bottom: -80px; /* design-system: allow */
-        right: -80px; /* design-system: allow */
-        background: rgba(71, 214, 255, 0.3);
-      }
-      .aid-cta h2 {
-        position: relative;
-        font-family: var(--font-display);
-        font-size: clamp(28px, 4vw, 40px);
-        line-height: 1.2;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--color-text);
-      }
-      .aid-cta p {
-        position: relative;
-        margin-top: 16px;
-        font-size: 18px;
-        line-height: 28px;
-        color: #bbc9cf;
-        max-width: 640px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .aid-cta-buttons {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-        margin-top: 32px;
-      }
-      @media (max-width: 767px) {
-        .aid-cta-buttons { flex-direction: column; align-items: stretch; }
-        .aid-cta-buttons > * { width: 100%; justify-content: center; }
-      }
-
-      /* ── Comparison grid ── */
-      .aid-compare-section .aid-container {
-        max-width: 1200px;
-      }
-      .aid-compare-grid {
+      .footer-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: var(--space-gutter);
       }
+
       @media (min-width: 768px) {
-        .aid-compare-grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 32px;
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
         }
       }
-      .aid-compare-card {
-        background: rgba(22, 30, 50, 0.9); /* design-system: allow */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: var(--radius-2xl);
-        padding: 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .aid-compare-card:hover {
-        border-color: rgba(0, 210, 255, 0.3);
-        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
-      }
-      .aid-compare-card h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
-        color: var(--color-text);
-        margin: 0;
-      }
-      .aid-compare-card p {
-        font-size: 15px;
-        line-height: 24px;
-        color: #bbc9cf;
-        margin: 0;
-        flex: 1;
-      }
-      .aid-compare-img {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        background: #ffffff;
-        padding: 6px; /* design-system: allow */
-      }
-      .aid-compare-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        border-radius: calc(var(--radius-lg) - 6px); /* design-system: allow */
-      }
-      .aid-compare-verdict {
-        font-family: var(--font-body);
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: 600;
-        color: var(--color-tertiary-container);
-      }
 
-      /* ── Intent layout: video 2/3 + tabs 1/3 ── */
-      .aid-intent-section .aid-container {
-        max-width: 1200px;
-      }
-      .aid-intent-layout {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-      }
-      @media (min-width: 768px) {
-        .aid-intent-layout {
-          flex-direction: row;
-          gap: 32px;
-          align-items: stretch;
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
         }
       }
-      .aid-intent-layout .aid-video-frame {
-        flex: 2;
-        min-width: 0;
-        aspect-ratio: 16 / 9;
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
       }
-      .aid-intent-tabs {
-        flex: 1;
-        min-width: 0;
+
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+
+      .footer-links {
+        list-style: none;
         display: flex;
         flex-direction: column;
-      }
-      .aid-intent-tabs input[type="radio"] { display: none; }
-      .aid-tab-bar {
-        display: flex;
-        gap: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 0;
-      }
-      .aid-tab-label {
-        flex: 1;
-        cursor: pointer;
-        padding: 12px 8px;
-        font-family: var(--font-display);
-        font-size: 13px;
-        line-height: 18px;
-        font-weight: 600;
-        color: #859399;
-        text-align: center;
-        border-bottom: 2px solid transparent;
-        transition: color 0.2s, border-color 0.2s;
-        margin-bottom: -1px; /* design-system: allow */
-      }
-      .aid-tab-label:hover { color: var(--color-text); }
-      #aid-tab-canvas:checked ~ .aid-tab-bar label[for="aid-tab-canvas"],
-      #aid-tab-design:checked ~ .aid-tab-bar label[for="aid-tab-design"],
-      #aid-tab-vision:checked ~ .aid-tab-bar label[for="aid-tab-vision"] {
-        color: var(--color-text);
-        border-bottom-color: var(--color-primary);
-      }
-      .aid-tab-panels {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .aid-tab-panel {
-        display: none;
-        padding: 24px 0;
-        flex: 1;
-      }
-      #aid-tab-canvas:checked ~ .aid-tab-panels #aid-panel-canvas { display: flex; flex-direction: column; justify-content: flex-start; }
-      #aid-tab-design:checked ~ .aid-tab-panels #aid-panel-design { display: flex; flex-direction: column; justify-content: flex-start; }
-      #aid-tab-vision:checked ~ .aid-tab-panels #aid-panel-vision { display: flex; flex-direction: column; justify-content: flex-start; }
-      .aid-tab-panel h3 {
-        font-family: var(--font-display);
-        font-size: 18px;
-        line-height: 24px;
-        font-weight: 600;
-        color: var(--color-text);
-        margin: 0 0 12px;
-      }
-      .aid-tab-panel p {
-        font-size: 15px;
-        line-height: 24px;
-        color: #bbc9cf;
-        margin: 0;
+        gap: 12px;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .aid-video-frame { transition: none; }
-        .aid-video-frame:hover { box-shadow: none; }
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
       }
-    </style>
-  </head>
-  <body>
-    <div class="aiditor-intro-root">
 
-      <jay:SiteHeader />
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
 
-      <main>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- Hero                                        -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-hero">
-          <div class="aid-hero-grid"></div>
-          <div class="aid-container">
-            <div class="aid-hero-content">
-              <span class="aid-label">The first visual-intent web editor</span>
-              <h1><span class="aid-hero-title-wrap"><span class="aid-hero-title-base">Build &amp; Edit Websites by Intent. Visually.</span><span class="aid-hero-title-shine" aria-hidden="true">Build &amp; Edit Websites by Intent. Visually.</span></span></h1>
-              <p class="aid-hero-subhead">
-                Describe your vision directly on canvas—just like giving natural feedback to a designer—and let the AI agent craft the content, layout, and animations to bring it to life. Enjoy complete creative freedom with zero constraints from complex panels or blind text prompts.
-              </p>
-              <div class="aid-hero-buttons">
-                <a class="aid-btn-primary" href="/get-started">Get Started</a>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
-                    <span>npm create jay@latest</span>
-                    <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </span>
-                    <span if="copied" class="aid-copy-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
-              </div>
-              <p class="aid-hero-micro">Run dev server and open <code style="font-family: var(--font-mono); color: var(--color-primary);">/aiditor</code> to start</p>
+<body>
+  <div class="aiditor-intro-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
+    <main>
+      <section class="aid-hero">
+        <div class="aid-hero-grid"></div>
+        <div class="aid-container">
+          <div class="aid-hero-content"><span class="aid-label">The first visual-intent web
+              editor</span>
+            <h1><span class="aid-hero-title-wrap"><span class="aid-hero-title-base">Build &amp; Edit
+                  Websites by Intent. Visually.</span><span class="aid-hero-title-shine"
+                  aria-hidden="true">Build &amp; Edit Websites by Intent. Visually.</span></span>
+            </h1>
+            <p class="aid-hero-subhead">Describe your vision directly on canvas—just like giving
+              natural feedback to a designer—and let the AI agent craft the content, layout, and
+              animations to bring it to life. Enjoy complete creative freedom with zero constraints
+              from complex panels or blind text prompts.</p>
+            <div class="aid-hero-buttons"><a class="aid-btn-primary" href="/get-started">Get
+                Started</a><jay:clipboard-copy text="npm create jay@latest"><button ref="copyBtn"
+                  class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor"><span>npm create
+                    jay@latest</span><span if="!copied" class="aid-copy-icon"
+                    aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg></span><span if="copied" class="aid-copy-icon"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg></span><span if="copied" class="copy-tooltip" role="status"
+                    aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
+            <p class="aid-hero-micro">Run dev server and open <code
+                style="font-family: var(--font-mono); color: var(--color-primary);">/aiditor</code>to
+              start</p>
+          </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt aid-compare-section">
+        <div class="aid-container">
+          <div class="aid-feature-header">
+            <h2>Why Traditional Web Builders Fall Short</h2>
+          </div>
+          <div class="aid-compare-grid">
+            <div class="aid-compare-card">
+              <div class="aid-compare-img"><img
+                  src="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400,h_300/file.webp"
+                  srcset="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  alt="Selection-based editor interface with complex panels and nested layers"
+                  loading="lazy"></div>
+              <h3>Selection-Based Editors</h3>
+              <p>Requires clicking through complex panels, endless nested layers, and manual CSS
+                tweaks for every minor change.</p><span class="aid-compare-verdict">❌ High friction,
+                slow iteration</span>
+            </div>
+            <div class="aid-compare-card">
+              <div class="aid-compare-img"><img
+                  src="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400,h_300/file.webp"
+                  srcset="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  alt="Non-visual AI agent chat panel with imprecise results" loading="lazy"></div>
+              <h3>Non-Visual AI Agents</h3>
+              <p>Prompting in a side-panel chat makes it difficult to pinpoint specific visual
+                elements or fine-tune micro-interactions like animations and transitions.</p><span
+                class="aid-compare-verdict">❌ Imprecise, low visual control</span>
+            </div>
+            <div class="aid-compare-card">
+              <div class="aid-compare-img"><img
+                  src="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400,h_300/file.webp"
+                  srcset="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  alt="CMS content editing split with custom code development" loading="lazy"></div>
+              <h3>CMS &amp; Custom Code</h3>
+              <p>Decouples the content from the design. Requires heavy development overhead for UI
+                updates and limits creative freedom.</p><span class="aid-compare-verdict">❌ Rigid,
+                engineer-dependent</span>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- Why Traditional Web Builders Fall Short      -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt aid-compare-section">
-          <div class="aid-container">
-            <div class="aid-feature-header">
-              <h2>Why Traditional Web Builders Fall Short</h2>
-            </div>
-            <div class="aid-compare-grid">
-              <div class="aid-compare-card">
-                <div class="aid-compare-img">
-                  <img
-                    src="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400,h_300/file.webp"
-                    srcset="https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
-                            https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
-                            https://static.wixstatic.com/media/c569b3_34e60607480940c98e789edd424a843f~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    alt="Selection-based editor interface with complex panels and nested layers"
-                    loading="lazy"
-                  />
-                </div>
-                <h3>Selection-Based Editors</h3>
-                <p>
-                  Requires clicking through complex panels, endless nested layers, and
-                  manual CSS tweaks for every minor change.
-                </p>
-                <span class="aid-compare-verdict">❌ High friction, slow iteration</span>
-              </div>
-              <div class="aid-compare-card">
-                <div class="aid-compare-img">
-                  <img
-                    src="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400,h_300/file.webp"
-                    srcset="https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
-                            https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
-                            https://static.wixstatic.com/media/c569b3_99533ac6727449f7b8b642ef00f6f703~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    alt="Non-visual AI agent chat panel with imprecise results"
-                    loading="lazy"
-                  />
-                </div>
-                <h3>Non-Visual AI Agents</h3>
-                <p>
-                  Prompting in a side-panel chat makes it difficult to pinpoint specific
-                  visual elements or fine-tune micro-interactions like animations and
-                  transitions.
-                </p>
-                <span class="aid-compare-verdict">❌ Imprecise, low visual control</span>
-              </div>
-              <div class="aid-compare-card">
-                <div class="aid-compare-img">
-                  <img
-                    src="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400,h_300/file.webp"
-                    srcset="https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_300%2Ch_225/file.webp 300w,
-                            https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_400%2Ch_300/file.webp 400w,
-                            https://static.wixstatic.com/media/c569b3_04aec6d1c2834b0581080687bee0891d~mv2.png/v1/fill/w_600%2Ch_450/file.webp 600w"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    alt="CMS content editing split with custom code development"
-                    loading="lazy"
-                  />
-                </div>
-                <h3>CMS &amp; Custom Code</h3>
-                <p>
-                  Decouples the content from the design. Requires heavy development
-                  overhead for UI updates and limits creative freedom.
-                </p>
-                <span class="aid-compare-verdict">❌ Rigid, engineer-dependent</span>
-              </div>
-            </div>
+        </div>
+      </section>
+      <section class="aid-section aid-intent-section">
+        <div class="aid-container">
+          <div class="aid-feature-header">
+            <h2>Intent-Driven Intelligence Meets Canvas Precision</h2>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- Intent-Driven Intelligence                  -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-intent-section">
-          <div class="aid-container">
-            <div class="aid-feature-header">
-              <h2>Intent-Driven Intelligence Meets Canvas Precision</h2>
+          <div class="aid-intent-layout">
+            <div class="aid-video-frame"><video src="/videos/aiditor-intro/full-movie-fast.mp4"
+                aria-label="Demo: AIditor fast-forward overview clip showing all editor workflows in action"
+                muted playsinline controls loop autoplay preload="metadata" loading="lazy"></video>
             </div>
-            <div class="aid-intent-layout">
-              <div class="aid-video-frame">
-                <video
-                  src="/videos/aiditor-intro/full-movie-fast.mp4"
-                  aria-label="Demo: AIditor fast-forward overview clip showing all editor workflows in action"
-                  muted
-                  playsinline
-                  controls
-                  loop
-                  autoplay
-                  preload="metadata"
-                  loading="lazy"
-                ></video>
-              </div>
-              <div class="aid-intent-tabs">
-                <input type="radio" name="aid-tab" id="aid-tab-canvas" checked />
-                <input type="radio" name="aid-tab" id="aid-tab-design" />
-                <input type="radio" name="aid-tab" id="aid-tab-vision" />
-                <nav class="aid-tab-bar" role="tablist">
-                  <label for="aid-tab-canvas" class="aid-tab-label" role="tab">On-Canvas</label>
-                  <label for="aid-tab-design" class="aid-tab-label" role="tab">Design &amp; Motion</label>
-                  <label for="aid-tab-vision" class="aid-tab-label" role="tab">Visual Context</label>
-                </nav>
-                <div class="aid-tab-panels">
-                  <div class="aid-tab-panel" id="aid-panel-canvas" role="tabpanel">
-                    <h3>Direct On-Canvas Context</h3>
-                    <p>
-                      Point at any section, element, or interaction directly on the page.
-                      No need to describe where things are in a text chat — AIditor sees
-                      exactly what you see and sends full visual context to your agent.
-                    </p>
-                  </div>
-                  <div class="aid-tab-panel" id="aid-panel-design" role="tabpanel">
-                    <h3>Design System &amp; Animations</h3>
-                    <p>
-                      Request design tokens, hover effects, scroll animations, and transitions
-                      by dragging from the Add menu or typing an @mention. Every request
-                      carries ready-made agent context so changes follow your project's
-                      design language automatically.
-                    </p>
-                  </div>
-                  <div class="aid-tab-panel" id="aid-panel-vision" role="tabpanel">
-                    <h3>An Agent That Actually Sees Your Screen</h3>
-                    <p>
-                      Aiditor pairs natural conversation with real-time visual perception.
-                      Your agent doesn't just read your prompt—it sees your screen, understands
-                      the layout in context, and applies changes with pixel-level precision.
-                    </p>
-                  </div>
+            <div class="aid-intent-tabs"><input type="radio" name="aid-tab" id="aid-tab-canvas"
+                checked><input type="radio" name="aid-tab" id="aid-tab-design"><input type="radio"
+                name="aid-tab" id="aid-tab-vision">
+              <nav class="aid-tab-bar" role="tablist"><label for="aid-tab-canvas"
+                  class="aid-tab-label" role="tab">On-Canvas</label><label for="aid-tab-design"
+                  class="aid-tab-label" role="tab">Design &amp; Motion</label><label
+                  for="aid-tab-vision" class="aid-tab-label" role="tab">Visual Context</label></nav>
+              <div class="aid-tab-panels">
+                <div class="aid-tab-panel" id="aid-panel-canvas" role="tabpanel">
+                  <h3>Direct On-Canvas Context</h3>
+                  <p>Point at any section, element, or interaction directly on the page. No need to
+                    describe where things are in a text chat — AIditor sees exactly what you see and
+                    sends full visual context to your agent.</p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 1. What is AIditor?                          -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt">
-          <div class="aid-container">
-            <div class="aid-feature-side">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">01 · Welcome</span>
-                <h2>What is AIditor?</h2>
-                <p>
-                  AIditor is the visual editor for Jay Stack. Open your project, preview any
-                  page live, annotate on the canvas, and send change requests to your AI agent.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/welcome-aiditor-2.mp4"
-                    aria-label="Demo: What is AIditor — orientation tour"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
+                <div class="aid-tab-panel" id="aid-panel-design" role="tabpanel">
+                  <h3>Design System &amp; Animations</h3>
+                  <p>Request design tokens, hover effects, scroll animations, and transitions by
+                    dragging from the Add menu or typing an @mention. Every request carries
+                    ready-made agent context so changes follow your project's design language
+                    automatically.</p>
+                </div>
+                <div class="aid-tab-panel" id="aid-panel-vision" role="tabpanel">
+                  <h3>An Agent That Actually Sees Your Screen</h3>
+                  <p>Aiditor pairs natural conversation with real-time visual perception. Your agent
+                    doesn't just read your prompt—it sees your screen, understands the layout in
+                    context, and applies changes with pixel-level precision.</p>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 2. Live preview (video left, text right)    -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section">
-          <div class="aid-container">
-            <div class="aid-feature-side aid-feature-side--reverse">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">02 · Live preview</span>
-                <h2>Every page, live in the editor</h2>
-                <p>
-                  Your whole project runs inside AIditor. Switch routes from the Pages panel —
-                  what you see is the real site, not a mockup.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/live-preview-pages.mp4"
-                    aria-label="Demo: switching routes in the live preview"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt">
+        <div class="aid-container">
+          <div class="aid-feature-side">
+            <div class="aid-feature-side-text"><span class="aid-label">01 · Welcome</span>
+              <h2>What is AIditor?</h2>
+              <p>AIditor is the visual editor for Jay Stack. Open your project, preview any page
+                live, annotate on the canvas, and send change requests to your AI agent.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/welcome-aiditor-2.mp4"
+                  aria-label="Demo: What is AIditor — orientation tour" muted playsinline controls
+                  loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 3. Point and shoot (text left, video right) -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt">
-          <div class="aid-container">
-            <div class="aid-feature-side">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">03 · By intent</span>
-                <h2>Point, describe, done</h2>
-                <p>
-                  Click what you want to change and write a short instruction. AIditor captures
-                  context and screenshots so your agent knows exactly what you mean.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/change-request-1.mp4"
-                    aria-label="Demo: point and shoot annotation — placing the first pin comment"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section">
+        <div class="aid-container">
+          <div class="aid-feature-side aid-feature-side--reverse">
+            <div class="aid-feature-side-text"><span class="aid-label">02 · Live preview</span>
+              <h2>Every page, live in the editor</h2>
+              <p>Your whole project runs inside AIditor. Switch routes from the Pages panel — what
+                you see is the real site, not a mockup.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/live-preview-pages.mp4"
+                  aria-label="Demo: switching routes in the live preview" muted playsinline controls
+                  loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 4. Stack multiple comments (video left)     -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section">
-          <div class="aid-container">
-            <div class="aid-feature-side aid-feature-side--reverse">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">04 · Multi-pin</span>
-                <h2>Add more pins before you send</h2>
-                <p>
-                  Keep annotating — place another pin on a different element and write a second
-                  instruction. AIditor collects every marker so you can send several changes in
-                  one request.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/change-request-2.mp4"
-                    aria-label="Demo: stacking multiple pin comments before sending"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt">
+        <div class="aid-container">
+          <div class="aid-feature-side">
+            <div class="aid-feature-side-text"><span class="aid-label">03 · By intent</span>
+              <h2>Point, describe, done</h2>
+              <p>Click what you want to change and write a short instruction. AIditor captures
+                context and screenshots so your agent knows exactly what you mean.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/change-request-1.mp4"
+                  aria-label="Demo: point and shoot annotation — placing the first pin comment"
+                  muted playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 5. Send to your agent (text left)           -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt">
-          <div class="aid-container">
-            <div class="aid-feature-side">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">05 · Send to agent</span>
-                <h2>Send to your agent</h2>
-                <p>
-                  When your annotations are ready, send them all at once. Your agent reads every
-                  marker, screenshot, and instruction — then implements the changes in code.
-                  Watch the preview update when the agent finishes.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/send-to-agent.mp4"
-                    aria-label="Demo: sending annotations to the AI agent and viewing the result"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section">
+        <div class="aid-container">
+          <div class="aid-feature-side aid-feature-side--reverse">
+            <div class="aid-feature-side-text"><span class="aid-label">04 · Multi-pin</span>
+              <h2>Add more pins before you send</h2>
+              <p>Keep annotating — place another pin on a different element and write a second
+                instruction. AIditor collects every marker so you can send several changes in one
+                request.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/change-request-2.mp4"
+                  aria-label="Demo: stacking multiple pin comments before sending" muted playsinline
+                  controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 6. Add Menu — drag from the catalog (video left) -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section">
-          <div class="aid-container">
-            <div class="aid-feature-side aid-feature-side--reverse">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">06 · Add menu</span>
-                <h2>Drag from the catalog</h2>
-                <p>
-                  The <strong>+ Add</strong> menu lists ready-made change requests packaged by
-                  Jay plugins integrated with AIditor — each item is an instruction for your agent.
-                  Drag one onto the page to start a request.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/add-menu-request.mp4"
-                    aria-label="Demo: dragging a change request from the Add Menu onto the page"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt">
+        <div class="aid-container">
+          <div class="aid-feature-side">
+            <div class="aid-feature-side-text"><span class="aid-label">05 · Send to agent</span>
+              <h2>Send to your agent</h2>
+              <p>When your annotations are ready, send them all at once. Your agent reads every
+                marker, screenshot, and instruction — then implements the changes in code. Watch the
+                preview update when the agent finishes.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/send-to-agent.mp4"
+                  aria-label="Demo: sending annotations to the AI agent and viewing the result"
+                  muted playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 7. Add Menu — @ mentions (text left)        -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt">
-          <div class="aid-container">
-            <div class="aid-feature-side">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">07 · @ mentions</span>
-                <h2>@ Autocomplete</h2>
-                <p>
-                  Type <code style="font-family: var(--font-mono); color: var(--color-primary);">@</code>
-                  in any instruction to open autocomplete. It lists every <strong>+ Add</strong> menu item
-                  and more — non-visual references plugins choose to expose, like e-commerce categories
-                  or page routes. When you select an item, your agent gets ready-made change context
-                  for that choice.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/auto-complete.mp4"
-                    aria-label="Demo: @ autocomplete for Add Menu items, routes, and plugin context"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section">
+        <div class="aid-container">
+          <div class="aid-feature-side aid-feature-side--reverse">
+            <div class="aid-feature-side-text"><span class="aid-label">06 · Add menu</span>
+              <h2>Drag from the catalog</h2>
+              <p>The <strong>+ Add</strong> menu lists ready-made change requests packaged by Jay
+                plugins integrated with AIditor — each item is an instruction for your agent. Drag
+                one onto the page to start a request.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/add-menu-request.mp4"
+                  aria-label="Demo: dragging a change request from the Add Menu onto the page" muted
+                  playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 8. Record interactions (video left)         -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section">
-          <div class="aid-container">
-            <div class="aid-feature-side aid-feature-side--reverse">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">08 · Recording</span>
-                <h2>Capture motion and hover states</h2>
-                <p>
-                  Hover states, motion, and animations do not show up in a still screenshot.
-                  Hit <strong>REC</strong>, interact with the page, then pin and annotate the
-                  moments that matter.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/capture-video.mp4"
-                    aria-label="Demo: recording page interactions with the REC button"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt">
+        <div class="aid-container">
+          <div class="aid-feature-side">
+            <div class="aid-feature-side-text"><span class="aid-label">07 · @ mentions</span>
+              <h2>@ Autocomplete</h2>
+              <p>Type <code
+                  style="font-family: var(--font-mono); color: var(--color-primary);">@</code>in any
+                instruction to open autocomplete. It lists every <strong>+ Add</strong> menu item
+                and more — non-visual references plugins choose to expose, like e-commerce
+                categories or page routes. When you select an item, your agent gets ready-made
+                change context for that choice.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/auto-complete.mp4"
+                  aria-label="Demo: @ autocomplete for Add Menu items, routes, and plugin context"
+                  muted playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- 9. Comment on a recording (text left)       -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section aid-section--alt">
-          <div class="aid-container">
-            <div class="aid-feature-side">
-              <div class="aid-feature-side-text">
-                <span class="aid-label">09 · Record to ship</span>
-                <h2>From recording to implementation</h2>
-                <p>
-                  Scrub the timeline, add pins at key frames, and leave notes at any timestamp.
-                  Send the recording with your annotations — your agent reads the video plus
-                  context at every moment you mark, implements the change, and the preview
-                  updates with the result.
-                </p>
-              </div>
-              <div class="aid-feature-side-video">
-                <div class="aid-video-frame">
-                  <video
-                    src="/videos/aiditor-intro/video-preview-commenting-agent.mp4"
-                    aria-label="Demo: commenting on a video capture, sending to the agent, and seeing the applied result"
-                    muted
-                    playsinline
-                    controls
-                    loop
-                    preload="metadata"
-                    loading="lazy"
-                  ></video>
-                </div>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section">
+        <div class="aid-container">
+          <div class="aid-feature-side aid-feature-side--reverse">
+            <div class="aid-feature-side-text"><span class="aid-label">08 · Recording</span>
+              <h2>Capture motion and hover states</h2>
+              <p>Hover states, motion, and animations do not show up in a still screenshot.
+                Hit<strong>REC</strong>, interact with the page, then pin and annotate the moments
+                that matter.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video src="/videos/aiditor-intro/capture-video.mp4"
+                  aria-label="Demo: recording page interactions with the REC button" muted
+                  playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- Closing CTA                                 -->
-        <!-- ═══════════════════════════════════════════ -->
-        <section class="aid-section">
-          <div class="aid-container">
-            <div class="aid-glass aid-cta">
-              <div class="aid-cta-glow-tl"></div>
-              <div class="aid-cta-glow-br"></div>
-              <h2>Start building with AIditor</h2>
-              <p>
-                Install the plugin in any Jay project, run the dev server, and open
-                <code style="font-family: var(--font-mono); color: var(--color-primary);">/aiditor</code>.
-                Your agent does the coding — you point and describe.
-              </p>
-              <div class="aid-cta-buttons">
-                <a class="aid-btn-primary" href="/get-started">Get Started</a>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor">
-                    <span>npm create jay@latest</span>
-                    <span if="!copied" class="aid-copy-icon" aria-label="Copy to clipboard">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </span>
-                    <span if="copied" class="aid-copy-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
-              </div>
+        </div>
+      </section>
+      <section class="aid-section aid-section--alt">
+        <div class="aid-container">
+          <div class="aid-feature-side">
+            <div class="aid-feature-side-text"><span class="aid-label">09 · Record to ship</span>
+              <h2>From recording to implementation</h2>
+              <p>Scrub the timeline, add pins at key frames, and leave notes at any timestamp. Send
+                the recording with your annotations — your agent reads the video plus context at
+                every moment you mark, implements the change, and the preview updates with the
+                result.</p>
+            </div>
+            <div class="aid-feature-side-video">
+              <div class="aid-video-frame"><video
+                  src="/videos/aiditor-intro/video-preview-commenting-agent.mp4"
+                  aria-label="Demo: commenting on a video capture, sending to the agent, and seeing the applied result"
+                  muted playsinline controls loop preload="metadata" loading="lazy"></video></div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      <section class="aid-section">
+        <div class="aid-container">
+          <div class="aid-glass aid-cta">
+            <div class="aid-cta-glow-tl"></div>
+            <div class="aid-cta-glow-br"></div>
+            <h2>Start building with AIditor</h2>
+            <p>Install the plugin in any Jay project, run the dev server, and open<code
+                style="font-family: var(--font-mono); color: var(--color-primary);">/aiditor</code>.
+              Your agent does the coding — you point and describe.</p>
+            <div class="aid-cta-buttons"><a class="aid-btn-primary" href="/get-started">Get
+                Started</a><jay:clipboard-copy text="npm create jay@latest"><button ref="copyBtn"
+                  class="aid-btn-secondary aid-btn-cmd copy-tooltip-anchor"><span>npm create
+                    jay@latest</span><span if="!copied" class="aid-copy-icon"
+                    aria-label="Copy to clipboard"><svg xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg></span><span if="copied" class="aid-copy-icon"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg></span><span if="copied" class="copy-tooltip" role="status"
+                    aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
+          </div>
+        </div>
+      </section>
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
+  </div>
+</body>
 
-      </main>
-
-      <jay:SiteFooter />
-
-    </div>
-  </body>
 </html>

@@ -13,7 +13,8 @@ export interface PageViewState {
 
 
 export interface PageElementRefs {
-  ar0: SiteHeaderRefs,
+  siteHeader: SiteHeaderRefs,
+  siteFooter: SiteFooterRefs,
   post: MarkdownPagesRefs
 }
 

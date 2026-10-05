@@ -1,1189 +1,1904 @@
 <html lang="en">
-  <head>
-    <title>{title}</title>
-    <meta name="description" content="{description}">
-    <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <script type="application/jay-headfull" src="../components/site-header/site-header" names="SiteHeader" contract="../components/site-header/site-header.jay-contract"></script>
-    <script type="application/jay-headfull" src="../components/site-footer/site-footer" names="SiteFooter" contract="../components/site-footer/site-footer.jay-contract"></script>
-    <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
-    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
-    <link rel="stylesheet" href="../styles/theme.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-      /* ── Shared ── */
-      .section { padding: 80px 0; }
-      .section-label {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 16px;
-        color: var(--color-primary);
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-      }
-      .text-muted { color: var(--color-text-muted); }
-      .text-primary { color: var(--color-primary); }
-      .text-center { text-align: center; }
 
-      .glass-panel {
-        background: rgba(10, 15, 30, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(0, 210, 255, 0.1);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .glass-panel:hover {
-        border-color: rgba(0, 210, 255, 0.3);
-        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
-      }
+<head>
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless" src="../components/site-header/site-header"
+    contract="../components/site-header/site-header.jay-contract"
+    template="../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../components/site-footer/site-footer"
+    contract="../components/site-footer/site-footer.jay-contract"
+    template="../components/site-footer/site-footer.jay-html"></script>
+  <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
+  <link rel="icon" type="image/svg+xml"
+    href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+  <link rel="stylesheet" href="../styles/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ── Shared ── */
+    .section {
+      padding: 80px 0;
+    }
 
-      /* ── Hero ── */
-      .hero {
-        position: relative;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        padding-top: 96px;
-        padding-bottom: 48px;
-      }
-      .hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        z-index: 0;
-      }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--color-primary);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    .text-muted {
+      color: var(--color-text-muted);
+    }
+
+    .text-primary {
+      color: var(--color-primary);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .glass-panel {
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      height: 100vh;
+      max-height: 900px;
+      padding-top: 96px;
+      padding-bottom: 48px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 48px;
+      padding: 24px 0;
+    }
+
+    @media (min-width: 768px) {
       .hero-content {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        text-align: left;
         align-items: center;
-        text-align: center;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        gap: 48px;
-        padding: 24px 0;
+        gap: 64px;
       }
-      @media (min-width: 768px) {
-        .hero-content {
-          flex-direction: row;
-          text-align: left;
-          align-items: center;
-          gap: 64px;
+    }
+
+    .hero-logo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) {
+      .hero-logo-wrapper {
+        width: 45%;
+      }
+    }
+
+    .hero-logo-glow {
+      position: absolute;
+      inset: -16px;
+      background: rgba(165, 231, 255, 0.2);
+      filter: blur(100px);
+      border-radius: 50%;
+    }
+
+    .hero-logo {
+      position: relative;
+      width: 100%;
+      z-index: 1;
+      filter: brightness(1.1) drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
+    }
+
+    .hero-headline {
+      position: relative;
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-headline .hero-headline-base {
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
+    }
+
+    @keyframes hero-shimmer-pass {
+      0% {
+        background-position: -150% center;
+      }
+
+      15% {
+        background-position: -150% center;
+      }
+
+      35% {
+        background-position: 150% center;
+      }
+
+      100% {
+        background-position: 150% center;
+      }
+    }
+
+    .hero-headline .hero-headline-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.6) 46%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.6) 54%, transparent 65%);
+      background-size: 200% auto;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: hero-shimmer-pass 5s ease-in-out infinite;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 768px) {
+      .hero-subtitle {
+        margin-left: 0;
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-buttons {
+        justify-content: flex-start;
+      }
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-primary-container);
+      color: var(--color-on-primary-container);
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(165, 231, 255, 0.3);
+      background: rgba(165, 231, 255, 0.05);
+      color: var(--color-text);
+      padding: 16px 32px;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(165, 231, 255, 0.1);
+      text-decoration: none;
+    }
+
+    /* ── Command Bar (copy-to-clipboard) ── */
+    .cmd-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      border-radius: var(--radius-xl);
+      padding: 8px 8px 8px 20px;
+      transition: border-color 0.2s;
+      overflow: visible;
+    }
+
+    .cmd-bar:hover {
+      border-color: rgba(165, 231, 255, 0.25);
+    }
+
+    .cmd-bar-text {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+      line-height: 20px;
+    }
+
+    .cmd-bar> :not(.cmd-bar-text) {
+      flex-shrink: 0;
+      overflow: visible;
+    }
+
+    .cmd-bar-copy {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      overflow: visible;
+    }
+
+    .cmd-bar-copy:hover {
+      background: rgba(165, 231, 255, 0.1);
+      color: var(--color-primary);
+    }
+
+    .cmd-bar-copy .copy-tooltip {
+      bottom: calc(100% + 12px);
+      /* design-system: allow */
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-stats {
+        justify-content: flex-start;
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-outline);
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(133, 147, 153, 0.2);
+    }
+
+    /* ── What is Jay ── */
+    .whatjay-section {
+      background: var(--color-surface);
+    }
+
+    .whatjay-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-gutter);
+      margin-top: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .whatjay-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .whatjay-card {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .whatjay-card img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+
+    .whatjay-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 8px;
+    }
+
+    .whatjay-card .whatjay-tagline {
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 19px;
+      margin-bottom: 16px;
+    }
+
+    .whatjay-card p.whatjay-desc {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    /* ── Ecosystem & Plugins (Bento Grid) ── */
+    .ecosystem-section {
+      background: var(--color-surface-lowest);
+      position: relative;
+    }
+
+    .eco-bento {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .eco-bento {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .eco-bento {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: dense;
+      }
+    }
+
+    .eco-bento-card {
+      padding: 24px 28px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .eco-bento-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .eco-bento-label--guardrails {
+      color: #6ecfff;
+    }
+
+    .eco-bento-label--wix {
+      color: #a78bfa;
+    }
+
+    .eco-bento-label--content {
+      color: #34d399;
+    }
+
+    .eco-bento-label--agents {
+      color: #fb923c;
+    }
+
+    .eco-bento-label--core {
+      color: var(--color-primary);
+    }
+
+    .eco-bento-card strong {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 24px;
+      color: var(--color-text);
+    }
+
+    .eco-bento-card p {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .eco-bento-wide {
+      grid-column: span 1;
+    }
+
+    @media (min-width: 768px) {
+      .eco-bento-wide {
+        grid-column: span 2;
+      }
+    }
+
+    .eco-bento-card--with-image .eco-bento-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .eco-bento-card--with-image .eco-bento-card-image {
+      align-self: center;
+      width: 140px;
+    }
+
+    .eco-bento-card--with-image .eco-bento-card-image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+    }
+
+    @media (min-width: 768px) {
+      .eco-bento-card--with-image {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto 1fr;
+        column-gap: 24px;
+      }
+
+      .eco-bento-card--with-image .eco-bento-card-header {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .eco-bento-card--with-image .eco-bento-card-desc {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .eco-bento-card--with-image .eco-bento-card-image {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        align-self: center;
+        width: 180px;
+      }
+    }
+
+    .eco-bento-tall {
+      grid-row: span 1;
+    }
+
+    @media (min-width: 768px) {
+      .eco-bento-tall {
+        grid-row: span 2;
+      }
+    }
+
+    /* ── Feedback Loop ── */
+    .feedback-section {
+      background: var(--color-surface);
+    }
+
+    .feedback-image-frame {
+      max-width: 900px;
+      margin: 48px auto 0;
+      border-radius: var(--radius-3xl);
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .feedback-image-frame img {
+      width: 100%;
+      border-radius: var(--radius-xl);
+    }
+
+    /* ── Feedback Steps ── */
+    .feedback-steps {
+      margin-top: 64px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      column-gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .feedback-steps {
+        columns: 2;
+      }
+    }
+
+    .feedback-step {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      break-inside: avoid;
+      margin-bottom: 24px;
+    }
+
+    .feedback-step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 210, 255, 0.15);
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .feedback-step h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feedback-step p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .feedback-step ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 0;
+    }
+
+    .feedback-step ul li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .feedback-step ul li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .feedback-step ul li strong {
+      color: var(--color-text);
+    }
+
+    /* ── Agent Roles ── */
+    .roles-section {
+      background: var(--color-surface-lowest);
+      position: relative;
+    }
+
+    .roles-grid-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .roles-grid-bg-inner {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      height: 100%;
+    }
+
+    .roles-grid-bg-inner>div {
+      border-right: 1px solid rgba(133, 147, 153, 0.2);
+    }
+
+    .roles-image-frame {
+      position: relative;
+      border-radius: var(--radius-3xl);
+      overflow: hidden;
+      border: 1px solid rgba(165, 231, 255, 0.2);
+      margin-bottom: 64px;
+    }
+
+    .roles-image-frame img {
+      width: 100%;
+    }
+
+    .roles-image-frame.glass-panel {
+      background: none;
+      backdrop-filter: none;
+    }
+
+    .roles-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-gutter);
+    }
+
+    @media (min-width: 768px) {
+      .roles-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .roles-cards {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    a.role-card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.role-card:hover {
+      text-decoration: none;
+    }
+
+    .role-card {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .role-card--designer {
+      box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15);
+    }
+
+    .role-card--developer {
+      box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15);
+    }
+
+    .role-card--plugin {
+      box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15);
+    }
+
+    .role-card--devops {
+      box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15);
+    }
+
+    .role-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+
+    .role-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .role-card p {
+      color: var(--color-text-muted);
+    }
+
+    /* ── Plugins ── */
+    .plugins-section {
+      background: var(--color-surface);
+    }
+
+    .plugins-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .plugins-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .plugins-image-frame {
+      border-radius: var(--radius-3xl);
+      overflow: hidden;
+      border: 1px solid rgba(165, 231, 255, 0.2);
+    }
+
+    .plugins-image-frame img {
+      width: 100%;
+    }
+
+    .plugins-text h2 {
+      margin-bottom: 24px;
+    }
+
+    .plugins-tagline {
+      font-style: italic;
+      color: var(--color-text-muted);
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 24px;
+    }
+
+    .plugins-body {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 32px;
+    }
+
+    .plugins-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0;
+    }
+
+    .plugins-features li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      line-height: 24px;
+    }
+
+    .plugins-features li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .plugins-features li strong {
+      color: var(--color-text);
+    }
+
+    /* ── Contract ── */
+    .contract-section {}
+
+    .contract-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .contract-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contract-badge {
+      display: inline-block;
+      background: rgba(165, 231, 255, 0.1);
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .contract-text h2 {
+      margin-bottom: 24px;
+    }
+
+    .contract-text p {
+      color: var(--color-text-muted);
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 32px;
+    }
+
+    .contract-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0;
+    }
+
+    .contract-checklist li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      line-height: 24px;
+    }
+
+    .contract-checklist li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Code tabs */
+    .code-panel {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid rgba(60, 73, 78, 0.3);
+      display: flex;
+      flex-direction: column;
+      height: 520px;
+    }
+
+    .code-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(60, 73, 78, 0.3);
+      background: var(--color-surface-low);
+    }
+
+    .code-tab {
+      padding: 16px 24px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s;
+    }
+
+    .code-tab:hover {
+      color: var(--color-primary);
+    }
+
+    .code-panel-content {
+      display: none;
+      flex: 1;
+      padding: 24px;
+      background: var(--color-surface-lowest);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      color: var(--color-secondary-dim);
+    }
+
+    .code-line {
+      white-space: pre;
+      min-height: 19px;
+    }
+
+    .cb::before {
+      content: '{';
+    }
+
+    .ce::before {
+      content: '}';
+    }
+
+    #code-tab-contract:checked~.code-tabs label[for="code-tab-contract"],
+    #code-tab-html:checked~.code-tabs label[for="code-tab-html"],
+    #code-tab-types:checked~.code-tabs label[for="code-tab-types"],
+    #code-tab-component:checked~.code-tabs label[for="code-tab-component"] {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+
+    #code-tab-contract:checked~.code-panels #panel-contract,
+    #code-tab-html:checked~.code-panels #panel-html,
+    #code-tab-types:checked~.code-panels #panel-types,
+    #code-tab-component:checked~.code-panels #panel-component {
+      display: block;
+    }
+
+    /* ── Real-World Value (Bento Grid) ── */
+    .value-section {}
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        min-height: 600px;
+      }
+
+      .bento-wide {
+        grid-column: span 2;
+      }
+
+      .bento-tall {
+        grid-row: span 2;
+      }
+    }
+
+    .bento-card {
+      padding: 40px;
+      border-radius: var(--radius-3xl);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-card--performance {
+      position: relative;
+    }
+
+    .bento-card--performance .bento-icon-corner {
+      position: relative;
+    }
+
+    .bento-card--performance .bento-icon-corner img {
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .bento-card--performance:hover .bento-icon-corner img {
+      opacity: 1;
+    }
+
+    .lighthouse-hint {
+      position: absolute;
+      top: 100%;
+      /* design-system: allow */
+      right: 0;
+      padding-top: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 2;
+    }
+
+    .lighthouse-hint-inner {
+      padding: 8px 14px;
+      background: var(--color-surface-high);
+      border: 1px solid rgba(165, 231, 255, 0.2);
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .lighthouse-hint a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .bento-icon-corner:hover .lighthouse-hint {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bento-card--visual-editor {
+      justify-content: space-between;
+    }
+
+    .bento-card--risk {
+      gap: 16px;
+    }
+
+    .bento-card--assembly {
+      gap: 16px;
+    }
+
+    .bento-icon {
+      font-size: 48px;
+      margin-bottom: 32px;
+    }
+
+    .bento-card h3 {
+      margin-bottom: 16px;
+    }
+
+    .bento-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 0;
+    }
+
+    .bento-features li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .bento-features li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .bento-features li strong {
+      color: var(--color-text);
+    }
+
+    /* ── Sponsors ── */
+    .sponsors-section {
+      padding: 48px 0;
+    }
+
+    .sponsors-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      margin-top: 24px;
+    }
+
+    .sponsor-link {
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      text-decoration: none;
+    }
+
+    .sponsor-link:hover {
+      opacity: 0.8;
+      text-decoration: none;
+    }
+
+    .sponsor-link svg {
+      height: 128px;
+      width: auto;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 80px 0;
+    }
+
+    .cta-box {
+      padding: 64px;
+      border-radius: 2rem;
+      border: 2px solid rgba(165, 231, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-glow-tl {
+      position: absolute;
+      top: -96px;
+      /* design-system: allow */
+      left: -96px;
+      /* design-system: allow */
+      width: 256px;
+      height: 256px;
+      background: rgba(165, 231, 255, 0.2);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .cta-glow-br {
+      position: absolute;
+      bottom: -96px;
+      /* design-system: allow */
+      right: -96px;
+      /* design-system: allow */
+      width: 256px;
+      height: 256px;
+      background: rgba(0, 244, 254, 0.1);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .cta-box h2 {
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 640px) {
+      .cta-buttons {
+        flex-direction: row;
+      }
+    }
+
+    .btn-cta-primary {
+      background: var(--color-primary-container);
+      color: var(--color-on-primary-container);
+      padding: 20px 40px;
+      border: none;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-cta-primary:hover {
+      transform: scale(1.05);
+      text-decoration: none;
+    }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
+      }
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
         }
       }
-      .hero-logo-wrapper {
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
+      }
+
+      .header-brand {
         position: relative;
-        width: 100%;
-        max-width: 500px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
         flex-shrink: 0;
       }
-      @media (min-width: 768px) {
-        .hero-logo-wrapper {
-          width: 45%;
-        }
-      }
-      .hero-logo-glow {
-        position: absolute;
-        inset: -16px;
-        background: rgba(165, 231, 255, 0.2);
-        filter: blur(100px);
-        border-radius: 50%;
-      }
-      .hero-logo {
-        position: relative;
-        width: 100%;
-        z-index: 1;
-        filter: brightness(1.1) drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
-      }
-      .hero-headline {
+
+      .brand-text-wrap {
         position: relative;
         display: inline-block;
-        font-family: var(--font-display);
-        font-size: clamp(32px, 5vw, 48px);
-        line-height: 1.15;
-        font-weight: 700;
-        letter-spacing: -0.02em;
       }
-      .hero-headline .hero-headline-base {
+
+      .header-brand .brand-base {
         color: var(--color-primary);
-        text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
       }
-      @keyframes hero-shimmer-pass {
-        0%   { background-position: -150% center; }
-        15%  { background-position: -150% center; }
-        35%  { background-position:  150% center; }
-        100% { background-position:  150% center; }
-      }
-      .hero-headline .hero-headline-shine {
+
+      .header-brand .brand-shine {
         position: absolute;
         top: 0;
         left: 0;
-        background: linear-gradient(
-          105deg,
-          transparent 35%,
-          rgba(255, 255, 255, 0.6) 46%,
-          rgba(255, 255, 255, 0.95) 50%,
-          rgba(255, 255, 255, 0.6) 54%,
-          transparent 65%
-        );
-        background-size: 200% auto;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: hero-shimmer-pass 5s ease-in-out infinite;
+        animation: brand-shimmer 5s linear infinite;
       }
-      .hero-subtitle {
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--color-text-muted);
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
+
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
       }
-      @media (min-width: 768px) {
-        .hero-subtitle {
-          margin-left: 0;
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
         }
       }
-      .hero-buttons {
+
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        align-items: center;
         gap: 16px;
       }
-      @media (min-width: 768px) {
-        .hero-buttons {
-          justify-content: flex-start;
-        }
-      }
-      .btn-primary {
+
+      .btn-get-started {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         background: var(--color-primary-container);
         color: var(--color-on-primary-container);
-        padding: 16px 32px;
+        padding: 8px 24px;
         border: none;
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-default);
         font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 16px;
-        cursor: pointer;
-        transition: box-shadow 0.3s, transform 0.2s;
-        text-decoration: none;
-      }
-      .btn-primary:hover {
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-        text-decoration: none;
-      }
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid rgba(165, 231, 255, 0.3);
-        background: rgba(165, 231, 255, 0.05);
-        color: var(--color-text);
-        padding: 16px 32px;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.3s;
-        text-decoration: none;
-      }
-      .btn-secondary:hover {
-        background: rgba(165, 231, 255, 0.1);
-        text-decoration: none;
-      }
-      /* ── Command Bar (copy-to-clipboard) ── */
-      .cmd-bar {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--color-surface-high);
-        border: 1px solid var(--color-outline-variant);
-        border-radius: var(--radius-xl);
-        padding: 8px 8px 8px 20px;
-        transition: border-color 0.2s;
-        overflow: visible;
-      }
-      .cmd-bar:hover {
-        border-color: rgba(165, 231, 255, 0.25);
-      }
-      .cmd-bar-text {
-        font-family: var(--font-mono);
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--color-text-muted);
-        white-space: nowrap;
-        line-height: 20px;
-      }
-      .cmd-bar > :not(.cmd-bar-text) {
-        flex-shrink: 0;
-        overflow: visible;
-      }
-      .cmd-bar-copy {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: var(--radius-md);
-        border: none;
-        background: transparent;
-        color: var(--color-text-muted);
-        cursor: pointer;
-        transition: background 0.15s, color 0.15s;
-        overflow: visible;
-      }
-      .cmd-bar-copy:hover {
-        background: rgba(165, 231, 255, 0.1);
-        color: var(--color-primary);
-      }
-      .cmd-bar-copy .copy-tooltip {
-        bottom: calc(100% + 12px); /* design-system: allow */
-      }
-      .hero-stats {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        padding-top: 16px;
-      }
-      @media (min-width: 768px) {
-        .hero-stats {
-          justify-content: flex-start;
-        }
-      }
-      .stat-item { display: flex; flex-direction: column; align-items: center; }
-      .stat-value {
-        font-family: var(--font-display);
-        font-size: 24px;
-        line-height: 32px;
-        font-weight: 600;
-        color: var(--color-primary);
-      }
-      .stat-label {
-        font-family: var(--font-mono);
         font-size: 12px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--color-outline);
-      }
-      .stat-divider {
-        width: 1px;
-        height: 40px;
-        background: rgba(133, 147, 153, 0.2);
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
       }
 
-      /* ── What is Jay ── */
-      .whatjay-section { background: var(--color-surface); }
-      .whatjay-cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-gutter);
-        margin-top: 48px;
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
       }
-      @media (min-width: 768px) {
-        .whatjay-cards { grid-template-columns: repeat(3, 1fr); }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
       }
-      .whatjay-card {
-        padding: 32px;
-        border-radius: var(--radius-2xl);
-        display: flex;
-        flex-direction: column;
-      }
-      .whatjay-card img {
-        width: 100%;
-        border-radius: var(--radius-lg);
-        margin-bottom: 24px;
-      }
-      .whatjay-card h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-bottom: 8px;
-      }
-      .whatjay-card .whatjay-tagline {
-        color: var(--color-primary);
-        font-family: var(--font-mono);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 19px;
-        margin-bottom: 16px;
-      }
-      .whatjay-card p.whatjay-desc {
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
         color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
+        transition: color 0.3s;
       }
 
-      /* ── Ecosystem & Plugins (Bento Grid) ── */
-      .ecosystem-section { background: var(--color-surface-lowest); position: relative; }
-      .eco-bento {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin-top: 48px;
-      }
-      @media (min-width: 768px) {
-        .eco-bento {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .eco-bento {
-          grid-template-columns: repeat(4, 1fr);
-          grid-auto-flow: dense;
-        }
-      }
-      .eco-bento-card {
-        padding: 24px 28px;
-        border-radius: var(--radius-xl);
+      /* Hamburger button */
+      .hamburger-toggle {
         display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .eco-bento-label {
-        font-family: var(--font-mono);
-        font-size: 10px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        opacity: 0.7;
-        margin-bottom: 4px;
-      }
-      .eco-bento-label--guardrails { color: #6ecfff; }
-      .eco-bento-label--wix { color: #a78bfa; }
-      .eco-bento-label--content { color: #34d399; }
-      .eco-bento-label--agents { color: #fb923c; }
-      .eco-bento-label--core { color: var(--color-primary); }
-      .eco-bento-card strong {
-        font-family: var(--font-display);
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 24px;
-        color: var(--color-text);
-      }
-      .eco-bento-card p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-        line-height: 22px;
-      }
-      .eco-bento-wide {
-        grid-column: span 1;
-      }
-      @media (min-width: 768px) {
-        .eco-bento-wide {
-          grid-column: span 2;
-        }
-      }
-      .eco-bento-card--with-image .eco-bento-card-header {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .eco-bento-card--with-image .eco-bento-card-image {
-        align-self: center;
-        width: 140px;
-      }
-      .eco-bento-card--with-image .eco-bento-card-image img {
-        width: 100%;
-        height: auto;
-        border-radius: var(--radius-lg);
-        object-fit: contain;
-      }
-      @media (min-width: 768px) {
-        .eco-bento-card--with-image {
-          display: grid;
-          grid-template-columns: 1fr auto;
-          grid-template-rows: auto 1fr;
-          column-gap: 24px;
-        }
-        .eco-bento-card--with-image .eco-bento-card-header {
-          grid-column: 1;
-          grid-row: 1;
-        }
-        .eco-bento-card--with-image .eco-bento-card-desc {
-          grid-column: 1;
-          grid-row: 2;
-        }
-        .eco-bento-card--with-image .eco-bento-card-image {
-          grid-column: 2;
-          grid-row: 1 / -1;
-          align-self: center;
-          width: 180px;
-        }
-      }
-      .eco-bento-tall {
-        grid-row: span 1;
-      }
-      @media (min-width: 768px) {
-        .eco-bento-tall {
-          grid-row: span 2;
-        }
-      }
-
-      /* ── Feedback Loop ── */
-      .feedback-section { background: var(--color-surface); }
-      .feedback-image-frame {
-        max-width: 900px;
-        margin: 48px auto 0;
-        border-radius: var(--radius-3xl);
-        overflow: hidden;
-        padding: 16px;
-      }
-      .feedback-image-frame img {
-        width: 100%;
-        border-radius: var(--radius-xl);
-      }
-
-      /* ── Feedback Steps ── */
-      .feedback-steps {
-        margin-top: 64px;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-        column-gap: 24px;
-      }
-      @media (min-width: 768px) {
-        .feedback-steps { columns: 2; }
-      }
-      .feedback-step {
-        padding: 32px;
-        border-radius: var(--radius-2xl);
-        break-inside: avoid;
-        margin-bottom: 24px;
-      }
-      .feedback-step-number {
-        display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: rgba(0, 210, 255, 0.15);
-        color: var(--color-primary);
-        font-family: var(--font-mono);
-        font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-      .feedback-step h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .feedback-step p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-      }
-      .feedback-step ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-top: 12px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
         padding: 0;
       }
-      .feedback-step ul li {
-        position: relative;
-        padding-left: 16px;
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-      }
-      .feedback-step ul li::before {
-        content: '\2022';
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
-      .feedback-step ul li strong {
-        color: var(--color-text);
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
       }
 
-      /* ── Agent Roles ── */
-      .roles-section { background: var(--color-surface-lowest); position: relative; }
-      .roles-grid-bg {
-        position: absolute;
-        inset: 0;
-        opacity: 0.1;
-        pointer-events: none;
-        overflow: hidden;
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
       }
-      .roles-grid-bg-inner {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        height: 100%;
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
       }
-      .roles-grid-bg-inner > div { border-right: 1px solid rgba(133, 147, 153, 0.2); }
-      .roles-image-frame {
-        position: relative;
-        border-radius: var(--radius-3xl);
-        overflow: hidden;
-        border: 1px solid rgba(165, 231, 255, 0.2);
-        margin-bottom: 64px;
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
       }
-      .roles-image-frame img { width: 100%; }
-      .roles-image-frame.glass-panel {
-        background: none;
-        backdrop-filter: none;
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
       }
-      .roles-cards {
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+
+      .footer-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--space-gutter);
       }
+
       @media (min-width: 768px) {
-        .roles-cards { grid-template-columns: 1fr 1fr; }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
       }
+
       @media (min-width: 1024px) {
-        .roles-cards { grid-template-columns: repeat(4, 1fr); }
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
       }
-      a.role-card {
-        text-decoration: none;
-        color: inherit;
-      }
-      a.role-card:hover {
-        text-decoration: none;
-      }
-      .role-card {
-        padding: 32px;
-        border-radius: var(--radius-2xl);
-        display: flex;
-        flex-direction: column;
-      }
-      .role-card--designer { box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15); }
-      .role-card--developer { box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15); }
-      .role-card--plugin { box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15); }
-      .role-card--devops { box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15); }
-      .role-icon {
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
-        margin-bottom: 24px;
-      }
-      .role-card h3 {
+
+      .footer-brand {
         font-family: var(--font-display);
         font-size: 24px;
-        line-height: 32px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .role-card p {
-        color: var(--color-text-muted);
-      }
-
-      /* ── Plugins ── */
-      .plugins-section { background: var(--color-surface); }
-      .plugins-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 64px;
-        align-items: center;
-      }
-      @media (min-width: 1024px) {
-        .plugins-layout { grid-template-columns: 1fr 1fr; }
-      }
-      .plugins-image-frame {
-        border-radius: var(--radius-3xl);
-        overflow: hidden;
-        border: 1px solid rgba(165, 231, 255, 0.2);
-      }
-      .plugins-image-frame img { width: 100%; }
-      .plugins-text h2 { margin-bottom: 24px; }
-      .plugins-tagline {
-        font-style: italic;
-        color: var(--color-text-muted);
-        font-size: 18px;
-        line-height: 28px;
+        font-weight: 800;
+        color: var(--color-primary);
         margin-bottom: 24px;
       }
-      .plugins-body {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-        margin-bottom: 32px;
-      }
-      .plugins-features { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
-      .plugins-features li {
-        position: relative;
-        padding-left: 16px;
-        color: var(--color-text-muted);
-        line-height: 24px;
-      }
-      .plugins-features li::before {
-        content: '\2022';
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
-      .plugins-features li strong { color: var(--color-text); }
 
-      /* ── Contract ── */
-      .contract-section { }
-      .contract-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 64px;
-        align-items: center;
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
       }
-      @media (min-width: 1024px) {
-        .contract-layout { grid-template-columns: 1fr 1fr; }
-      }
-      .contract-badge {
-        display: inline-block;
-        background: rgba(165, 231, 255, 0.1);
+
+      .footer-heading {
         color: var(--color-primary);
         font-family: var(--font-mono);
         font-size: 12px;
-        font-weight: 500;
-        padding: 4px 12px;
-        border-radius: 9999px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
         margin-bottom: 24px;
       }
-      .contract-text h2 { margin-bottom: 24px; }
-      .contract-text p {
-        color: var(--color-text-muted);
-        font-size: 18px;
-        line-height: 28px;
-        margin-bottom: 32px;
-      }
-      .contract-checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
-      .contract-checklist li {
-        position: relative;
-        padding-left: 16px;
-        color: var(--color-text-muted);
-        line-height: 24px;
-      }
-      .contract-checklist li::before {
-        content: '\2022';
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
 
-      /* Code tabs */
-      .code-panel {
-        border-radius: var(--radius-2xl);
-        overflow: hidden;
-        border: 1px solid rgba(60, 73, 78, 0.3);
-        display: flex;
-        flex-direction: column;
-        height: 520px;
-      }
-      .code-tabs {
-        display: flex;
-        border-bottom: 1px solid rgba(60, 73, 78, 0.3);
-        background: var(--color-surface-low);
-      }
-      .code-tab {
-        padding: 16px 24px;
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--color-text-muted);
-        border: none;
-        background: none;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
-        transition: color 0.2s;
-      }
-      .code-tab:hover { color: var(--color-primary); }
-      .code-panel-content {
-        display: none;
-        flex: 1;
-        padding: 24px;
-        background: var(--color-surface-lowest);
-        font-family: var(--font-mono);
-        font-size: 13px;
-        line-height: 19px;
-        overflow: auto;
-        color: var(--color-secondary-dim);
-      }
-      .code-line {
-        white-space: pre;
-        min-height: 19px;
-      }
-      .cb::before { content: '{'; }
-      .ce::before { content: '}'; }
-      #code-tab-contract:checked ~ .code-tabs label[for="code-tab-contract"],
-      #code-tab-html:checked ~ .code-tabs label[for="code-tab-html"],
-      #code-tab-types:checked ~ .code-tabs label[for="code-tab-types"],
-      #code-tab-component:checked ~ .code-tabs label[for="code-tab-component"] {
-        color: var(--color-primary);
-        border-bottom-color: var(--color-primary);
-      }
-      #code-tab-contract:checked ~ .code-panels #panel-contract,
-      #code-tab-html:checked ~ .code-panels #panel-html,
-      #code-tab-types:checked ~ .code-panels #panel-types,
-      #code-tab-component:checked ~ .code-panels #panel-component {
-        display: block;
-      }
-
-      /* ── Real-World Value (Bento Grid) ── */
-      .value-section { }
-      .bento-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      @media (min-width: 768px) {
-        .bento-grid {
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: auto auto;
-          min-height: 600px;
-        }
-        .bento-wide { grid-column: span 2; }
-        .bento-tall { grid-row: span 2; }
-      }
-      .bento-card {
-        padding: 40px;
-        border-radius: var(--radius-3xl);
-        display: flex;
-        flex-direction: column;
-      }
-      .bento-card--performance {
-        position: relative;
-      }
-      .bento-card--performance .bento-icon-corner {
-        position: relative;
-      }
-      .bento-card--performance .bento-icon-corner img {
-        opacity: 0.85;
-        transition: opacity 0.3s;
-      }
-      .bento-card--performance:hover .bento-icon-corner img {
-        opacity: 1;
-      }
-      .lighthouse-hint {
-        position: absolute;
-        top: 100%; /* design-system: allow */
-        right: 0;
-        padding-top: 8px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-        z-index: 2;
-      }
-      .lighthouse-hint-inner {
-        padding: 8px 14px;
-        background: var(--color-surface-high);
-        border: 1px solid rgba(165, 231, 255, 0.2);
-        border-radius: var(--radius-lg);
-        font-size: 13px;
-        line-height: 18px;
-        color: var(--color-text-muted);
-        white-space: nowrap;
-      }
-      .lighthouse-hint a {
-        color: var(--color-primary);
-        text-decoration: underline;
-      }
-      .bento-icon-corner:hover .lighthouse-hint {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .bento-card--visual-editor {
-        justify-content: space-between;
-      }
-      .bento-card--risk {
-        gap: 16px;
-      }
-      .bento-card--assembly {
-        gap: 16px;
-      }
-      .bento-icon { font-size: 48px; margin-bottom: 32px; }
-      .bento-card h3 { margin-bottom: 16px; }
-
-      .bento-features {
+      .footer-links {
         list-style: none;
         display: flex;
         flex-direction: column;
         gap: 12px;
-        margin-top: 16px;
-        padding: 0;
       }
-      .bento-features li {
-        position: relative;
-        padding-left: 16px;
+
+      .footer-links a {
         color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 24px;
-      }
-      .bento-features li::before {
-        content: '\2022';
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
-      .bento-features li strong {
-        color: var(--color-text);
-      }
-
-      /* ── Sponsors ── */
-      .sponsors-section {
-        padding: 48px 0;
-      }
-      .sponsors-logos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 48px;
-        margin-top: 24px;
-      }
-      .sponsor-link {
-        display: inline-flex;
-        align-items: center;
-        opacity: 0.5;
-        transition: opacity 0.3s;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
         text-decoration: none;
       }
-      .sponsor-link:hover {
-        opacity: 0.8;
+
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
         text-decoration: none;
       }
-      .sponsor-link svg {
-        height: 128px;
-        width: auto;
-      }
+    }
+  </style>
+</head>
 
-      /* ── CTA ── */
-      .cta-section { padding: 80px 0; }
-      .cta-box {
-        padding: 64px;
-        border-radius: 2rem;
-        border: 2px solid rgba(165, 231, 255, 0.2);
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-      }
-      .cta-glow-tl {
-        position: absolute;
-        top: -96px; /* design-system: allow */
-        left: -96px; /* design-system: allow */
-        width: 256px; height: 256px;
-        background: rgba(165, 231, 255, 0.2);
-        border-radius: 50%;
-        filter: blur(48px);
-        pointer-events: none;
-      }
-      .cta-glow-br {
-        position: absolute;
-        bottom: -96px; /* design-system: allow */
-        right: -96px; /* design-system: allow */
-        width: 256px; height: 256px;
-        background: rgba(0, 244, 254, 0.1);
-        border-radius: 50%;
-        filter: blur(48px);
-        pointer-events: none;
-      }
-      .cta-box h2 { margin-bottom: 32px; position: relative; z-index: 1; }
-      .cta-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-      }
-      @media (min-width: 640px) {
-        .cta-buttons { flex-direction: row; }
-      }
-      .btn-cta-primary {
-        background: var(--color-primary-container);
-        color: var(--color-on-primary-container);
-        padding: 20px 40px;
-        border: none;
-        border-radius: var(--radius-xl);
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 18px;
-        cursor: pointer;
-        transition: transform 0.2s;
-        text-decoration: none;
-      }
-      .btn-cta-primary:hover { transform: scale(1.05); text-decoration: none; }
-
-    </style>
-  </head>
-  <body>
-    <div class="page-root">
-
-    <jay:SiteHeader />
-
+<body>
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
     <main>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Hero                                        -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="hero">
         <div class="hero-grid"></div>
         <div class="container">
           <div class="hero-content">
             <div class="hero-logo-wrapper">
-              <div class="hero-logo-glow"></div>
-              <img class="hero-logo" src="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500,h_500/file.webp" srcset="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w" sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500" height="500" loading="eager" fetchpriority="high">
+              <div class="hero-logo-glow"></div><img class="hero-logo"
+                src="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500,h_500/file.webp"
+                srcset="https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_300%2Ch_300/file.webp 300w, https://static.wixstatic.com/media/c569b3_c77476bfb6564842814a9b4f3b6854fb~mv2.png/v1/fit/w_500%2Ch_500/file.webp 500w"
+                sizes="(max-width: 600px) 80vw, 500px" alt="Jay Framework Logo" width="500"
+                height="500" loading="eager" fetchpriority="high">
             </div>
             <div>
-              <h1 class="hero-headline"><span class="hero-headline-base">The web framework for AI Agents</span><span class="hero-headline-shine" aria-hidden="true">The web framework for AI Agents</span></h1>
-              <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps with AI agents. Jay combines strict code contracts, automated feedback loops, and a visual editor to guarantee bug-free code before deployment.</p>
-              <div class="hero-buttons" style="margin-top: 32px;">
-                <a class="btn-primary" href="/get-started">Get Started</a>
-                <div class="cmd-bar">
-                  <span class="cmd-bar-text">npm create jay@latest</span>
-                  <jay:clipboard-copy text="npm create jay@latest">
-                    <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
-                      <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                      <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                      <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                    </button>
-                  </jay:clipboard-copy>
-                </div>
+              <h1 class="hero-headline"><span class="hero-headline-base">The web framework for AI
+                  Agents</span><span class="hero-headline-shine" aria-hidden="true">The web
+                  framework for AI Agents</span></h1>
+              <p class="hero-subtitle" style="margin-top: 32px;">Build production-ready web apps
+                with AI agents. Jay combines strict code contracts, automated feedback loops, and a
+                visual editor to guarantee bug-free code before deployment.</p>
+              <div class="hero-buttons" style="margin-top: 32px;"><a class="btn-primary"
+                  href="/get-started">Get Started</a>
+                <div class="cmd-bar"><span class="cmd-bar-text">npm create
+                    jay@latest</span><jay:clipboard-copy text="npm create jay@latest"><button
+                      ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor"
+                      aria-label="Copy install command"><span if="!copied"><svg
+                          xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg></span><span if="copied"><svg xmlns="http://www.w3.org/2000/svg"
+                          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span><span if="copied" class="copy-tooltip" role="status"
+                        aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- What is Jay                                  -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="what-is-jay" class="section whatjay-section">
         <div class="container">
           <div class="text-center">
             <h2 class="headline-lg">What is Jay</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Engineered from the ground up for AI web development.</p>
+            <p class="headline-sm text-muted"
+              style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">
+              Engineered from the ground up for AI web development.</p>
           </div>
           <div class="whatjay-cards">
-            <div class="whatjay-card glass-panel">
-              <img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Jay contracts — strict separation of UI and backend logic" width="400" height="225" loading="lazy">
+            <div class="whatjay-card glass-panel"><img
+                src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400,h_225/file.webp"
+                srcset="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                alt="Jay contracts — strict separation of UI and backend logic" width="400"
+                height="225" loading="lazy">
               <h3>AI-First Contracts</h3>
               <p class="whatjay-tagline">Decouple UI from backend logic.</p>
-              <p class="whatjay-desc">Jay uses strict .jay-contract files to separate visual templates (.jay-html) from backend code (page.ts). AI agents can completely redesign your interface without breaking underlying business logic.</p>
+              <p class="whatjay-desc">Jay uses strict .jay-contract files to separate visual
+                templates (.jay-html) from backend code (page.ts). AI agents can completely redesign
+                your interface without breaking underlying business logic.</p>
             </div>
-            <div class="whatjay-card glass-panel">
-              <img src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Jay AIditor — visual editing by intent" width="400" height="225" loading="lazy">
+            <div class="whatjay-card glass-panel"><img
+                src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_225/file.webp"
+                srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w"
+                sizes="(max-width: 768px) 100vw, 33vw" alt="Jay AIditor — visual editing by intent"
+                width="400" height="225" loading="lazy">
               <h3>Visual AIditor</h3>
               <p class="whatjay-tagline">Edit web apps visually by intent.</p>
-              <p class="whatjay-desc">Convert screenshots or live URLs into contract-bound sites. Simply point at any element on screen, describe your change, and let the AI update production code directly.</p>
+              <p class="whatjay-desc">Convert screenshots or live URLs into contract-bound sites.
+                Simply point at any element on screen, describe your change, and let the AI update
+                production code directly.</p>
             </div>
-            <div class="whatjay-card glass-panel">
-              <img src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400,h_225/file.webp" srcset="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w" sizes="(max-width: 768px) 100vw, 33vw" alt="Lighthouse scores — automated validation guardrails" width="400" height="225" loading="lazy">
+            <div class="whatjay-card glass-panel"><img
+                src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400,h_225/file.webp"
+                srcset="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_300%2Ch_169/file.webp 300w, https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_400%2Ch_225/file.webp 400w"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                alt="Lighthouse scores — automated validation guardrails" width="400" height="225"
+                loading="lazy">
               <h3>Self-Correcting Loop</h3>
               <p class="whatjay-tagline">Automated guardrails prevent broken code.</p>
-              <p class="whatjay-desc">An automated engine validates AI output across contracts, SEO, accessibility, and performance. When an agent makes a mistake, it receives targeted error feedback to self-correct instantly before deployment.</p>
+              <p class="whatjay-desc">An automated engine validates AI output across contracts, SEO,
+                accessibility, and performance. When an agent makes a mistake, it receives targeted
+                error feedback to self-correct instantly before deployment.</p>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Ecosystem & Plugins                          -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="ecosystem" class="section ecosystem-section">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">Ecosystem &amp; Plugins</span>
-            <h2 class="headline-lg" style="margin-top: 16px;">Extensible by design.<br>Built for zero-coding app assembly.</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 900px; margin-left: auto; margin-right: auto;">Jay plugins bundle pre-tested capabilities, server actions, and contracts into drop-in NPM packages.</p>
+          <div class="text-center"><span class="section-label">Ecosystem &amp; Plugins</span>
+            <h2 class="headline-lg" style="margin-top: 16px;">Extensible by design.<br>Built for
+              zero-coding app assembly.</h2>
+            <p class="headline-sm text-muted"
+              style="margin-top: 16px; max-width: 900px; margin-left: auto; margin-right: auto;">Jay
+              plugins bundle pre-tested capabilities, server actions, and contracts into drop-in NPM
+              packages.</p>
           </div>
           <div class="eco-bento">
-
-            <!-- AI Guardrails & Validation -->
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
-              <strong>SEO Validator</strong>
-              <p>Checks jay-html templates for SEO best practices — meta tags, heading hierarchy, canonical URLs, and Open Graph data.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span><strong>SEO
+                Validator</strong>
+              <p>Checks jay-html templates for SEO best practices — meta tags, heading hierarchy,
+                canonical URLs, and Open Graph data.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
-              <strong>Accessibility Validator</strong>
-              <p>Validates templates against WCAG guidelines — image alt text, ARIA roles, keyboard navigation, and semantic HTML.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--guardrails">AI
+                Guardrails</span><strong>Accessibility Validator</strong>
+              <p>Validates templates against WCAG guidelines — image alt text, ARIA roles, keyboard
+                navigation, and semantic HTML.</p>
             </div>
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-header">
-                <span class="eco-bento-label eco-bento-label--guardrails">AI Guardrails</span>
-                <strong>Design System Validator</strong>
-              </div>
-              <div class="eco-bento-card-image">
-                <img src="https://static.wixstatic.com/media/c569b3_a8c585bd797f434ca9646efc91b185c2~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Design System Validator" width="180" height="180" loading="lazy">
-              </div>
-              <p class="eco-bento-card-desc">Enforces DESIGN.md tokens across your CSS — colors, spacing, typography, contrast ratios, and component structure. Catches brand drift before it ships.</p>
+              <div class="eco-bento-card-header"><span
+                  class="eco-bento-label eco-bento-label--guardrails">AI
+                  Guardrails</span><strong>Design System Validator</strong></div>
+              <div class="eco-bento-card-image"><img
+                  src="https://static.wixstatic.com/media/c569b3_a8c585bd797f434ca9646efc91b185c2~mv2.png/v1/fit/w_180,h_180/file.webp"
+                  alt="Design System Validator" width="180" height="180" loading="lazy"></div>
+              <p class="eco-bento-card-desc">Enforces DESIGN.md tokens across your CSS — colors,
+                spacing, typography, contrast ratios, and component structure. Catches brand drift
+                before it ships.</p>
             </div>
-
-            <!-- Wix Headless Integration -->
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-header">
-                <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
-                <strong>Wix Stores &amp; Cart</strong>
-              </div>
-              <div class="eco-bento-card-image">
-                <img src="https://static.wixstatic.com/media/c569b3_3fc0153dea0d48b78458f46fd140725c~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Wix Stores and Cart" width="180" height="180" loading="lazy">
-              </div>
-              <p class="eco-bento-card-desc">Full e-commerce stack — product catalogs, variant resolution, category browsing, and a complete cart with mini-cart drawer, line-item management, and checkout.</p>
+              <div class="eco-bento-card-header"><span
+                  class="eco-bento-label eco-bento-label--wix">Wix Headless</span><strong>Wix Stores
+                  &amp; Cart</strong></div>
+              <div class="eco-bento-card-image"><img
+                  src="https://static.wixstatic.com/media/c569b3_3fc0153dea0d48b78458f46fd140725c~mv2.png/v1/fit/w_180,h_180/file.webp"
+                  alt="Wix Stores and Cart" width="180" height="180" loading="lazy"></div>
+              <p class="eco-bento-card-desc">Full e-commerce stack — product catalogs, variant
+                resolution, category browsing, and a complete cart with mini-cart drawer, line-item
+                management, and checkout.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
-              <strong>Wix Members</strong>
-              <p>OAuth authentication with login indicators, protected page guards, and callback handling. Includes server-side member operations and client-side auth state.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--wix">Wix Headless</span><strong>Wix
+                Members</strong>
+              <p>OAuth authentication with login indicators, protected page guards, and callback
+                handling. Includes server-side member operations and client-side auth state.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
-              <strong>Wix Data</strong>
-              <p>Dynamic contract generation from collection schemas — automatically creates item, list, table, and card pages from your Wix CMS collections.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--wix">Wix Headless</span><strong>Wix
+                Data</strong>
+              <p>Dynamic contract generation from collection schemas — automatically creates item,
+                list, table, and card pages from your Wix CMS collections.</p>
             </div>
-            <div class="eco-bento-card glass-panel eco-bento-tall">
-              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
-              <strong>Wix Media</strong>
-              <p>Media upload, optimization validation, CDN delivery, and index generation. Ensures every image URL carries proper optimization parameters.</p>
-              <img src="https://static.wixstatic.com/media/c569b3_3262d2cbcfa84865bb9d845e8829ae10~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Wix Media" width="180" height="180" loading="lazy" style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
+            <div class="eco-bento-card glass-panel eco-bento-tall"><span
+                class="eco-bento-label eco-bento-label--wix">Wix Headless</span><strong>Wix
+                Media</strong>
+              <p>Media upload, optimization validation, CDN delivery, and index generation. Ensures
+                every image URL carries proper optimization parameters.</p><img
+                src="https://static.wixstatic.com/media/c569b3_3262d2cbcfa84865bb9d845e8829ae10~mv2.png/v1/fit/w_180,h_180/file.webp"
+                alt="Wix Media" width="180" height="180" loading="lazy"
+                style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--wix">Wix Headless</span>
-              <strong>Wix Deploy</strong>
-              <p>One-click deployment to Wix infrastructure — builds entry points, uploads backend code, and deploys the full application.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--wix">Wix Headless</span><strong>Wix
+                Deploy</strong>
+              <p>One-click deployment to Wix infrastructure — builds entry points, uploads backend
+                code, and deploys the full application.</p>
             </div>
-
-            <!-- Content & UI -->
             <div class="eco-bento-card glass-panel eco-bento-wide eco-bento-card--with-image">
-              <div class="eco-bento-card-header">
-                <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
-                <strong>Markdown</strong>
-              </div>
-              <div class="eco-bento-card-image">
-                <img src="https://static.wixstatic.com/media/c569b3_5917d5339da94329a78789b2d94d8011~mv2.png/v1/fit/w_180,h_180/file.webp" alt="Markdown" width="180" height="180" loading="lazy">
-              </div>
-              <p class="eco-bento-card-desc">Three rendering modes — directory-based page generation, static inline rendering, and live dynamic updates. Includes code highlighting, mermaid-to-SVG diagrams, and automatic SEO head tags from frontmatter.</p>
+              <div class="eco-bento-card-header"><span
+                  class="eco-bento-label eco-bento-label--content">Content &amp;
+                  UI</span><strong>Markdown</strong></div>
+              <div class="eco-bento-card-image"><img
+                  src="https://static.wixstatic.com/media/c569b3_5917d5339da94329a78789b2d94d8011~mv2.png/v1/fit/w_180,h_180/file.webp"
+                  alt="Markdown" width="180" height="180" loading="lazy"></div>
+              <p class="eco-bento-card-desc">Three rendering modes — directory-based page
+                generation, static inline rendering, and live dynamic updates. Includes code
+                highlighting, mermaid-to-SVG diagrams, and automatic SEO head tags from frontmatter.
+              </p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
-              <strong>UI Kit</strong>
-              <p>Headless UI primitives — popover menus via the Popover API, scroll-snap carousels, clipboard copy with feedback, and word/letter splitting for per-character animation and styling.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--content">Content &amp; UI</span><strong>UI
+                Kit</strong>
+              <p>Headless UI primitives — popover menus via the Popover API, scroll-snap carousels,
+                clipboard copy with feedback, and word/letter splitting for per-character animation
+                and styling.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--content">Content &amp; UI</span>
-              <strong>AIditor Quill</strong>
-              <p>Ready-made add-menu assets and text components for the AIditor visual editor. Provides a catalog of drop-in content blocks.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--content">Content &amp;
+                UI</span><strong>AIditor Quill</strong>
+              <p>Ready-made add-menu assets and text components for the AIditor visual editor.
+                Provides a catalog of drop-in content blocks.</p>
             </div>
-
-            <!-- AI Agents & Protocols -->
-            <div class="eco-bento-card glass-panel eco-bento-wide">
-              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
-              <strong>AIditor</strong>
-              <p>Visual AI-driven code editor — agents create pages, manage plugins, edit live sites, and publish. 30+ server actions covering project info, visual editing, asset management, and deployment.</p>
+            <div class="eco-bento-card glass-panel eco-bento-wide"><span
+                class="eco-bento-label eco-bento-label--agents">AI
+                Agents</span><strong>AIditor</strong>
+              <p>Visual AI-driven code editor — agents create pages, manage plugins, edit live
+                sites, and publish. 30+ server actions covering project info, visual editing, asset
+                management, and deployment.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
-              <strong>Gemini Agent</strong>
-              <p>Embedded chat agent powered by Gemini with page automation and server action calling. Drops into any page as a headless component.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--agents">AI Agents</span><strong>Gemini
+                Agent</strong>
+              <p>Embedded chat agent powered by Gemini with page automation and server action
+                calling. Drops into any page as a headless component.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--agents">AI Agents</span>
-              <strong>WebMCP</strong>
-              <p>Automatically exposes page interactions as Model Context Protocol tools, resources, and prompts — connects your site natively to AI agents.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--agents">AI
+                Agents</span><strong>WebMCP</strong>
+              <p>Automatically exposes page interactions as Model Context Protocol tools, resources,
+                and prompts — connects your site natively to AI agents.</p>
             </div>
-
-            <!-- Core Architecture -->
-            <div class="eco-bento-card glass-panel eco-bento-tall">
-              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
-              <strong>3-Phase Rendering</strong>
-              <p>Slow (data change), Fast (per-request), and Interactive (client) phases split work so pages load in sub-second time with near-zero JavaScript overhead.</p>
-              <img src="https://static.wixstatic.com/media/c569b3_c0a7f9f1c95e4676a93a4f68b7b04986~mv2.png/v1/fit/w_180,h_180/file.webp" alt="3-Phase Rendering" width="180" height="180" loading="lazy" style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
+            <div class="eco-bento-card glass-panel eco-bento-tall"><span
+                class="eco-bento-label eco-bento-label--core">Core
+                Architecture</span><strong>3-Phase Rendering</strong>
+              <p>Slow (data change), Fast (per-request), and Interactive (client) phases split work
+                so pages load in sub-second time with near-zero JavaScript overhead.</p><img
+                src="https://static.wixstatic.com/media/c569b3_c0a7f9f1c95e4676a93a4f68b7b04986~mv2.png/v1/fit/w_180,h_180/file.webp"
+                alt="3-Phase Rendering" width="180" height="180" loading="lazy"
+                style="margin-top: auto; border-radius: var(--radius-lg); align-self: center;">
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
-              <strong>Contract-Driven Assembly</strong>
-              <p>Plugins expose typed contracts — agents and developers wire full-stack features without prop-drilling, custom glue code, or framework-specific knowledge.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--core">Core
+                Architecture</span><strong>Contract-Driven Assembly</strong>
+              <p>Plugins expose typed contracts — agents and developers wire full-stack features
+                without prop-drilling, custom glue code, or framework-specific knowledge.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
-              <strong>Agent-Optimized Token Costs</strong>
-              <p>Pre-built, tested packages replace generated boilerplate. Agents reuse established contracts instead of hallucinating integrations, cutting token usage and errors.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--core">Core
+                Architecture</span><strong>Agent-Optimized Token Costs</strong>
+              <p>Pre-built, tested packages replace generated boilerplate. Agents reuse established
+                contracts instead of hallucinating integrations, cutting token usage and errors.</p>
             </div>
-            <div class="eco-bento-card glass-panel">
-              <span class="eco-bento-label eco-bento-label--core">Core Architecture</span>
-              <strong>File-Based Routing</strong>
-              <p>Directory structure defines routes, dynamic [slug] segments, and page-level contracts. Predictable for developers, trivial for agents to extend.</p>
+            <div class="eco-bento-card glass-panel"><span
+                class="eco-bento-label eco-bento-label--core">Core
+                Architecture</span><strong>File-Based Routing</strong>
+              <p>Directory structure defines routes, dynamic [slug] segments, and page-level
+                contracts. Predictable for developers, trivial for agents to extend.</p>
             </div>
-
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- The Jay Feedback Loop                       -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="feedback-loop" class="section feedback-section">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">Core Architecture</span>
+          <div class="text-center"><span class="section-label">Core Architecture</span>
             <h2 class="headline-lg" style="margin-top: 16px;">The Jay Feedback Loop</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Guiding AI to guaranteed, production-ready results through continuous validation and strict boundaries.</p>
+            <p class="headline-sm text-muted"
+              style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">
+              Guiding AI to guaranteed, production-ready results through continuous validation and
+              strict boundaries.</p>
           </div>
-          <div class="feedback-image-frame glass-panel">
-            <img src="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900,h_506/file.webp" srcset="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_600%2Ch_337/file.webp 600w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900%2Ch_506/file.webp 900w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 900px" alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback" width="900" height="506" loading="lazy">
-          </div>
-
+          <div class="feedback-image-frame glass-panel"><img
+              src="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900,h_506/file.webp"
+              srcset="https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_600%2Ch_337/file.webp 600w, https://static.wixstatic.com/media/c569b3_572ffd58016541448027bf6ad5b270ac~mv2.png/v1/fill/w_900%2Ch_506/file.webp 900w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 900px"
+              alt="Jay Feedback Loop Diagram — showing the self-correcting cycle of AI agents, declarative code, validation, and error feedback"
+              width="900" height="506" loading="lazy"></div>
           <div class="feedback-steps">
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">1</div>
               <h3>The AI Agent (Generator)</h3>
-              <p>The cycle begins with specialized AI roles (Designer, Developer, or Plugin Developer) reading the explicitly defined contracts and instructions. Because the boundaries are clear, the agent knows exactly what data it has to work with and what it needs to build.</p>
+              <p>The cycle begins with specialized AI roles (Designer, Developer, or Plugin
+                Developer) reading the explicitly defined contracts and instructions. Because the
+                boundaries are clear, the agent knows exactly what data it has to work with and what
+                it needs to build.</p>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">2</div>
               <h3>Declarative Code &amp; Logic (Output)</h3>
-              <p>The AI outputs the code, adhering to Jay's strict separation of design and logic.</p>
+              <p>The AI outputs the code, adhering to Jay's strict separation of design and logic.
+              </p>
               <ul>
-                <li>The <strong>AI Designer</strong> generates purely declarative, logic-free visual templates (.jay-html), utilizing functionality from plugins.</li>
-                <li>If custom functionality is needed, the <strong>AI Developer</strong> outputs the application logic in page.ts. This separation ensures agents can iterate on the UI without ever breaking the backend code.</li>
+                <li>The <strong>AI Designer</strong> generates purely declarative, logic-free visual
+                  templates (.jay-html), utilizing functionality from plugins.</li>
+                <li>If custom functionality is needed, the <strong>AI Developer</strong> outputs the
+                  application logic in page.ts. This separation ensures agents can iterate on the UI
+                  without ever breaking the backend code.</li>
               </ul>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">3</div>
               <h3>Validation Engine (Gatekeeper)</h3>
-              <p>Jay doesn't let the AI guess if its code works; it automatically acts as a strict inspection node. The framework evaluates the agent's output using comprehensive tools:</p>
+              <p>Jay doesn't let the AI guess if its code works; it automatically acts as a strict
+                inspection node. The framework evaluates the agent's output using comprehensive
+                tools:</p>
               <ul>
-                <li><strong>jay-stack validate:</strong> Checks for parsing and contract matching errors.</li>
-                <li><strong>Tag Coverage Report:</strong> Analyzes the HTML tree to tell the AI exactly which contract tags were used, which were missed, and if any required tags were omitted.</li>
-                <li><strong>TypeScript Compiler (TSC):</strong> Validates the backend logic against the auto-generated, phase-specific .d.ts types.</li>
-                <li><strong>Plugin Validation:</strong> Ensures consistency between plugin.yaml configurations and component properties.</li>
+                <li><strong>jay-stack validate:</strong> Checks for parsing and contract matching
+                  errors.</li>
+                <li><strong>Tag Coverage Report:</strong> Analyzes the HTML tree to tell the AI
+                  exactly which contract tags were used, which were missed, and if any required tags
+                  were omitted.</li>
+                <li><strong>TypeScript Compiler (TSC):</strong> Validates the backend logic against
+                  the auto-generated, phase-specific .d.ts types.</li>
+                <li><strong>Plugin Validation:</strong> Ensures consistency between plugin.yaml
+                  configurations and component properties.</li>
               </ul>
             </div>
             <div class="feedback-step glass-panel">
               <div class="feedback-step-number">4</div>
               <h3>Errors + Agent-Kit References (Feedback)</h3>
-              <p>If the code fails validation, the system doesn't just output a generic error. It provides an explicit path forward by pointing the agent directly back to the Agent-Kit's ground truth, referencing materialized contracts, the plugins-index.yaml, and specific Agent-Kit guides so the AI can self-correct with exact context.</p>
+              <p>If the code fails validation, the system doesn't just output a generic error. It
+                provides an explicit path forward by pointing the agent directly back to the
+                Agent-Kit's ground truth, referencing materialized contracts, the
+                plugins-index.yaml, and specific Agent-Kit guides so the AI can self-correct with
+                exact context.</p>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- The Contract                                -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="contract" class="section contract-section">
         <div class="container">
           <div class="contract-layout">
-            <div class="contract-text">
-              <span class="contract-badge">THE .JAY-CONTRACT</span>
+            <div class="contract-text"><span class="contract-badge">THE .JAY-CONTRACT</span>
               <h2 class="headline-lg">Independent Iteration. Absolute Fidelity.</h2>
-              <p>At the heart of Jay is the .jay-contract, a strict, declarative agreement that allows AI agents to work together without stepping on each other's toes.</p>
+              <p>At the heart of Jay is the .jay-contract, a strict, declarative agreement that
+                allows AI agents to work together without stepping on each other's toes.</p>
               <ul class="contract-checklist">
                 <li>Strong typing generated from the contract.</li>
                 <li>The Designer agent creates Jay HTML files.</li>
@@ -1191,17 +1906,14 @@
                 <li>Independent iteration — redesign UI without rewriting backend logic.</li>
               </ul>
             </div>
-            <div class="code-panel glass-panel">
-              <input type="radio" name="code-tab" id="code-tab-contract" checked hidden>
-              <input type="radio" name="code-tab" id="code-tab-html" hidden>
-              <input type="radio" name="code-tab" id="code-tab-types" hidden>
-              <input type="radio" name="code-tab" id="code-tab-component" hidden>
-              <div class="code-tabs">
-                <label for="code-tab-contract" class="code-tab">Contract</label>
-                <label for="code-tab-html" class="code-tab">Jay HTML</label>
-                <label for="code-tab-types" class="code-tab">Types</label>
-                <label for="code-tab-component" class="code-tab">Component</label>
-              </div>
+            <div class="code-panel glass-panel"><input type="radio" name="code-tab"
+                id="code-tab-contract" checked hidden><input type="radio" name="code-tab"
+                id="code-tab-html" hidden><input type="radio" name="code-tab" id="code-tab-types"
+                hidden><input type="radio" name="code-tab" id="code-tab-component" hidden>
+              <div class="code-tabs"><label for="code-tab-contract"
+                  class="code-tab">Contract</label><label for="code-tab-html" class="code-tab">Jay
+                  HTML</label><label for="code-tab-types" class="code-tab">Types</label><label
+                  for="code-tab-component" class="code-tab">Component</label></div>
               <div class="code-panels">
                 <div class="code-panel-content" id="panel-contract">
                   <div class="code-line">props:</div>
@@ -1225,41 +1937,66 @@
                   <div class="code-line">&lt;jay:clipboard-copy text="..."&gt;</div>
                   <div class="code-line">&nbsp; &lt;div class="copy-row"&gt;</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;div class="copy-url"&gt;</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the text tag renders here</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the text tag renders here
+                  </div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;/div&gt;</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;button ref="copyBtn"&gt;</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span if="!copied"&gt;Copy Link&lt;/span&gt;</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span if="copied"&gt;Copied!&lt;/span&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span
+                    if="!copied"&gt;Copy Link&lt;/span&gt;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;span
+                    if="copied"&gt;Copied!&lt;/span&gt;</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; &lt;/button&gt;</div>
                   <div class="code-line">&nbsp; &lt;/div&gt;</div>
                   <div class="code-line">&lt;/jay:clipboard-copy&gt;</div>
                 </div>
                 <div class="code-panel-content" id="panel-types">
-                  <div class="code-line">export interface ClipboardCopyViewState <span class="cb"></span></div>
+                  <div class="code-line">export interface ClipboardCopyViewState <span
+                      class="cb"></span></div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; text: string;</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; copied: boolean;</div>
                   <div class="code-line"><span class="ce"></span></div>
-                  <div class="code-line">export interface ClipboardCopyRefs <span class="cb"></span></div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp; copyBtn: HTMLElementProxy&lt;ClipboardCopyViewState, HTMLButtonElement&gt;;</div>
+                  <div class="code-line">export interface ClipboardCopyRefs <span class="cb"></span>
+                  </div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; copyBtn:
+                    HTMLElementProxy&lt;ClipboardCopyViewState, HTMLButtonElement&gt;;</div>
                   <div class="code-line"><span class="ce"></span></div>
-                  <div class="code-line">export interface ClipboardCopyProps <span class="cb"></span></div>
+                  <div class="code-line">export interface ClipboardCopyProps <span
+                      class="cb"></span></div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; text?: string;</div>
                   <div class="code-line"><span class="ce"></span></div>
                 </div>
                 <div class="code-panel-content" id="panel-component">
-                  <div class="code-line">export const clipboardCopy = makeJayStackComponent&lt;ClipboardCopyContract&gt;()</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withProps&lt;ClipboardCopyProps&gt;()</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withFastRender(async (props) =&gt;</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; phaseOutput(<span class="cb"></span> text: props.text ?? '', copied: false <span class="ce"></span>, <span class="cb"></span><span class="ce"></span>),</div>
+                  <div class="code-line">export const clipboardCopy =
+                    makeJayStackComponent&lt;ClipboardCopyContract&gt;()</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withProps&lt;ClipboardCopyProps&gt;()
+                  </div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withFastRender(async (props) =&gt;
+                  </div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    phaseOutput(<span class="cb"></span> text: props.text ?? '', copied: false <span
+                      class="ce"></span>, <span class="cb"></span><span class="ce"></span>),</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; )</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withInteractive(function ClipboardCopy(props, refs) <span class="cb"></span></div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const [copied, setCopied] = createSignal(false);</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; refs.copyBtn.onclick(async () =&gt; <span class="cb"></span></div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; await navigator.clipboard.writeText(props.text());</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setCopied(true);</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setTimeout(() =&gt; setCopied(false), 2000);</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="ce"></span>);</div>
-                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return <span class="cb"></span> render: () =&gt; (<span class="cb"></span> text: props.text(), copied: copied() <span class="ce"></span>) <span class="ce"></span>;</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp; .withInteractive(function
+                    ClipboardCopy(props, refs) <span class="cb"></span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const [copied,
+                    setCopied] = createSignal(false);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    refs.copyBtn.onclick(async () =&gt; <span class="cb"></span></div>
+                  <div class="code-line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; await
+                    navigator.clipboard.writeText(props.text());</div>
+                  <div class="code-line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    setCopied(true);</div>
+                  <div class="code-line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setTimeout(()
+                    =&gt; setCopied(false), 2000);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+                      class="ce"></span>);</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return <span
+                      class="cb"></span> render: () =&gt; (<span class="cb"></span> text:
+                    props.text(), copied: copied() <span class="ce"></span>) <span
+                      class="ce"></span>;</div>
                   <div class="code-line">&nbsp;&nbsp;&nbsp; <span class="ce"></span>);</div>
                 </div>
               </div>
@@ -1267,163 +2004,233 @@
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Agent Roles                                 -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="agent-roles" class="section roles-section">
         <div class="roles-grid-bg">
           <div class="roles-grid-bg-inner">
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
         <div class="container" style="position: relative; z-index: 1;">
           <div style="margin-bottom: 64px;">
             <h2 class="headline-lg">Defined Agent Roles</h2>
-            <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is fine-tuned for specialized operations in the stack.</p>
+            <p class="body-lg text-muted" style="margin-top: 16px;">Each agent within Jay is
+              fine-tuned for specialized operations in the stack.</p>
           </div>
-          <div class="roles-image-frame glass-panel">
-            <img src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp" srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px" alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps" width="1200" height="675" loading="lazy">
-          </div>
-          <div class="roles-cards">
-            <a class="role-card glass-panel role-card--designer" href="/docs/designer/instructions">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Designer" width="80" height="80" loading="lazy">
+          <div class="roles-image-frame glass-panel"><img
+              src="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200,h_675/file.webp"
+              srcset="https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_400%2Ch_225/file.webp 400w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_800%2Ch_450/file.webp 800w, https://static.wixstatic.com/media/c569b3_579284de885e4e2b82574cec87f50bf8~mv2.png/v1/fill/w_1200%2Ch_675/file.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 1200px"
+              alt="Jay Framework Agent Roles — Designer, Developer, Plugin Developer, and DevOps"
+              width="1200" height="675" loading="lazy"></div>
+          <div class="roles-cards"><a class="role-card glass-panel role-card--designer"
+              href="/docs/designer/instructions"><img class="role-icon"
+                src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="AI Designer" width="80" height="80" loading="lazy">
               <h3>Designer</h3>
-              <p>Generates purely declarative, logic-free visual templates by mapping contract data directly to the UI, turning visual references into working designs.</p>
-            </a>
-            <a class="role-card glass-panel role-card--developer" href="/docs/developer/instructions">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Developer" width="80" height="80" loading="lazy">
+              <p>Generates purely declarative, logic-free visual templates by mapping contract data
+                directly to the UI, turning visual references into working designs.</p>
+            </a><a class="role-card glass-panel role-card--developer"
+              href="/docs/developer/instructions"><img class="role-icon"
+                src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="AI Developer" width="80" height="80" loading="lazy">
               <h3>Developer</h3>
-              <p>Builds the full-stack application logic and data flow required to satisfy the strict contracts, completely unburdened from writing HTML or CSS.</p>
-            </a>
-            <a class="role-card glass-panel role-card--plugin" href="/docs/plugin/instructions">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI Plugin Developer" width="80" height="80" loading="lazy">
+              <p>Builds the full-stack application logic and data flow required to satisfy the
+                strict contracts, completely unburdened from writing HTML or CSS.</p>
+            </a><a class="role-card glass-panel role-card--plugin"
+              href="/docs/plugin/instructions"><img class="role-icon"
+                src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="AI Plugin Developer" width="80" height="80" loading="lazy">
               <h3>Plugin Developer</h3>
-              <p>Packages extensible, reusable business logic and headless components into installable plugins.</p>
-            </a>
-            <a class="role-card glass-panel role-card--devops" href="/docs/devops/instructions">
-              <img class="role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="AI DevOps" width="80" height="80" loading="lazy">
+              <p>Packages extensible, reusable business logic and headless components into
+                installable plugins.</p>
+            </a><a class="role-card glass-panel role-card--devops"
+              href="/docs/devops/instructions"><img class="role-icon"
+                src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="AI DevOps" width="80" height="80" loading="lazy">
               <h3>DevOps</h3>
-              <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and caching infrastructure for lightning-fast, zero-downtime updates.</p>
-            </a>
-          </div>
+              <p>Manages the deployment lifecycle, overseeing the Two-Server Architecture and
+                caching infrastructure for lightning-fast, zero-downtime updates.</p>
+            </a></div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Plugins                                     -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="plugins" class="section plugins-section">
         <div class="container">
           <div class="plugins-layout">
-            <div class="plugins-image-frame glass-panel">
-              <img src="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800,h_600/file.webp" srcset="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_600%2Ch_450/file.webp 600w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800%2Ch_600/file.webp 800w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 800px" alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts" width="800" height="600" loading="lazy">
-            </div>
-            <div class="plugins-text">
-              <span class="section-label">Ecosystem</span>
+            <div class="plugins-image-frame glass-panel"><img
+                src="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800,h_600/file.webp"
+                srcset="https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_600%2Ch_450/file.webp 600w, https://static.wixstatic.com/media/c569b3_250cffde37684590a2348181740af7c5~mv2.png/v1/fit/w_800%2Ch_600/file.webp 800w"
+                sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 800px"
+                alt="Jay Framework Plugins — installable NPM packages with headless components, actions, and contracts"
+                width="800" height="600" loading="lazy"></div>
+            <div class="plugins-text"><span class="section-label">Ecosystem</span>
               <h2 class="headline-lg" style="margin-top: 16px;">Plugins</h2>
-              <p class="plugins-tagline">Why force AI to hallucinate complex business logic from scratch? Just like human developers, AI agents favor reusing code.</p>
-              <p class="plugins-body">Reusing battle-tested, pre-packaged capabilities reduces bugs, token costs, and maintenance overhead while improving accuracy and performance. Jay enables this through Plugins - installable NPM packages bundling headless components, server actions, and explicit data contracts.</p>
+              <p class="plugins-tagline">Why force AI to hallucinate complex business logic from
+                scratch? Just like human developers, AI agents favor reusing code.</p>
+              <p class="plugins-body">Reusing battle-tested, pre-packaged capabilities reduces bugs,
+                token costs, and maintenance overhead while improving accuracy and performance. Jay
+                enables this through Plugins - installable NPM packages bundling headless
+                components, server actions, and explicit data contracts.</p>
               <ul class="plugins-features">
-                <li><strong>Zero-Coding Integration:</strong> AI agents can drop complex features into a project instantly. The Designer simply maps plugin data contracts directly to the visual UI.</li>
-                <li><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means your project inherits optimal performance, robust security, and built-in SEO capabilities.</li>
-                <li><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an isolated sandbox, ensuring external components can never access the host site's main DOM or secure cookies.</li>
+                <li><strong>Zero-Coding Integration:</strong> AI agents can drop complex features
+                  into a project instantly. The Designer simply maps plugin data contracts directly
+                  to the visual UI.</li>
+                <li><strong>Reducing Non-Functional Risk:</strong> Reusing established plugins means
+                  your project inherits optimal performance, robust security, and built-in SEO
+                  capabilities.</li>
+                <li><strong>Zero Trust Architecture:</strong> Jay executes plugin code safely in an
+                  isolated sandbox, ensuring external components can never access the host site's
+                  main DOM or secure cookies.</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Real-World Value (Bento Grid)               -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="value" class="section value-section">
         <div class="container">
           <h2 class="headline-lg text-center" style="margin-bottom: 48px;">Real-World Value</h2>
           <div class="bento-grid">
-            <!-- Visual Editor — wide -->
             <div class="bento-card glass-panel bento-wide bento-card--visual-editor">
               <div>
-                <h3 class="headline-md">Claude as a Visual Editor</h3>
-                <img src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_300/file.webp" srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w" sizes="(max-width: 600px) 100vw, 400px" alt="Jay AIditor — visual editing interface" width="400" height="300" loading="lazy" style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
-                <p class="body-lg text-muted">The Jay AIditor transforms AI interaction into an intuitive "point and shoot" visual experience. Without any complex side-panels or manual selections, you simply point at an element and let the AI execute updates directly on the application / website code.</p>
+                <h3 class="headline-md">Claude as a Visual Editor</h3><img
+                  src="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400,h_300/file.webp"
+                  srcset="https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_300%2Ch_225/file.webp 300w, https://static.wixstatic.com/media/c569b3_24314805b6ba4328b4bbf0c1614eb725~mv2.png/v1/fit/w_400%2Ch_300/file.webp 400w"
+                  sizes="(max-width: 600px) 100vw, 400px"
+                  alt="Jay AIditor — visual editing interface" width="400" height="300"
+                  loading="lazy"
+                  style="max-width: 400px; width: 100%; border-radius: var(--radius-lg); margin: 16px 0;">
+                <p class="body-lg text-muted">The Jay AIditor transforms AI interaction into an
+                  intuitive "point and shoot" visual experience. Without any complex side-panels or
+                  manual selections, you simply point at an element and let the AI execute updates
+                  directly on the application / website code.</p>
               </div>
             </div>
-            <!-- Performance — tall -->
             <div class="bento-card glass-panel bento-tall bento-card--performance">
               <div>
                 <h3 class="headline-md">Near-Perfect Performance</h3>
-                <div class="bento-icon-corner" style="position: relative; top: auto; right: auto; margin: 16px 0;">
-                  <img src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_200,h_150/file.webp" alt="Lighthouse perfect scores" width="200" height="150" loading="lazy" style="width: 200px; height: auto;">
-                  <div class="lighthouse-hint"><div class="lighthouse-hint-inner">measured on the <a href="https://jay-onsko-52654f57-yoav68.wix-site-host.com/" target="_blank">Jay Onsko Template</a></div></div>
+                <div class="bento-icon-corner"
+                  style="position: relative; top: auto; right: auto; margin: 16px 0;"><img
+                    src="https://static.wixstatic.com/media/c569b3_7b7628e89857472c9c2c979ba1f24640~mv2.png/v1/fit/w_200,h_150/file.webp"
+                    alt="Lighthouse perfect scores" width="200" height="150" loading="lazy"
+                    style="width: 200px; height: auto;">
+                  <div class="lighthouse-hint">
+                    <div class="lighthouse-hint-inner">measured on the <a
+                        href="https://jay-onsko-52654f57-yoav68.wix-site-host.com/"
+                        target="_blank">Jay Onsko Template</a></div>
+                  </div>
                 </div>
-                <p class="body-md text-muted">Jay is engineered from the ground up to ensure every site ships with minimal bundle sizes, lightning-fast load times, and top-tier Lighthouse scores out of the box.</p>
+                <p class="body-md text-muted">Jay is engineered from the ground up to ensure every
+                  site ships with minimal bundle sizes, lightning-fast load times, and top-tier
+                  Lighthouse scores out of the box.</p>
                 <ul class="bento-features">
-                  <li><strong>3-Phase Rendering Pipeline:</strong> Strict separation of design and logic yields minimal bundle sizes and smooth 60 FPS performance for flawless SEO.</li>
-                  <li><strong>Automated Guardrails:</strong> Built-in AI feedback loops continuously monitor code generation, automatically catching common performance traps and heavy assets before deployment.</li>
-                  <li><strong>Wix Media Optimization</strong> (provided by wix-media plugin): Automatic image formatting, responsive sizing, CDN and asset optimization ensure ultra-fast media delivery.</li>
+                  <li><strong>3-Phase Rendering Pipeline:</strong> Strict separation of design and
+                    logic yields minimal bundle sizes and smooth 60 FPS performance for flawless
+                    SEO.</li>
+                  <li><strong>Automated Guardrails:</strong> Built-in AI feedback loops continuously
+                    monitor code generation, automatically catching common performance traps and
+                    heavy assets before deployment.</li>
+                  <li><strong>Wix Media Optimization</strong> (provided by wix-media plugin):
+                    Automatic image formatting, responsive sizing, CDN and asset optimization ensure
+                    ultra-fast media delivery.</li>
                 </ul>
               </div>
             </div>
-            <!-- Lower Costs & Maintenance -->
             <div class="bento-card glass-panel bento-card--risk">
               <h3 class="headline-sm">Radically Lower Costs &amp; Maintenance</h3>
-              <p class="body-md text-muted">By reusing secure, pre-packaged code, AI agents avoid re-implementing core logic. This eliminates bugs, security flaws, and performance drops while drastically cutting token costs and maintenance overhead.</p>
+              <p class="body-md text-muted">By reusing secure, pre-packaged code, AI agents avoid
+                re-implementing core logic. This eliminates bugs, security flaws, and performance
+                drops while drastically cutting token costs and maintenance overhead.</p>
             </div>
-            <!-- Zero-Coding Assembly -->
             <div class="bento-card glass-panel bento-card--assembly">
               <h3 class="headline-sm">Zero-Coding App Assembly</h3>
-              <p class="body-md text-muted">Agents instantly build full-stack apps by dropping in battle-tested Jay Plugins (NPM packages). They map data contracts directly to the visual UI—no manual wiring, prop-drilling, or coding required.</p>
+              <p class="body-md text-muted">Agents instantly build full-stack apps by dropping in
+                battle-tested Jay Plugins (NPM packages). They map data contracts directly to the
+                visual UI—no manual wiring, prop-drilling, or coding required.</p>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Sponsors                                    -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="sponsors-section">
-        <div class="container text-center">
-          <span class="section-label">Sponsored By</span>
-          <div class="sponsors-logos">
-            <a class="sponsor-link" href="https://www.wix.com" target="_blank" rel="noopener noreferrer" aria-label="Wix">
-              <svg fill="#ffffff" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Wix</title><path d="m0 7.354 2.113 9.292h.801a1.54 1.54 0 0 0 1.506-1.218l1.351-6.34a.171.171 0 0 1 .167-.137c.08 0 .15.058.167.137l1.352 6.34a1.54 1.54 0 0 0 1.506 1.218h.805l2.113-9.292h-.565c-.62 0-1.159.43-1.296 1.035l-1.26 5.545-1.106-5.176a1.76 1.76 0 0 0-2.19-1.324c-.639.176-1.113.716-1.251 1.365l-1.094 5.127-1.26-5.537A1.33 1.33 0 0 0 .563 7.354H0zm13.992 0a.951.951 0 0 0-.951.95v8.342h.635a.952.952 0 0 0 .951-.95V7.353h-.635zm1.778 0 3.158 4.66-3.14 4.632h1.325c.368 0 .712-.181.918-.486l1.756-2.59a.12.12 0 0 1 .197 0l1.754 2.59c.206.305.55.486.918.486h1.326l-3.14-4.632L24 7.354h-1.326c-.368 0-.712.181-.918.486l-1.772 2.617a.12.12 0 0 1-.197 0L18.014 7.84a1.108 1.108 0 0 0-.918-.486H15.77z"/></svg>
-            </a>
-          </div>
+        <div class="container text-center"><span class="section-label">Sponsored By</span>
+          <div class="sponsors-logos"><a class="sponsor-link" href="https://www.wix.com"
+              target="_blank" rel="noopener noreferrer" aria-label="Wix"><svg fill="#ffffff"
+                role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>Wix</title>
+                <path
+                  d="m0 7.354 2.113 9.292h.801a1.54 1.54 0 0 0 1.506-1.218l1.351-6.34a.171.171 0 0 1 .167-.137c.08 0 .15.058.167.137l1.352 6.34a1.54 1.54 0 0 0 1.506 1.218h.805l2.113-9.292h-.565c-.62 0-1.159.43-1.296 1.035l-1.26 5.545-1.106-5.176a1.76 1.76 0 0 0-2.19-1.324c-.639.176-1.113.716-1.251 1.365l-1.094 5.127-1.26-5.537A1.33 1.33 0 0 0 .563 7.354H0zm13.992 0a.951.951 0 0 0-.951.95v8.342h.635a.952.952 0 0 0 .951-.95V7.353h-.635zm1.778 0 3.158 4.66-3.14 4.632h1.325c.368 0 .712-.181.918-.486l1.756-2.59a.12.12 0 0 1 .197 0l1.754 2.59c.206.305.55.486.918.486h1.326l-3.14-4.632L24 7.354h-1.326c-.368 0-.712.181-.918.486l-1.772 2.617a.12.12 0 0 1-.197 0L18.014 7.84a1.108 1.108 0 0 0-.918-.486H15.77z">
+                </path>
+              </svg></a></div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- CTA                                         -->
-      <!-- ════════════════════════════════════════════ -->
       <section id="cta" class="cta-section">
         <div class="container">
           <div class="cta-box glass-panel">
             <div class="cta-glow-tl"></div>
             <div class="cta-glow-br"></div>
             <h2 class="headline-lg">Start Building the AI-Native Web</h2>
-            <div class="cta-buttons">
-              <a class="btn-cta-primary" href="/get-started">Get Started</a>
-              <div class="cmd-bar">
-                <span class="cmd-bar-text">npm create jay@latest</span>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
-                    <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                    <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
-              </div>
+            <div class="cta-buttons"><a class="btn-cta-primary" href="/get-started">Get Started</a>
+              <div class="cmd-bar"><span class="cmd-bar-text">npm create
+                  jay@latest</span><jay:clipboard-copy text="npm create jay@latest"><button
+                    ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor"
+                    aria-label="Copy install command"><span if="!copied"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg></span><span if="copied"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span><span if="copied" class="copy-tooltip" role="status"
+                      aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
             </div>
           </div>
         </div>
       </section>
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
+  </div>
+</body>
 
-    </main>
-
-    <jay:SiteFooter />
-
-    </div>
-  </body>
 </html>

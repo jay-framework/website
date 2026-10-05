@@ -1,770 +1,1378 @@
 <html lang="en">
-  <head>
-    <title>{title}</title>
-    <meta name="description" content="{description}">
-    <script type="application/jay-data" contract="./page.jay-contract"></script>
-    <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
-    <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
-    <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
-    <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
-    <link rel="stylesheet" href="../../styles/theme.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-      /* ── Shared ── */
-      .section { padding: 96px 0; }
-      .section-label {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 16px;
-        color: var(--color-primary);
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-      }
-      .text-muted { color: var(--color-text-muted); }
-      .text-center { text-align: center; }
 
-      .glass-panel {
-        background: rgba(10, 15, 30, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(0, 210, 255, 0.1);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .glass-panel:hover {
-        border-color: rgba(0, 210, 255, 0.3);
-        box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
-      }
+<head>
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <script type="application/jay-data" contract="./page.jay-contract"></script>
+  <script type="application/jay-headless" src="../../components/site-header/site-header"
+    contract="../../components/site-header/site-header.jay-contract"
+    template="../../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../../components/site-footer/site-footer"
+    contract="../../components/site-footer/site-footer.jay-contract"
+    template="../../components/site-footer/site-footer.jay-html"></script>
+  <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
+  <link rel="icon" type="image/svg+xml"
+    href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ── Shared ── */
+    .section {
+      padding: 96px 0;
+    }
 
-      .gs-code {
-        background: var(--color-surface-high);
-        border: 1px solid var(--color-outline-variant);
-        padding: 2px 8px; /* design-system: allow */
-        border-radius: 4px; /* design-system: allow */
-        font-family: var(--font-mono);
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--color-secondary-dim);
-      }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--color-primary);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
 
-      /* ── Hero ── */
-      .gs-hero {
-        position: relative;
-        padding: 160px 0 64px;
-        overflow: hidden;
-      }
-      .gs-hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        z-index: 0;
-      }
-      .gs-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .gs-hero-headline {
-        font-family: var(--font-display);
-        font-size: clamp(32px, 5vw, 48px);
-        line-height: 1.15;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--color-text);
-      }
-      .gs-hero-subtitle {
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--color-text-muted);
-        max-width: 700px;
-        margin: 24px auto 0;
-      }
-      .gs-hero-cmd {
-        display: flex;
-        justify-content: center;
-        margin-top: 32px;
-      }
+    .text-muted {
+      color: var(--color-text-muted);
+    }
 
-      /* ── Command Bar (copy-to-clipboard) ── */
-      .cmd-bar {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--color-surface-high);
-        border: 1px solid var(--color-outline-variant);
-        border-radius: var(--radius-xl);
-        padding: 8px 8px 8px 20px;
-        transition: border-color 0.2s;
-        overflow: visible;
-      }
-      .cmd-bar:hover {
-        border-color: rgba(165, 231, 255, 0.25);
-      }
-      .cmd-bar-text {
-        font-family: var(--font-mono);
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--color-text-muted);
-        white-space: nowrap;
-        line-height: 20px;
-      }
-      .cmd-bar > :not(.cmd-bar-text) {
-        flex-shrink: 0;
-        overflow: visible;
-      }
-      .cmd-bar-copy {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: var(--radius-md);
-        border: none;
-        background: transparent;
-        color: var(--color-text-muted);
-        cursor: pointer;
-        transition: background 0.15s, color 0.15s;
-        overflow: visible;
-      }
-      .cmd-bar-copy:hover {
-        background: rgba(165, 231, 255, 0.1);
-        color: var(--color-primary);
-      }
-      .cmd-bar-copy .copy-tooltip {
-        bottom: calc(100% + 12px); /* design-system: allow */
-      }
+    .text-center {
+      text-align: center;
+    }
 
-      /* ── Terminal Demo Section ── */
-      .gs-demo { background: var(--color-surface); }
+    .glass-panel {
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+    }
+
+    .gs-code {
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      padding: 2px 8px;
+      /* design-system: allow */
+      border-radius: 4px;
+      /* design-system: allow */
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-secondary-dim);
+    }
+
+    /* ── Hero ── */
+    .gs-hero {
+      position: relative;
+      padding: 160px 0 64px;
+      overflow: hidden;
+    }
+
+    .gs-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .gs-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .gs-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    .gs-hero-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 24px auto 0;
+    }
+
+    .gs-hero-cmd {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* ── Command Bar (copy-to-clipboard) ── */
+    .cmd-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-surface-high);
+      border: 1px solid var(--color-outline-variant);
+      border-radius: var(--radius-xl);
+      padding: 8px 8px 8px 20px;
+      transition: border-color 0.2s;
+      overflow: visible;
+    }
+
+    .cmd-bar:hover {
+      border-color: rgba(165, 231, 255, 0.25);
+    }
+
+    .cmd-bar-text {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+      line-height: 20px;
+    }
+
+    .cmd-bar> :not(.cmd-bar-text) {
+      flex-shrink: 0;
+      overflow: visible;
+    }
+
+    .cmd-bar-copy {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      overflow: visible;
+    }
+
+    .cmd-bar-copy:hover {
+      background: rgba(165, 231, 255, 0.1);
+      color: var(--color-primary);
+    }
+
+    .cmd-bar-copy .copy-tooltip {
+      bottom: calc(100% + 12px);
+      /* design-system: allow */
+    }
+
+    /* ── Terminal Demo Section ── */
+    .gs-demo {
+      background: var(--color-surface);
+    }
+
+    .gs-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
       .gs-split {
-        display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 55fr 45fr;
         gap: 48px;
-        align-items: start;
       }
-      @media (min-width: 1024px) {
-        .gs-split {
-          grid-template-columns: 55fr 45fr;
-          gap: 48px;
-        }
+    }
+
+    /* ── Terminal Card ── */
+    .gs-term {
+      background: var(--color-surface-low);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-outline-variant);
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+
+    .gs-term-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--color-surface-lowest);
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+
+    .gs-term-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34d399;
+    }
+
+    .gs-term-bar-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-outline);
+    }
+
+    .gs-term-body {
+      padding: 20px 24px;
+      font-size: 13px;
+      line-height: 20px;
+      color: var(--color-text);
+      overflow-x: auto;
+    }
+
+    .gs-term-hint {
+      padding: 8px 20px;
+      background: var(--color-surface-lowest);
+      border-top: 1px solid var(--color-outline-variant);
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--color-outline);
+    }
+
+    /* Terminal lines */
+    .gs-ln {
+      white-space: pre;
+      min-height: 20px;
+    }
+
+    .gs-prompt {
+      color: var(--color-outline);
+    }
+
+    .gs-q {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .gs-check {
+      color: #34d399;
+    }
+
+    .gs-dim {
+      color: var(--color-outline);
+    }
+
+    .gs-path {
+      color: var(--color-secondary-dim);
+    }
+
+    .gs-ready {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .gs-link {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    /* ── Terminal Animation ── */
+    .gs-anim {
+      opacity: 0;
+      animation: gs-reveal 0.3s ease forwards;
+    }
+
+    @keyframes gs-reveal {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .gs-type {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      vertical-align: bottom;
+    }
+
+    .gs-type--cmd {
+      animation: gs-w22 1.1s steps(22, end) 0.5s forwards;
+    }
+
+    .gs-type--name {
+      animation: gs-w8 0.48s steps(8, end) 3.5s forwards;
+    }
+
+    .gs-type--cd {
+      animation: gs-w11 0.55s steps(11, end) 11.0s forwards;
+    }
+
+    .gs-type--dev {
+      animation: gs-w11 0.55s steps(11, end) 12.5s forwards;
+    }
+
+    @keyframes gs-w22 {
+      to {
+        width: 22ch;
+      }
+    }
+
+    @keyframes gs-w8 {
+      to {
+        width: 8ch;
+      }
+    }
+
+    @keyframes gs-w11 {
+      to {
+        width: 11ch;
+      }
+    }
+
+    /* Blinking cursor after last typed text */
+    .gs-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: var(--color-secondary-dim);
+      vertical-align: text-bottom;
+      margin-left: 1px;
+      opacity: 0;
+    }
+
+    .gs-cursor--active {
+      opacity: 1;
+      animation: gs-blink 1s step-end infinite;
+      animation-delay: 14s;
+    }
+
+    @keyframes gs-blink {
+
+      0%,
+      100% {
+        opacity: 1;
       }
 
-      /* ── Terminal Card ── */
-      .gs-term {
-        background: var(--color-surface-low);
-        border-radius: var(--radius-2xl);
-        border: 1px solid var(--color-outline-variant);
-        overflow: hidden;
-        font-family: var(--font-mono);
-      }
-      .gs-term-bar {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: var(--color-surface-lowest);
-        border-bottom: 1px solid var(--color-outline-variant);
-      }
-      .gs-term-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #34d399;
-      }
-      .gs-term-bar-title {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--color-outline);
-      }
-      .gs-term-body {
-        padding: 20px 24px;
-        font-size: 13px;
-        line-height: 20px;
-        color: var(--color-text);
-        overflow-x: auto;
-      }
-      .gs-term-hint {
-        padding: 8px 20px;
-        background: var(--color-surface-lowest);
-        border-top: 1px solid var(--color-outline-variant);
-        font-size: 12px;
-        line-height: 16px;
-        color: var(--color-outline);
-      }
-
-      /* Terminal lines */
-      .gs-ln { white-space: pre; min-height: 20px; }
-      .gs-prompt { color: var(--color-outline); }
-      .gs-q { color: var(--color-primary); font-weight: 600; }
-      .gs-check { color: #34d399; }
-      .gs-dim { color: var(--color-outline); }
-      .gs-path { color: var(--color-secondary-dim); }
-      .gs-ready { color: #34d399; font-weight: 600; }
-      .gs-link { color: var(--color-primary); text-decoration: underline; }
-
-      /* ── Terminal Animation ── */
-      .gs-anim {
+      50% {
         opacity: 0;
-        animation: gs-reveal 0.3s ease forwards;
       }
-      @keyframes gs-reveal {
-        to { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gs-anim {
+        opacity: 1;
+        animation: none;
       }
 
       .gs-type {
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        width: 0;
-        vertical-align: bottom;
+        width: auto;
+        animation: none;
+        overflow: visible;
       }
-      .gs-type--cmd  { animation: gs-w22 1.1s steps(22, end) 0.5s forwards; }
-      .gs-type--name { animation: gs-w8 0.48s steps(8, end) 3.5s forwards; }
-      .gs-type--cd   { animation: gs-w11 0.55s steps(11, end) 11.0s forwards; }
-      .gs-type--dev  { animation: gs-w11 0.55s steps(11, end) 12.5s forwards; }
 
-      @keyframes gs-w22 { to { width: 22ch; } }
-      @keyframes gs-w8  { to { width: 8ch; } }
-      @keyframes gs-w11 { to { width: 11ch; } }
-
-      /* Blinking cursor after last typed text */
       .gs-cursor {
-        display: inline-block;
-        width: 7px;
-        height: 14px;
-        background: var(--color-secondary-dim);
-        vertical-align: text-bottom;
-        margin-left: 1px;
-        opacity: 0;
+        animation: none;
       }
+
       .gs-cursor--active {
         opacity: 1;
-        animation: gs-blink 1s step-end infinite;
-        animation-delay: 14s;
+        animation: none;
       }
-      @keyframes gs-blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+    }
+
+    /* ── Quick Start Panel ── */
+    .gs-explain h2 {
+      margin-bottom: 16px;
+    }
+
+    .gs-explain>p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 32px;
+    }
+
+    .gs-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .gs-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .gs-step-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .gs-step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 210, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .gs-step-line {
+      width: 1px;
+      flex: 1;
+      background: rgba(0, 210, 255, 0.15);
+      min-height: 24px;
+    }
+
+    .gs-step:last-child .gs-step-line {
+      display: none;
+    }
+
+    .gs-step-body {
+      padding-bottom: 24px;
+    }
+
+    .gs-step:last-child .gs-step-body {
+      padding-bottom: 0;
+    }
+
+    .gs-step-body h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-bottom: 4px;
+      padding-top: 4px;
+    }
+
+    .gs-step-body p {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 22px;
+      /* design-system: allow */
+      margin: 0;
+    }
+
+    /* ── Structure Section ── */
+    .gs-structure {
+      background: var(--color-surface);
+    }
+
+    .gs-struct-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 1024px) {
+      .gs-struct-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .gs-tree-card {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-outline-variant);
+      background: var(--color-surface-low);
+    }
+
+    .gs-tree-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--color-surface-lowest);
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+
+    .gs-tree-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .gs-tree-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-outline);
+    }
+
+    .gs-tree-body {
+      padding: 20px 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 24px;
+      color: var(--color-text-muted);
+      margin: 0;
+      overflow-x: auto;
+    }
+
+    .gs-tree-ln {
+      white-space: pre;
+      min-height: 24px;
+    }
+
+    .gs-tree-body .gs-tree-file {
+      color: var(--color-primary);
+    }
+
+    .gs-tree-body .gs-tree-dir {
+      color: var(--color-secondary-dim);
+    }
+
+    .gs-tree-body .gs-tree-comment {
+      color: var(--color-outline);
+    }
+
+    .gs-struct-desc h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+
+    .gs-struct-desc p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+    }
+
+    .gs-struct-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+    }
+
+    .gs-struct-list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .gs-struct-list li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .gs-struct-list li strong {
+      color: var(--color-text);
+    }
+
+    /* ── Non-Interactive Mode Section ── */
+    .gs-noninteractive-section {
+      background: var(--color-surface);
+    }
+
+    .gs-noninteractive-card {
+      max-width: 900px;
+      margin: 48px auto 0;
+      padding: 32px 40px;
+      border-radius: var(--radius-2xl);
+    }
+
+    @media (max-width: 639px) {
+      .gs-noninteractive-card {
+        padding: 24px;
+      }
+    }
+
+    .gs-noninteractive-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 12px;
+    }
+
+    .gs-noninteractive-card p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .gs-code-block {
+      background: var(--color-surface-low);
+      border: 1px solid var(--color-outline-variant);
+      border-radius: var(--radius-xl);
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 20px;
+      color: var(--color-text-muted);
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ── Commands Section ── */
+    .gs-commands {
+      background: var(--color-surface-lowest);
+    }
+
+    .gs-table-wrap {
+      max-width: 700px;
+      margin: 48px auto 0;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-outline-variant);
+    }
+
+    .gs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .gs-table th {
+      text-align: left;
+      padding: 12px 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-outline);
+      background: var(--color-surface-lowest);
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+
+    .gs-table td {
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      vertical-align: top;
+    }
+
+    .gs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .gs-table td:first-child {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-secondary-dim);
+      white-space: nowrap;
+    }
+
+    .gs-table td:last-child {
+      color: var(--color-text-muted);
+    }
+
+    /* ── Wix Config Section ── */
+    .gs-wix {
+      background: var(--color-surface-lowest);
+    }
+
+    .gs-details {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 48px auto 0;
+    }
+
+    .gs-details summary {
+      padding: 24px 32px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+    }
+
+    .gs-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .gs-details summary::marker {
+      display: none;
+      content: '';
+    }
+
+    .gs-details summary h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+
+    .gs-details-chevron {
+      transition: transform 0.2s ease;
+      color: var(--color-outline);
+    }
+
+    .gs-details[open] .gs-details-chevron {
+      transform: rotate(180deg);
+    }
+
+    .gs-details-body {
+      padding: 0 32px 32px;
+    }
+
+    .gs-details-body p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .gs-wix-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .gs-wix-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .gs-wix-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(167, 139, 250, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #a78bfa;
+      flex-shrink: 0;
+    }
+
+    .gs-wix-step-body h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gs-wix-step-body p {
+      margin-bottom: 8px;
+    }
+
+    /* ── CTA Section ── */
+    .gs-cta {
+      padding: 96px 0;
+    }
+
+    .gs-cta-box {
+      padding: 64px;
+      border-radius: 2rem;
+      border: 2px solid rgba(165, 231, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    @media (max-width: 639px) {
+      .gs-cta-box {
+        padding: 32px 24px;
+      }
+    }
+
+    .gs-cta-glow-tl {
+      position: absolute;
+      top: -96px;
+      /* design-system: allow */
+      left: -96px;
+      /* design-system: allow */
+      width: 256px;
+      height: 256px;
+      background: rgba(165, 231, 255, 0.2);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .gs-cta-glow-br {
+      position: absolute;
+      bottom: -96px;
+      /* design-system: allow */
+      right: -96px;
+      /* design-system: allow */
+      width: 256px;
+      height: 256px;
+      background: rgba(0, 244, 254, 0.1);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .gs-cta-box h2 {
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gs-next-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gs-next-steps li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .gs-next-steps li::before {
+      content: '\2022';
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .gs-next-steps li strong {
+      color: var(--color-text);
+    }
+
+    .gs-cta-buttons {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .gs-anim { opacity: 1; animation: none; }
-        .gs-type { width: auto; animation: none; overflow: visible; }
-        .gs-cursor { animation: none; }
-        .gs-cursor--active { opacity: 1; animation: none; }
-      }
-
-      /* ── Quick Start Panel ── */
-      .gs-explain h2 { margin-bottom: 16px; }
-      .gs-explain > p {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-        margin-bottom: 32px;
-      }
-      .gs-steps {
+      .header-inner {
         display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .gs-step {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        position: relative;
-      }
-      .gs-step-marker {
-        display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        flex-shrink: 0;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
       }
-      .gs-step-dot {
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
+        }
+      }
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
+      }
+
+      .header-brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand-icon {
         width: 32px;
         height: 32px;
-        border-radius: 50%;
-        background: rgba(0, 210, 255, 0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-mono);
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--color-primary);
         flex-shrink: 0;
       }
-      .gs-step-line {
-        width: 1px;
-        flex: 1;
-        background: rgba(0, 210, 255, 0.15);
-        min-height: 24px;
-      }
-      .gs-step:last-child .gs-step-line { display: none; }
-      .gs-step-body { padding-bottom: 24px; }
-      .gs-step:last-child .gs-step-body { padding-bottom: 0; }
-      .gs-step-body h3 {
-        font-family: var(--font-display);
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 24px;
-        margin-bottom: 4px;
-        padding-top: 4px;
-      }
-      .gs-step-body p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-        line-height: 22px; /* design-system: allow */
-        margin: 0;
+
+      .brand-text-wrap {
+        position: relative;
+        display: inline-block;
       }
 
+      .header-brand .brand-base {
+        color: var(--color-primary);
+      }
 
+      .header-brand .brand-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brand-shimmer 5s linear infinite;
+      }
 
-      /* ── Structure Section ── */
-      .gs-structure { background: var(--color-surface); }
-      .gs-struct-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 48px;
-        align-items: start;
-        margin-top: 48px;
-      }
-      @media (min-width: 1024px) {
-        .gs-struct-layout { grid-template-columns: 1fr 1fr; }
-      }
-      .gs-tree-card {
-        border-radius: var(--radius-2xl);
-        overflow: hidden;
-        border: 1px solid var(--color-outline-variant);
-        background: var(--color-surface-low);
-      }
-      .gs-tree-bar {
-        display: flex;
+      .header-nav {
+        display: none;
         align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: var(--color-surface-lowest);
-        border-bottom: 1px solid var(--color-outline-variant);
+        gap: 32px;
       }
-      .gs-tree-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--color-primary);
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
       }
-      .gs-tree-title {
+
+      .header-nav a {
         font-family: var(--font-mono);
         font-size: 12px;
         font-weight: 500;
-        color: var(--color-outline);
-      }
-      .gs-tree-body {
-        padding: 20px 24px;
-        font-family: var(--font-mono);
-        font-size: 13px;
-        line-height: 24px;
         color: var(--color-text-muted);
-        margin: 0;
-        overflow-x: auto;
+        text-decoration: none;
+        transition: color 0.3s;
       }
-      .gs-tree-ln {
-        white-space: pre;
-        min-height: 24px;
-      }
-      .gs-tree-body .gs-tree-file { color: var(--color-primary); }
-      .gs-tree-body .gs-tree-dir { color: var(--color-secondary-dim); }
-      .gs-tree-body .gs-tree-comment { color: var(--color-outline); }
-      .gs-struct-desc h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-bottom: 16px;
-      }
-      .gs-struct-desc p {
-        color: var(--color-text-muted);
-        font-size: 16px;
-        line-height: 26px;
-        margin-bottom: 24px;
-      }
-      .gs-struct-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 0;
-      }
-      .gs-struct-list li {
-        position: relative;
-        padding-left: 16px;
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-      }
-      .gs-struct-list li::before {
-        content: '\2022';
+
+      .header-nav a:hover {
         color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
-      .gs-struct-list li strong { color: var(--color-text); }
-
-      /* ── Non-Interactive Mode Section ── */
-      .gs-noninteractive-section { background: var(--color-surface); }
-      .gs-noninteractive-card {
-        max-width: 900px;
-        margin: 48px auto 0;
-        padding: 32px 40px;
-        border-radius: var(--radius-2xl);
-      }
-      @media (max-width: 639px) {
-        .gs-noninteractive-card { padding: 24px; }
-      }
-      .gs-noninteractive-card h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-bottom: 12px;
-      }
-      .gs-noninteractive-card p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-        margin-bottom: 16px;
-      }
-      .gs-code-block {
-        background: var(--color-surface-low);
-        border: 1px solid var(--color-outline-variant);
-        border-radius: var(--radius-xl);
-        padding: 16px 20px;
-        font-family: var(--font-mono);
-        font-size: 13px;
-        line-height: 20px;
-        color: var(--color-text-muted);
-        overflow-x: auto;
-        white-space: pre;
+        text-decoration: none;
       }
 
-      /* ── Commands Section ── */
-      .gs-commands { background: var(--color-surface-lowest); }
-      .gs-table-wrap {
-        max-width: 700px;
-        margin: 48px auto 0;
-        border-radius: var(--radius-2xl);
-        overflow: hidden;
-        border: 1px solid var(--color-outline-variant);
-      }
-      .gs-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-      }
-      .gs-table th {
-        text-align: left;
-        padding: 12px 24px;
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-outline);
-        background: var(--color-surface-lowest);
-        border-bottom: 1px solid var(--color-outline-variant);
-      }
-      .gs-table td {
-        padding: 12px 24px;
-        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
-        vertical-align: top;
-      }
-      .gs-table tr:last-child td { border-bottom: none; }
-      .gs-table td:first-child {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        color: var(--color-secondary-dim);
-        white-space: nowrap;
-      }
-      .gs-table td:last-child {
-        color: var(--color-text-muted);
-      }
-
-      /* ── Wix Config Section ── */
-      .gs-wix { background: var(--color-surface-lowest); }
-      .gs-details {
-        border-radius: var(--radius-2xl);
-        overflow: hidden;
-        max-width: 900px;
-        margin: 48px auto 0;
-      }
-      .gs-details summary {
-        padding: 24px 32px;
-        cursor: pointer;
+      .header-actions {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        list-style: none;
-      }
-      .gs-details summary::-webkit-details-marker { display: none; }
-      .gs-details summary::marker { display: none; content: ''; }
-      .gs-details summary h3 {
-        font-family: var(--font-display);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px;
-      }
-      .gs-details-chevron {
-        transition: transform 0.2s ease;
-        color: var(--color-outline);
-      }
-      .gs-details[open] .gs-details-chevron {
-        transform: rotate(180deg);
-      }
-      .gs-details-body {
-        padding: 0 32px 32px;
-      }
-      .gs-details-body p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
-        margin-bottom: 16px;
-      }
-      .gs-wix-steps {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        margin-top: 16px;
-      }
-      .gs-wix-step {
-        display: flex;
         gap: 16px;
-        align-items: flex-start;
       }
-      .gs-wix-step-num {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: rgba(167, 139, 250, 0.15);
+
+      .btn-get-started {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
+        border: none;
+        border-radius: var(--radius-default);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .footer-heading {
+        color: var(--color-primary);
         font-family: var(--font-mono);
         font-size: 12px;
         font-weight: 700;
-        color: #a78bfa;
-        flex-shrink: 0;
-      }
-      .gs-wix-step-body h4 {
-        font-family: var(--font-display);
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 24px;
-        margin-bottom: 4px;
-      }
-      .gs-wix-step-body p {
-        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
       }
 
-      /* ── CTA Section ── */
-      .gs-cta { padding: 96px 0; }
-      .gs-cta-box {
-        padding: 64px;
-        border-radius: 2rem;
-        border: 2px solid rgba(165, 231, 255, 0.2);
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-      }
-      @media (max-width: 639px) {
-        .gs-cta-box { padding: 32px 24px; }
-      }
-      .gs-cta-glow-tl {
-        position: absolute;
-        top: -96px; /* design-system: allow */
-        left: -96px; /* design-system: allow */
-        width: 256px; height: 256px;
-        background: rgba(165, 231, 255, 0.2);
-        border-radius: 50%;
-        filter: blur(48px);
-        pointer-events: none;
-      }
-      .gs-cta-glow-br {
-        position: absolute;
-        bottom: -96px; /* design-system: allow */
-        right: -96px; /* design-system: allow */
-        width: 256px; height: 256px;
-        background: rgba(0, 244, 254, 0.1);
-        border-radius: 50%;
-        filter: blur(48px);
-        pointer-events: none;
-      }
-      .gs-cta-box h2 {
-        margin-bottom: 24px;
-        position: relative;
-        z-index: 1;
-      }
-      .gs-next-steps {
+      .footer-links {
         list-style: none;
         display: flex;
         flex-direction: column;
         gap: 12px;
-        padding: 0;
-        max-width: 600px;
-        margin: 0 auto 32px;
-        text-align: left;
-        position: relative;
-        z-index: 1;
       }
-      .gs-next-steps li {
-        position: relative;
-        padding-left: 16px;
+
+      .footer-links a {
         color: var(--color-text-muted);
-        font-size: 15px;
-        line-height: 24px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
       }
-      .gs-next-steps li::before {
-        content: '\2022';
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-      }
-      .gs-next-steps li strong { color: var(--color-text); }
-      .gs-cta-buttons {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page-root">
 
-    <jay:SiteHeader />
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
 
+<body>
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
     <main>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Hero                                        -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="gs-hero">
         <div class="gs-hero-grid"></div>
         <div class="container">
-          <div class="gs-hero-content">
-            <span class="section-label">Quick Start</span>
+          <div class="gs-hero-content"><span class="section-label">Quick Start</span>
             <h1 class="gs-hero-headline" style="margin-top: 16px;">Get Started with Jay</h1>
-            <p class="gs-hero-subtitle">Jay is an AI-native full-stack framework. You work alongside AI agents — they generate pages, you guide the design. One command to scaffold a project.</p>
+            <p class="gs-hero-subtitle">Jay is an AI-native full-stack framework. You work alongside
+              AI agents — they generate pages, you guide the design. One command to scaffold a
+              project.</p>
             <div class="gs-hero-cmd">
-              <div class="cmd-bar">
-                <span class="cmd-bar-text">npm create jay@latest</span>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
-                    <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                    <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
-              </div>
+              <div class="cmd-bar"><span class="cmd-bar-text">npm create
+                  jay@latest</span><jay:clipboard-copy text="npm create jay@latest"><button
+                    ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor"
+                    aria-label="Copy install command"><span if="!copied"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg></span><span if="copied"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span><span if="copied" class="copy-tooltip" role="status"
+                      aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Terminal Demo + Quick Start                 -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section gs-demo">
         <div class="container">
           <div class="gs-split">
-
-            <!-- Left: Animated Terminal -->
             <div class="gs-term" aria-label="Animated terminal showing Jay project creation">
-              <div class="gs-term-bar">
-                <span class="gs-term-dot"></span>
-                <span class="gs-term-bar-title">Create Jay Stack Project</span>
-              </div>
+              <div class="gs-term-bar"><span class="gs-term-dot"></span><span
+                  class="gs-term-bar-title">Create Jay Stack Project</span></div>
               <div class="gs-term-body">
-                <!-- Step 1: Command -->
-                <div class="gs-ln"><span class="gs-prompt">&gt; </span><span class="gs-type gs-type--cmd">npm create jay@latest</span></div>
-
-                <!-- Step 2: Header + project name -->
+                <div class="gs-ln"><span class="gs-prompt">&gt; </span><span
+                    class="gs-type gs-type--cmd">npm create jay@latest</span></div>
                 <div class="gs-anim" style="animation-delay: 2.5s;">
                   <div class="gs-ln"></div>
-                  <div class="gs-ln" style="font-weight: 600;">  Create Jay Stack Project</div>
+                  <div class="gs-ln" style="font-weight: 600;"> Create Jay Stack Project</div>
                   <div class="gs-ln"></div>
-                  <div class="gs-ln">  <span class="gs-q">?</span> Project name: <span class="gs-type gs-type--name">my-store</span></div>
+                  <div class="gs-ln"> <span class="gs-q">?</span> Project name: <span
+                      class="gs-type gs-type--name">my-store</span></div>
                 </div>
-
-                <!-- Step 3: Plugin selection -->
                 <div class="gs-anim" style="animation-delay: 5.0s;">
-                  <div class="gs-ln">  <span class="gs-q">?</span> Select plugins to install:</div>
-                  <div class="gs-ln gs-dim">    ── Jay Framework ──</div>
-                  <div class="gs-ln">    <span class="gs-check">&#x25C9;</span> UI Kit</div>
-                  <div class="gs-ln">    <span class="gs-check">&#x25C9;</span> Accessibility validator</div>
-                  <div class="gs-ln">    <span class="gs-check">&#x25C9;</span> SEO validator</div>
-                  <div class="gs-ln">    <span class="gs-check">&#x25C9;</span> Design system validator</div>
-                  <div class="gs-ln gs-dim">    ── Wix ──</div>
-                  <div class="gs-ln">    <span class="gs-dim">&#x25CB;</span><span class="gs-dim"> Wix Stores</span></div>
-                  <div class="gs-ln">    <span class="gs-dim">&#x25CB;</span><span class="gs-dim"> Wix Members</span></div>
+                  <div class="gs-ln"> <span class="gs-q">?</span> Select plugins to install:</div>
+                  <div class="gs-ln gs-dim"> ── Jay Framework ──</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x25C9;</span> UI Kit</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x25C9;</span> Accessibility validator
+                  </div>
+                  <div class="gs-ln"> <span class="gs-check">&#x25C9;</span> SEO validator</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x25C9;</span> Design system validator
+                  </div>
+                  <div class="gs-ln gs-dim"> ── Wix ──</div>
+                  <div class="gs-ln"> <span class="gs-dim">&#x25CB;</span><span class="gs-dim"> Wix
+                      Stores</span></div>
+                  <div class="gs-ln"> <span class="gs-dim">&#x25CB;</span><span class="gs-dim"> Wix
+                      Members</span></div>
                 </div>
-
-                <!-- Step 4: Creating project -->
                 <div class="gs-anim" style="animation-delay: 7.0s;">
                   <div class="gs-ln"></div>
-                  <div class="gs-ln">  Creating project in <span class="gs-path">./my-store</span>...</div>
+                  <div class="gs-ln"> Creating project in <span class="gs-path">./my-store</span>...
+                  </div>
                 </div>
                 <div class="gs-anim" style="animation-delay: 7.5s;">
-                  <div class="gs-ln">    <span class="gs-check">&#x2713;</span> Created project structure</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x2713;</span> Created project
+                    structure</div>
                 </div>
-
-                <!-- Step 5: Installing -->
                 <div class="gs-anim" style="animation-delay: 8.0s;">
-                  <div class="gs-ln">    <span class="gs-check">&#x2713;</span> Installed dependencies</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x2713;</span> Installed dependencies
+                  </div>
                 </div>
-
-                <!-- Step 6: Agent-kit + setup -->
                 <div class="gs-anim" style="animation-delay: 8.5s;">
-                  <div class="gs-ln">    <span class="gs-check">&#x2713;</span> Generated agent-kit</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x2713;</span> Generated agent-kit
+                  </div>
                 </div>
                 <div class="gs-anim" style="animation-delay: 9.0s;">
-                  <div class="gs-ln">    <span class="gs-check">&#x2713;</span> Plugin setup complete</div>
+                  <div class="gs-ln"> <span class="gs-check">&#x2713;</span> Plugin setup complete
+                  </div>
                 </div>
                 <div class="gs-anim" style="animation-delay: 9.5s;">
-                  <div class="gs-ln gs-ready">    Ready!</div>
+                  <div class="gs-ln gs-ready"> Ready!</div>
                 </div>
-
-                <!-- Step 7: cd + dev -->
                 <div class="gs-anim" style="animation-delay: 10.5s;">
                   <div class="gs-ln"></div>
-                  <div class="gs-ln"><span class="gs-prompt">&gt;  </span><span class="gs-type gs-type--cd">cd my-store</span></div>
+                  <div class="gs-ln"><span class="gs-prompt">&gt; </span><span
+                      class="gs-type gs-type--cd">cd my-store</span></div>
                 </div>
                 <div class="gs-anim" style="animation-delay: 12.0s;">
-                  <div class="gs-ln"><span class="gs-prompt">&gt;  </span><span class="gs-type gs-type--dev">npm run dev</span></div>
+                  <div class="gs-ln"><span class="gs-prompt">&gt; </span><span
+                      class="gs-type gs-type--dev">npm run dev</span></div>
                 </div>
-
-                <!-- Step 8: Dev server -->
                 <div class="gs-anim" style="animation-delay: 13.5s;">
                   <div class="gs-ln"></div>
-                  <div class="gs-ln">  &#x1F680; Jay Stack dev server started!</div>
-                  <div class="gs-ln">  &#x1F4F1; Dev Server: <span class="gs-link">http://localhost:3000</span></div>
-                  <div class="gs-ln">  &#x1F4C1; Pages directory: <span class="gs-path">./src/pages</span></div>
-                  <div class="gs-ln">  &#x1F4C1; Public folder: <span class="gs-path">./public</span></div>
+                  <div class="gs-ln"> &#x1F680; Jay Stack dev server started!</div>
+                  <div class="gs-ln"> &#x1F4F1; Dev Server: <span
+                      class="gs-link">http://localhost:3000</span></div>
+                  <div class="gs-ln"> &#x1F4C1; Pages directory: <span
+                      class="gs-path">./src/pages</span></div>
+                  <div class="gs-ln"> &#x1F4C1; Public folder: <span class="gs-path">./public</span>
+                  </div>
                 </div>
               </div>
-              <div class="gs-term-hint">The CLI walks you through project creation interactively</div>
+              <div class="gs-term-hint">The CLI walks you through project creation interactively
+              </div>
             </div>
-
-            <!-- Right: Quick Start Explanation -->
             <div class="gs-explain">
               <h2 class="headline-md">Three Steps to Launch</h2>
-              <p>One command scaffolds your project, installs dependencies, and generates the AI agent discovery kit.</p>
+              <p>One command scaffolds your project, installs dependencies, and generates the AI
+                agent discovery kit.</p>
               <div class="gs-steps">
                 <div class="gs-step">
                   <div class="gs-step-marker">
@@ -773,7 +1381,9 @@
                   </div>
                   <div class="gs-step-body">
                     <h3>Create</h3>
-                    <p>Run <code class="gs-code" jay-design="allow">npm create jay@latest</code> to scaffold a new project. Choose a project name and select the plugins you need.</p>
+                    <p>Run <code class="gs-code" jay-design="allow">npm create jay@latest</code> to
+                      scaffold a new project. Choose a project name and select the plugins you need.
+                    </p>
                   </div>
                 </div>
                 <div class="gs-step">
@@ -783,7 +1393,8 @@
                   </div>
                   <div class="gs-step-body">
                     <h3>Configure</h3>
-                    <p>Pick capabilities from AI guardrails to Wix headless integration. Jay installs everything and generates the agent-kit automatically.</p>
+                    <p>Pick capabilities from AI guardrails to Wix headless integration. Jay
+                      installs everything and generates the agent-kit automatically.</p>
                   </div>
                 </div>
                 <div class="gs-step">
@@ -792,156 +1403,202 @@
                   </div>
                   <div class="gs-step-body">
                     <h3>Develop</h3>
-                    <p>Start the dev server with <code class="gs-code" jay-design="allow">npm run dev</code>. AI agents read the agent-kit to understand your project and begin building pages.</p>
+                    <p>Start the dev server with <code class="gs-code" jay-design="allow">npm run
+                        dev</code>. AI agents read the agent-kit to understand your project and
+                      begin building pages.</p>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Non-Interactive Mode                        -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section gs-noninteractive-section">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">For AI Agents</span>
+          <div class="text-center"><span class="section-label">For AI Agents</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Non-Interactive Mode</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">AI agents can create projects without prompts. Pass all options as flags to skip the interactive CLI.</p>
+            <p class="headline-sm text-muted"
+              style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">AI
+              agents can create projects without prompts. Pass all options as flags to skip the
+              interactive CLI.</p>
           </div>
           <div class="gs-noninteractive-card glass-panel">
-            <div class="gs-code-block">npm create jay@latest -- --name my-store --plugins "UI Kit,SEO validator,Design system validator"</div>
-            <p style="margin-top: 16px; margin-bottom: 0;">Use exact plugin names, comma-separated, in quotes. All plugins from the interactive selector are available.</p>
+            <div class="gs-code-block">npm create jay@latest -- --name my-store --plugins "UI
+              Kit,SEO validator,Design system validator"</div>
+            <p style="margin-top: 16px; margin-bottom: 0;">Use exact plugin names, comma-separated,
+              in quotes. All plugins from the interactive selector are available.</p>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- What Gets Created                           -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section gs-structure">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">Project Structure</span>
+          <div class="text-center"><span class="section-label">Project Structure</span>
             <h2 class="headline-lg" style="margin-top: 16px;">What Gets Created</h2>
           </div>
           <div class="gs-struct-layout">
             <div class="gs-tree-card">
-              <div class="gs-tree-bar">
-                <span class="gs-tree-dot"></span>
-                <span class="gs-tree-title">my-store/</span>
-              </div>
+              <div class="gs-tree-bar"><span class="gs-tree-dot"></span><span
+                  class="gs-tree-title">my-store/</span></div>
               <div class="gs-tree-body">
-                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">src/</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;   &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-dir">pages/</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-html</span>      <span class="gs-tree-comment">&#x2190; your first page</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.ts</span>             <span class="gs-tree-comment">&#x2190; page component</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;       &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.jay-contract</span>   <span class="gs-tree-comment">&#x2190; data contract</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">public/</span>                     <span class="gs-tree-comment">&#x2190; static assets</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-dir">agent-kit/</span>                  <span class="gs-tree-comment">&#x2190; AI agent index</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">.jay</span>                        <span class="gs-tree-comment">&#x2190; project config</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">package.json</span></div>
-                <div class="gs-tree-ln"><span class="gs-dim">&#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-file">tsconfig.json</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-dir">src/</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;
+                    &#x2514;&#x2500;&#x2500;</span> <span class="gs-tree-dir">pages/</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;
+                    &#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-file">page.jay-html</span><span class="gs-tree-comment">&#x2190;
+                    your first page</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;
+                    &#x251C;&#x2500;&#x2500;</span> <span class="gs-tree-file">page.ts</span> <span
+                    class="gs-tree-comment">&#x2190; page component</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2502;
+                    &#x2514;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-file">page.jay-contract</span> <span
+                    class="gs-tree-comment">&#x2190; data contract</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-dir">public/</span> <span class="gs-tree-comment">&#x2190; static
+                    assets</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-dir">agent-kit/</span> <span class="gs-tree-comment">&#x2190; AI
+                    agent index</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-file">.jay</span> <span class="gs-tree-comment">&#x2190; project
+                    config</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x251C;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-file">package.json</span></div>
+                <div class="gs-tree-ln"><span class="gs-dim">&#x2514;&#x2500;&#x2500;</span> <span
+                    class="gs-tree-file">tsconfig.json</span></div>
               </div>
             </div>
             <div class="gs-struct-desc">
               <h3>Everything in One Place</h3>
-              <p>Jay uses a file-based structure where each page is a directory under <code class="gs-code" jay-design="allow">src/pages/</code>. Three files define a page:</p>
+              <p>Jay uses a file-based structure where each page is a directory under <code
+                  class="gs-code" jay-design="allow">src/pages/</code>. Three files define a page:
+              </p>
               <ul class="gs-struct-list">
-                <li><strong>page.jay-html</strong> — the template with data bindings, conditions, and loops</li>
-                <li><strong>page.ts</strong> — the component that provides data across rendering phases</li>
-                <li><strong>page.jay-contract</strong> — the data shape that connects template and component</li>
+                <li><strong>page.jay-html</strong> — the template with data bindings, conditions,
+                  and loops</li>
+                <li><strong>page.ts</strong> — the component that provides data across rendering
+                  phases</li>
+                <li><strong>page.jay-contract</strong> — the data shape that connects template and
+                  component</li>
               </ul>
-              <p style="margin-top: 24px;">The <code class="gs-code" jay-design="allow">agent-kit/</code> folder is auto-generated. AI agents read it to discover plugins, contracts, and project structure.</p>
+              <p style="margin-top: 24px;">The <code class="gs-code"
+                  jay-design="allow">agent-kit/</code> folder is auto-generated. AI agents read it
+                to discover plugins, contracts, and project structure.</p>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Key Commands                                -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section gs-commands">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">Reference</span>
+          <div class="text-center"><span class="section-label">Reference</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Key Commands</h2>
           </div>
           <div class="gs-table-wrap glass-panel">
             <table class="gs-table">
               <thead>
-                <tr><th>Command</th><th>Description</th></tr>
+                <tr>
+                  <th>Command</th>
+                  <th>Description</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>npm run dev</td><td>Start dev server with hot reload</td></tr>
-                <tr><td>npm run build</td><td>Production build (SSR + static)</td></tr>
-                <tr><td>npm run serve</td><td>Serve the production build locally</td></tr>
-                <tr><td>npm run validate</td><td>Check templates, contracts, SEO, a11y</td></tr>
-                <tr><td>npm run agent-kit</td><td>Regenerate AI agent discovery index</td></tr>
-                <tr><td>npm run setup</td><td>Run plugin configuration</td></tr>
+                <tr>
+                  <td>npm run dev</td>
+                  <td>Start dev server with hot reload</td>
+                </tr>
+                <tr>
+                  <td>npm run build</td>
+                  <td>Production build (SSR + static)</td>
+                </tr>
+                <tr>
+                  <td>npm run serve</td>
+                  <td>Serve the production build locally</td>
+                </tr>
+                <tr>
+                  <td>npm run validate</td>
+                  <td>Check templates, contracts, SEO, a11y</td>
+                </tr>
+                <tr>
+                  <td>npm run agent-kit</td>
+                  <td>Regenerate AI agent discovery index</td>
+                </tr>
+                <tr>
+                  <td>npm run setup</td>
+                  <td>Run plugin configuration</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Wix Plugin Configuration                    -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="section gs-wix">
         <div class="container">
-          <div class="text-center">
-            <span class="section-label">Advanced</span>
+          <div class="text-center"><span class="section-label">Advanced</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Wix Plugin Configuration</h2>
-            <p class="headline-sm text-muted" style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">Additional setup for connecting to Wix backend services.</p>
+            <p class="headline-sm text-muted"
+              style="margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">
+              Additional setup for connecting to Wix backend services.</p>
           </div>
           <details class="gs-details glass-panel">
             <summary>
-              <h3>Setup Steps</h3>
-              <svg class="gs-details-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <h3>Setup Steps</h3><svg class="gs-details-chevron" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </summary>
             <div class="gs-details-body">
-              <p>If you selected any Wix plugins (Stores, Members, Media, Data, Deploy), follow these steps to connect to Wix backend services.</p>
+              <p>If you selected any Wix plugins (Stores, Members, Media, Data, Deploy), follow
+                these steps to connect to Wix backend services.</p>
               <div class="gs-wix-steps">
                 <div class="gs-wix-step">
                   <div class="gs-wix-step-num">1</div>
                   <div class="gs-wix-step-body">
                     <h4>Initialize Wix Credentials</h4>
-                    <p>Run <code class="gs-code" jay-design="allow">npm create @wix/new@latest init</code> to log in to Wix (or register for Wix Headless), connect your site, and generate the <code class="gs-code" jay-design="allow">wix.config.json</code> required for deployment — containing your site ID and client ID.</p>
+                    <p>Run <code class="gs-code" jay-design="allow">npm create @wix/new@latest
+                        init</code> to log in to Wix (or register for Wix Headless), connect your
+                      site, and generate the <code class="gs-code"
+                        jay-design="allow">wix.config.json</code> required for deployment —
+                      containing your site ID and client ID.</p>
                   </div>
                 </div>
                 <div class="gs-wix-step">
                   <div class="gs-wix-step-num">2</div>
                   <div class="gs-wix-step-body">
                     <h4>Run Plugin Setup</h4>
-                    <p>Run <code class="gs-code" jay-design="allow">npm run setup</code> to create <code class="gs-code" jay-design="allow">config/.wix.yaml</code> with connection details.</p>
+                    <p>Run <code class="gs-code" jay-design="allow">npm run setup</code> to
+                      create<code class="gs-code" jay-design="allow">config/.wix.yaml</code> with
+                      connection details.</p>
                   </div>
                 </div>
                 <div class="gs-wix-step">
                   <div class="gs-wix-step-num">3</div>
                   <div class="gs-wix-step-body">
                     <h4>Generate an API Key</h4>
-                    <p>Go to Wix Dashboard, Account Settings, API Keys. Create a new key and paste it into <code class="gs-code" jay-design="allow">config/.wix.yaml</code>.</p>
+                    <p>Go to Wix Dashboard, Account Settings, API Keys. Create a new key and paste
+                      it into <code class="gs-code" jay-design="allow">config/.wix.yaml</code>.</p>
                   </div>
                 </div>
                 <div class="gs-wix-step">
                   <div class="gs-wix-step-num">4</div>
                   <div class="gs-wix-step-body">
                     <h4>Plugin-Specific Setup</h4>
-                    <p><strong>Wix Stores:</strong> Install the Stores app from the Wix App Market.<br>
-                    <strong>Wix Deploy:</strong> Create a <code class="gs-code" jay-design="allow">jay-backend-files</code> collection in Wix CMS.<br>
-                    <strong>Wix Members:</strong> Enable member signup in your Wix Dashboard.<br>
-                    <strong>Wix Media &amp; Data:</strong> No additional setup required.</p>
+                    <p><strong>Wix Stores:</strong> Install the Stores app from the Wix App
+                      Market.<br><strong>Wix Deploy:</strong> Create a <code class="gs-code"
+                        jay-design="allow">jay-backend-files</code> collection in Wix
+                      CMS.<br><strong>Wix Members:</strong> Enable member signup in your Wix
+                      Dashboard.<br><strong>Wix Media &amp; Data:</strong> No additional setup
+                      required.</p>
                   </div>
                 </div>
                 <div class="gs-wix-step">
                   <div class="gs-wix-step-num">5</div>
                   <div class="gs-wix-step-body">
                     <h4>Verify</h4>
-                    <p>Run <code class="gs-code" jay-design="allow">npm run setup</code> again to validate all credentials are configured correctly.</p>
+                    <p>Run <code class="gs-code" jay-design="allow">npm run setup</code> again to
+                      validate all credentials are configured correctly.</p>
                   </div>
                 </div>
               </div>
@@ -949,10 +1606,6 @@
           </details>
         </div>
       </section>
-
-      <!-- ════════════════════════════════════════════ -->
-      <!-- Next Steps CTA                              -->
-      <!-- ════════════════════════════════════════════ -->
       <section class="gs-cta">
         <div class="container">
           <div class="gs-cta-box glass-panel">
@@ -960,32 +1613,71 @@
             <div class="gs-cta-glow-br"></div>
             <h2 class="headline-lg">Next Steps</h2>
             <ul class="gs-next-steps">
-              <li><strong>Add a page</strong> — Create <code class="gs-code" jay-design="allow">src/pages/about/page.jay-html</code> and <code class="gs-code" jay-design="allow">page.ts</code></li>
-              <li><strong>Define a contract</strong> — Describe your data shape in <code class="gs-code" jay-design="allow">.jay-contract</code></li>
-              <li><strong>Style with tokens</strong> — Create <code class="gs-code" jay-design="allow">DESIGN.md</code> with your color, typography, and spacing system</li>
+              <li><strong>Add a page</strong> — Create <code class="gs-code"
+                  jay-design="allow">src/pages/about/page.jay-html</code> and <code class="gs-code"
+                  jay-design="allow">page.ts</code></li>
+              <li><strong>Define a contract</strong> — Describe your data shape in <code
+                  class="gs-code" jay-design="allow">.jay-contract</code></li>
+              <li><strong>Style with tokens</strong> — Create <code class="gs-code"
+                  jay-design="allow">DESIGN.md</code> with your color, typography, and spacing
+                system</li>
               <li><strong>Connect data</strong> — Add Wix plugins for CMS, e-commerce, or auth</li>
-              <li><strong>Deploy</strong> — Run <code class="gs-code" jay-design="allow">npm run build</code> then host the output or deploy to Wix</li>
+              <li><strong>Deploy</strong> — Run <code class="gs-code" jay-design="allow">npm run
+                  build</code> then host the output or deploy to Wix</li>
             </ul>
             <div class="gs-cta-buttons">
-              <div class="cmd-bar">
-                <span class="cmd-bar-text">npm create jay@latest</span>
-                <jay:clipboard-copy text="npm create jay@latest">
-                  <button ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor" aria-label="Copy install command">
-                    <span if="!copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-                    <span if="copied"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                    <span if="copied" class="copy-tooltip" role="status" aria-live="polite">Copied!</span>
-                  </button>
-                </jay:clipboard-copy>
-              </div>
+              <div class="cmd-bar"><span class="cmd-bar-text">npm create
+                  jay@latest</span><jay:clipboard-copy text="npm create jay@latest"><button
+                    ref="copyBtn" class="cmd-bar-copy copy-tooltip-anchor"
+                    aria-label="Copy install command"><span if="!copied"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg></span><span if="copied"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span><span if="copied" class="copy-tooltip" role="status"
+                      aria-live="polite">Copied!</span></button></jay:clipboard-copy></div>
             </div>
           </div>
         </div>
       </section>
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
+  </div>
+</body>
 
-    </main>
-
-    <jay:SiteFooter />
-
-    </div>
-  </body>
 </html>

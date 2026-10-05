@@ -56,6 +56,7 @@ colors:
   accent-content: '#34d399'
   accent-agents: '#fb923c'
   video-bg: '#05070d'
+  bg: '#04070F'
 typography:
   headline-lg:
     fontFamily: Sora

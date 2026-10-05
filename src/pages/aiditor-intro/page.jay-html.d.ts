@@ -1,10 +1,10 @@
 import {JayElement, RenderElement, RenderElementOptions, JayContract} from "@jay-framework/runtime";
-import {ClipboardCopyViewState, ClipboardCopyRefs, ClipboardCopyInteractiveViewState} from "../../../node_modules/@jay-framework/ui-kit/dist/clipboard-copy.jay-contract";
-import {clipboardCopy} from "@jay-framework/ui-kit";
 import {SiteHeaderViewState, SiteHeaderRefs, SiteHeaderInteractiveViewState} from "../../components/site-header/site-header.jay-contract";
 import {SiteHeader} from "../../components/site-header/site-header";
 import {SiteFooterViewState, SiteFooterRefs, SiteFooterInteractiveViewState} from "../../components/site-footer/site-footer.jay-contract";
 import {SiteFooter} from "../../components/site-footer/site-footer";
+import {ClipboardCopyViewState, ClipboardCopyRefs, ClipboardCopyInteractiveViewState} from "../../../node_modules/@jay-framework/ui-kit/dist/clipboard-copy.jay-contract";
+import {clipboardCopy} from "@jay-framework/ui-kit";
 
 import './page.css';
 
@@ -12,8 +12,10 @@ export interface PageViewState {}
 
 
 export interface PageElementRefs {
-  ar0: SiteHeaderRefs,
-  ar1: ClipboardCopyRefs
+  siteHeader: SiteHeaderRefs,
+  ar0: ClipboardCopyRefs,
+  ar1: ClipboardCopyRefs,
+  siteFooter: SiteFooterRefs
 }
 
 export type AiditorIntroSlowViewState = {};

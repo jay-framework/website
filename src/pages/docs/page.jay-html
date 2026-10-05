@@ -1,11 +1,17 @@
 <html lang="en">
+
 <head>
   <title>Documentation — The Agent Kit | Jay Framework</title>
-  <meta name="description" content="The Jay Stack Agent Kit — documentation written for AI agents, readable by humans. Role-specific guides for Designer, Developer, Plugin Developer, and DevOps.">
+  <meta name="description"
+    content="The Jay Stack Agent Kit — documentation written for AI agents, readable by humans. Role-specific guides for Designer, Developer, Plugin Developer, and DevOps.">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
-  <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
-  <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
-  <link rel="stylesheet" href="../../styles/theme.css" />
+  <script type="application/jay-headless" src="../../components/site-header/site-header"
+    contract="../../components/site-header/site-header.jay-contract"
+    template="../../components/site-header/site-header.jay-html"></script>
+  <script type="application/jay-headless" src="../../components/site-footer/site-footer"
+    contract="../../components/site-footer/site-footer.jay-contract"
+    template="../../components/site-footer/site-footer.jay-html"></script>
+  <link rel="stylesheet" href="../../styles/theme.css">
   <style>
     body {
       background: var(--color-bg);
@@ -18,20 +24,22 @@
     /* ── Hero ── */
     .docs-hero {
       position: relative;
-      padding: 96px 0; /* design-system: allow */
-      padding-top: 160px; /* design-system: allow */
+      padding: 96px 0;
+      /* design-system: allow */
+      padding-top: 160px;
+      /* design-system: allow */
       overflow: hidden;
     }
+
     .docs-hero-grid {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
       background-size: 40px 40px;
       opacity: 0.3;
       z-index: 0;
     }
+
     .docs-hero-content {
       position: relative;
       z-index: 1;
@@ -39,6 +47,7 @@
       margin: 0 auto;
       text-align: center;
     }
+
     .docs-hero-badge {
       display: inline-block;
       background: rgba(165, 231, 255, 0.1);
@@ -50,6 +59,7 @@
       border-radius: 9999px;
       margin-bottom: 24px;
     }
+
     .docs-hero-headline {
       font-family: var(--font-display);
       font-size: clamp(32px, 5vw, 48px);
@@ -59,6 +69,7 @@
       color: var(--color-primary);
       text-shadow: 0 0 10px rgba(71, 214, 255, 0.5);
     }
+
     .docs-hero-subtitle {
       font-size: 18px;
       line-height: 28px;
@@ -68,30 +79,44 @@
     }
 
     /* ── Intro ── */
-    .docs-intro { background: var(--color-surface); }
+    .docs-intro {
+      background: var(--color-surface);
+    }
+
     .docs-intro-content {
       max-width: 800px;
       margin: 0 auto;
     }
+
     .docs-intro-content p {
       color: var(--color-text-muted);
       font-size: 16px;
       line-height: 26px;
       margin-bottom: 24px;
     }
-    .docs-intro-content p:last-child { margin-bottom: 0; }
+
+    .docs-intro-content p:last-child {
+      margin-bottom: 0;
+    }
 
     /* ── What's in the Kit ── */
-    .docs-kit { background: var(--color-surface-lowest); }
+    .docs-kit {
+      background: var(--color-surface-lowest);
+    }
+
     .docs-kit-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
       margin-top: 48px;
     }
+
     @media (min-width: 768px) {
-      .docs-kit-grid { grid-template-columns: repeat(2, 1fr); }
+      .docs-kit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
+
     .docs-kit-card {
       padding: 32px;
       border-radius: var(--radius-2xl);
@@ -99,21 +124,26 @@
       flex-direction: column;
       gap: 12px;
     }
+
     .docs-kit-card h3 {
       font-family: var(--font-display);
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 4px;
     }
+
     .docs-kit-card code {
       display: inline-block;
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.15em 0.4em; /* design-system: allow */
+      padding: 0.15em 0.4em;
+      /* design-system: allow */
       border-radius: 0.25rem;
       font-family: var(--font-mono);
-      font-size: 0.8em; /* design-system: allow */
+      font-size: 0.8em;
+      /* design-system: allow */
     }
+
     .docs-kit-card p {
       color: var(--color-text-muted);
       font-size: 15px;
@@ -122,16 +152,23 @@
     }
 
     /* ── How Agents Use It ── */
-    .docs-workflow { background: var(--color-surface); }
+    .docs-workflow {
+      background: var(--color-surface);
+    }
+
     .docs-workflow-steps {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
       margin-top: 48px;
     }
+
     @media (min-width: 768px) {
-      .docs-workflow-steps { grid-template-columns: repeat(4, 1fr); }
+      .docs-workflow-steps {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
+
     .docs-workflow-step {
       padding: 28px;
       border-radius: var(--radius-2xl);
@@ -139,6 +176,7 @@
       flex-direction: column;
       gap: 8px;
     }
+
     .docs-workflow-number {
       display: inline-flex;
       align-items: center;
@@ -153,35 +191,47 @@
       font-weight: 700;
       margin-bottom: 8px;
     }
+
     .docs-workflow-step h3 {
       font-family: var(--font-display);
       font-size: 16px;
       font-weight: 600;
     }
+
     .docs-workflow-step p {
       color: var(--color-text-muted);
       font-size: 14px;
-      line-height: 22px; /* design-system: allow */
+      line-height: 22px;
+      /* design-system: allow */
       margin: 0;
     }
+
     .docs-workflow-step code {
       background: var(--color-surface-high);
       border: 1px solid var(--color-outline-variant);
-      padding: 0.1em 0.35em; /* design-system: allow */
+      padding: 0.1em 0.35em;
+      /* design-system: allow */
       border-radius: 0.25rem;
       font-family: var(--font-mono);
-      font-size: 0.85em; /* design-system: allow */
+      font-size: 0.85em;
+      /* design-system: allow */
     }
 
     /* ── Role Cards ── */
-    .docs-roles { background: var(--color-surface-lowest); }
+    .docs-roles {
+      background: var(--color-surface-lowest);
+    }
+
     .docs-roles-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
     }
+
     @media (min-width: 768px) {
-      .docs-roles-grid { grid-template-columns: 1fr 1fr; }
+      .docs-roles-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .docs-extensibility {
@@ -191,12 +241,14 @@
       border: 1px solid rgba(0, 210, 255, 0.1);
       background: rgba(0, 210, 255, 0.03);
     }
+
     .docs-extensibility p {
       color: var(--color-text-muted);
       font-size: 15px;
       line-height: 24px;
       margin: 0;
     }
+
     .docs-extensibility strong {
       color: var(--color-text);
     }
@@ -207,6 +259,7 @@
       border: 1px solid rgba(0, 210, 255, 0.1);
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
+
     .glass-panel:hover {
       border-color: rgba(0, 210, 255, 0.3);
       box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
@@ -220,13 +273,34 @@
       text-decoration: none;
       color: inherit;
     }
-    .docs-role-card:hover { text-decoration: none; }
-    .docs-role-card--designer { box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15); }
-    .docs-role-card--developer { box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15); }
-    .docs-role-card--plugin { box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15); }
-    .docs-role-card--devops { box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15); }
-    .docs-role-card--contracts { box-shadow: 0 0 20px rgba(0, 210, 255, 0.2), 0 0 4px rgba(0, 210, 255, 0.1); }
-    .docs-role-card--contracts { grid-column: 1 / -1; }
+
+    .docs-role-card:hover {
+      text-decoration: none;
+    }
+
+    .docs-role-card--designer {
+      box-shadow: 0 0 20px rgba(176, 122, 237, 0.25), 0 0 4px rgba(176, 122, 237, 0.15);
+    }
+
+    .docs-role-card--developer {
+      box-shadow: 0 0 20px rgba(106, 191, 75, 0.25), 0 0 4px rgba(106, 191, 75, 0.15);
+    }
+
+    .docs-role-card--plugin {
+      box-shadow: 0 0 20px rgba(212, 149, 46, 0.25), 0 0 4px rgba(212, 149, 46, 0.15);
+    }
+
+    .docs-role-card--devops {
+      box-shadow: 0 0 20px rgba(91, 140, 201, 0.25), 0 0 4px rgba(91, 140, 201, 0.15);
+    }
+
+    .docs-role-card--contracts {
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.2), 0 0 4px rgba(0, 210, 255, 0.1);
+    }
+
+    .docs-role-card--contracts {
+      grid-column: 1 / -1;
+    }
 
     .docs-role-icon {
       width: 64px;
@@ -234,18 +308,21 @@
       object-fit: contain;
       flex-shrink: 0;
     }
+
     .docs-role-body h3 {
       font-family: var(--font-display);
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 8px;
     }
+
     .docs-role-body p {
       color: var(--color-text-muted);
       font-size: 15px;
       line-height: 24px;
       margin: 0;
     }
+
     .docs-role-body .docs-role-link {
       display: inline-block;
       margin-top: 12px;
@@ -262,6 +339,7 @@
       gap: 12px;
       margin-top: 40px;
     }
+
     .docs-hero-link {
       display: inline-flex;
       align-items: center;
@@ -277,18 +355,23 @@
       font-weight: 500;
       transition: border-color 0.2s, background 0.2s;
     }
+
     .docs-hero-link:hover {
       border-color: rgba(165, 231, 255, 0.35);
       background: rgba(165, 231, 255, 0.1);
       text-decoration: none;
     }
+
     .docs-hero-link img {
       width: 20px;
       height: 20px;
       object-fit: contain;
     }
 
-    .section { padding: 96px 0; }
+    .section {
+      padding: 96px 0;
+    }
+
     .section-label {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -301,30 +384,37 @@
 
     /* ── Shimmer Pass ── */
     @keyframes shimmer-pass {
-      0%   { background-position: -150% center; }
-      15%  { background-position: -150% center; }
-      35%  { background-position:  150% center; }
-      100% { background-position:  150% center; }
+      0% {
+        background-position: -150% center;
+      }
+
+      15% {
+        background-position: -150% center;
+      }
+
+      35% {
+        background-position: 150% center;
+      }
+
+      100% {
+        background-position: 150% center;
+      }
     }
+
     .shimmer-wrap {
       position: relative;
       display: inline-block;
     }
+
     .shimmer-base {
       color: inherit;
     }
+
     .shimmer-shine {
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(
-        105deg,
-        transparent 35%,
-        rgba(255, 255, 255, 0.6)  46%,
-        rgba(255, 255, 255, 0.95) 50%,
-        rgba(255, 255, 255, 0.6)  54%,
-        transparent 65%
-      );
+      background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.6) 46%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.6) 54%, transparent 65%);
       background-size: 200% auto;
       background-repeat: no-repeat;
       -webkit-background-clip: text;
@@ -333,157 +423,627 @@
       text-shadow: none;
       animation: shimmer-pass 5s ease-in-out infinite;
     }
+
+    @scope (.siteHeader) {
+
+      /* ── Header ── */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(14, 19, 34, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 16px var(--margin-mobile);
+      }
+
+      @media (min-width: 1024px) {
+        .header-inner {
+          padding: 16px var(--margin-desktop);
+        }
+      }
+
+      @keyframes brand-shimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 400% center;
+        }
+      }
+
+      .header-brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand-text-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .header-brand .brand-base {
+        color: var(--color-primary);
+      }
+
+      .header-brand .brand-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 45%, rgba(165, 231, 255, 0.9) 50%, rgba(255, 255, 255, 0.85) 55%, transparent 60%);
+        background-size: 300% auto;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brand-shimmer 5s linear infinite;
+      }
+
+      .header-nav {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+
+      @media (min-width: 1024px) {
+        .header-nav {
+          display: flex;
+        }
+      }
+
+      .header-nav a {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .header-nav a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn-get-started {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary-container);
+        color: var(--color-on-primary-container);
+        padding: 8px 24px;
+        border: none;
+        border-radius: var(--radius-default);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+
+      .btn-get-started:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+
+      /* Hide Get Started + GitHub on mobile, show hamburger */
+      .header-actions .btn-get-started {
+        display: none;
+      }
+
+      .header-actions .header-github {
+        display: none;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: color 0.3s;
+      }
+
+      /* Hamburger button */
+      .hamburger-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(165, 231, 255, 0.2);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        color: var(--color-text);
+        padding: 0;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 18px;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 1px;
+        /* design-system: allow */
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      /* Mobile menu */
+      #mobile-menu-toggle {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 49;
+        background: var(--color-surface-lowest, #0a0f1e);
+        padding: 80px var(--margin-mobile) 32px;
+        /* design-system: allow */
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mobile-menu-toggle:checked~.site-header .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      #mobile-menu-toggle:checked~.mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(60, 73, 78, 0.2);
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .mobile-menu .mobile-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mobile-menu .mobile-menu-github {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .mobile-menu .mobile-menu-github svg {
+        flex-shrink: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .header-actions .btn-get-started {
+          display: inline-flex;
+        }
+
+        .header-actions .header-github {
+          display: flex;
+        }
+
+        .hamburger-toggle {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+    }
+
+    @scope (.siteFooter) {
+
+      /* ── Footer ── */
+      .site-footer {
+        background: var(--color-surface-lowest);
+        border-top: 1px solid rgba(60, 73, 78, 0.2);
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-gutter);
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 24px;
+      }
+
+      .footer-copyright {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .footer-heading {
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 24px;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-secondary-dim);
+        text-decoration: none;
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="page-root">
-    <jay:SiteHeader />
 
+<body>
+  <div class="page-root"><jay:site-header ref="siteHeader">
+      <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
+        <header class="site-header">
+          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+                src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
+                alt="" class="brand-icon" width="32" height="32" loading="eager"><span
+                class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
+                  Framework</span><span class="brand-shine" aria-hidden="true">Jay
+                  Framework</span></span></a>
+            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
+                href="/design-log">Design Log</a></div>
+            <div class="header-actions"><a class="header-github"
+                href="https://github.com/jay-framework/jay/" target="_blank"
+                aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24">
+                  <g fill="currentColor">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                  </g>
+                </svg></a><a class="btn-get-started" href="/get-started">Get Started</a><label
+                for="mobile-menu-toggle" class="hamburger-toggle" aria-label="Menu">
+                <div class="hamburger-icon"><span></span><span></span><span></span></div>
+              </label></div>
+          </nav>
+        </header>
+        <div class="mobile-menu"><a href="/aiditor-intro"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+            href="/ecosystem"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
+            href="/docs"
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
+            href="/design-log">Design Log</a>
+          <div class="mobile-menu-actions"><a class="mobile-menu-github"
+              href="https://github.com/jay-framework/jay/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </g>
+              </svg> GitHub</a><a class="btn-get-started" href="/get-started"
+              onclick="document.getElementById('mobile-menu-toggle').checked=false"
+              style="text-align: center; justify-content: center;">Get Started</a></div>
+        </div>
+      </div>
+    </jay:site-header>
     <main>
       <section class="docs-hero">
         <div class="docs-hero-grid"></div>
         <div class="container">
-          <div class="docs-hero-content">
-            <span class="docs-hero-badge">DOCUMENTATION</span>
-            <h1 class="docs-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">The Agent Kit</span><span class="shimmer-shine" aria-hidden="true">The Agent Kit</span></span></h1>
-            <p class="docs-hero-subtitle">Documentation written for AI agents, readable by humans. The Agent Kit tells each agent exactly what it can do, what files to touch, and what patterns to follow.</p>
-            <div class="docs-hero-links">
-              <a class="docs-hero-link" href="/docs/designer/instructions"><img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager" fetchpriority="high">Designer</a>
-              <a class="docs-hero-link" href="/docs/developer/instructions"><img src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Developer</a>
-              <a class="docs-hero-link" href="/docs/plugin/instructions"><img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Plugin</a>
-              <a class="docs-hero-link" href="/docs/devops/instructions"><img src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">DevOps</a>
-              <a class="docs-hero-link" href="/docs/contracts/guide"><img src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager">Contracts</a>
-            </div>
+          <div class="docs-hero-content"><span class="docs-hero-badge">DOCUMENTATION</span>
+            <h1 class="docs-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">The
+                  Agent Kit</span><span class="shimmer-shine" aria-hidden="true">The Agent
+                  Kit</span></span></h1>
+            <p class="docs-hero-subtitle">Documentation written for AI agents, readable by humans.
+              The Agent Kit tells each agent exactly what it can do, what files to touch, and what
+              patterns to follow.</p>
+            <div class="docs-hero-links"><a class="docs-hero-link"
+                href="/docs/designer/instructions"><img
+                  src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp"
+                  alt="" width="20" height="20" loading="eager" fetchpriority="high">Designer</a><a
+                class="docs-hero-link" href="/docs/developer/instructions"><img
+                  src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp"
+                  alt="" width="20" height="20" loading="eager">Developer</a><a
+                class="docs-hero-link" href="/docs/plugin/instructions"><img
+                  src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp"
+                  alt="" width="20" height="20" loading="eager">Plugin</a><a class="docs-hero-link"
+                href="/docs/devops/instructions"><img
+                  src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp"
+                  alt="" width="20" height="20" loading="eager">DevOps</a><a class="docs-hero-link"
+                href="/docs/contracts/guide"><img
+                  src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp"
+                  alt="" width="20" height="20" loading="eager">Contracts</a></div>
           </div>
         </div>
       </section>
-
       <section class="section docs-intro">
         <div class="container">
-          <div class="docs-intro-content">
-            <span class="section-label">Overview</span>
+          <div class="docs-intro-content"><span class="section-label">Overview</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Why documentation for agents?</h2>
-            <p>Traditional documentation explains concepts to humans. The Agent Kit takes a different approach — it provides <strong style="color: var(--color-text);">precise, specification-style instructions</strong> that AI agents can follow mechanically. Each role gets only the information relevant to its task, reducing hallucination and keeping agents within their boundaries.</p>
-            <p>The Agent Kit is generated into the <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">agent-kit/</code> folder in your project root by running <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack setup</code> followed by <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack agent-kit</code>. Setup initializes your project's services; agent-kit then executes plugin generators against those live services to produce contracts that reflect your project's actual configured state. The result isn't generic documentation — it's a machine-readable manifest of what your project can do right now.</p>
+            <p>Traditional documentation explains concepts to humans. The Agent Kit takes a
+              different approach — it provides <strong style="color: var(--color-text);">precise,
+                specification-style instructions</strong> that AI agents can follow mechanically.
+              Each role gets only the information relevant to its task, reducing hallucination and
+              keeping agents within their boundaries.</p>
+            <p>The Agent Kit is generated into the <code jay-design="allow"
+                style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">agent-kit/</code>folder
+              in your project root by running <code jay-design="allow"
+                style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack
+                setup</code> followed by <code jay-design="allow"
+                style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875em;">jay-stack
+                agent-kit</code>. Setup initializes your project's services; agent-kit then executes
+              plugin generators against those live services to produce contracts that reflect your
+              project's actual configured state. The result isn't generic documentation — it's a
+              machine-readable manifest of what your project can do right now.</p>
           </div>
         </div>
       </section>
-
       <section class="section docs-kit">
-        <div class="container">
-          <span class="section-label">Generated Artifacts</span>
+        <div class="container"><span class="section-label">Generated Artifacts</span>
           <h2 class="headline-lg" style="margin-top: 16px;">What's in the Kit</h2>
           <div class="docs-kit-grid">
             <div class="docs-kit-card glass-panel">
               <h3>Plugins Index</h3>
               <p><code>plugins-index.yaml</code></p>
-              <p>The master discovery index. Lists every installed plugin's contracts, actions, services, contexts, routes, and CLI commands. This is how an agent finds out what's available — a single machine-readable manifest for the entire project.</p>
+              <p>The master discovery index. Lists every installed plugin's contracts, actions,
+                services, contexts, routes, and CLI commands. This is how an agent finds out what's
+                available — a single machine-readable manifest for the entire project.</p>
             </div>
             <div class="docs-kit-card glass-panel">
               <h3>Materialized Contracts</h3>
               <p><code>materialized-contracts/</code></p>
-              <p>Static contracts copied and dynamic contracts generated by executing plugin code against your project's live services. These aren't just docs — they're the actual tag schemas, data types, and props that agents bind to when writing templates and components.</p>
+              <p>Static contracts copied and dynamic contracts generated by executing plugin code
+                against your project's live services. These aren't just docs — they're the actual
+                tag schemas, data types, and props that agents bind to when writing templates and
+                components.</p>
             </div>
             <div class="docs-kit-card glass-panel">
               <h3>References</h3>
               <p><code>references/</code></p>
-              <p>Plugin-generated reference data from your project's data sources — product catalogs, collection schemas, media indexes. Agents use these to produce realistic, grounded content instead of placeholder data.</p>
+              <p>Plugin-generated reference data from your project's data sources — product
+                catalogs, collection schemas, media indexes. Agents use these to produce realistic,
+                grounded content instead of placeholder data.</p>
             </div>
             <div class="docs-kit-card glass-panel">
               <h3>Role Guides</h3>
-              <p><code>designer/</code> <code>developer/</code> <code>plugin/</code> <code>devops/</code></p>
-              <p>Each role gets its own directory with an <code>INSTRUCTIONS.md</code> entry point and topic-specific guides — template syntax, routing, component state, deployment, and more. Agents read only the guides relevant to their role.</p>
+              <p><code>designer/</code>
+                <code>developer/</code><code>plugin/</code><code>devops/</code></p>
+              <p>Each role gets its own directory with an <code>INSTRUCTIONS.md</code> entry point
+                and topic-specific guides — template syntax, routing, component state, deployment,
+                and more. Agents read only the guides relevant to their role.</p>
             </div>
           </div>
         </div>
       </section>
-
       <section class="section docs-workflow">
-        <div class="container">
-          <span class="section-label">Discovery</span>
+        <div class="container"><span class="section-label">Discovery</span>
           <h2 class="headline-lg" style="margin-top: 16px;">How Agents Use It</h2>
           <div class="docs-workflow-steps">
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">1</div>
               <h3>Discover</h3>
-              <p>Read <code>plugins-index.yaml</code> and the role's <code>INSTRUCTIONS.md</code> to learn what's available and how to work with it.</p>
+              <p>Read <code>plugins-index.yaml</code> and the role's <code>INSTRUCTIONS.md</code> to
+                learn what's available and how to work with it.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">2</div>
               <h3>Understand</h3>
-              <p>Read materialized contracts for exact tag schemas, data types, and prop definitions. Read references for real project data — product catalogs, collection schemas.</p>
+              <p>Read materialized contracts for exact tag schemas, data types, and prop
+                definitions. Read references for real project data — product catalogs, collection
+                schemas.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">3</div>
               <h3>Execute</h3>
-              <p>Write code that follows the contracts. Run CLI commands like <code>jay-stack action</code> for live data discovery and code generation.</p>
+              <p>Write code that follows the contracts. Run CLI commands like <code>jay-stack
+                  action</code> for live data discovery and code generation.</p>
             </div>
             <div class="docs-workflow-step glass-panel">
               <div class="docs-workflow-number">4</div>
               <h3>Validate</h3>
-              <p>Run <code>jay-stack validate</code> to check correctness. When validation fails, the agent-kit guides explain the fix — a feedback loop back to the contracts and patterns.</p>
+              <p>Run <code>jay-stack validate</code> to check correctness. When validation fails,
+                the agent-kit guides explain the fix — a feedback loop back to the contracts and
+                patterns.</p>
             </div>
           </div>
         </div>
       </section>
-
       <section class="section docs-roles">
         <div class="container">
-          <div style="margin-bottom: 48px;">
-            <span class="section-label">Guides</span>
+          <div style="margin-bottom: 48px;"><span class="section-label">Guides</span>
             <h2 class="headline-lg" style="margin-top: 16px;">Browse by Role</h2>
-            <p style="color: var(--color-text-muted); font-size: 15px; line-height: 24px; max-width: 700px; margin-top: 16px;">These guides are published here for the curious human. AI agents read them directly from the <code jay-design="allow" style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">agent-kit/</code> folder in your project root, generated locally by the CLI.</p>
+            <p
+              style="color: var(--color-text-muted); font-size: 15px; line-height: 24px; max-width: 700px; margin-top: 16px;">
+              These guides are published here for the curious human. AI agents read them directly
+              from the <code jay-design="allow"
+                style="background: var(--color-surface-high); border: 1px solid var(--color-outline-variant); padding: 0.15em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">agent-kit/</code>folder
+              in your project root, generated locally by the CLI.</p>
           </div>
-          <div class="docs-roles-grid">
-            <a class="docs-role-card glass-panel docs-role-card--designer" href="/docs/designer/instructions">
-              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Designer" width="64" height="64" loading="lazy">
+          <div class="docs-roles-grid"><a
+              class="docs-role-card glass-panel docs-role-card--designer"
+              href="/docs/designer/instructions"><img class="docs-role-icon"
+                src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="Designer" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>Designer</h3>
-                <p>Creates <code>.jay-html</code> pages and templates. Binds to contract data using template syntax — data bindings, conditions, loops, and refs. Styles pages with CSS.</p>
-                <span class="docs-role-link">25 guides &rarr;</span>
+                <p>Creates <code>.jay-html</code> pages and templates. Binds to contract data using
+                  template syntax — data bindings, conditions, loops, and refs. Styles pages with
+                  CSS.</p><span class="docs-role-link">25 guides &rarr;</span>
               </div>
-            </a>
-            <a class="docs-role-card glass-panel docs-role-card--developer" href="/docs/developer/instructions">
-              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Developer" width="64" height="64" loading="lazy">
+            </a><a class="docs-role-card glass-panel docs-role-card--developer"
+              href="/docs/developer/instructions"><img class="docs-role-icon"
+                src="https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="Developer" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>Developer</h3>
-                <p>Creates page components, defines page contracts, configures routing, and sets up project services. Builds the full-stack logic — unburdened from HTML or CSS.</p>
+                <p>Creates page components, defines page contracts, configures routing, and sets up
+                  project services. Builds the full-stack logic — unburdened from HTML or CSS.</p>
                 <span class="docs-role-link">13 guides &rarr;</span>
               </div>
-            </a>
-            <a class="docs-role-card glass-panel docs-role-card--plugin" href="/docs/plugin/instructions">
-              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Plugin Developer" width="64" height="64" loading="lazy">
+            </a><a class="docs-role-card glass-panel docs-role-card--plugin"
+              href="/docs/plugin/instructions"><img class="docs-role-icon"
+                src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="Plugin Developer" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>Plugin Developer</h3>
-                <p>Creates reusable headless components packaged as plugins. Defines contracts, actions, services, and CLI commands that other projects consume.</p>
-                <span class="docs-role-link">20 guides &rarr;</span>
+                <p>Creates reusable headless components packaged as plugins. Defines contracts,
+                  actions, services, and CLI commands that other projects consume.</p><span
+                  class="docs-role-link">20 guides &rarr;</span>
               </div>
-            </a>
-            <a class="docs-role-card glass-panel docs-role-card--devops" href="/docs/devops/instructions">
-              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp" alt="DevOps" width="64" height="64" loading="lazy">
+            </a><a class="docs-role-card glass-panel docs-role-card--devops"
+              href="/docs/devops/instructions"><img class="docs-role-icon"
+                src="https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="DevOps" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>DevOps</h3>
-                <p>Handles production builds, deployment configuration, serving modes, and cache invalidation. Manages the Two-Server Architecture.</p>
-                <span class="docs-role-link">6 guides &rarr;</span>
+                <p>Handles production builds, deployment configuration, serving modes, and cache
+                  invalidation. Manages the Two-Server Architecture.</p><span
+                  class="docs-role-link">6 guides &rarr;</span>
               </div>
-            </a>
-            <a class="docs-role-card glass-panel docs-role-card--contracts" href="/docs/contracts/guide">
-              <img class="docs-role-icon" src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_80,h_80/file.webp" alt="Contracts" width="64" height="64" loading="lazy">
+            </a><a class="docs-role-card glass-panel docs-role-card--contracts"
+              href="/docs/contracts/guide"><img class="docs-role-icon"
+                src="https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_80,h_80/file.webp"
+                alt="Contracts" width="64" height="64" loading="lazy">
               <div class="docs-role-body">
                 <h3>Contracts</h3>
-                <p>The central binding concept. Contracts are the source of truth that connects plugin logic to designer templates — the agent-kit materializes them into a discoverable form. Covers YAML syntax, page and component contracts, linked contracts, and graduated examples.</p>
-                <span class="docs-role-link">5 guides &rarr;</span>
+                <p>The central binding concept. Contracts are the source of truth that connects
+                  plugin logic to designer templates — the agent-kit materializes them into a
+                  discoverable form. Covers YAML syntax, page and component contracts, linked
+                  contracts, and graduated examples.</p><span class="docs-role-link">5 guides
+                  &rarr;</span>
               </div>
-            </a>
-          </div>
+            </a></div>
           <div class="docs-extensibility">
-            <p><strong>Extensible by plugins.</strong> The agent-kit isn't static framework docs — plugins can extend it with their own role-specific guides. When you install a plugin, its guides are automatically included in the kit alongside the framework's own documentation, growing the kit with your project.</p>
+            <p><strong>Extensible by plugins.</strong> The agent-kit isn't static framework docs —
+              plugins can extend it with their own role-specific guides. When you install a plugin,
+              its guides are automatically included in the kit alongside the framework's own
+              documentation, growing the kit with your project.</p>
           </div>
         </div>
       </section>
-    </main>
-
-    <jay:SiteFooter />
+    </main><jay:site-footer ref="siteFooter">
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-brand">Jay Framework</div>
+              <p class="footer-copyright">Built with Jay Stack. The self-correcting visual ecosystem
+                for AI-native web development.</p>
+            </div>
+            <div>
+              <h2 class="footer-heading">Resources</h2>
+              <ul class="footer-links">
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-links">
+                <li><a href="#">Security Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-heading">Learn More</h2>
+              <p class="footer-copyright">Jay bridges the gap between probabilistic AI outputs and
+                deterministic engineering standards.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </jay:site-footer>
   </div>
 </body>
+
 </html>
