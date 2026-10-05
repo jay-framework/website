@@ -74,6 +74,12 @@ typography:
     fontSize: 24px
     fontWeight: '600'
     lineHeight: 32px
+  headline-sm-md:
+    fontFamily: Sora
+    fontSize: 28px
+    fontWeight: '600'
+    lineHeight: 36px
+    letterSpacing: -0.01em
   hero-display:
     fontFamily: Sora
     fontSize: clamp(32px, 5vw, 48px)

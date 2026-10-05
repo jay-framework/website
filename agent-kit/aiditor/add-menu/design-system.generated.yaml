@@ -1166,6 +1166,29 @@ items:
           <div style="font-family:Sora,sans-serif;font-size:24px;font-weight:600;line-height:32px;margin:0;">The quick brown fox</div>
           <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-sm: Sora, 24px, weight 600, line-height 32px</div>
         </div></div>
+  - id: design-system:typography-headline-sm-md
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: headline-sm-md
+    category: Cybernetic Web Intelligence
+    subCategory: Typography
+    prompt: >-
+      Apply typography preset "headline-sm-md" from DESIGN.md: Sora, 28px, weight 600, line-height 36px, letter-spacing
+      -0.01em.
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: >-
+        Apply the typography preset "headline-sm-md" (Sora, 28px, weight 600, line-height 36px, letter-spacing -0.01em)
+        from DESIGN.md at this location.
+    browse:
+      size: large
+    presentation:
+      type: html-fragment
+      html: |-
+        <div><style>@scope {  }</style><div style="font-family:sans-serif;">
+          <div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600;line-height:36px;letter-spacing:-0.01em;margin:0;">The quick brown fox</div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:monospace;">headline-sm-md: Sora, 28px, weight 600, line-height 36px, letter-spacing -0.01em</div>
+        </div></div>
   - id: design-system:typography-hero-display
     pluginName: design-system-validator
     packageName: '@jay-framework/design-system-validator'

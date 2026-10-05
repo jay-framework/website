@@ -345,7 +345,7 @@
         <div class="container">
           <div class="docs-hero-content">
             <span class="docs-hero-badge">DOCUMENTATION</span>
-            <h1 class="docs-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">The Agent Kit</span><span class="shimmer-shine">The Agent Kit</span></span></h1>
+            <h1 class="docs-hero-headline"><span class="shimmer-wrap"><span class="shimmer-base">The Agent Kit</span><span class="shimmer-shine" aria-hidden="true">The Agent Kit</span></span></h1>
             <p class="docs-hero-subtitle">Documentation written for AI agents, readable by humans. The Agent Kit tells each agent exactly what it can do, what files to touch, and what patterns to follow.</p>
             <div class="docs-hero-links">
               <a class="docs-hero-link" href="/docs/designer/instructions"><img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" loading="eager" fetchpriority="high">Designer</a>

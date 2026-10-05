@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
       /* ── Shared ── */
-      .section { padding: 96px 0; }
+      .section { padding: 80px 0; }
       .section-label {
         font-family: var(--font-mono);
         font-size: 12px;
@@ -40,11 +40,11 @@
       /* ── Hero ── */
       .hero {
         position: relative;
-        min-height: 90vh;
         display: flex;
         align-items: center;
         overflow: hidden;
         padding-top: 96px;
+        padding-bottom: 48px;
       }
       .hero-grid {
         position: absolute;
@@ -67,7 +67,7 @@
         max-width: 1200px;
         margin: 0 auto;
         gap: 48px;
-        padding: 48px 0;
+        padding: 24px 0;
       }
       @media (min-width: 768px) {
         .hero-content {
@@ -250,7 +250,7 @@
         color: var(--color-primary);
       }
       .cmd-bar-copy .copy-tooltip {
-        bottom: calc(100% + 12px);
+        bottom: calc(100% + 12px); /* design-system: allow */
       }
       .hero-stats {
         display: flex;
@@ -837,7 +837,7 @@
 
       /* ── Sponsors ── */
       .sponsors-section {
-        padding: 64px 0;
+        padding: 48px 0;
       }
       .sponsors-logos {
         display: flex;
@@ -863,7 +863,7 @@
       }
 
       /* ── CTA ── */
-      .cta-section { padding: 96px 0; }
+      .cta-section { padding: 80px 0; }
       .cta-box {
         padding: 64px;
         border-radius: 2rem;

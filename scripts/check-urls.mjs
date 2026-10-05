@@ -10,6 +10,20 @@
  */
 
 const URLS = [
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor-quill/-/aiditor-quill-0.24.4.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/data-files/-/data-files-0.24.4.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/markdown/-/markdown-0.24.4.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor-quill/-/aiditor-quill-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor/-/aiditor-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/data-files/-/data-files-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/design-system-validator/-/design-system-validator-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/wix-media/-/wix-media-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/markdown/-/markdown-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/wix-utils/-/wix-utils-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/wix-server-client/-/wix-server-client-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/wix-deploy/-/wix-deploy-0.24.2.tgz",
+    "https://npm.dev.wixpress.com/@jay-framework%2fstack-server-build",
+    "https://npm.dev.wixpress.com/@jay-framework%2fproduction-build",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/compiler/-/compiler-0.24.1.tgz",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor-quill/-/aiditor-quill-0.24.1.tgz",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor/-/aiditor-0.24.1.tgz",

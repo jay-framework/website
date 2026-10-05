@@ -14,6 +14,10 @@
       file: data.yaml
     </script>
     <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
+    <script type="application/jay-validations">
+      seo:
+        no-lcp-image: true
+    </script>
     <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
     <link rel="stylesheet" href="../../styles/theme.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,11 +250,11 @@
         display: inline-flex;
         background: var(--color-surface-high);
         border-radius: var(--radius-lg);
-        padding: 3px;
+        padding: 3px; /* design-system: allow */
         border: 1px solid var(--color-outline-variant);
       }
       .pkg-toggle-opt {
-        padding: 6px 20px;
+        padding: 6px 20px; /* design-system: allow */
         border-radius: var(--radius-md);
         border: none;
         font-family: var(--font-mono);
@@ -320,7 +324,7 @@
       }
       /* Raise tooltip above the install bar border + padding */
       .package-copy-btn .copy-tooltip {
-        bottom: calc(100% + 12px);
+        bottom: calc(100% + 12px); /* design-system: allow */
       }
 
       /* Toggle visibility: default = npm */
@@ -331,7 +335,7 @@
       .package-github-link {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 6px; /* design-system: allow */
         padding: 4px 10px;
         border-radius: 9999px;
         border: 1px solid rgba(165, 231, 255, 0.12);
@@ -481,7 +485,7 @@
         padding-bottom: 24px;
       }
       .contribute-step:last-child .contribute-step-body { padding-bottom: 0; }
-      .contribute-step-body h4 {
+      .contribute-step-body h3 {
         font-family: var(--font-display);
         font-size: 15px;
         font-weight: 600;
@@ -499,7 +503,7 @@
         background: var(--color-surface-high);
         border: 1px solid var(--color-outline-variant);
         padding: 0.1em 0.4em; /* design-system: allow */
-        border-radius: 4px;
+        border-radius: 4px; /* design-system: allow */
         font-family: var(--font-mono);
         font-size: 0.85em; /* design-system: allow */
       }
@@ -622,7 +626,7 @@
                     <div class="contribute-step-line"></div>
                   </div>
                   <div class="contribute-step-body">
-                    <h4>Fork &amp; clone the website repo</h4>
+                    <h3>Fork &amp; clone the website repo</h3>
                     <p>Fork <code jay-design="allow">jay-framework/website</code> on GitHub and clone your fork locally.</p>
                   </div>
                 </div>
@@ -632,7 +636,7 @@
                     <div class="contribute-step-line"></div>
                   </div>
                   <div class="contribute-step-body">
-                    <h4>Edit the data file</h4>
+                    <h3>Edit the data file</h3>
                     <p>Add your entry to <code jay-design="allow">content/plugins/data.yaml</code> for plugins or <code jay-design="allow">content/templates/data.yaml</code> for templates. Follow the existing YAML format — slug, name, description, and links.</p>
                   </div>
                 </div>
@@ -642,7 +646,7 @@
                     <div class="contribute-step-line"></div>
                   </div>
                   <div class="contribute-step-body">
-                    <h4>Validate locally</h4>
+                    <h3>Validate locally</h3>
                     <p>Run <code jay-design="allow">npm run setup</code>, <code jay-design="allow">npm run agent-kit</code>, then <code jay-design="allow">npm run validate</code> to confirm everything compiles.</p>
                   </div>
                 </div>

@@ -87,7 +87,7 @@ The script body is YAML. Values are passed to the component as props alongside r
 </script>
 ```
 
-> **Note:** `<script type="application/jay-params">` is deprecated. Move param values into the headless component's script tag body.
+> **Note:** `<script type="application/jay-params">` is no longer supported — it is silently ignored by the route scanner and reported as an error by `jay-stack validate`. Move param values into the headless component's script tag body.
 
 ## Page Files
 
@@ -124,7 +124,7 @@ tags:
 
 ## Dynamic Routes and Contract Params
 
-When a component on the page — whether the page contract, a headless component, or a headfull full-stack component — declares `params`, the page should be placed in a dynamic route directory that provides those params.
+When a component on the page — whether the page contract, a plugin headless component, or a shared full-stack component — declares `params`, the page should be placed in a dynamic route directory that provides those params.
 
 For example, if a headless component's contract declares:
 

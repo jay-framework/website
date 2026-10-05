@@ -1,0 +1,71 @@
+components:
+  - name: docs-sidebar
+    contractPath: ./src/components/docs-sidebar/docs-sidebar.jay-contract
+    description: Documentation sidebar navigation with collapsible role sections.
+    source: local
+    templates:
+      - path: ./src/components/docs-sidebar/docs-sidebar.jay-html
+        variant: ""
+  - name: site-footer
+    contractPath: ./src/components/site-footer/site-footer.jay-contract
+    description: Site-wide footer with navigation links and branding.
+    source: local
+    templates:
+      - path: ./src/components/site-footer/site-footer.jay-html
+        variant: ""
+  - name: site-header
+    contractPath: ./src/components/site-header/site-header.jay-contract
+    description: Site-wide header with navigation and mobile hamburger menu.
+    source: local
+    templates:
+      - path: ./src/components/site-header/site-header.jay-html
+        variant: ""
+  - name: markdown-pages
+    contractPath: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-pages.jay-contract
+    description: Renders a directory of markdown files as routable pages
+    source: plugin
+    plugin: markdown
+    templates: []
+  - name: markdown-content
+    contractPath: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-content.jay-contract
+    description: Renders a markdown string to HTML at build time
+    source: plugin
+    plugin: markdown
+    templates: []
+  - name: markdown-live
+    contractPath: ./node_modules/@jay-framework/markdown/dist/contracts/markdown-live.jay-contract
+    description: Renders markdown with fast+interactive updates
+    source: plugin
+    plugin: markdown
+    templates: []
+  - name: popover-menu
+    contractPath: ./node_modules/@jay-framework/ui-kit/dist/popover-menu.jay-contract
+    source: plugin
+    plugin: ui-kit
+    templates: []
+  - name: scroll-carousel
+    contractPath: ./node_modules/@jay-framework/ui-kit/dist/scroll-carousel.jay-contract
+    source: plugin
+    plugin: ui-kit
+    templates: []
+  - name: clipboard-copy
+    contractPath: ./node_modules/@jay-framework/ui-kit/dist/clipboard-copy.jay-contract
+    source: plugin
+    plugin: ui-kit
+    templates: []
+  - name: word-split
+    contractPath: ./node_modules/@jay-framework/ui-kit/dist/word-split.jay-contract
+    source: plugin
+    plugin: ui-kit
+    templates: []
+  - name: letter-split
+    contractPath: ./node_modules/@jay-framework/ui-kit/dist/letter-split.jay-contract
+    source: plugin
+    plugin: ui-kit
+    templates: []
+  - name: aiditor-shell
+    contractPath: ./node_modules/@jay-framework/aiditor/dist/aiditor-shell.jay-contract
+    description: POC shell for AIditor — banner text until full sidebar + iframe UI lands
+    source: plugin
+    plugin: aiditor
+    templates: []

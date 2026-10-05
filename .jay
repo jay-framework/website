@@ -1,3 +1,5 @@
+site:
+  baseUrl: https://jay-framework.dev
 devServer:
   portRange: [3000, 3010]
   pagesBase: './src/pages'

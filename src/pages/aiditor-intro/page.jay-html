@@ -6,6 +6,10 @@
     <script type="application/jay-headfull" src="../../components/site-header/site-header" names="SiteHeader" contract="../../components/site-header/site-header.jay-contract"></script>
     <script type="application/jay-headfull" src="../../components/site-footer/site-footer" names="SiteFooter" contract="../../components/site-footer/site-footer.jay-contract"></script>
     <script type="application/jay-headless" plugin="@jay-framework/ui-kit" contract="clipboard-copy"></script>
+    <script type="application/jay-validations">
+      seo:
+        no-lcp-image: true
+    </script>
     <link rel="icon" type="image/svg+xml" href="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg">
     <link rel="stylesheet" href="../../styles/theme.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">

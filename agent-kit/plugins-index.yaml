@@ -211,6 +211,21 @@ plugins:
       - name: runAiditorPublishAction
         description: Run the Jay project's aiditor:publish npm script (stream)
         path: ./node_modules/@jay-framework/aiditor/dist/actions/run-aiditor-publish.jay-action
+      - name: listCanvasDocumentsAction
+        description: List saved canvas documents for the current project
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-canvas-documents.jay-action
+      - name: getCanvasDocumentAction
+        description: Load a saved canvas document by id
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-canvas-document.jay-action
+      - name: saveCanvasDocumentAction
+        description: Save or update a canvas document
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/save-canvas-document.jay-action
+      - name: deleteCanvasDocumentAction
+        description: Delete a saved canvas document
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/delete-canvas-document.jay-action
+      - name: renameCanvasDocumentAction
+        description: Rename a saved canvas document
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/rename-canvas-document.jay-action
     routes:
       - path: /aiditor
         description: AIditor — visual AI-driven code editor
@@ -244,3 +259,4 @@ plugins:
     commands:
       - name: upload-public
       - name: rebuild-index
+designSystemIndex: ./design-system-index.yaml
