@@ -10,6 +10,15 @@
  */
 
 const URLS = [
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/data-files/-/data-files-0.25.0.tgz",
+    "https://npm.dev.wixpress.com/@nodelib%2ffs.walk",
+    "https://npm.dev.wixpress.com/@nodelib%2ffs.stat",
+    "https://npm.dev.wixpress.com/run-parallel",
+    "https://npm.dev.wixpress.com/micromatch",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor-quill/-/aiditor-quill-0.25.0.tgz",
+    "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/markdown/-/markdown-0.25.0.tgz",
+    "https://npm.dev.wixpress.com/@nodelib%2ffs.scandir",
+    "https://npm.dev.wixpress.com/@jay-framework%2fcompiler-inline-composition",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/aiditor-quill/-/aiditor-quill-0.24.4.tgz",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/data-files/-/data-files-0.24.4.tgz",
     "https://npm.dev.wixpress.com/api/npm/npm-repos/@jay-framework/markdown/-/markdown-0.24.4.tgz",

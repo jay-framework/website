@@ -17,7 +17,7 @@
         .footer-grid { grid-template-columns: 1fr 1fr; }
       }
       @media (min-width: 1024px) {
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+        .footer-grid { grid-template-columns: 2fr 1fr 2fr; }
       }
       .footer-brand {
         font-family: var(--font-display);
@@ -65,13 +65,6 @@
             <ul class="footer-links">
               <li><a href="/docs">Documentation</a></li>
               <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="footer-heading">Legal</h2>
-            <ul class="footer-links">
-              <li><a href="#">Security Policy</a></li>
-              <li><a href="#">Privacy</a></li>
             </ul>
           </div>
           <div>

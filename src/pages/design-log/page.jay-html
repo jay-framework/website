@@ -318,7 +318,7 @@
 
     @media (min-width: 1024px) {
       .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr 2fr;
+        grid-template-columns: 2fr 1fr 2fr;
       }
     }
 
@@ -647,9 +647,8 @@
                 class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
                   Framework</span><span class="brand-shine" aria-hidden="true">Jay
                   Framework</span></span></a>
-            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
-                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
-                href="/design-log">Design Log</a></div>
+            <div class="header-nav" override="children"><a href="/aiditor-intro">AIditor</a><a
+                href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><span>Design Log</span></div>
             <div class="header-actions"><a class="header-github"
                 href="https://github.com/jay-framework/jay/" target="_blank"
                 aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -665,13 +664,12 @@
               </label></div>
           </nav>
         </header>
-        <div class="mobile-menu"><a href="/aiditor-intro"
+        <div class="mobile-menu" override="children"><a href="/aiditor-intro"
             onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
             href="/ecosystem"
             onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
             href="/docs"
-            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><a
-            href="/design-log">Design Log</a>
+            onclick="document.getElementById('mobile-menu-toggle').checked=false">Documentation</a><span>Design Log</span>
           <div class="mobile-menu-actions"><a class="mobile-menu-github"
               href="https://github.com/jay-framework/jay/" target="_blank"><svg
                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -795,16 +793,9 @@
           <div>
             <h3 class="footer-heading">Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Community</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="footer-heading">Legal</h3>
-            <ul class="footer-links">
-              <li><a href="#">Security Policy</a></li>
-              <li><a href="#">Privacy</a></li>
+              <li><a href="/docs">Documentation</a></li>
+              <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
+              <li><span>Community</span></li>
             </ul>
           </div>
           <div>

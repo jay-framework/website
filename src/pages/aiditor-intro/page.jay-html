@@ -967,7 +967,7 @@ seo:
 
       @media (min-width: 1024px) {
         .footer-grid {
-          grid-template-columns: 2fr 1fr 1fr 2fr;
+          grid-template-columns: 2fr 1fr 2fr;
         }
       }
 
@@ -1029,7 +1029,7 @@ seo:
                 class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
                   Framework</span><span class="brand-shine" aria-hidden="true">Jay
                   Framework</span></span></a>
-            <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
+            <div class="header-nav" override="children"><span>AIditor</span><a
                 href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
                 href="/design-log">Design Log</a></div>
             <div class="header-actions"><a class="header-github"
@@ -1047,8 +1047,7 @@ seo:
               </label></div>
           </nav>
         </header>
-        <div class="mobile-menu"><a href="/aiditor-intro"
-            onclick="document.getElementById('mobile-menu-toggle').checked=false">AIditor</a><a
+        <div class="mobile-menu" override="children"><span>AIditor</span><a
             href="/ecosystem"
             onclick="document.getElementById('mobile-menu-toggle').checked=false">Ecosystem</a><a
             href="/docs"
@@ -1386,13 +1385,6 @@ seo:
               <ul class="footer-links">
                 <li><a href="/docs">Documentation</a></li>
                 <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
-              </ul>
-            </div>
-            <div>
-              <h2 class="footer-heading">Legal</h2>
-              <ul class="footer-links">
-                <li><a href="#">Security Policy</a></li>
-                <li><a href="#">Privacy</a></li>
               </ul>
             </div>
             <div>

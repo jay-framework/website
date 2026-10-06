@@ -1490,7 +1490,7 @@
 
       @media (min-width: 1024px) {
         .footer-grid {
-          grid-template-columns: 2fr 1fr 1fr 2fr;
+          grid-template-columns: 2fr 1fr 2fr;
         }
       }
 
@@ -1546,12 +1546,12 @@
   <div class="page-root"><jay:site-header ref="siteHeader">
       <div class="site-header-root"><input type="checkbox" id="mobile-menu-toggle">
         <header class="site-header">
-          <nav class="header-inner"><a href="/" class="header-brand" aria-label="Jay Framework"><img
+          <nav class="header-inner" override="children"><span class="header-brand" aria-label="Jay Framework"><img
                 src="https://static.wixstatic.com/shapes/c569b3_448c7c0df8024b2786885af2054a24a8.svg"
                 alt="" class="brand-icon" width="32" height="32" loading="eager"><span
                 class="brand-text-wrap" aria-hidden="true"><span class="brand-base">Jay
                   Framework</span><span class="brand-shine" aria-hidden="true">Jay
-                  Framework</span></span></a>
+                  Framework</span></span></span>
             <div class="header-nav"><a href="/aiditor-intro">AIditor</a><a
                 href="/ecosystem">Ecosystem</a><a href="/docs">Documentation</a><a
                 href="/design-log">Design Log</a></div>
@@ -2212,13 +2212,6 @@
               <ul class="footer-links">
                 <li><a href="/docs">Documentation</a></li>
                 <li><a href="https://github.com/jay-framework/jay/" target="_blank">GitHub</a></li>
-              </ul>
-            </div>
-            <div>
-              <h2 class="footer-heading">Legal</h2>
-              <ul class="footer-links">
-                <li><a href="#">Security Policy</a></li>
-                <li><a href="#">Privacy</a></li>
               </ul>
             </div>
             <div>

@@ -111,9 +111,36 @@ plugins:
       - name: listFreezesAction
         description: List frozen page states for a given route
         path: ./node_modules/@jay-framework/aiditor/dist/actions/list-freezes.jay-action
+      - name: sendToCanvasAgentAction
+        description: Send a request (marker submit, composer message, thread reply, Add
+          Page, settings, route change, video review, plugin install) to the
+          canvas agent with its captures
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/send-to-canvas-agent.jay-action
+      - name: streamCanvasAgentEventsAction
+        description: Stream one canvas's agent events after a sequence number, for a
+          bounded window (the client reconnects)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/stream-canvas-agent-events.jay-action
+      - name: listCanvasAgentTasksAction
+        description: Snapshot of a canvas's agent tasks (active only unless includeDone)
+          and whether its manager is busy
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/list-canvas-agent-tasks.jay-action
+      - name: getCanvasAgentHistoryAction
+        description: Newest page of a canvas's agent events (or the page before
+          beforeSeq), its tasks, and lane summaries
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/get-canvas-agent-history.jay-action
       - name: cancelAgentTaskAction
         description: Stop a live agent task or cancel a queued one
         path: ./node_modules/@jay-framework/aiditor/dist/actions/cancel-agent-task.jay-action
+      - name: stopCanvasAgentAction
+        description: Stop the canvas manager and every live or queued task of the canvas
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/stop-canvas-agent.jay-action
+      - name: clearCanvasAgentHistoryAction
+        description: Delete a canvas's machine-local agent events and finished tasks;
+          keeps threads and lane summaries (refused while tasks are active)
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/clear-canvas-agent-history.jay-action
+      - name: cancelBriefFillAction
+        description: Cancel an in-flight Add Page brief generation from images
+        path: ./node_modules/@jay-framework/aiditor/dist/actions/cancel-brief-fill.jay-action
       - name: readFileAction
         description: Read a file from the project filesystem (text or image as base64)
         path: ./node_modules/@jay-framework/aiditor/dist/actions/read-file.jay-action
