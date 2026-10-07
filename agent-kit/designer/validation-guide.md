@@ -177,59 +177,18 @@ per-template reuse counts, and `⚠ low` flags on pages under 50% coverage).
 
 ## Two validation tiers
 
-Validation comes in two tiers. Know which one you're running.
+Validation comes in two tiers. This guide covers **Tier 1**, the always-on gate.
 
-### Tier 1 — always on (`jay-stack validate`)
-
-The fast, template-only gate. It reads your `.jay-html` files and route scan only — **no build needed** — so it's
-cheap enough for the hot agent loop and runs on every `validate`. Everything described above is Tier 1.
-
-For links, Tier 1 (DL#210) resolves every hand-authored `<a href>` against the project's static routes + public
-assets and **errors** on: broken internal links (typos, missing pages), degenerate `#` / empty placeholder
-links, and self-links (a page linking to its own route). Links that match a **dynamic** route pattern
+**Tier 1 — always on (`jay-stack validate`)** is the fast, template-only gate. It reads your `.jay-html` files and
+route scan only — **no build needed** — so it's cheap enough for the hot agent loop and runs on every `validate`.
+Everything described in this guide is Tier 1. For links, Tier 1 (DL#210) resolves every hand-authored `<a href>`
+against the project's static routes + public assets and **errors** on broken internal links (typos, missing
+pages), degenerate `#` / empty placeholder links, and self-links. Links matching a **dynamic** route pattern
 (`/design-log/[...slug]`) are deferred — the concrete slug set isn't known without a build.
 
-### Tier 2 — opt-in, against a build (`jay-stack validate --from-build`)
-
-Deep validation against an **existing build's output** (DL#211). It reads
-`build/v<version>/backend/route-manifest.json` plus the per-instance `*.cache.json` slow-render results — it does
-**not** run any render, so it's cheap, but it **requires a prior `jay-stack build`**. If no build is found it's a
-single actionable error (run `jay-stack build` first, or omit `--from-build`). Run it pre-deploy / in CI.
-
-`--from-build` adds three checks, all against the concrete URLs the build actually produced:
-
-1. **Deferred dynamic-slug links** (ERROR) — the template links Tier 1 could only defer (because they matched a
-   dynamic pattern) are now resolved against the real URL set. A link to a dynamic route with a slug the build
-   never generated (e.g. `/design-log/wix/index`) is caught here.
-2. **Broken links in rendered content** (WARNING) — `<a href>` found _inside_ the slow-rendered ViewState
-   (markdown bodies, descriptions) that resolve to a URL the build does not produce. Relative hrefs are resolved
-   against the instance's own URL. These are **warnings**, not errors, because content often doubles as
-   repo/GitHub docs where repo-relative links like `../pkg/foo.ts` are legitimately correct.
-3. **Per-instance meta/SEO** (mostly WARNING) — resolves each route's `headMeta` template against each instance's
-   slow ViewState and validates the concrete `<title>` / `<meta name="description">`. Empty title/description, a
-   title > 60 chars, or a description > 160 chars → **warning**. A leftover unresolved `{binding}` — a field never
-   produced at any phase — → **error**. Note (DL#189): a field bound to the fast/interactive phase is legitimately
-   empty at slow render, so **emptiness is only ever a warning, never an error**.
-
-If the build is older than your current source files, a **staleness warning** is emitted ("validated against a
-build from &lt;timestamp&gt;; source has changed since") suggesting a rebuild.
-
-Tier-2 findings print under their own `📦 build-output (--from-build)` section, separate from `📦 jay-stack (core)`.
-
-### Suppressing Tier-2 findings
-
-Per-page, via the same `<script type="application/jay-validations">` block under the `jay-stack:` key:
-
-- `allow-broken-links: true` — suppresses link findings (both template and rendered-content links) for that page.
-- `allow-meta-issues: true` — suppresses meta/SEO findings for that page.
-
-```html
-<script type="application/jay-validations">
-  jay-stack:
-    allow-broken-links: true
-    allow-meta-issues: true
-</script>
-```
+**Tier 2 — opt-in, against a build (`jay-stack validate --tier-2`)** adds deeper checks that need a build:
+dynamic-slug links, broken links in rendered content, and per-instance meta/SEO. It's documented separately to
+keep this guide focused — see **`validation-tier-2-guide.md`**. Run it pre-deploy / in CI.
 
 ## Running Validation
 
@@ -237,8 +196,7 @@ Per-page, via the same `<script type="application/jay-validations">` block under
 jay-stack validate                     # Tier 1: all pages (+ one-line scorecard totals)
 jay-stack validate -v                  # add per-page tag coverage + scorecard detail
 jay-stack validate --strict            # treat warnings as errors
-jay-stack validate --from-build        # add Tier 2: validate against the highest build/v* output
-jay-stack validate --from-build --build-dir <dir>  # point Tier 2 at a specific build backend dir or build root
+jay-stack validate --tier-2            # also run Tier 2 — see validation-tier-2-guide.md
 ```
 
 Validation runs automatically during `jay-stack build`. Warnings don't block the build; errors do (with `--strict`).
