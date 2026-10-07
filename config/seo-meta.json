@@ -1,0 +1,1727 @@
+{
+  "design-log/jay/00-inspirations": {
+    "hash": "8a1f98ab0432315f",
+    "title": "Design & Development Inspirations",
+    "description": "Curated inspirations for modern web development: secure UI libraries, state management approaches, CSS-only components, and design methodologies."
+  },
+  "design-log/jay/000-design-handover-problem": {
+    "hash": "52ef8db8afdedcde",
+    "title": "Design Handover Problem",
+    "description": "Understand design handover challenges in iterative workflows and how Jay's declarative HTML/CSS format enables seamless designer-developer collaboration."
+  },
+  "design-log/jay/001-3rd-party-code-problem": {
+    "hash": "1946120b52e3805d",
+    "title": "3rd Party Component Integration",
+    "description": "Explore how Jay safely integrates 3rd party components into user interfaces using Jay Elements and Components as a secure alternative to iframes."
+  },
+  "design-log/jay/01-what-is-jay": {
+    "hash": "fdfdbd1f4d0d85c8",
+    "title": "Jay: Rendering Toolset for Design & Code",
+    "description": "Jay solves design-to-code handover by compiling Jay files into reusable components, definitions, and secure third-party UI modules."
+  },
+  "design-log/jay/02-jay-element-vs-component": {
+    "hash": "427fb5fbcaa4b110",
+    "title": "Jay Elements vs Components",
+    "description": "Explore how Jay Elements define pure declarative UI while Jay Components layer on logic and state management. Core architectural concepts."
+  },
+  "design-log/jay/03-runtime": {
+    "hash": "859657fc72e3cc3f",
+    "title": "Jay Runtime Architecture",
+    "description": "How the Jay Runtime compiles files into components. Covers Random Access Linked List, Kindergarden, List Compare, and element constructor functions."
+  },
+  "design-log/jay/04-compiler": {
+    "hash": "ed7cdc483003faab",
+    "title": "The Jay Compiler",
+    "description": "Transform Jay Files into runtime and TypeScript definitions. Explore the compiler API, parsing pipeline, and architecture."
+  },
+  "design-log/jay/05-events": {
+    "hash": "1c3fda2e3d90a471",
+    "title": "Event Binding in Jay",
+    "description": "Discover event binding patterns in Jay Files. Explore how to decouple events from logic while keeping files designer-friendly and code developer-efficient."
+  },
+  "design-log/jay/06-state-management": {
+    "hash": "c87b5d980a494e05",
+    "title": "State Management for Components",
+    "description": "Reduce component boilerplate with state management patterns. Learn about data flow, computed state, and implementing a StateManager API."
+  },
+  "design-log/jay/07-nested-components": {
+    "hash": "f359abf6d7e800ec",
+    "title": "Nested Components in Jay",
+    "description": "Master nested components in Jay using JayElement and JayComponent. Learn composition patterns, event handling via callbacks, and component relationships."
+  },
+  "design-log/jay/08-jay-component": {
+    "hash": "3b6de1c84e4c57bb",
+    "title": "Jay Component API",
+    "description": "Create type-safe Jay Components with reactive state and event emitters. Learn component construction, API derivation, and type-checking patterns."
+  },
+  "design-log/jay/09-safe-events": {
+    "hash": "c4aaa7b48aed78f6",
+    "title": "Safe Event Handlers",
+    "description": "Handle DOM events safely from workers by splitting handlers between main thread (for sync APIs) and worker thread (for component logic). Secure, flexible…"
+  },
+  "design-log/jay/10-building-components-a-challenge": {
+    "hash": "470652042b6617fe",
+    "title": "Solving Component API Circular Dependencies",
+    "description": "Understand how separating element types resolves circular dependencies in component architecture, enabling cleaner and more maintainable component code."
+  },
+  "design-log/jay/100-hydrate-conditional-creation-fallback": {
+    "hash": "5267fdb6d3463900",
+    "title": "Hydrate Conditional Creation Fallback",
+    "description": "Design approach for handling conditional elements that don't exist in SSR markup. Adds fallback creation when conditions become true at runtime."
+  },
+  "design-log/jay/101-validate-tag-coverage-report": {
+    "hash": "841a5f24ac2cccf8",
+    "title": "Validate Contract Tag Coverage",
+    "description": "Generate tag coverage reports for jay-html pages. See which contract tags are used, identify unused ones, and flag missing required tags instantly."
+  },
+  "design-log/jay/102-headless-instance-ssr-and-hydration-compilation": {
+    "hash": "f6899a877b87e7df",
+    "title": "Headless Instance SSR and Hydration",
+    "description": "Support SSR and hydration for headless component instances. Master compiler patterns for nested, conditional, and loop-based template scenarios."
+  },
+  "design-log/jay/103-coordinate-pre-processing-for-ssr-hydration-consistency": {
+    "hash": "7b289ae15df4483e",
+    "title": "Coordinate Pre-Processing for SSR",
+    "description": "Unified coordinate pre-processing for SSR and hydration. Eliminate duplicated logic, prevent divergence bugs, and ensure DOM consistency."
+  },
+  "design-log/jay/104-hydration-test-plan": {
+    "hash": "0a059a47d40c9540",
+    "title": "Hydration Test Plan",
+    "description": "Test plan for client-side hydration validation across template constructs including conditionals, loops, and headless components."
+  },
+  "design-log/jay/105-headless-component-default-fast-view-state": {
+    "hash": "b9a863858fd6feb5",
+    "title": "Headless Component Client Defaults",
+    "description": "Learn how to provide default ViewState for dynamically created headless component instances using the withClientDefaults lifecycle function."
+  },
+  "design-log/jay/106-hydrate-dynamic-element-with-kindergarten": {
+    "hash": "9029f29238ea25fc",
+    "title": "Hydrate Dynamic Elements with Kindergarten",
+    "description": "Hydrate dynamic elements (forEach, conditionals) using Kindergarten. Solves insertion positioning by accounting for static children during hydration."
+  },
+  "design-log/jay/107-dev-server-consistency-and-phase-optionality": {
+    "hash": "b3d143c4a5da0f1e",
+    "title": "Dev Server Consistency and Phase Options",
+    "description": "Addresses critical dev server issues: component phase handling, render cache consistency, SSR configuration, and build artifacts impacting hydration."
+  },
+  "design-log/jay/108-no-contract-phase-defaults-for-jay-stack": {
+    "hash": "9f94ea278d247a10",
+    "title": "No-Contract Phase Defaults for Jay Stack",
+    "description": "Discover default data phases for Jay Stack without contracts. Understand why fast+interactive is required for proper server-side rendering support."
+  },
+  "design-log/jay/109-unified-dev-server-phase-pipeline": {
+    "hash": "45d2a6fc9c14fd0d",
+    "title": "Unified Dev Server Phase Pipeline",
+    "description": "Unified dev server architecture absorbing fragmented instance handling logic into existing phase runners to fix rendering and hydration."
+  },
+  "design-log/jay/11-server-side-rendering": {
+    "hash": "cb23783dc7f7dccb",
+    "title": "Building Async Server Components",
+    "description": "Build server-rendered components with async support. Discover element architecture, component patterns, client-server separation, and lazy loading."
+  },
+  "design-log/jay/110-filesystem-based-slow-render-cache": {
+    "hash": "02736e98c0bb1f4b",
+    "title": "Filesystem-Based Slow Render Cache",
+    "description": "Filesystem-based caching design for slow renders. Persists cache metadata in HTML files and caches loadParams per route to eliminate repeated operations."
+  },
+  "design-log/jay/111-nested-headfull-full-stack-components": {
+    "hash": "637dbff1e82d8302",
+    "title": "Nested Headfull Full-Stack Components",
+    "description": "Create full-stack components with built-in UI that render on server and client. Learn how nested headfull components enable reusable layouts in Jay-stack."
+  },
+  "design-log/jay/112-hydration-view-state-consistency": {
+    "hash": "51244e1e42efadb0",
+    "title": "Hydration View State Consistency",
+    "description": "Ensure ViewState consistency during hydration. Discover how client-local data causes DOM mismatches and apply solutions for reliable hydration invariants."
+  },
+  "design-log/jay/113-explicit-route-params-for-static-overrides": {
+    "hash": "b499e7f4930d6705",
+    "title": "Explicit Route Params for Static Overrides",
+    "description": "Learn to explicitly declare route parameters in static overrides using the application/jay-params script tag, replacing automatic inference."
+  },
+  "design-log/jay/114-documentation-gaps-and-updates": {
+    "hash": "e0cb1cc3075339df",
+    "title": "Documentation Gaps And Updates",
+    "description": "Audit of Jay Stack documentation identifying gaps in nested components, routing, and component types. See what's missing and planned updates."
+  },
+  "design-log/jay/115-slowforeachitem-adopt-element-wrapping": {
+    "hash": "6145f2956ffb259d",
+    "title": "SlowForEachItem Element Wrapping",
+    "description": "Fix slowForEachItem to wrap root elements in adoptElement when items have multiple children, resolving hydrate compiler code generation issues."
+  },
+  "design-log/jay/116-client-import-rewriting-in-library-builds": {
+    "hash": "0a1b1161d4a67afb",
+    "title": "Client Import Rewriting In Library Builds",
+    "description": "Fix client import rewriting issues in Jay plugin library builds. Rewrite bare imports to /client subpaths using regex-based transform solutions."
+  },
+  "design-log/jay/117-fast-phase-query-parameters": {
+    "hash": "2beb51049f4ffd74",
+    "title": "Fast Phase Query Parameters",
+    "description": "Design pattern for type-safe query parameters in fast-phase rendering. Handle pagination, sorting, and filtering with phase-aware boundaries."
+  },
+  "design-log/jay/118-jay-html-compiler-refactor": {
+    "hash": "f0335aa45f0cb34c",
+    "title": "Refactoring Jay-Html-Compiler",
+    "description": "Refactor a 4,800-line compiler: eliminate 14+ duplicated patterns by extracting shared helpers across targets, then splitting into maintainable modules."
+  },
+  "design-log/jay/119-async-data-ssr-and-hydration": {
+    "hash": "38313313fbcb6fc0",
+    "title": "Async Data SSR And Hydration",
+    "description": "Implement async data in server-side rendering with proper hydration. Resolve promises, handle pending states, and sync DOM between server and client."
+  },
+  "design-log/jay/12-secure-architecture": {
+    "hash": "eca2fcd5dd345928",
+    "title": "Secure Architecture",
+    "description": "Secure Jay Components by isolating them in worker threads. Learn about element bridges, component mapping using tree IDs, and inter-thread communication."
+  },
+  "design-log/jay/120-record-type-in-jay-action": {
+    "hash": "29f2eb3e3a0d958f",
+    "title": "record(T) Type in Jay-Action",
+    "description": "Design and implementation of the record(T) notation for Jay-Action schemas, enabling typed Record<string, T> maps with nesting support."
+  },
+  "design-log/jay/121-foreach-conditional-hydration": {
+    "hash": "b04a49b49539b5c0",
+    "title": "forEach Conditional Hydration",
+    "description": "Fix conditional rendering in forEach loops that work during SSR but fail after hydration. Learn the root cause and compiler-based solution pattern."
+  },
+  "design-log/jay/122-enum-name-collision-across-linked-contracts": {
+    "hash": "3fd46aa30670e6c4",
+    "title": "Enum Name Collisions in Linked Contracts",
+    "description": "Resolve enum name collisions when linked contracts share identical enum tag names. Learn how import-level aliasing prevents shadowing and runtime errors."
+  },
+  "design-log/jay/123-deeply-nested-headfull-and-headless-components": {
+    "hash": "c18c7b803bba2901",
+    "title": "Component Nesting Scenarios",
+    "description": "Component nesting: headfull with page-level headless, nested headfull, and headless in templates. Design gaps and implementation requirements explained."
+  },
+  "design-log/jay/124-contract-props-and-params-consistency": {
+    "hash": "5e44172ecf1f1348",
+    "title": "Contract Props And Params Consistency",
+    "description": "Validate component contracts declare all props and params. Learn validation strategies preventing AI agents from missing required component specifications."
+  },
+  "design-log/jay/125-plugin-agent-kit": {
+    "hash": "932cf9ec34bf4676",
+    "title": "Plugin Agent-Kit",
+    "description": "Plugin Agent-Kit documentation for AI agents building jay plugins with contracts, components, server actions, and validation guidance."
+  },
+  "design-log/jay/126-coordinate-assignment-rules": {
+    "hash": "ddd9676413497d13",
+    "title": "Coordinate Assignment Rules",
+    "description": "Coordinate assignment rules for SSR and hydration. Learn how scoped coordinate system design prevents inconsistencies and ensures DOM element resolution."
+  },
+  "design-log/jay/127-seo-head-injection": {
+    "hash": "18a655024541a5e2",
+    "title": "Dynamic SEO Head Injection",
+    "description": "Render dynamic SEO metadata in HTML head during SSR. Template-driven design solutions for injecting titles, meta tags, and Open Graph elements."
+  },
+  "design-log/jay/128-unfolded-variant-view": {
+    "hash": "0aff9c2fbdb8252e",
+    "title": "Page Freeze",
+    "description": "Freeze page states for design inspection. View multiple variants side-by-side, preserve states while editing, and embed frozen views in design boards."
+  },
+  "design-log/jay/129-streaming-actions": {
+    "hash": "8d61fcc4fda37caf",
+    "title": "Streaming Actions with Generators",
+    "description": "Streaming actions with AsyncGenerators. Multiple responses per request via HTTP chunked transfer. Supports AI chat, progressive search, and batch…"
+  },
+  "design-log/jay/13-redo-events": {
+    "hash": "67209a5365c8df59",
+    "title": "Redo Events API Reference",
+    "description": "Master secure event handling with the new Redo Events API: native handlers, context access, scoped DOM reads, and unified element support."
+  },
+  "design-log/jay/130-plugin-routes-and-templates": {
+    "hash": "3ec33dd9d1dc6090",
+    "title": "Plugin Routes and Templates",
+    "description": "Discover how plugins provide complete page experiences with routes, templates, and components for backoffice applications and tooling."
+  },
+  "design-log/jay/131-multipart-file-upload-in-actions": {
+    "hash": "2eba4f9814155e7d",
+    "title": "Multipart File Upload in Actions",
+    "description": "Implement multipart file uploads in Jay actions. Design guide for FormData support, server parsing, binary file handling, and streaming integration."
+  },
+  "design-log/jay/132-ui-kit-headless-primitives": {
+    "hash": "775b8610e088a74d",
+    "title": "Headless UI Primitives",
+    "description": "Headless primitives for modern UI design. Build minimal-JS components and pure CSS/HTML patterns for popovers, carousels, tabs, accordions, and more."
+  },
+  "design-log/jay/133-html-entities-in-text-nodes": {
+    "hash": "3b001f7b534b13b3",
+    "title": "HTML Entities in Text Nodes",
+    "description": "HTML entity handling in Jay templates. Learn why entities like &times; don't decode after reactive updates and the contract-type design solution."
+  },
+  "design-log/jay/134-production-build": {
+    "hash": "355b97d2a05d0dd7",
+    "title": "Production Build Architecture",
+    "description": "Two-server production architecture: slow server for pre-compilation and bundling, main server for request handling. Covers build artifacts and deployment."
+  },
+  "design-log/jay/134a-build-pipeline": {
+    "hash": "39bfd410347e03a5",
+    "title": "Production Build Pipeline Architecture",
+    "description": "Learn how the production build pipeline transforms source code into artifacts. Covers compiler targets, Vite plugins, and production readiness."
+  },
+  "design-log/jay/134b-main-server": {
+    "hash": "479326fa99260a80",
+    "title": "Production Main Server Architecture",
+    "description": "Main production server architecture for HTTP requests. Route matching, request flow, and pre-built artifact storage without runtime compilation."
+  },
+  "design-log/jay/134c-slow-render-server": {
+    "hash": "5cfcac71d1e45ebb",
+    "title": "Slow Render Server Design",
+    "description": "Explore the slow render server architecture: learn about build modes, webhook-driven data invalidation, and how pre-rendered artifacts are managed."
+  },
+  "design-log/jay/134d-server-build": {
+    "hash": "9f77869bc3b18a18",
+    "title": "Server Build Process & Architecture",
+    "description": "Learn Jay Stack server build: TypeScript compilation, page components, actions, services. Covers Vite SSR pipeline and code-splitting strategy for…"
+  },
+  "design-log/jay/135-display-contents-for-wrapper-elements": {
+    "hash": "13b2036f1d29f2e5",
+    "title": "display:contents for Wrapper Elements",
+    "description": "Fix layout issues caused by wrapper divs using CSS display:contents. Resolves sticky positioning, flex/grid, and z-index stacking problems."
+  },
+  "design-log/jay/136-loadparams-route-context": {
+    "hash": "88c13bce66aa8c75",
+    "title": "LoadParams Route Deduplication",
+    "description": "Deduplicate loadParams across shared routes. Learn the three-step pipeline: materialize URLs, deduplicate by specificity, then build efficiently."
+  },
+  "design-log/jay/137-headfull-component-stripping-in-pre-rendered-jay-html": {
+    "hash": "95581cbb79dd9a0c",
+    "title": "Production Build Self-Containment",
+    "description": "Production servers fail without source files in containers. Design Log #137 identifies four gaps and proposes pre-computing page configuration at build…"
+  },
+  "design-log/jay/138-safe-refs-stubs-for-unused-contract-refs": {
+    "hash": "cc7ce67d67985920",
+    "title": "Safe Ref Stubs for Unused Contract Refs",
+    "description": "Safely handle unused contract refs in headless components with automatic stubs. Prevent undefined errors when templates don't use all declared refs."
+  },
+  "design-log/jay/139-wix-deployment-separation": {
+    "hash": "22b6dd6912bbeed8",
+    "title": "Wix Deployment Build Separation",
+    "description": "Separate build artifacts for Wix deployment with fetch handlers, CDN-ready static files, and organized backend modules for BaaS platforms."
+  },
+  "design-log/jay/14-references-api": {
+    "hash": "a986f96db3345d0d",
+    "title": "Component & Element Proxies API",
+    "description": "Proxy interfaces for referencing JayElements and JayComponents. Handle single elements, dynamic lists, event listeners, and native function execution in…"
+  },
+  "design-log/jay/140-production-smoke-test": {
+    "hash": "ed535fbd02598084",
+    "title": "Production Smoke Test Example",
+    "description": "Validate production builds across four deployment modes. Isolated page tests for dev, self-hosted, HTTP CDN, and fetch CDN configurations."
+  },
+  "design-log/jay/141-fast-phase-request-context": {
+    "hash": "072ff3fe01fd732e",
+    "title": "Fast Phase Request Context",
+    "description": "Read HTTP cookies and set response headers during fast phase. Enable login protection and cache control for member-specific content rendering."
+  },
+  "design-log/jay/142-plugin-cli-commands": {
+    "hash": "3c81fb56edc652e2",
+    "title": "Plugin CLI Commands",
+    "description": "Define CLI commands for plugins via jay-stack run. Create one-shot terminal operations with service access, argument validation, and real-time feedback."
+  },
+  "design-log/jay/142-ui-kit-add-menu-contribution": {
+    "hash": "489c8c39d9d47c3d",
+    "title": "ui-kit Add Menu Contribution",
+    "description": "Design and implementation guide for adding Menu components to ui-kit with setup handlers, static contracts, and cross-repo validation patterns."
+  },
+  "design-log/jay/143-artifact-store-abstraction-for-baas": {
+    "hash": "9409f50b94866a80",
+    "title": "Artifact Store Abstraction for BaaS",
+    "description": "Abstract artifact storage with ArtifactStore interface. Decouple serve pipeline from filesystem to enable BaaS deployment with pluggable custom stores."
+  },
+  "design-log/jay/144-per-route-server-elements": {
+    "hash": "d2180985bf09a1ce",
+    "title": "Per-Route Shared Artifacts",
+    "description": "Eliminate redundant artifacts by compiling server elements once per route. Reduce build bloat, enable browser caching, and speed up rebuilds."
+  },
+  "design-log/jay/145-pluggable-jay-html-validation": {
+    "hash": "c4b50b9c631f289b",
+    "title": "Pluggable Jay-HTML Validation",
+    "description": "Create custom validators for jay-html files using plugins. Learn the design pattern, type system, and how to provide agent-friendly validation feedback."
+  },
+  "design-log/jay/146-css-performance-fixes": {
+    "hash": "54da8b5e813be7c7",
+    "title": "CSS Minification & Preload Optimization",
+    "description": "Minify CSS at build time and add preload hints for fonts. Eliminate waterfall requests, parallelize loading, and improve Lighthouse audit scores."
+  },
+  "design-log/jay/147-jay-html-validation-rules-catalog": {
+    "hash": "eab54c2b54b0285b",
+    "title": "Jay-HTML Validation Rules Catalog",
+    "description": "Complete reference of validation rules for jay-html templates: media optimization, SEO best practices, and WCAG accessibility."
+  },
+  "design-log/jay/148-head-tag-bindings": {
+    "hash": "857d7270b8ddf4f1",
+    "title": "Head Tag Bindings",
+    "description": "Enable dynamic head metadata in templates with binding expressions. Resolve titles, descriptions, and canonical URLs from component ViewState."
+  },
+  "design-log/jay/149-script-tags-in-jay-html": {
+    "hash": "a9c7cf0e991fce94",
+    "title": "Script Tags in Jay-HTML",
+    "description": "Script validation in Jay-HTML: inline and external script rules, safely integrate third-party analytics and marketing tools with the jay-script attribute."
+  },
+  "design-log/jay/15-main-to-worker-communication-protocol": {
+    "hash": "a764a2febc88c1e8",
+    "title": "Main to Worker Communication Protocol",
+    "description": "Learn how main windows communicate with sandbox workers: message protocols, component bridges, event handling mechanisms, and dynamic CompId addressing."
+  },
+  "design-log/jay/150-build-content-hash": {
+    "hash": "91869cf83e6a7fe2",
+    "title": "Build Content Hash",
+    "description": "Deploy synchronized builds using content-derived hashing. Learn how to compute SHA-256 hashes of build artifacts to ensure CDN-backend consistency."
+  },
+  "design-log/jay/151-design-system-validator-plugin": {
+    "hash": "f86940192384aa67",
+    "title": "Design System Validator Plugin",
+    "description": "Static design system validator plugin that enforces UI conformity at build-time. Validates CSS and HTML against design tokens and structural rules."
+  },
+  "design-log/jay/152-phase-aware-contract-props": {
+    "hash": "7d956fa239d13a74",
+    "title": "Phase-Aware Contract Props",
+    "description": "Phase annotations for contract props enable compile-time validation of prop bindings. Ensure data is available at the right render phase."
+  },
+  "design-log/jay/153-npm-create-jay": {
+    "hash": "397eac34d19001bb",
+    "title": "npm create jay — Interactive Scaffolding",
+    "description": "Scaffold Jay Stack projects quickly with npm create jay. Interactive CLI with plugin selection, boilerplate templates, and automatic dependency setup."
+  },
+  "design-log/jay/154-plugin-package-shipping-validation": {
+    "hash": "4dbbb994ab31351c",
+    "title": "Plugin Package Shipping Validation",
+    "description": "Design log: validation checks ensure plugin npm packages include agent-kit directories to prevent silent documentation loss."
+  },
+  "design-log/jay/155-markdown-plugin": {
+    "hash": "99ba4f4660411552",
+    "title": "Markdown Plugin Design",
+    "description": "Markdown plugin for blogs, documentation, and changelogs. Features code syntax highlighting, mermaid diagrams, and both static and dynamic rendering modes."
+  },
+  "design-log/jay/156-keyed-headless-component-props": {
+    "hash": "5fee1f421b1ae9cf",
+    "title": "Keyed Headless Component Props",
+    "description": "Add props to keyed headless components via YAML script tags. Enable per-component configuration for contentDir, defaults, and other component settings."
+  },
+  "design-log/jay/157-interactive-plugin-setup": {
+    "hash": "7f9799f9edd7d9cf",
+    "title": "Interactive Plugin Setup",
+    "description": "Make plugin setup interactive with prompts. Enable handlers to ask for credentials instead of hardcoding plugin-specific logic in scaffolders."
+  },
+  "design-log/jay/158-staged-npm-publish": {
+    "hash": "8922fa54fca48d99",
+    "title": "Two-Phase npm Publishing",
+    "description": "Stage npm packages without 2FA, then approve all at once with a single OTP. Solves timeout issues when publishing multiple scoped packages in monorepos."
+  },
+  "design-log/jay/159-setup-pipeline-re-initialization": {
+    "hash": "0538a4533123ce9a",
+    "title": "Setup Pipeline Re-Initialization",
+    "description": "Redesign the setup pipeline to initialize plugins in dependency order—setup first, then init per plugin. Fixes cascading failures and reduces error noise."
+  },
+  "design-log/jay/16-context-api": {
+    "hash": "21c3e8ed3fd2f77a",
+    "title": "Context API",
+    "description": "Explore Jay's Context API for managing context across elements and components. Create and provide context values with a type-safe, stack-based approach."
+  },
+  "design-log/jay/160-deprecate-editor-packages": {
+    "hash": "b182c9e56148235f",
+    "title": "Deprecate Editor Packages",
+    "description": "Plan to deprecate three editor packages and remove their dependencies from stack-cli, plugin-validator, and npm publication."
+  },
+  "design-log/jay/161-markdown-image-url-resolution": {
+    "hash": "80ea5937985149b1",
+    "title": "Markdown Image URL Resolution",
+    "description": "Solve markdown image references with three layers: rewrite relative URLs, copy media to public folder, or map to CDN with responsive variants."
+  },
+  "design-log/jay/162-structural-headfull-components": {
+    "hash": "644095a9a480cbd7",
+    "title": "Structural Headfull Components",
+    "description": "Design structural components without TypeScript boilerplate. Framework auto-generates passthrough components from your contract and HTML template."
+  },
+  "design-log/jay/163-params-binding-in-templates": {
+    "hash": "d43f76254354b917",
+    "title": "Parameter Binding in Templates",
+    "description": "Bind route parameters directly to templates using jay.* syntax. Enable field comparisons and reduce boilerplate without page.ts files."
+  },
+  "design-log/jay/164-inline-style-in-body": {
+    "hash": "9517c134848df4d4",
+    "title": "Inline Style In Body",
+    "description": "Fix parser crashes from inline style tags in body. Handle design tool-generated animations and component CSS scoping without breaking template parsing."
+  },
+  "design-log/jay/165-graceful-expression-parse-errors": {
+    "hash": "cba999fb1c4fded0",
+    "title": "Graceful Expression Parse Errors",
+    "description": "Prevent page crashes from invalid expressions using graceful error handling with fallback values. Keep design tools functional and errors visible."
+  },
+  "design-log/jay/166-a11y-form-and-label-validation-rules": {
+    "hash": "313fee8bfe7064ac",
+    "title": "A11y Form And Label Validation Rules",
+    "description": "A11y form label validation ensuring WCAG compliance: detect missing labels, empty aria-label, duplicate IDs, and broken aria-labelledby references."
+  },
+  "design-log/jay/167-a11y-nested-interactive-elements": {
+    "hash": "443451f22388f9fd",
+    "title": "Nested Interactive Elements",
+    "description": "Prevent nested interactive elements from breaking accessibility. Understand how button and link nesting impacts screen readers and keyboard navigation."
+  },
+  "design-log/jay/168-font-fallback-metrics": {
+    "hash": "7bea9bd40487c7cc",
+    "title": "Font Fallback Metrics for CLS Prevention",
+    "description": "Prevent Cumulative Layout Shift with metric-matched font fallbacks. Learn how to override system font metrics to match your web fonts and reduce FOUT."
+  },
+  "design-log/jay/169-data-lists-plugin": {
+    "hash": "443e20dd731a1393",
+    "title": "Data Files Plugin",
+    "description": "Manage structured data without custom services. Define lists, items, and per-item pages using CSV, YAML, and JSON files."
+  },
+  "design-log/jay/17-main-and-sandbox-secure-contexts": {
+    "hash": "351bae0b252a3e94",
+    "title": "Main and Sandbox Secure Contexts",
+    "description": "Context API specification for component bridge mapping and identity resolution between main and sandbox secure execution environments."
+  },
+  "design-log/jay/170-seo-validator-false-positives": {
+    "hash": "b3d33a1f6a386b88",
+    "title": "SEO Validator False Positives",
+    "description": "Understand why the SEO validator flags headfull components and image-free pages. Discover the four false positive categories and how to fix them."
+  },
+  "design-log/jay/171-dev-only-plugin-routes": {
+    "hash": "9630e6c833d9e985",
+    "title": "Dev-Only Plugin Routes",
+    "description": "Mark plugin routes as development-server tooling with the devOnly flag. Learn routing metadata, consumer filtering, and guidance for plugin developers."
+  },
+  "design-log/jay/172-plugin-framework-version-compatibility": {
+    "hash": "4146b8f63bb65546",
+    "title": "Plugin Framework Compatibility",
+    "description": "Specification for handling plugin-framework version compatibility in Jay Stack CLI, including detection, resolution, and upgrade strategies."
+  },
+  "design-log/jay/173-aiditor-settings-plugin-contributions": {
+    "hash": "962ced3e58089d36",
+    "title": "AIditor Settings Plugin Contributions",
+    "description": "Implement AIditor Settings tabs with this canonical guide. Learn YAML discovery, agentkit handlers, path resolution patterns, and validation requirements."
+  },
+  "design-log/jay/174-undefined-css-variable-validation": {
+    "hash": "c75f60db3d2a56da",
+    "title": "Undefined CSS Variable Validation",
+    "description": "Design validator for undefined CSS variables. Catch missing custom properties and typos with automatic PostCSS scanning in your design system."
+  },
+  "design-log/jay/175-sitemap-generation-and-robots-validation": {
+    "hash": "25d229cbbe471d9d",
+    "title": "Sitemap Generation & Robots.txt",
+    "description": "Serve sitemaps dynamically from your route manifest to keep them in sync with live pages. Filter routes, detect noindex, and validate robots.txt for SEO."
+  },
+  "design-log/jay/176-validation-warning-suppression-audit": {
+    "hash": "0e978cb1e258679c",
+    "title": "Validation Warning Suppression Audit",
+    "description": "Audit of validation warning suppression. Defines three suppression mechanisms: inline suppression, page-level overrides, and direct fixes. Identifies…"
+  },
+  "design-log/jay/177-tree-shake-unused-plugin-client-bundles": {
+    "hash": "bebe6de7d03ee233",
+    "title": "Tree-Shake Unused Plugin Client Bundles",
+    "description": "Reduce unnecessary bundle preloading by filtering shared chunks per route. Eliminate wasteful downloads flagged by PageSpeed using per-route dependency…"
+  },
+  "design-log/jay/178-compiler-free-production-runtime": {
+    "hash": "8638ef196ca0a362",
+    "title": "Compiler-Free Production Runtime",
+    "description": "Eliminate compiler overhead from production bundles. Split packages into lean runtime and full-featured build variants for minimal deployment artifacts."
+  },
+  "design-log/jay/179-compiler-free-plugin-runtime-validator-entry-split": {
+    "hash": "eb739cb3f27487d1",
+    "title": "Compiler-Free Plugin Runtime",
+    "description": "Split plugin runtime from tools to remove compiler dependencies from production bundles. Achieve smaller deploys while keeping full tools capabilities."
+  },
+  "design-log/jay/179-frozen-page-hmr-on-template-change": {
+    "hash": "19233321df572609",
+    "title": "Frozen Page HMR on Template Change",
+    "description": "Frozen pages auto-reload on template changes via HMR. Design Log #179 details implementation for self-refreshing frozen views without host app wiring."
+  },
+  "design-log/jay/18-update-on-conditional": {
+    "hash": "34b66f345d533135",
+    "title": "Conditional Element Design Decision",
+    "description": "Discover why Conditional elements create child elements immediately rather than lazily, and understand the performance vs. refs simplicity tradeoff."
+  },
+  "design-log/jay/180-dev-only-actions-and-production-exclusion-of-dev-only-surfaces": {
+    "hash": "c5b2928dec302864",
+    "title": "Dev-Only Actions & Production Exclusion",
+    "description": "Create plugin settings pages with dev-only actions that can use the compiler while safely excluding them from production bundles."
+  },
+  "design-log/jay/181-headfull-component-override": {
+    "hash": "156a396aca2bc63e",
+    "title": "Headfull Component Override",
+    "description": "Customize specific headfull component markup sections at usage sites while preserving design contracts and component integrity."
+  },
+  "design-log/jay/182-devonly-route-client-hydration-imports-server-bundle": {
+    "hash": "a76287f429587e64",
+    "title": "DevOnly Route Client Hydration Bug",
+    "description": "DevOnly routes' client hydration imports incorrectly resolve to server bundle instead of browser bundle, causing Vite fsevents.node loader errors."
+  },
+  "design-log/jay/183-root-headless-instance-not-recognized-in-server-element-compiler": {
+    "hash": "3f57162291ee888a",
+    "title": "Root Headless Instance SSR Compiler Error",
+    "description": "Why SSR compilation fails when page root is a headless instance. The server compiler misses special handling that client and hydrate compilers provide."
+  },
+  "design-log/jay/184-a11y-adjacent-identical-text-false-positive-on-foreach-siblings": {
+    "hash": "8ea935a15c94a883",
+    "title": "Adjacent-Identical-Text False Positive",
+    "description": "A11y-validator's checkDuplicateAdjacentText false-positives on adjacent forEach loops with identical templates despite different runtime content."
+  },
+  "design-log/jay/185-a11y-adjacent-identical-text-false-positive-on-scoped-bindings": {
+    "hash": "1a64c6d21f7b3fb7",
+    "title": "Adjacent-Identical-Text False Positive",
+    "description": "Bug: a11y validator incorrectly flags identical visible text in adjacent elements when text originates from different template scopes or descendant loops."
+  },
+  "design-log/jay/186-validator-flags-compiler-injected-jc-attribute-as-undeclared-prop": {
+    "hash": "2a98ca184a8ce07e",
+    "title": "jc Attribute Validation False Positive",
+    "description": "Validator false positive: compiler-injected jc attribute on headfull components flagged as undeclared contract prop. Fix adds jc to validator skip list."
+  },
+  "design-log/jay/187-pure-headfull-components": {
+    "hash": "3e7cdc2065209fcf",
+    "title": "Pure Headfull Components",
+    "description": "Pure headfull components use a three-tier model: codeless, parameterized, or full-stack UI design. Master ViewState, contracts, and phase-safe props."
+  },
+  "design-log/jay/188-viewport-height-units-break-google-search-console-rendering": {
+    "hash": "2155608ab26d7c06",
+    "title": "Googlebot Viewport-Height Validator",
+    "description": "Flags unconstrained viewport-height units on top-level containers to prevent Googlebot rendering bloat and distorted Search Console reports."
+  },
+  "design-log/jay/189-phase-aware-prop-resolution": {
+    "hash": "f9ace9d535ff60d2",
+    "title": "Phase-Aware Prop Resolution",
+    "description": "Prop resolution across phases in runtime and builder. Ensures fast and interactive props resolve correctly to prevent SSR-hydrate mismatches."
+  },
+  "design-log/jay/19-libraries-to-look-at": {
+    "hash": "f5568179c5293713",
+    "title": "Libraries To Look At",
+    "description": "Libraries for JavaScript architecture: explore Bling for client-server code splitting and React+Redux+Comlink patterns for off-main-thread rendering."
+  },
+  "design-log/jay/190-instance-prop-type-coercion": {
+    "hash": "2e0fe69f2a307815",
+    "title": "Instance Prop Type Coercion",
+    "description": "Explore how instance props are coerced from strings to their declared types on the server, fixing bugs in SSR hydration and component rendering."
+  },
+  "design-log/jay/192-enum-value-validation": {
+    "hash": "4677cc24e9c9eb54",
+    "title": "Enum Value Validation",
+    "description": "Validate enum-typed instance props at compile time. Catch typos and invalid enum values that would otherwise silently render broken components."
+  },
+  "design-log/jay/193-binding-across-component-composition-boundaries": {
+    "hash": "37048839eafa9cad",
+    "title": "Binding Across Component Composition",
+    "description": "Design for binding refs across component scope boundaries. Addresses pure component forwarding, overrides, and forEach parent-scope binding challenges."
+  },
+  "design-log/jay/194-ref-exposure-and-scoping-across-composition-boundaries": {
+    "hash": "194877aaf4ee51dd",
+    "title": "Ref Exposure and Composition Scoping",
+    "description": "Understand ref scoping in component composition using the slot model. Covers contract declarations, scope resolution, and ref injection strategies."
+  },
+  "design-log/jay/195-learnings-from-the-composition-boundary-work": {
+    "hash": "ea683f3062cf0367",
+    "title": "Composition Boundary Learnings",
+    "description": "One boundary, four workarounds: design retrospective on component composition patterns, scope coupling, and architectural trade-offs."
+  },
+  "design-log/jay/196-validated-inline-composition": {
+    "hash": "9c9f211856d4f843",
+    "title": "Validated Inline Composition",
+    "description": "Specification for validated inline component composition: flattening components into pages, validating against sources, and managing consistency through…"
+  },
+  "design-log/jay/197-makejaycomponent-as-a-headless-component": {
+    "hash": "c6d08cdc4f0c6d1d",
+    "title": "Why Jay Keeps Two Component Models",
+    "description": "Jay maintains two component models by design: headfull components for code-first logic and headless components for contract-first composition patterns."
+  },
+  "design-log/jay/198-free-refs-as-boundary-event-sources": {
+    "hash": "d8413d2106bea5ff",
+    "title": "Free Refs As Boundary Event Sources",
+    "description": "Free element refs inside region bodies automatically become boundary event sources, accessible from parent components with coordinate and state data."
+  },
+  "design-log/jay/199-component-contract-d-ts-generation": {
+    "hash": "155847599d7dd61b",
+    "title": "Component Contract .d.ts Generation",
+    "description": "Learn how jay-stack generates .d.ts type definitions for component contracts, enabling proper type imports across your component ecosystem."
+  },
+  "design-log/jay/20-component-compiler": {
+    "hash": "8fd1e041d2f6edb3",
+    "title": "Component Compiler Transformations",
+    "description": "Explore component compiler transformations in Jay: secure event extraction, JSX compilation, Astro-style syntax, and client-server code splitting…"
+  },
+  "design-log/jay/200-prefer-design-system-elements-validation": {
+    "hash": "b7ca53a2a73eb8c6",
+    "title": "Design-System Elements Validation",
+    "description": "Master the four core validation rules for design-system elements: template linking, component requirements, override handling, and project-level analysis."
+  },
+  "design-log/jay/201-region-system-follow-ups": {
+    "hash": "9f215aa6df2a1904",
+    "title": "Region System Follow-Ups",
+    "description": "Design holding pen for region system follow-ups: override markers, CSS scoping, blog documentation, and design-system indexing from backlog."
+  },
+  "design-log/jay/202-template-side-content-marker": {
+    "hash": "7728f0b6f230bd98",
+    "title": "Template `jay-content` Marker",
+    "description": "Template `jay-content` marker declares content slots without per-page overrides, silencing drift validation while remaining resilient to template changes."
+  },
+  "design-log/jay/203-scope-donut-for-region-css-isolation": {
+    "hash": "4cdf36ed0f246eeb",
+    "title": "CSS @scope Donut for Region Isolation",
+    "description": "Implement CSS @scope donut syntax to isolate child regions. Learn how to prevent parent styles from bleeding into child regions using CSS scoping."
+  },
+  "design-log/jay/204-design-system-index-in-the-agent-kit": {
+    "hash": "b832b7bb459e048d",
+    "title": "Design-System Index in Agent-Kit",
+    "description": "Implement a design-system index for agent-kit. Catalogs components and their template variants with contract mappings and agent documentation."
+  },
+  "design-log/jay/205-region-variant-selection": {
+    "hash": "7cd7b477598fb651",
+    "title": "Region Variant Selection",
+    "description": "Prevent tag collisions and use multiple design variants of one contract on a single page with the as attribute. A backward-compatible aliasing solution."
+  },
+  "design-log/jay/206-multi-root-region-css-scoping": {
+    "hash": "005d6c44ea900d80",
+    "title": "Multi-Root Region CSS Scoping",
+    "description": "Design for scoping CSS in multi-root regions. Wraps bodies in display:contents to enable per-root styling and prevent duplicate scope anchors."
+  },
+  "design-log/jay/207-design-system-coverage-metrics": {
+    "hash": "8e41e19d540698b3",
+    "title": "Design-System Coverage Metrics",
+    "description": "Measure design-system adoption with coverage and reuse metrics. Get actionable insights for optimizing page markup against design-system templates."
+  },
+  "design-log/jay/208-sync-collapses-multiline-script-bodies": {
+    "hash": "0e77273add87105d",
+    "title": "Sync Collapses Multiline YAML Script Bodies",
+    "description": "Bug DL#208: sync corrupts multiline YAML bodies by flattening newlines to spaces. Root cause in prettifyHtml; fix extends placeholder protection."
+  },
+  "design-log/jay/209-region-with-css-but-no-ref": {
+    "hash": "68a63db7ff75c8f1",
+    "title": "Region CSS Without Ref",
+    "description": "Diagnostic rule preventing silent CSS loss in regions without ref attributes. Ensures region templates with CSS are properly scoped during sync."
+  },
+  "design-log/jay/21-alternative-to-context-api": {
+    "hash": "1cd3d70f7d212e9b",
+    "title": "Alternative to Context API",
+    "description": "Discover prop cascading as an alternative to React Context API that prevents property drilling while keeping component dependencies explicit."
+  },
+  "design-log/jay/210-broken-internal-link-validation": {
+    "hash": "2a3c533ed13ad120",
+    "title": "Broken Internal Link Validation",
+    "description": "Specification for validating internal links at build/validate time to catch broken links and prevent 404 errors in production."
+  },
+  "design-log/jay/211-build-output-validation": {
+    "hash": "ec00b52e381e9847",
+    "title": "Build-Output Validation",
+    "description": "Opt-in validation tier that checks enumerated URLs, rendered-content links, and per-instance SEO metadata against materialized build artifacts."
+  },
+  "design-log/jay/22-serialized-mutable": {
+    "hash": "6d7f28a0e736e7ed",
+    "title": "Serializing Mutable State",
+    "description": "Learn how to serialize mutable state across contexts while maintaining object identity, handling proxies, and managing revisions effectively."
+  },
+  "design-log/jay/23-json-compare-and-patch": {
+    "hash": "138970f1ae14bb83",
+    "title": "JSON Compare And Patch",
+    "description": "Compare JSON patching algorithms. Review implementations, performance characteristics, and technical trade-offs to select the best approach for your needs."
+  },
+  "design-log/jay/24-refactor-refs": {
+    "hash": "13c5772ffd9a7aca",
+    "title": "Refactor Refs: New Pattern",
+    "description": "Learn to refactor refs by creating them before rendering. Eliminate circular dependencies and API inconsistencies with the new architecture pattern."
+  },
+  "design-log/jay/25-building-the-compiler": {
+    "hash": "1c674773471f12a9",
+    "title": "Building a Code Splitting Compiler",
+    "description": "Discover code splitting compiler development with TypeScript transformers, pattern matching, function extraction, and transformation strategies."
+  },
+  "design-log/jay/26-jay-start-compiling-sandbox-application": {
+    "hash": "d7926b1ae2d11386",
+    "title": "Compiling Sandboxed Applications",
+    "description": "Learn how to compile sandboxed Jay applications using the jay start command. Master component identification, bridge bundling, and worker script…"
+  },
+  "design-log/jay/27-guiding-principles-of-jay": {
+    "hash": "95787b333b659db7",
+    "title": "Guiding Principles Of Jay",
+    "description": "Jay's seven core design principles: no magic, early decisions, reactivity, immutable data, data reconciliation, third-party security, and zero trust."
+  },
+  "design-log/jay/28-runtime-compiler": {
+    "hash": "f0ab9b1669fe00da",
+    "title": "Runtime Compiler Architecture",
+    "description": "Transforms code into main and worker threads. Vite-powered compiler that separates trusted browser code from secure worker code for optimized execution."
+  },
+  "design-log/jay/29-algorithm-to-split-safe-code": {
+    "hash": "96623642d7931bb6",
+    "title": "Safe Code Splitting Algorithm",
+    "description": "Split functions into safe and unsafe parts using configurable patterns. Algorithm analyzes variable bindings, statement dependencies, and pattern matching."
+  },
+  "design-log/jay/30-jay-context-api": {
+    "hash": "6bbecda9565aaef4",
+    "title": "Jay Context API Reference",
+    "description": "Learn Jay's Context API for dependency injection, reactive components, and explicit context declaration. Compare low-level and high-level implementation…"
+  },
+  "design-log/jay/31-rename-createstate-to-createsignal": {
+    "hash": "5f65d1dc9e8d19d5",
+    "title": "Rename CreateState To CreateSignal",
+    "description": "Rename createState to createSignal to align with solid.js reactive conventions instead of React-style naming patterns."
+  },
+  "design-log/jay/32-reactive-pairing-fixes": {
+    "hash": "f654bf6cd31f1ea7",
+    "title": "Reactive Pairing Fixes",
+    "description": "Explores Reactive Pairing issues in Jay where reactives flush unexpectedly. Covers root causes, side fixes, and proposes explicit pairing API solutions."
+  },
+  "design-log/jay/33-jay-4-react": {
+    "hash": "f09f3138e42b4b94",
+    "title": "Using Jay Components in React",
+    "description": "Integrate Jay components into React using jay2React. The compiler generates React components from Jay code, enabling secure design-to-code capabilities."
+  },
+  "design-log/jay/34-1-jay-stack-separate-loaders-api-option": {
+    "hash": "e745b8bcc010b56a",
+    "title": "Separate Loaders API Option",
+    "description": "Separate loaders for slowly and fast changing data with strong typing and no compiler tricks. Simple, maintainable component loading architecture option."
+  },
+  "design-log/jay/34-2-jay-stack-hooks-style-api-option": {
+    "hash": "fc3a6d51fbd30436",
+    "title": "Jay Stack Hooks-Style API Option",
+    "description": "Learn Jay Stack's hooks-style API option. Structure components with renderSlowlyChanging and renderFastChanging markers for optimized cascading data…"
+  },
+  "design-log/jay/34-3-jay-stack-name-convention-based-api-option": {
+    "hash": "652278a2e54125dd",
+    "title": "Jay Stack - Name Convention API",
+    "description": "Discover Jay Stack's naming convention-based API approach with $ and $$ patterns for fast and slow changing component values."
+  },
+  "design-log/jay/34-4-jay-stack-using-builder": {
+    "hash": "7b8adf12dfca44e5",
+    "title": "Builder Pattern for Jay Stack Components",
+    "description": "Learn to build Jay Stack components using the ordered builder pattern with full TypeScript type inference and type safety guarantees."
+  },
+  "design-log/jay/34-jay-stack": {
+    "hash": "66ea62c414709973",
+    "title": "Jay Stack Framework Architecture",
+    "description": "Explore Jay Stack framework architecture including page routing, component system, rendering models, and design tool integration for full-stack…"
+  },
+  "design-log/jay/35-partial-and-complementary-types": {
+    "hash": "3589073cc455e239",
+    "title": "Partial And Complementary Types",
+    "description": "Learn Partial and Complementary types in TypeScript. Combine partial properties with their complements while preventing overlaps and extra properties."
+  },
+  "design-log/jay/36-partial-rendering": {
+    "hash": "8c8dd02103735164",
+    "title": "Partial Rendering",
+    "description": "Partial rendering inlines slowly-changing Jay view states, statically resolving conditions and iterations for optimized fast and interactive rendering."
+  },
+  "design-log/jay/37-composite-component": {
+    "hash": "15d198d4eac8a9f5",
+    "title": "Composite Component",
+    "description": "Compose multiple Jay Stack components on a single page with server/client rendering, ViewState composition, and partial rendering support."
+  },
+  "design-log/jay/38-contract-file": {
+    "hash": "5e8745c226c2b038",
+    "title": "Contract File Format",
+    "description": "Jay Contract files define component contracts in YAML format. Used by design tools to create connected UI and generate ViewState and Refs types."
+  },
+  "design-log/jay/39-plugin-package": {
+    "hash": "3b41c00b26f2d6f4",
+    "title": "Plugin Package Architecture",
+    "description": "Learn to design and build plugin packages with Jay Components and Contracts. Understand requirements, runtime dependencies, and design tool integration."
+  },
+  "design-log/jay/40-changing-jay-html-format": {
+    "hash": "f7982709a4dec109",
+    "title": "Changing Jay-HTML Import Format",
+    "description": "Migrate Jay-HTML component imports to the new unified script tag format supporting headless and headfull components with contract definitions."
+  },
+  "design-log/jay/41-package-naming-migration-to-jay-framework": {
+    "hash": "6b8146c1bcf19e0c",
+    "title": "Package Naming Migration to @jay-framework",
+    "description": "Migration guide: packages renamed from jay-* to @jay-framework/*. Includes 24 package mappings, 840+ file changes, breaking changes, and migration steps."
+  },
+  "design-log/jay/42-editor-integration": {
+    "hash": "c1275708f3f8805d",
+    "title": "Editor Integration Protocol",
+    "description": "Automatically connect browser editors to local dev servers using ID-based port discovery and WebSocket messaging for real-time development workflows."
+  },
+  "design-log/jay/43-jay-package": {
+    "hash": "d67bc721f79d38fa",
+    "title": "Jay NPM Package Structure",
+    "description": "Package Jay headless components for NPM. Configure exports, contract files, and structure to make components discoverable by AI agents and applications."
+  },
+  "design-log/jay/44-css-support": {
+    "hash": "f487241d4d96b623",
+    "title": "CSS Extraction in jay-html",
+    "description": "Learn how CSS is extracted from jay-html files and processed by Vite's plugin, including file generation and hot module replacement integration."
+  },
+  "design-log/jay/45-view-state-types": {
+    "hash": "7e810d78510dc668",
+    "title": "View State Types",
+    "description": "Learn the Jay type system for View State, including built-in types, adding new types like Promise and Currency, and handling asynchronous data structures."
+  },
+  "design-log/jay/46-recursive-jay-html": {
+    "hash": "b730e1d4c2d5d7b2",
+    "title": "Recursive HTML Structures in Jay-Html",
+    "description": "Explore design proposals for native recursive HTML structure support in Jay-Html with syntax options and type-safe implementations."
+  },
+  "design-log/jay/47-recursive-html-context-switching": {
+    "hash": "d2facff81fdd1723",
+    "title": "Recursive HTML Context Switching",
+    "description": "Handle recursive HTML context mismatches when nested types differ. Explore context type problems, workarounds, and context reset element solutions."
+  },
+  "design-log/jay/48-jay-stack-services": {
+    "hash": "8d5f5629ff5ee3db",
+    "title": "Jay Stack Services Pattern",
+    "description": "Learn Jay Stack's Services pattern for managing server-side singletons, infrastructure dependencies, and lifecycle hooks with ServiceMarkers."
+  },
+  "design-log/jay/49-full-stack-component-rendering-manifest": {
+    "hash": "e9b7fc07d8f1d035",
+    "title": "Full Stack Component Rendering Manifest",
+    "description": "Metadata schema for managing ViewState rendering phases in Jay Stack. Define slow, fast, and interactive rendering for component properties."
+  },
+  "design-log/jay/50-jay-stack-headless-configuration": {
+    "hash": "9a8037ab80424cd6",
+    "title": "Jay Stack - Headless Configuration",
+    "description": "Define headless components in Jay Stack using page.conf.yaml when HTML is unavailable. Covers configuration format, precedence rules, and component…"
+  },
+  "design-log/jay/50-rendering-phases-in-contracts": {
+    "hash": "091108cbde6ac4ed",
+    "title": "Rendering Phases In Contracts",
+    "description": "Define rendering phases in contracts and generate type-safe ViewState types for slow, fast, and interactive phases. Enable build-time type safety."
+  },
+  "design-log/jay/51-jay-html-with-contract-references": {
+    "hash": "5be85b204ee0be00",
+    "title": "Contract References in Jay HTML",
+    "description": "Link Jay HTML templates to external contracts for compile-time type validation. Automatic phase annotations enable separation of rendering concerns."
+  },
+  "design-log/jay/51-project-structure-identification-pages-vs-components": {
+    "hash": "12a9d6eb9de404ac",
+    "title": "Pages and Components: URL Identification",
+    "description": "Implement URL paths for components matching pages. Enable hierarchical organization with dynamic segments mapping to props for scalable, well-structured…"
+  },
+  "design-log/jay/52-jay-stack-client-server-code-splitting": {
+    "hash": "8de687a2e0ab6f13",
+    "title": "Jay-Stack Client-Server Code Splitting",
+    "description": "Eliminate bundle bloat, security risks, and build failures by separating client and server code in Jay Stack components while maintaining full type safety."
+  },
+  "design-log/jay/53-jay-stack-environment-query-parameter-handling": {
+    "hash": "5e01801c4a203913",
+    "title": "Jay-Stack Environment Query Parameters",
+    "description": "Learn how Jay-Stack query parameters affect contract file detection and explore architectural solutions for managing compiler transformation pipeline…"
+  },
+  "design-log/jay/54-render-result-monads": {
+    "hash": "ba67688885f33cf4",
+    "title": "Render Result Monads",
+    "description": "Master monad-like result types for server-side rendering. Enable functional composition, automatic error propagation, and type-safe async operations."
+  },
+  "design-log/jay/55-full-stack-component-parameter-flow-refinement": {
+    "hash": "d5b4ce8aa5176a36",
+    "title": "Full Stack Component Parameter Refinement",
+    "description": "Refine full stack component parameter flow with explicit carry-forward mechanisms, type-safe signals, and reactive view state across rendering phases."
+  },
+  "design-log/jay/56-deep-merge-view-states-with-track-by": {
+    "hash": "411b46bfab607bf2",
+    "title": "Deep Merge View States With Track-By",
+    "description": "Implement deep merge for view states using track-by metadata. Correctly combine slow and fast rendering phases while preserving nested data and type…"
+  },
+  "design-log/jay/57-style-binding-support-in-jay-html": {
+    "hash": "c4859093da9c5f37",
+    "title": "Style Binding Support in Jay-HTML",
+    "description": "Dynamic style binding in Jay-HTML enables reactive CSS properties. Bind colors, widths, and other styles to components with inline binding expressions."
+  },
+  "design-log/jay/58-jay-stack-headless-component-resolution": {
+    "hash": "038e89be8c36662b",
+    "title": "Headless Component Resolution",
+    "description": "Understand how headless components are resolved through a configuration-driven system that maps page references to installed app contracts."
+  },
+  "design-log/jay/60-plugin-system-refinement-and-dynamic-contracts": {
+    "hash": "24a5086ba9cb0afc",
+    "title": "Plugin Refinement & Dynamic Contracts",
+    "description": "Guide to Jay's plugin system: dynamic contracts, plugin.yaml structure, NPM packaging, validation, and best practices for building plugin architecture."
+  },
+  "design-log/jay/61-json-patch-typed-jsonpointer": {
+    "hash": "83ecd9043bb7894d",
+    "title": "Type-Safe JSON Patch Paths",
+    "description": "Ensure type-safe JSON patch operations with Paths<T>. Get IDE autocomplete for valid JSONPointer paths and catch compile-time errors."
+  },
+  "design-log/jay/62-relocate-deep-merge-for-stack-client-runtime": {
+    "hash": "e134cf09ac729d8a",
+    "title": "Extract Deep Merge to Shared Library",
+    "description": "Explore the design decision to move deepMergeViewStates to a shared library package, solving shallow merge issues in view state handling."
+  },
+  "design-log/jay/63-jay-stack-server-actions": {
+    "hash": "ef9c5e5f650a6c3a",
+    "title": "Jay-Stack Server Actions",
+    "description": "Implement server-side function calls from client components in Jay-Stack using type-safe RPC-style action modules with a familiar builder pattern."
+  },
+  "design-log/jay/64-client-context-initialization-and-plugin-init": {
+    "hash": "7174c2307ea7886f",
+    "title": "Client Context and Plugin Initialization",
+    "description": "Master client context initialization in Jay Stack. Learn to implement plugin init files and pass server-side configuration, feature flags, and settings…"
+  },
+  "design-log/jay/65-makejayinit-builder-pattern": {
+    "hash": "68e6c7558fc51860",
+    "title": "MakeJayInit Builder Pattern",
+    "description": "MakeJayInit builder pattern for plugin initialization. Define server and client logic in one file with type inference and automatic code transformation."
+  },
+  "design-log/jay/66-transitive-plugin-dependency-resolution": {
+    "hash": "179ffa2d71505956",
+    "title": "Transitive Plugin Dependency Resolution",
+    "description": "Discover transitive plugin dependencies in Jay Stack: automatically resolve nested plugins and transform client imports for correct initialization."
+  },
+  "design-log/jay/67-figma-vendor-convesion-algorithm": {
+    "hash": "8758fc2f3df90baf",
+    "title": "Figma Vendor Conversion Algorithm",
+    "description": "Technical documentation for Jay Stack's Figma vendor system: converting design documents to Jay-HTML with dynamic bindings, repeaters, and variants."
+  },
+  "design-log/jay/67-registerreactiveglobalcontext": {
+    "hash": "429f8468da4fbf69",
+    "title": "Register Reactive Global Contexts",
+    "description": "Create reactive global app state with signals. Manage state that automatically updates across components with registerReactiveGlobalContext."
+  },
+  "design-log/jay/68-jay-stack-conceptual-model": {
+    "hash": "f17828a327c88bf8",
+    "title": "Jay Stack Conceptual Model",
+    "description": "Explore Jay Stack's conceptual model: Services, Contexts, Pages, Plugins, Headless Components, Init. Visual diagrams show system relationships and flows."
+  },
+  "design-log/jay/69-route-priority-ordering-for-static-vs-dynamic-routes": {
+    "hash": "ac76b8a90c8cbf99",
+    "title": "Route Priority: Static vs Dynamic",
+    "description": "Learn route priority rules in Jay Stack: how static routes take precedence over dynamic ones using specificity sorting for correct request matching."
+  },
+  "design-log/jay/70-static-route-param-inference": {
+    "hash": "82d4ca8f48df38f7",
+    "title": "Static Route Parameter Inference",
+    "description": "Extract URL parameters from static route overrides. Design analysis of scan-time inference, request-time synthesis, and explicit configuration strategies."
+  },
+  "design-log/jay/71-boolean-attribute-condition-style-parsing": {
+    "hash": "4a4980ace63e51d3",
+    "title": "Boolean Attribute Condition Style Parsing",
+    "description": "Boolean attributes now support condition-style parsing with enum comparisons, logical operators, and nested properties in Jay-HTML."
+  },
+  "design-log/jay/72-skip-client-script-for-non-interactive-components": {
+    "hash": "c4854e5e57ead330",
+    "title": "Skip Client Scripts for Non-Interactive",
+    "description": "Prevent client-side crashes in server-only components. Learn how to skip client scripts when Jay Stack components don't define an interactive phase."
+  },
+  "design-log/jay/73-jay-stack-validate-command": {
+    "hash": "e1efda1d175c294c",
+    "title": "Jay-Stack Validate Command",
+    "description": "Validate .jay-html and .jay-contract files for compile errors without creating output files. Includes detailed error reporting and CI/CD integration."
+  },
+  "design-log/jay/74-watch-linked-style-files-in-dev-server": {
+    "hash": "ccc8c0389016fe4a",
+    "title": "Watch Linked CSS Files in Dev Server",
+    "description": "Configure the dev server to watch linked CSS files and trigger automatic rebuilds when stylesheets change, eliminating manual refresh cycles."
+  },
+  "design-log/jay/75-slow-rendering-jay-html-to-jay-html": {
+    "hash": "596bac5b74cb09a6",
+    "title": "Jay-HTML Slow-Phase Pre-Rendering",
+    "description": "Build-time pre-rendering of slow-phase Jay-HTML bindings. Bakes static data into templates while preserving fast and interactive bindings for runtime."
+  },
+  "design-log/jay/76-ai-agent-integration": {
+    "hash": "59661296445dadac",
+    "title": "AI Agent Integration for Jay Components",
+    "description": "Integrate AI agents with Jay components. Query ViewState, discover interactions, and trigger events programmatically for automation, testing, and…"
+  },
+  "design-log/jay/77-automation-dev-server-integration": {
+    "hash": "ca6ba91e16ec722e",
+    "title": "Automation Dev Server Integration",
+    "description": "Automatically integrate automation APIs in dev mode for plugins, testing, and debugging. Enable programmatic UI interaction without manual setup."
+  },
+  "design-log/jay/78-unified-condition-parsing-for-code-generation-and-evaluation": {
+    "hash": "bff87aa484039e6d",
+    "title": "Unified Condition Parsing",
+    "description": "Unify condition expression parsing for code generation and compile-time evaluation. Eliminate duplication and ensure consistent expression handling."
+  },
+  "design-log/jay/79-linked-contracts-with-mixed-phase-properties": {
+    "hash": "9454371eb646b0ab",
+    "title": "Linked Contracts with Mixed Phases",
+    "description": "Handle linked contracts with mixed rendering phases. Fix type generation issues when slow arrays contain fast/interactive properties."
+  },
+  "design-log/jay/80-materializing-dynamic-contracts-for-agentic-generation": {
+    "hash": "093788286ccddf99",
+    "title": "Materializing Dynamic Contracts",
+    "description": "Access dynamic contracts for AI agent page generation in Jay Stack. Learn storage options, contract discovery strategies, and implementation timing."
+  },
+  "design-log/jay/81-dev-server-test-mode": {
+    "hash": "99f2e0a45a73930a",
+    "title": "Dev Server Test Mode",
+    "description": "Enable test mode on your dev server with health checks and graceful shutdown endpoints. Configure using --test-mode and --timeout flags for reliable…"
+  },
+  "design-log/jay/82-automatic-server-side-action-service-injection": {
+    "hash": "9c318c2591ac03f0",
+    "title": "Server-Side Action Service Injection",
+    "description": "Understand automatic service injection for Jay Stack server-side actions, solving the circular dependency problem with a runtime resolver pattern."
+  },
+  "design-log/jay/83-dev-server-logging-and-timing": {
+    "hash": "e5dcfc2fd2fc5fad",
+    "title": "Dev Server Logging and Timing",
+    "description": "Manage dev server output verbosity and monitor real-time request timing metrics for SSR, load parameters, and Vite compilation performance."
+  },
+  "design-log/jay/84-headless-component-props-and-repeater-support": {
+    "hash": "1b648a6968087369",
+    "title": "Headless Components & Props Support",
+    "description": "Technical architecture for headless components with props, repeater support, and multi-instance patterns for dynamic page rendering."
+  },
+  "design-log/jay/85-rendering-phases-and-agent-kit-for-agentic-generation": {
+    "hash": "03f4393a29037ee5",
+    "title": "Agent Kit for Agentic Generation",
+    "description": "Set up the Agent Kit for agentic generation in Jay Stack. Learn rendering phases, contract discovery, plugin discovery, and how agents generate pages."
+  },
+  "design-log/jay/86-jay-stack-full-workflow-lifecycle": {
+    "hash": "b6f6350eb30054b4",
+    "title": "Jay Stack Full Workflow Lifecycle",
+    "description": "Learn the 8-phase Jay Stack workflow: project setup, plugins, agent kit, development, slow render, fast render, interactive, and refresh cycles."
+  },
+  "design-log/jay/87-jay-stack-setup-command": {
+    "hash": "eb3c854f79eed010",
+    "title": "Jay-Stack Setup Command",
+    "description": "Configure Jay-Stack plugins with API credentials, validate service connections, and auto-generate reference data for AI agent development."
+  },
+  "design-log/jay/88-pr-158-review-guide": {
+    "hash": "f769c27569938523",
+    "title": "Export/Import Branch Review",
+    "description": "Complete review guide for export_import branch covering Figma vendor integration, enhanced plugin resolution, editor protocol extensions, and tests."
+  },
+  "design-log/jay/89-pr-158-merge-concerns": {
+    "hash": "40caa20a84bd9602",
+    "title": "PR 158: Merge Concerns",
+    "description": "Resolve PR 158 merge conflicts: align plugin models, evaluate architecture decisions, and finalize Figma vendor integration."
+  },
+  "design-log/jay/90-headless-instances-in-interactive-foreach-without-slow-phase": {
+    "hash": "6eb5f21bb67aeafc",
+    "title": "Headless Instances in Interactive forEach",
+    "description": "Headless component instances in interactive forEach: when to validate at compile vs server time, rendering phases, handling components without slow render."
+  },
+  "design-log/jay/91-webmcp-plugin-for-jay-stack": {
+    "hash": "7222622c3a34b1b8",
+    "title": "WebMCP Plugin for Jay-Stack",
+    "description": "Automatically expose Jay-Stack page capabilities to AI agents. Generate semantic tools, discover interactions, and enable automation without configuration."
+  },
+  "design-log/jay/92-gemini-agent-plugin-for-jay-stack": {
+    "hash": "13740141c4d38f93",
+    "title": "Gemini Agent Plugin for Jay-Stack",
+    "description": "Integrate Gemini AI into Jay-Stack pages for chat-based automation. Enable agents to manage page state, trigger interactions, and execute server actions."
+  },
+  "design-log/jay/93-client-hydration": {
+    "hash": "c92eae7310501e36",
+    "title": "Client Hydration Design",
+    "description": "Discover client hydration: connecting to server-rendered DOM without recreating static HTML, using coordinate-based attributes and refs for dynamic…"
+  },
+  "design-log/jay/94-ssr-streaming-renderer": {
+    "hash": "f78b0848cf4a326e",
+    "title": "SSR Streaming Renderer",
+    "description": "Server HTML streaming renderer. Compile jay-html into streaming functions handling fast/slow data, async values, interactive controls without DOM APIs."
+  },
+  "design-log/jay/95-jay-action-contract-references": {
+    "hash": "2e7d056a25972b59",
+    "title": "Contract References in jay-action Files",
+    "description": "Learn the compact notation for referencing contracts in .jay-action files with imports and type generation, eliminating JSON Schema duplication."
+  },
+  "design-log/jay/96-consistent-build-folder-structure": {
+    "hash": "0fd7b382058ee516",
+    "title": "Consistent Build Folder Structure",
+    "description": "Standardize Jay framework build folder structure by resolving inconsistencies between Jay Stack and client-only build contexts with clear organization."
+  },
+  "design-log/jay/97-contract-based-tool-descriptions-for-gemini-agent": {
+    "hash": "3a407d76523a28d6",
+    "title": "Contract-Based Tool Descriptions",
+    "description": "Contract-based tool descriptions for AI agents. Learn the design pattern for runtime semantic descriptions that improve agent decision-making."
+  },
+  "design-log/jay/98-route-based-server-element-output": {
+    "hash": "57b5349ab5e6bca0",
+    "title": "Route-Based Server-Element Output",
+    "description": "Resolve server-element naming collisions by organizing files into route-based directories that mirror pre-rendered output structure."
+  },
+  "design-log/jay/99-hydration-coordinate-alignment-bugs": {
+    "hash": "5bf0314306d53e06",
+    "title": "Hydration Coordinate Alignment Bugs",
+    "description": "Hydration coordinate alignment bugs: forEach child prefixes, conditional ref counters, and container coordinates. Root cause analysis and design fixes."
+  },
+  "design-log/jay/index": {
+    "hash": "75bf057694f6469d",
+    "title": "Design Log Index",
+    "description": "Quick reference to find design logs by topic. Track design decisions with status tags, implementation results, and architectural documentation."
+  },
+  "design-log/website/01-design-log-import": {
+    "hash": "4cca3a0a5010cc46",
+    "title": "Design Log Import",
+    "description": "Automated import for Jay Framework design logs. Processes markdown files, uploads images to CDN, rewrites internal links, and manages incremental syncing."
+  },
+  "design-log/website/02-multi-repo-design-log-sync": {
+    "hash": "7395e18b7014230d",
+    "title": "Multi-Repo Design Log Sync",
+    "description": "Sync design logs across multiple repositories. Covers route architecture, independent caching per repo, and media configuration handling."
+  },
+  "design-log/website/03-agent-kit-documentation-pages": {
+    "hash": "96fae9f7a7b0df8f",
+    "title": "Agent Kit Documentation Pages",
+    "description": "Design log on publishing Agent Kit documentation. Covers routing, preprocessing, role-based organization, and making framework documentation accessible."
+  },
+  "design-log/website/04-docs-sidebar-navigation": {
+    "hash": "46e15e359c782e66",
+    "title": "Docs Sidebar Navigation",
+    "description": "Build sidebar navigation for documentation pages. Learn how to generate guide structure from markdown and handle active states server-side."
+  },
+  "design-log/website/05-ecosystem-page": {
+    "hash": "496e918b8e6de9b8",
+    "title": "Starter Templates & Plugins",
+    "description": "Discover starter project templates and Jay plugins. Browse ready-to-use templates with examples and explore our collection of installable plugins."
+  },
+  "design-log/website/06-seo-metadata-generation": {
+    "hash": "bb008a0ddc91660f",
+    "title": "SEO Metadata Generation",
+    "description": "Solve markdown documentation SEO issues using a hybrid approach combining deterministic extraction with optional agent-authored metadata overrides."
+  },
+  "design-log/website/index": {
+    "hash": "621ddba607b9be91",
+    "title": "Jay Design Logs",
+    "description": "Design log index for the Jay Framework website covering design imports, multi-repo sync, documentation architecture, sidebar navigation, and ecosystem."
+  },
+  "design-log/wix/01-wix-packages-structure": {
+    "hash": "00e381b90ffc04e7",
+    "title": "Wix Packages Structure",
+    "description": "Jay Framework's Wix packages architecture guide. Learn package dependencies, dual authentication, and service integration patterns."
+  },
+  "design-log/wix/02-product-card-quick-options": {
+    "hash": "4546f9f55a99252d",
+    "title": "Product Card Quick Options",
+    "description": "Design specifications for product card quick options: hover UI, single-option quick-add, contract architecture, and variant/size handling."
+  },
+  "design-log/wix/03-category-pages": {
+    "hash": "c947f5fc56dd411a",
+    "title": "Category Pages Implementation",
+    "description": "Implement category pages for Wix Stores with async product loading. Complete guide to API integration, URL routing, pagination, sorting, and components."
+  },
+  "design-log/wix/04-price-filter-enhancements": {
+    "hash": "484d4a8b9cdc25f6",
+    "title": "Price Filter Enhancements",
+    "description": "Design guide for enhancing product price filters with predefined ranges, dual sliders, and dynamic bounds computed from Wix API aggregations."
+  },
+  "design-log/wix/05-wix-data-plugin": {
+    "hash": "721a73321e566ec4",
+    "title": "Wix Data Plugin Design",
+    "description": "Build headless CMS components from Wix Data collections using dynamic contracts. Understand configuration, schema discovery, and component patterns."
+  },
+  "design-log/wix/06-wix-stores-v1-package": {
+    "hash": "689e4d46e6cfa638",
+    "title": "Wix Stores V1 Implementation",
+    "description": "Design and implement Wix Stores V1 package supporting Catalog V1 API. Learn key design decisions, API differences, package structure, and approach."
+  },
+  "design-log/wix/07-wix-cart-shared-package": {
+    "hash": "5d80bf26d1ed314d",
+    "title": "Wix Cart Shared Package",
+    "description": "Shared cart package design eliminating duplication. Service architecture and context patterns for consistent cart functionality across wix-stores."
+  },
+  "design-log/wix/08-wix-data-list-slow-fast-rendering": {
+    "hash": "654cb5acc17243d6",
+    "title": "List Slow-Fast Rendering",
+    "description": "Pagination pattern combining slow-phase server rendering with fast+interactive client loading. Covers contract design and component implementation."
+  },
+  "design-log/wix/09-wix-data-list-field-mapping": {
+    "hash": "4ee94fe7cd1e32f1",
+    "title": "Wix-Data List Field Mapping",
+    "description": "Learn to configure which fields appear in Wix Data collection list views using smart defaults and explicit field mapping."
+  },
+  "design-log/wix/10-category-prefixed-product-routes": {
+    "hash": "63a79936f64e581a",
+    "title": "Category-Prefixed Product Routes",
+    "description": "Implement category-prefixed product URLs for e-commerce stores. Map categories to custom prefixes, configure routing, and handle search integration."
+  },
+  "design-log/wix/11-category-deep-linking-and-header": {
+    "hash": "32333d02163ada36",
+    "title": "Category Deep-Linking & Header",
+    "description": "Configure URL patterns for category deep-linking, static route overrides, and category headers to build organized, SEO-friendly product hierarchies."
+  },
+  "design-log/wix/12-two-option-quick-add": {
+    "hash": "ac1d32ae7d0a451e",
+    "title": "Color and Size Quick Add",
+    "description": "Design spec for quick-add with color and size options. Color swatches and size selection directly on product cards reduce checkout friction."
+  },
+  "design-log/wix/13-product-search-slow-phase-optimization": {
+    "hash": "c458bc24c7d99fce",
+    "title": "Product Search Slow Phase Optimization",
+    "description": "Pre-render product listings at build time to optimize search performance. Skip redundant API calls for category pages without active filters."
+  },
+  "design-log/wix/14-option-based-product-filters": {
+    "hash": "4701f6a3068bcc24",
+    "title": "Option-Based Product Filters",
+    "description": "Build smart product filters by Color, Size, and other options. Combine Wix Customizations API caching with Search API aggregations for ideal UX."
+  },
+  "design-log/wix/15-mini-cart-drawer": {
+    "hash": "6cd625cc51f3a56b",
+    "title": "Mini-Cart Drawer Component",
+    "description": "Implement a cart drawer that auto-opens when items are added, displaying contents instantly and keeping users engaged in the shopping flow."
+  },
+  "design-log/wix/16-product-data-extension-fields": {
+    "hash": "11fa993d399ecd79",
+    "title": "Product Data Extension Fields",
+    "description": "Extend product contracts with custom fields. Design guide for materializing site-specific schemas and mapping JSON to contract components in Wix Stores."
+  },
+  "design-log/wix/17-related-products": {
+    "hash": "06e2b0081ecf30b0",
+    "title": "Related Products Component",
+    "description": "Create a related-products component that displays products from the same category with product cards and quick-add functionality for e-commerce sites."
+  },
+  "design-log/wix/18-wix-members-package": {
+    "hash": "884bd473b71a868d",
+    "title": "Wix Members Package Design",
+    "description": "Implement Wix member authentication with OAuthStrategy. Covers login, registration, email verification, CAPTCHA, token storage, and password recovery."
+  },
+  "design-log/wix/19-wix-media-plugin": {
+    "hash": "d5fdb7c2737eef1a",
+    "title": "Wix Media Plugin Design & Architecture",
+    "description": "Design and implement the Wix Media Plugin: index media, upload files, generate URLs, and integrate with Jay Framework's AI designer agent."
+  },
+  "design-log/wix/20-wix-baas-deployment": {
+    "hash": "3d513ff183ed5d5a",
+    "title": "Wix BaaS Deployment Architecture",
+    "description": "Deploy Jay Framework to Wix BaaS with optimized bundles. Explore splitting strategies, data collection storage, and cold-start performance optimization."
+  },
+  "design-log/wix/20-wix-stores-add-menu-contribution": {
+    "hash": "1522079e9d570a25",
+    "title": "Wix-Stores Add Menu Contribution",
+    "description": "Build Wix Stores menu contributions with YAML templates and setup writers, enabling dynamic menu items through the AIditor framework."
+  },
+  "design-log/wix/21-baas-entry-framework-requirements": {
+    "hash": "b2becc5fda999f70",
+    "title": "BaaS Entry Framework Requirements",
+    "description": "Technical framework requirements for deploying Jay backend on Wix BaaS with custom file providers and lazy loading architecture."
+  },
+  "design-log/wix/22-wix-deploy-pipeline": {
+    "hash": "8a4d2938eb4a5a7f",
+    "title": "Wix Deployment Pipeline Design",
+    "description": "Technical design for deploying Jay Framework apps to Wix BaaS. Covers the 4-step deployment process, credential management, and site setup requirements."
+  },
+  "design-log/wix/22-wix-rest-api-migration": {
+    "hash": "b57651e07f38f500",
+    "title": "Wix REST API Migration",
+    "description": "Migrate Wix SDK to lightweight REST APIs. Reduce deployment bundle from 53 MB to 3.5 MB while keeping authentication management."
+  },
+  "design-log/wix/23-wix-checkout-redirect": {
+    "hash": "8825886f57029469",
+    "title": "Implement Wix Checkout Redirect",
+    "description": "Wix checkout redirect setup guide. Create redirect sessions, configure callbacks, and integrate with Wix's hosted checkout service for seamless payments."
+  },
+  "design-log/wix/25-product-page-head-tags": {
+    "hash": "fd8d9a6306a1d0cb",
+    "title": "Add Product Page Head Tags",
+    "description": "Design log for adding SEO head tag injection to product pages in wix-stores-v1, enabling automatic meta tags and OG links from product data."
+  },
+  "design-log/wix/26-granular-wix-sdk-imports": {
+    "hash": "b59c6563a3d13a16",
+    "title": "Granular Wix SDK Imports",
+    "description": "Reduce Wix SDK bundle size by importing only specific functions instead of entire module namespaces. Design log with function usage analysis."
+  },
+  "design-log/wix/27-interactive-setup-for-wix-plugins": {
+    "hash": "3ef87d9374d96867",
+    "title": "Interactive Setup for Wix Plugins",
+    "description": "Set up Wix plugins interactively or programmatically. Learn setup modes, credential flows, plugin dependencies, and setup handlers."
+  },
+  "design-log/wix/28-static-filename-validation-for-cdn": {
+    "hash": "1d0c30a933fd1d75",
+    "title": "Static Filename Validation for CDN",
+    "description": "Prevent broken images on Wix CDN by validating static filenames. Catch spaces before deployment—CDN converts them to hyphens, breaking references."
+  },
+  "design-log/wix/29-app-strategy-support": {
+    "hash": "11a23ce8221e4840",
+    "title": "Configure App Strategy",
+    "description": "Configure AppStrategy for wix-server-client server authentication. Site-level access with automated credential retrieval, eliminating manual setup prompts."
+  },
+  "design-log/wix/30-baas-deploy-operations": {
+    "hash": "9dbf456b94817d35",
+    "title": "BaaS Deploy: Fix Permissions & Validation",
+    "description": "Troubleshoot Wix BaaS deployments: fix permission errors (403) and bundle composition issues with step-by-step solutions."
+  },
+  "design-log/wix/31-wix-txt-files-and-sitemap-sync": {
+    "hash": "5f2dc0f47231f96f",
+    "title": "Wix TXT Files and Sitemap Sync",
+    "description": "Master Wix's TXT File Server APIs to manage robots.txt, ads.txt, and llms.txt. Resolve sitemap exposure issues for search engines."
+  },
+  "design-log/wix/32-runtime-tools-entry-split-for-plugins": {
+    "hash": "af934a8375234942",
+    "title": "Plugin Runtime/Tools Entry Split",
+    "description": "Split Wix plugin code into serve-time and tools-time entries to prevent compiler leaks. Framework design pattern for plugin package structure."
+  },
+  "design-log/wix/33-wix-pro-gallery": {
+    "hash": "7ea420d67e44decf",
+    "title": "Wix Pro Gallery Component Design",
+    "description": "Headless Wix Pro Gallery component design for Jay sites featuring live item loading, slideshow navigation controls, and template-driven layout options."
+  },
+  "design-log/wix/readme": {
+    "hash": "25c5a1b5a72ac819",
+    "title": "Wix Monorepo Design Log",
+    "description": "Design documentation for Jay Framework's Wix integration, covering e-commerce, data management, and deployment across 33 specifications."
+  },
+  "docs/contracts/component-contracts": {
+    "hash": "c72cd8e8ff4c262f",
+    "title": "Full-Stack Component Contracts",
+    "description": "Full-stack component contracts for Jay Stack. Create headless UI components with props, templates, and design system patterns for multiple pages."
+  },
+  "docs/contracts/guide": {
+    "hash": "74727da1c7a4b1da",
+    "title": "Contract Authoring Guide",
+    "description": "Learn to author contracts that define component data shapes, interaction points, and rendering phases for the Jay Stack framework."
+  },
+  "docs/contracts/linked-contracts": {
+    "hash": "b713eb8a52beba47",
+    "title": "Linked and Composed Contracts",
+    "description": "Compose contracts from linked reusable pieces. Learn extraction patterns, composition hierarchies, and best practices for organizing complex contracts."
+  },
+  "docs/contracts/page-contracts": {
+    "hash": "63959647637fbdb2",
+    "title": "Page Contracts",
+    "description": "Page contracts define type-safe page-level data for routes. Learn when to use them, file structure, dynamic route parameters, and plugin integration."
+  },
+  "docs/contracts/syntax": {
+    "hash": "b5bbb81036e55fdf",
+    "title": "Contract Syntax Reference",
+    "description": "Complete YAML syntax reference for contracts. Learn tag types, rendering phases, props, params, sub-contracts, and validation rules."
+  },
+  "docs/designer/a11y-patterns": {
+    "hash": "4c8a05a85793a14d",
+    "title": "Accessible Patterns for Jay-HTML",
+    "description": "Essential accessibility patterns for Jay-HTML: fix validation errors in images, forms, buttons, nested elements, IDs, and media with best practices."
+  },
+  "docs/designer/accordion": {
+    "hash": "84abd4c906220e4b",
+    "title": "Native HTML Accordion",
+    "description": "Build collapsible accordion sections using native HTML `<details>` and `<summary>`. Fully accessible, SEO-friendly, and requires no component library."
+  },
+  "docs/designer/cli-commands": {
+    "hash": "769d1153b65de03b",
+    "title": "jay-stack CLI Commands Reference",
+    "description": "Complete jay-stack CLI command reference. Setup plugins, generate contracts, validate files, and sync design systems with detailed examples and options."
+  },
+  "docs/designer/click-popover": {
+    "hash": "6eb2d1c51f30b762",
+    "title": "Click Popover: Light Dismiss Dialog",
+    "description": "Create button-triggered popovers with native HTML Popover API. Features light-dismiss on outside click and native accessibility with keyboard support."
+  },
+  "docs/designer/clipboard-copy": {
+    "hash": "a4c20aa84f689540",
+    "title": "Clipboard Copy Component",
+    "description": "Headless copy-to-clipboard component with automatic 'Copied!' feedback. Features aria-live accessibility support and ViewState integration."
+  },
+  "docs/designer/contracts-and-plugins": {
+    "hash": "59f0e3a3b335af9f",
+    "title": "Contracts and Plugin Components",
+    "description": "Explore plugins and contracts in Designer Agent Kit. Discover design-system components, understand plugin configuration, and define contract schemas."
+  },
+  "docs/designer/data-files-usage": {
+    "hash": "6382eab31ad90371",
+    "title": "Data Files Plugin",
+    "description": "Render structured data from CSV, YAML, JSON, and JSONL files as lists, item pages, or single items. Define schemas and contracts for static datasets."
+  },
+  "docs/designer/design-system": {
+    "hash": "6f82fba43127f67a",
+    "title": "DESIGN.md Documentation",
+    "description": "Create design systems using DESIGN.md files. Define tokens for colors, typography, spacing, and components with built-in validation and inheritance rules."
+  },
+  "docs/designer/design-system-guide": {
+    "hash": "5c0e8d4157cc9f84",
+    "title": "Design-System Elements: Create, Validate, Sync",
+    "description": "Build reusable components with design-system elements. Learn templating, flattening, validation, and syncing to manage instances and control drift."
+  },
+  "docs/designer/font-fallback-patterns": {
+    "hash": "8ba60cf6c174e97d",
+    "title": "Metric-Matched Font Fallbacks",
+    "description": "Create metric-matched font fallback CSS rules to prevent layout shift and FOUT. Learn CSS patterns, use automated tools, and explore common font pairs."
+  },
+  "docs/designer/instructions": {
+    "hash": "2e3637decb6e6860",
+    "title": "Jay Stack Agent Kit",
+    "description": "Complete guide for building Jay Stack pages. Master jay-html templates, contracts, plugins, and rendering phases with detailed workflows."
+  },
+  "docs/designer/jay-html-components": {
+    "hash": "c322b52214968e67",
+    "title": "Component Import Patterns in Jay-HTML",
+    "description": "Learn key-based and instance-based patterns for importing Jay-HTML headless components. Configure templates, bind props, and compose pages effectively."
+  },
+  "docs/designer/jay-html-styling": {
+    "hash": "5bd7bbaac63452e4",
+    "title": "Styling Guide for Jay-HTML Components",
+    "description": "Complete Jay-HTML styling reference: inline CSS, external stylesheets, dynamic style and class bindings, conditional patterns, and design-system @scope."
+  },
+  "docs/designer/jay-html-syntax": {
+    "hash": "0436a50ecdb50620",
+    "title": "Jay-HTML — AI Designer Instructions",
+    "description": "Build AI-designed web pages with Jay-HTML data bindings. Learn component types, nesting rules, validation, and template syntax for dynamic content."
+  },
+  "docs/designer/jay-html-template-syntax": {
+    "hash": "7a6bec094ec73897",
+    "title": "Jay-HTML Template Syntax",
+    "description": "Learn Jay-HTML template syntax: data bindings, conditional rendering, boolean attributes, and SEO head tags for dynamic component templates."
+  },
+  "docs/designer/letter-split": {
+    "hash": "9eb2515ce77d315f",
+    "title": "Letter Split for Character Styling",
+    "description": "Split dynamic text into individual letter spans for character-level styling. Headless component supporting animations, color effects, and accessibility."
+  },
+  "docs/designer/markdown-usage": {
+    "hash": "e74c146654216ebb",
+    "title": "Markdown Plugin Components",
+    "description": "Three headless components for rendering markdown as HTML. Supports frontmatter, code highlighting, CDN image optimization, and automatic SEO meta tags."
+  },
+  "docs/designer/navigation-patterns": {
+    "hash": "81415a70d77a4c77",
+    "title": "Navigation Patterns",
+    "description": "Implement active menu items, section highlighting, and two-level sidebars using conditional class bindings with === and ^= operators."
+  },
+  "docs/designer/popover-menu": {
+    "hash": "a12e330e6cad43f1",
+    "title": "Popover Menu Component",
+    "description": "Hover-triggered popover menu component with CSS Anchor Positioning, accessibility features, and active state indicators for dropdowns."
+  },
+  "docs/designer/project-structure": {
+    "hash": "899fc19253c51c08",
+    "title": "Project Directory Structure",
+    "description": "Discover how jay-stack projects are organized. Learn the directory structure, where to create pages and components, and how styling and theming works."
+  },
+  "docs/designer/routing": {
+    "hash": "11896ab2fd7d760b",
+    "title": "Directory-Based Routing",
+    "description": "Learn to build dynamic routes using directory-based routing. Master dynamic parameters, optional segments, catch-all routes, route priority, and static…"
+  },
+  "docs/designer/script-tags": {
+    "hash": "a5337e653270bdc4",
+    "title": "Script Tags in Jay-HTML",
+    "description": "Master third-party scripts in Jay-HTML with the jay-script attribute. Learn best practices for analytics, chat widgets, tag managers, and placement."
+  },
+  "docs/designer/scroll-carousel": {
+    "hash": "95d7be46902d0b9e",
+    "title": "Scroll Carousel Component",
+    "description": "Headless scroll carousel with CSS snap scroll. Two patterns: arrow navigation or snap-to-center gallery. Native touch and drag support, fully accessible."
+  },
+  "docs/designer/spring-button-hover": {
+    "hash": "72bd023aaaaf8712",
+    "title": "Spring button hover effects",
+    "description": "Create spring hover animations on buttons with CSS linear() easing. No JavaScript required. Smooth, bouncy effects with accessibility support and…"
+  },
+  "docs/designer/sticky-header-scroll": {
+    "hash": "74d9a4066d0325ca",
+    "title": "Sticky header with scroll morphing",
+    "description": "Sticky header that morphs on scroll, compressing padding and revealing a wavy edge. Uses CSS animation-timeline for smooth scroll-driven effects."
+  },
+  "docs/designer/tabs": {
+    "hash": "9ce027a6715be2c4",
+    "title": "CSS Tabs with Radio Inputs",
+    "description": "Pure CSS tabs with radio inputs for accessible content switching. Learn HTML structure, CSS patterns, keyboard navigation, and ARIA semantic markup."
+  },
+  "docs/designer/toggle-switch": {
+    "hash": "0c385f454af3954f",
+    "title": "CSS Toggle Switch",
+    "description": "Learn to build accessible toggle switches with pure CSS and a hidden checkbox. Includes styling guide, examples, and implementation patterns."
+  },
+  "docs/designer/tooltip": {
+    "hash": "c84b73a8954cc9dc",
+    "title": "Accessible Tooltips with CSS",
+    "description": "Build accessible hover tooltips with pure CSS using the ::after pseudo-element. Code examples include ARIA labels for screen reader support."
+  },
+  "docs/designer/validation-guide": {
+    "hash": "172ef016caea32d0",
+    "title": "Reading Validation Output",
+    "description": "Learn how to interpret validation warnings and errors, understand what validators check in templates, and discover how to resolve validation issues."
+  },
+  "docs/designer/wix-media": {
+    "hash": "a7948cc99b51cc4e",
+    "title": "Using Wix Media in HTML Templates",
+    "description": "Use Wix Media to embed images, video, audio, and documents in HTML. Learn URL formats, image transformations, responsive images, and media optimization."
+  },
+  "docs/designer/word-split": {
+    "hash": "ccbc65233c8f211f",
+    "title": "Word Split Component",
+    "description": "Splits dynamic text into individual word spans for styling. Headless component with accessibility and SEO support included."
+  },
+  "docs/developer/cli-commands": {
+    "hash": "55f210d407c5fd76",
+    "title": "jay-stack CLI Reference",
+    "description": "Complete reference for jay-stack CLI commands including setup, agent-kit, validation, params discovery, and plugin actions."
+  },
+  "docs/developer/component-data": {
+    "hash": "132106587f5ee6f1",
+    "title": "Immutable Data and Patching",
+    "description": "Manage immutable ViewState updates in Jay with signals, JSON Patch operations, and reactive arrays without direct mutations."
+  },
+  "docs/developer/component-refs": {
+    "hash": "3ef9874fc57398f8",
+    "title": "Component Refs",
+    "description": "Type-safe DOM element access with component refs. Learn single refs, collection refs, event handling, and element interactions."
+  },
+  "docs/developer/component-state": {
+    "hash": "a63806850aa6bb7a",
+    "title": "Reactive State Hooks",
+    "description": "Reactive state management hooks for interactive components. Learn createSignal, createMemo, createEffect, and createEvent for client-side behavior."
+  },
+  "docs/developer/configuration": {
+    "hash": "3ab9eb9c4713784c",
+    "title": "Project Configuration",
+    "description": "Set up your development environment with .jay configuration files, manage plugin settings, initialize projects, and control npm scripts."
+  },
+  "docs/developer/dev-server-service": {
+    "hash": "b687f44eddf5ca41",
+    "title": "Dev Server Service API",
+    "description": "Service API for listing routes, loading parameters, and managing frozen page states in design boards, CLI tools, and plugins."
+  },
+  "docs/developer/instructions": {
+    "hash": "821a8e8c04b0883a",
+    "title": "Developer Agent Kit",
+    "description": "Build Jay Stack projects: setup, routing, contracts, components, and shared UI. Learn workflows, CLI commands, and developer API references."
+  },
+  "docs/developer/page-components": {
+    "hash": "c9bcd185bb259377",
+    "title": "Page Components",
+    "description": "Create page components with makeJayStackComponent for multi-phase rendering. Handle params, interactivity, and template refs in your Jay pages."
+  },
+  "docs/developer/page-contracts": {
+    "hash": "fdfc417e2cce4253",
+    "title": "Page Contracts Guide",
+    "description": "Learn page contracts in the Jay Stack: define type-safe page-level data, handle dynamic routes with params, and integrate with plugin contracts."
+  },
+  "docs/developer/project-structure": {
+    "hash": "62c2b839c39f2245",
+    "title": "Project Structure",
+    "description": "Explore the complete directory layout of jay-stack projects, including components, pages, theming, and what you need to create."
+  },
+  "docs/developer/render-results": {
+    "hash": "d013315d653f03e2",
+    "title": "Render Results",
+    "description": "Learn how to return render results with ViewState and CarryForward data, handle errors and redirects, and compose complex rendering logic."
+  },
+  "docs/developer/routing": {
+    "hash": "52f8d987ad218b13",
+    "title": "Directory-Based Routing",
+    "description": "Implement file system routing: map directories to URLs with dynamic parameters, static overrides, catch-all patterns, and route priority rules."
+  },
+  "docs/developer/seo-guide": {
+    "hash": "dedc6d993dada16c",
+    "title": "SEO Head Tags for SSR Components",
+    "description": "Inject SEO head tags into HTML during server-side rendering: title, meta descriptions, Open Graph, Twitter cards, canonical URLs, and structured data."
+  },
+  "docs/devops/fetch-handler": {
+    "hash": "86d0a00226cf0c56",
+    "title": "Fetch Handler for BaaS Platforms",
+    "description": "HTTP handler for BaaS platforms. Covers installation, API configuration, and usage examples for self-hosted, CDN, and custom artifact store deployments."
+  },
+  "docs/devops/instructions": {
+    "hash": "79194d35f6bde310",
+    "title": "DevOps Agent Kit",
+    "description": "Master DevOps production: build, deploy, serve, invalidate, and admin operations. Complete workflow guide with plugin setup, serving modes, and deployment."
+  },
+  "docs/devops/invalidation": {
+    "hash": "f13b8dd5f7dfdde4",
+    "title": "Invalidation & Rebuild",
+    "description": "Selectively rebuild pages when source data changes. Target by contract, route, or URL. Automate invalidation with the renderer server."
+  },
+  "docs/devops/production-build": {
+    "hash": "80ff141654671872",
+    "title": "Production Build Process",
+    "description": "Learn how to build production artifacts with Jay Stack, including frontend bundles, backend modules, manifests, and deployment structure."
+  },
+  "docs/devops/serving-modes": {
+    "hash": "ebcaf9fb3abb91a1",
+    "title": "Server Deployment Modes",
+    "description": "Deploy using three modes with the same build: Self-Hosted for testing, CDN for production, or BaaS for serverless platforms."
+  },
+  "docs/devops/wix-baas-deployment": {
+    "hash": "9edd294e497b3c23",
+    "title": "Deploy Jay Apps to Wix BaaS",
+    "description": "Deploy Jay Framework apps to Wix BaaS serverless. Step-by-step setup including credentials, data collections, and automated code bundling to CDN."
+  },
+  "docs/plugin/actions-guide": {
+    "hash": "521f68b079229c5d",
+    "title": "Server Actions API",
+    "description": "Learn to create server actions and queries in Jay Framework. Build mutations, reads, handle file uploads, and implement caching with builder APIs."
+  },
+  "docs/plugin/add-menu-guide": {
+    "hash": "8256d4cb1e3fb954",
+    "title": "Create AIditor Add-Menu Items",
+    "description": "Build AIditor plugin add-menu items using YAML catalogs. Configure required fields, interaction modes, browse size, presentation options, and TypeScript…"
+  },
+  "docs/plugin/aiditor-add-menu": {
+    "hash": "c6f898e368484fbf",
+    "title": "AIditor Add Menu Plugin Developer Guide",
+    "description": "Configure Add Menu items for AIditor plugins. Complete schema, paths, categories, interactions, and materialization strategies for plugin developers."
+  },
+  "docs/plugin/aiditor-settings-guide": {
+    "hash": "05b23e88529f5790",
+    "title": "Project Settings Plugin Contributor Guide",
+    "description": "Step-by-step guide for adding Project settings tabs to Jay Stack plugins. Covers template schema, routes, package layout, checklist, and validation."
+  },
+  "docs/plugin/commands-guide": {
+    "hash": "5621bc3249a0f12a",
+    "title": "Create & Run Plugin CLI Commands",
+    "description": "Build CLI commands for Jay-Stack plugins. Guide to creating handlers for batch operations, media uploads, deployments, and cache management tasks."
+  },
+  "docs/plugin/component-context": {
+    "hash": "70de5743934928bf",
+    "title": "Share State Using Component Context",
+    "description": "Share state between components using context markers, reactive contexts, and global state in Jay Framework—no prop drilling required."
+  },
+  "docs/plugin/component-data": {
+    "hash": "ac2519f60ddb53d6",
+    "title": "Immutable Data and JSON Patching",
+    "description": "Master immutable ViewState in Jay. Use signals, JSON Patch operations, and createPatchableSignal for efficient state management without direct mutations."
+  },
+  "docs/plugin/component-refs": {
+    "hash": "f4a04887ab0cc10b",
+    "title": "Component Refs: Type-Safe DOM Access",
+    "description": "Master Component Refs for type-safe DOM access. Learn single refs, collection refs, element types, and best practices for interactive Jay Stack components."
+  },
+  "docs/plugin/component-state": {
+    "hash": "fb421e932dc74a23",
+    "title": "Component State Hooks",
+    "description": "Reactive state hooks API documentation. Master createSignal, createMemo, createEffect, createDerivedArray, and createEvent for component development."
+  },
+  "docs/plugin/component-structure": {
+    "hash": "9f659d524660b065",
+    "title": "Full-Stack Component Structure",
+    "description": "Create full-stack components with the builder API. Explore three rendering phases—slowly, fast, and interactive—plus service and context injection."
+  },
+  "docs/plugin/contracts-guide": {
+    "hash": "cff96fab2b7cb58f",
+    "title": "Writing Plugin Component Contracts",
+    "description": "Define plugin component contracts with YAML syntax. Learn tag types, rendering phases, async data handling, and interactive components."
+  },
+  "docs/plugin/design-system-guide": {
+    "hash": "efe074bdbfd5c1c7",
+    "title": "Ship Design-System Elements",
+    "description": "Build opinionated design-system components with templates. Designers flatten and customize them while syncing updates. Covers contracts, styling, and…"
+  },
+  "docs/plugin/dev-server-service": {
+    "hash": "af77ce63b303e197",
+    "title": "Dev Server Service API",
+    "description": "Dev server APIs for route listing, parameter discovery, and ViewState freeze management in Jay Framework plugins and design board applications."
+  },
+  "docs/plugin/instructions": {
+    "hash": "4d4de1fb95df0689",
+    "title": "Jay Plugin Development",
+    "description": "Learn to build Jay plugins with contracts, headless components, server actions, and routes. Complete guide to workflow, structure, CLI, and setup."
+  },
+  "docs/plugin/plugin-routes": {
+    "hash": "f8aa1aeb3befb919",
+    "title": "Plugin Routes: Complete Guide",
+    "description": "Build admin dashboards, editors, and developer tools with plugin routes. Learn to create jay-html templates, components, and route configuration."
+  },
+  "docs/plugin/plugin-structure": {
+    "hash": "223a712c304eba2f",
+    "title": "Plugin Structure & Required Exports",
+    "description": "Understand how to structure Jay plugins: map capabilities to exports, master the runtime/tools split, and distinguish actions from commands."
+  },
+  "docs/plugin/render-results": {
+    "hash": "2c479bdae9abc530",
+    "title": "Render Results: Success, Errors & Redirects",
+    "description": "Learn to return render results in Jay Framework: use phaseOutput for ViewState, handle errors and redirects, manage cookies and HTTP response headers."
+  },
+  "docs/plugin/seo-guide": {
+    "hash": "8b50f022eb68485f",
+    "title": "SEO Head Tags Implementation",
+    "description": "Add SEO head tags during server-side rendering. Learn how to set title, meta descriptions, Open Graph, and structured data using plugin components."
+  },
+  "docs/plugin/services-guide": {
+    "hash": "47a27a7d27a3360d",
+    "title": "Services and Initialization",
+    "description": "Create typed service markers for databases and APIs using createJayService. Initialize services with makeJayInit and pass data between server and client."
+  },
+  "docs/plugin/setup-guide": {
+    "hash": "8834b98fac9676bc",
+    "title": "Plugin Setup & Agent-Kit",
+    "description": "Declare and implement setup and agent-kit handlers in Jay Framework plugins to manage configuration, credentials, and AI agent discovery."
+  },
+  "docs/plugin/validation": {
+    "hash": "3cef4d25d633badf",
+    "title": "Plugin Validation",
+    "description": "Validate plugin structure, contracts, and types with jay-stack. Learn what gets checked and how to fix common validation errors."
+  },
+  "docs/plugin/webhooks-guide": {
+    "hash": "c2c70929452ac0d1",
+    "title": "Webhooks & Data Change Invalidation",
+    "description": "Webhooks let external systems notify your renderer of data changes and trigger targeted rebuilds using contract-based invalidation."
+  }
+}

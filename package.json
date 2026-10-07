@@ -10,14 +10,15 @@
     "validate": "npm run build:check-types && jay-stack-cli validate",
     "clean": "rimraf dist && rimraf build && rimraf -g 'src/**/*.d.ts'",
     "definitions": "jay-cli definitions src",
-    "build": "npm run agent-kit && npm run definitions",
-    "build:production": "npm run sync:design-log && npm run build && jay-stack-cli build",
+    "build": "npm run agent-kit && npm run definitions && jay-stack-cli build",
+    "build:production": "npm run sync:design-log && npm run sync:docs && npm run build && npm run generate:seo",
     "build:check-types": "tsc",
     "serve": "jay-stack-cli serve",
     "wix:deploy": "jay-stack-cli run wix-deploy/deploy --exclude-plugins aiditor",
     "wix:serve": "node serve.mjs",
     "sync:design-log": "node scripts/sync-design-log.cjs",
     "sync:docs": "node scripts/sync-agent-kit-docs.cjs",
+    "generate:seo": "node scripts/generate-seo.mjs",
     "aiditor:publish": "npm run build:production && npm run wix:deploy"
   },
   "dependencies": {

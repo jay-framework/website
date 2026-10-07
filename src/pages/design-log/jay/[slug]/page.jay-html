@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-  <title>{post.title} — Jay Design Log | Jay Framework</title>
+  <title>{post.title} — Jay Design Log</title>
   <meta name="description" content="{post.description}">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
   <script type="application/jay-headless" plugin="@jay-framework/markdown" contract="markdown-pages"

@@ -6,7 +6,7 @@ export const page = makeJayStackComponent<PageContract>().withProps().withSlowly
         {
             title: 'Jay Framework | AI Agents Wired for the Web',
             description:
-                'Jay bridges the gap between probabilistic AI outputs and deterministic engineering standards. The self-correcting visual ecosystem for AI-native web development.',
+                'Jay bridges the gap between probabilistic AI outputs and deterministic engineering rigor. The self-correcting visual ecosystem for AI-native web development.',
         },
         {},
     );

@@ -27,6 +27,18 @@ So a warning about an `<img>` might come from a full-stack component's template,
 - **Errors** block the build. They must be fixed — there is no way to suppress them.
 - **Warnings** must be either fixed or explicitly suppressed. Do not ignore warnings — each one has a clear resolution path (add the missing attribute, or suppress via `<script type="application/jay-validations">`).
 
+**Broken internal links are errors** (DL#210). `validate` resolves every `<a href>` against the project's
+**static routes + public assets**. An href that resolves to nothing is an error: a placeholder (`href="#"` or
+empty), a typo, or a link to a page/asset that does not exist. Links that match a **dynamic** route pattern
+(e.g. `/blog/[slug]`) are **not** checked here — the concrete slug list isn't known at validate time — so they
+never false-error. External URLs, `mailto:`/`tel:`, in-page `#fragments`, and `{binding}` hrefs are skipped.
+Fix the path, use `<button>` for JS-driven anchors, or suppress per-page (see the `jay-stack` table below).
+
+One design-system rule is a **hard error**, not a warning: `REGION-CSS-NO-REF` (DL#209) — a `<jay:X>` region
+whose `template=` ships CSS but which has no `ref=`. Without a `ref` the CSS has no scope anchor, so `sync`
+silently drops it; the fix is to add a `ref` (see `design-system-guide.md` → _The shape of a region's CSS_).
+It is unsuppressible because the alternative would leak the region's styles across the whole page.
+
 ## How to Read Warnings
 
 Each warning has:
@@ -121,6 +133,7 @@ The core `jay-stack validate` emits four warnings that nudge you to reuse UI thr
 | `REGION-OVERRIDE-NON-CONTENT` | `jay-validations="REGION-OVERRIDE-NON-CONTENT"` on the import                                                                   |
 | `COMPONENT-NO-TEMPLATE`       | `jay-stack: allow-no-template: [Contract]`                                                                                      |
 | `NO-DESIGN-SYSTEM`            | `jay-stack: allow-no-design-system: true`                                                                                       |
+| Broken internal link (DL#210) | `jay-stack: allow-broken-links: true` (per-page — skips all link checks for that page)                                          |
 
 ```html
 <script type="application/jay-validations">
@@ -135,11 +148,97 @@ The core `jay-stack validate` emits four warnings that nudge you to reuse UI thr
 
 If a warning comes from dynamic content (`{post.content}`) or a generated file, you can't suppress it in the template. This is a validator limitation — the warning is a false positive. Don't loop trying to fix it.
 
+## Design-system scorecard (metrics to optimize)
+
+Below the warnings, `validate` prints a **report-only scorecard** (DL#207). It is **never** a pass/fail — it
+emits no warnings and never affects the exit code. It turns "prefer design-system elements" from a nudge into
+two numbers you can deliberately raise:
+
+- **Tag coverage** — of every contract tag/ref a page's regions _could_ bind, how many it actually binds.
+- **Design-system coverage %** — what share of a page's DOM elements come from `template=`-backed
+  design-system regions (vs. hand-authored markup). Higher = more of the page is built from the design system.
+- **Reuse** — how many catalogued templates are used **more than once** across the project. A design system
+  whose templates are each used once isn't really a design system.
+
+The healthy target: **most of each page is composed of design-system elements, and each template is reused
+more than once.** When building a page, prefer linking an existing template (raising coverage and reuse) over
+hand-authoring markup.
+
+By default the scorecard prints **one-line totals** for the whole project:
+
+```
+📦 Tag coverage: 100% (43/43 tags used across 10 page(s))
+📊 Design-system scorecard: 80% element coverage (74/92), 2 of 5 catalogued templates reused > 1
+   Run validate -v for per-page details.
+```
+
+Run with `-v` / `--verbose` to expand the **per-page** breakdown (coverage per file, which tags are unused,
+per-template reuse counts, and `⚠ low` flags on pages under 50% coverage).
+
+## Two validation tiers
+
+Validation comes in two tiers. Know which one you're running.
+
+### Tier 1 — always on (`jay-stack validate`)
+
+The fast, template-only gate. It reads your `.jay-html` files and route scan only — **no build needed** — so it's
+cheap enough for the hot agent loop and runs on every `validate`. Everything described above is Tier 1.
+
+For links, Tier 1 (DL#210) resolves every hand-authored `<a href>` against the project's static routes + public
+assets and **errors** on: broken internal links (typos, missing pages), degenerate `#` / empty placeholder
+links, and self-links (a page linking to its own route). Links that match a **dynamic** route pattern
+(`/design-log/[...slug]`) are deferred — the concrete slug set isn't known without a build.
+
+### Tier 2 — opt-in, against a build (`jay-stack validate --from-build`)
+
+Deep validation against an **existing build's output** (DL#211). It reads
+`build/v<version>/backend/route-manifest.json` plus the per-instance `*.cache.json` slow-render results — it does
+**not** run any render, so it's cheap, but it **requires a prior `jay-stack build`**. If no build is found it's a
+single actionable error (run `jay-stack build` first, or omit `--from-build`). Run it pre-deploy / in CI.
+
+`--from-build` adds three checks, all against the concrete URLs the build actually produced:
+
+1. **Deferred dynamic-slug links** (ERROR) — the template links Tier 1 could only defer (because they matched a
+   dynamic pattern) are now resolved against the real URL set. A link to a dynamic route with a slug the build
+   never generated (e.g. `/design-log/wix/index`) is caught here.
+2. **Broken links in rendered content** (WARNING) — `<a href>` found _inside_ the slow-rendered ViewState
+   (markdown bodies, descriptions) that resolve to a URL the build does not produce. Relative hrefs are resolved
+   against the instance's own URL. These are **warnings**, not errors, because content often doubles as
+   repo/GitHub docs where repo-relative links like `../pkg/foo.ts` are legitimately correct.
+3. **Per-instance meta/SEO** (mostly WARNING) — resolves each route's `headMeta` template against each instance's
+   slow ViewState and validates the concrete `<title>` / `<meta name="description">`. Empty title/description, a
+   title > 60 chars, or a description > 160 chars → **warning**. A leftover unresolved `{binding}` — a field never
+   produced at any phase — → **error**. Note (DL#189): a field bound to the fast/interactive phase is legitimately
+   empty at slow render, so **emptiness is only ever a warning, never an error**.
+
+If the build is older than your current source files, a **staleness warning** is emitted ("validated against a
+build from &lt;timestamp&gt;; source has changed since") suggesting a rebuild.
+
+Tier-2 findings print under their own `📦 build-output (--from-build)` section, separate from `📦 jay-stack (core)`.
+
+### Suppressing Tier-2 findings
+
+Per-page, via the same `<script type="application/jay-validations">` block under the `jay-stack:` key:
+
+- `allow-broken-links: true` — suppresses link findings (both template and rendered-content links) for that page.
+- `allow-meta-issues: true` — suppresses meta/SEO findings for that page.
+
+```html
+<script type="application/jay-validations">
+  jay-stack:
+    allow-broken-links: true
+    allow-meta-issues: true
+</script>
+```
+
 ## Running Validation
 
 ```bash
-jay-stack validate              # validate all pages
-jay-stack validate --strict     # treat warnings as errors
+jay-stack validate                     # Tier 1: all pages (+ one-line scorecard totals)
+jay-stack validate -v                  # add per-page tag coverage + scorecard detail
+jay-stack validate --strict            # treat warnings as errors
+jay-stack validate --from-build        # add Tier 2: validate against the highest build/v* output
+jay-stack validate --from-build --build-dir <dir>  # point Tier 2 at a specific build backend dir or build root
 ```
 
 Validation runs automatically during `jay-stack build`. Warnings don't block the build; errors do (with `--strict`).

@@ -1099,6 +1099,26 @@ items:
           <div style="width:40px;height:40px;border-radius:6px;background:#05070d;border:1px solid rgba(0,0,0,0.1);"></div>
           <div style="font-size:10px;color:#888;font-family:monospace;">#05070d</div>
         </div></div>
+  - id: design-system:color-bg
+    pluginName: design-system-validator
+    packageName: '@jay-framework/design-system-validator'
+    title: bg
+    category: Cybernetic Web Intelligence
+    subCategory: Colors
+    browse:
+      size: small
+    prompt: 'Use color token "bg" with value #04070F from DESIGN.md.'
+    interaction:
+      mode: stage-place
+      stagePromptTemplate: Apply the color token "bg" (#04070F) from DESIGN.md at this location.
+    presentation:
+      type: html-fragment
+      html: >-
+        <div><style>@scope {  }</style><div
+        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:sans-serif;height:100%;">
+          <div style="width:40px;height:40px;border-radius:6px;background:#04070F;border:1px solid rgba(0,0,0,0.1);"></div>
+          <div style="font-size:10px;color:#888;font-family:monospace;">#04070F</div>
+        </div></div>
   - id: design-system:typography-headline-lg
     pluginName: design-system-validator
     packageName: '@jay-framework/design-system-validator'

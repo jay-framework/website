@@ -4,19 +4,34 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 const os = require("os");
+const { loadCache, resolveSeo } = require("./seo-meta.cjs");
+
+const SEO_CACHE = loadCache();
 
 const SCRIPT_DIR = __dirname;
 const ROOT_DIR = path.resolve(path.join(SCRIPT_DIR, ".."));
-const MEDIA_INDEX_FILE = path.join(ROOT_DIR, "agent-kit", "references", "wix-media", "MEDIA-INDEX.md");
+const MEDIA_INDEX_FILE = path.join(
+  ROOT_DIR,
+  "agent-kit",
+  "references",
+  "wix-media",
+  "MEDIA-INDEX.md",
+);
 
 const REPOS = [
-  { name: "jay", url: "git@github.com:jay-framework/jay.git", folder: "design-log" },
-  { name: "wix", url: "git@github.com:jay-framework/wix.git", folder: "design-log" },
+  {
+    name: "jay",
+    url: "git@github.com:jay-framework/jay.git",
+    folder: "design-log",
+  },
+  {
+    name: "wix",
+    url: "git@github.com:jay-framework/wix.git",
+    folder: "design-log",
+  },
 ];
 
-const LOCAL_SOURCES = [
-  { name: "website", folder: "design-log" },
-];
+const LOCAL_SOURCES = [{ name: "website", folder: "design-log" }];
 
 const colors = {
   red: "\x1b[31m",
@@ -29,7 +44,9 @@ const colors = {
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`${colors.yellow}Design Log Sync Script${colors.reset}`);
   console.log("");
-  console.log("Syncs design-log folders from jay and wix repos, uploads images");
+  console.log(
+    "Syncs design-log folders from jay and wix repos, uploads images",
+  );
   console.log("to Wix Media, and generates media maps — all in one call.");
   console.log("");
   console.log("Usage:");
@@ -48,9 +65,23 @@ function repoPaths(name) {
   return {
     contentDir: path.join(ROOT_DIR, "content", "design-log", name),
     publicDir: path.join(ROOT_DIR, "public", "design-log", name),
-    mediaMapFile: path.join(ROOT_DIR, "config", `.design-log-media-map-${name}.yaml`),
-    mediaConfigFile: path.join(ROOT_DIR, "config", `.design-log-media-${name}.json`),
-    syncHashFile: path.join(ROOT_DIR, "content", "design-log", name, ".sync-hash"),
+    mediaMapFile: path.join(
+      ROOT_DIR,
+      "config",
+      `.design-log-media-map-${name}.yaml`,
+    ),
+    mediaConfigFile: path.join(
+      ROOT_DIR,
+      "config",
+      `.design-log-media-${name}.json`,
+    ),
+    syncHashFile: path.join(
+      ROOT_DIR,
+      "content",
+      "design-log",
+      name,
+      ".sync-hash",
+    ),
   };
 }
 
@@ -71,11 +102,12 @@ function normalizeFilename(name) {
 function normalizeImageFilename(name) {
   const ext = path.extname(name);
   const base = name.slice(0, -ext.length);
-  return base
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    + ext.toLowerCase();
+  return (
+    base
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") + ext.toLowerCase()
+  );
 }
 
 // ── Link rewriting ──
@@ -118,41 +150,79 @@ function buildLinkMap(mdFiles, imageFiles) {
   return map;
 }
 
-function rewriteLinks(content, linkMap) {
+function buildSlugSet(mdFiles) {
+  return new Set(mdFiles.map(normalizeSlug));
+}
+
+function rewriteLinks(content, linkMap, slugSet) {
   return content.replace(
     /(!?\[[^\]]*\])\(([^)]+)\)/g,
     (match, bracket, inside) => {
       const titleMatch = inside.match(/^(.+?)\s+(['"])(.+?)\2$/);
-      const target = titleMatch ? titleMatch[1] : inside.trim();
-      const title = titleMatch ? ` ${titleMatch[2]}${titleMatch[3]}${titleMatch[2]}` : "";
+      let target = titleMatch ? titleMatch[1] : inside.trim();
+      const title = titleMatch
+        ? ` ${titleMatch[2]}${titleMatch[3]}${titleMatch[2]}`
+        : "";
 
-      if (target.startsWith("http") || target.startsWith("#") || target.startsWith("..")) {
+      // Markdown allows wrapping a destination with spaces in <angle brackets>.
+      if (target.startsWith("<") && target.endsWith(">")) {
+        target = target.slice(1, -1);
+      }
+
+      if (
+        target.startsWith("http") ||
+        target.startsWith("#") ||
+        target.startsWith("mailto:")
+      ) {
         return match;
       }
 
-      const replacement = linkMap[target];
-      if (replacement) {
-        return `${bracket}(${replacement}${title})`;
+      // Fast path: exact variant match (covers images and simple sibling links).
+      if (!target.startsWith("..")) {
+        const replacement = linkMap[target];
+        if (replacement) {
+          return `${bracket}(${replacement}${title})`;
+        }
+      }
+
+      // Robust fallback: a cross-reference to another design-log entry may carry
+      // %20/%28 encodings, an <angle-bracket> wrapper, or a duplicated
+      // "design-log/" prefix. Decode, take the basename, and map it to the entry
+      // slug — but only if that slug is a real file in this section, so we never
+      // invent a target or touch genuine cross-repo / source-file links.
+      const hashIdx = target.indexOf("#");
+      const frag = hashIdx >= 0 ? target.slice(hashIdx) : "";
+      const pathPart = hashIdx >= 0 ? target.slice(0, hashIdx) : target;
+      let decoded;
+      try {
+        decoded = decodeURIComponent(pathPart);
+      } catch {
+        decoded = pathPart;
+      }
+      const basename = decoded.replace(/^.*\//, "");
+      const slug = normalizeSlug(basename);
+      if (slug && slugSet.has(slug)) {
+        return `${bracket}(${slug}${frag}${title})`;
       }
       return match;
-    }
+    },
   );
 }
 
 // ── Frontmatter ──
 
 function titleCase(str) {
-  return str.replace(
-    /\b\w+/g,
-    (w) => w[0].toUpperCase() + w.slice(1)
-  );
+  return str.replace(/\b\w+/g, (w) => w[0].toUpperCase() + w.slice(1));
 }
 
 function parseTitleFromFilename(name) {
   const base = name.replace(/\.md$/, "");
   const match = base.match(/^(\d+)\s*-\s*(.+)$/);
   if (match) {
-    return { number: parseInt(match[1], 10), title: titleCase(match[2].trim()) };
+    return {
+      number: parseInt(match[1], 10),
+      title: titleCase(match[2].trim()),
+    };
   }
   return { number: null, title: titleCase(base.trim()) };
 }
@@ -165,17 +235,44 @@ const AGENT_NOTE_FULL = `---
 
 **Note:** These design logs are written primarily for AI agents as part of the [Design Log methodology](/design-log) and made accessible here for human readers. The language and structure are optimized for machine consumption — expect precise, specification-style prose rather than narrative documentation.`;
 
-function addFrontmatter(content, filename) {
-  if (content.trimStart().startsWith("---")) {
-    return content;
-  }
-  const { number, title } = parseTitleFromFilename(filename);
+function escapeYaml(s) {
+  return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
+// Rebuild the frontmatter with a budgeted title + a description, preserving an
+// existing title/number (from source frontmatter) and any other custom fields.
+// Handles both bare markdown and files that already ship with frontmatter.
+function addFrontmatter(content, filename, section) {
+  const parsed = parseTitleFromFilename(filename);
+  const key = `design-log/${section}/${normalizeSlug(filename)}`;
+
+  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const block = fm ? fm[1] : "";
+  const body = (fm ? content.slice(fm[0].length) : content).replace(/^\s+/, "");
+
+  const existingTitle = (block.match(/^title:\s*"?(.*?)"?\s*$/m) || [])[1];
+  const numMatch = block.match(/^number:\s*(\d+)\s*$/m);
+  const number = numMatch ? parseInt(numMatch[1], 10) : parsed.number;
+  // Any frontmatter lines we don't manage ourselves, preserved verbatim.
+  const extras = block
+    .split(/\r?\n/)
+    .filter((l) => l.trim() && !/^\s*(title|description|number)\s*:/.test(l));
+
+  const seo = resolveSeo({
+    cache: SEO_CACHE,
+    key,
+    markdown: body,
+    rawTitle: existingTitle || parsed.title,
+  });
+
   const lines = [`---`];
-  lines.push(`title: "${title.replace(/"/g, '\\"')}"`);
+  lines.push(`title: "${escapeYaml(seo.title)}"`);
+  lines.push(`description: "${escapeYaml(seo.description)}"`);
   if (number !== null) {
     lines.push(`number: ${number}`);
   }
-  lines.push(`---`, "", content);
+  lines.push(...extras);
+  lines.push(`---`, "", body);
   return lines.join("\n");
 }
 
@@ -190,7 +287,16 @@ function injectNotes(content) {
   }
   const before = content.slice(0, afterHeading + 1);
   const after = content.slice(afterHeading + 1);
-  return before + "\n" + AGENT_NOTE_SHORT + "\n" + after + "\n" + AGENT_NOTE_FULL + "\n";
+  return (
+    before +
+    "\n" +
+    AGENT_NOTE_SHORT +
+    "\n" +
+    after +
+    "\n" +
+    AGENT_NOTE_FULL +
+    "\n"
+  );
 }
 
 // ── Media config & map ──
@@ -210,10 +316,20 @@ function saveMediaConfig(filePath, config) {
 function parseMediaIndex() {
   if (!fs.existsSync(MEDIA_INDEX_FILE)) return {};
   const content = fs.readFileSync(MEDIA_INDEX_FILE, "utf-8");
-  const lines = content.split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| Folder") && !l.startsWith("| ---"));
+  const lines = content
+    .split("\n")
+    .filter(
+      (l) =>
+        l.startsWith("| ") &&
+        !l.startsWith("| Folder") &&
+        !l.startsWith("| ---"),
+    );
   const urlByDisplayName = {};
   for (const line of lines) {
-    const cols = line.split("|").map((c) => c.trim()).filter(Boolean);
+    const cols = line
+      .split("|")
+      .map((c) => c.trim())
+      .filter(Boolean);
     if (cols.length >= 7) {
       const displayName = cols[2];
       const url = cols[6];
@@ -251,13 +367,18 @@ function generateMediaMap(mediaMapFile, mediaConfig) {
 function uploadAndRebuildIndex(repoName) {
   console.log("\n  Uploading images to Wix Media...");
   try {
-    execSync(`jay-stack-cli run wix-media/upload-public --folder design-log/${repoName}`, {
-      cwd: ROOT_DIR,
-      stdio: "inherit",
-      timeout: 120000,
-    });
+    execSync(
+      `jay-stack-cli run wix-media/upload-public --folder design-log/${repoName}`,
+      {
+        cwd: ROOT_DIR,
+        stdio: "inherit",
+        timeout: 120000,
+      },
+    );
   } catch (e) {
-    console.log(`  ${colors.yellow}Upload failed — media map will use local fallback${colors.reset}`);
+    console.log(
+      `  ${colors.yellow}Upload failed — media map will use local fallback${colors.reset}`,
+    );
     return false;
   }
 
@@ -269,7 +390,9 @@ function uploadAndRebuildIndex(repoName) {
       timeout: 60000,
     });
   } catch (e) {
-    console.log(`  ${colors.yellow}Rebuild-index failed — media map will use local fallback${colors.reset}`);
+    console.log(
+      `  ${colors.yellow}Rebuild-index failed — media map will use local fallback${colors.reset}`,
+    );
     return false;
   }
 
@@ -318,11 +441,15 @@ function syncRepo(repo) {
   const storedHash = getStoredHash(paths.syncHashFile);
 
   if (!forceSync && remoteHash === storedHash) {
-    console.log(`  ${colors.green}Already up to date${colors.reset} (${remoteHash.slice(0, 8)})`);
+    console.log(
+      `  ${colors.green}Already up to date${colors.reset} (${remoteHash.slice(0, 8)})`,
+    );
     return;
   }
 
-  console.log(`  Remote: ${remoteHash.slice(0, 8)}${storedHash ? `, local: ${storedHash.slice(0, 8)}` : " (no local hash)"}`);
+  console.log(
+    `  Remote: ${remoteHash.slice(0, 8)}${storedHash ? `, local: ${storedHash.slice(0, 8)}` : " (no local hash)"}`,
+  );
   console.log("  Cloning...");
 
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), `jay-dl-${name}-`));
@@ -330,7 +457,7 @@ function syncRepo(repo) {
   try {
     execSync(
       `git clone --depth 1 --filter=blob:none --sparse "${url}" "${tmpDir}"`,
-      { stdio: "pipe", timeout: 60000 }
+      { stdio: "pipe", timeout: 60000 },
     );
     execSync(`git sparse-checkout set ${folder}`, {
       cwd: tmpDir,
@@ -340,7 +467,9 @@ function syncRepo(repo) {
 
     const sourceDir = path.join(tmpDir, folder);
     if (!fs.existsSync(sourceDir)) {
-      console.log(`  ${colors.red}Error: ${folder}/ not found in repo${colors.reset}`);
+      console.log(
+        `  ${colors.red}Error: ${folder}/ not found in repo${colors.reset}`,
+      );
       return;
     }
 
@@ -356,10 +485,12 @@ function syncRepo(repo) {
       const srcPath = path.join(sourceDir, entry);
       if (!fs.statSync(srcPath).isFile()) continue;
       if (entry.endsWith(".md")) mdFiles.push(entry);
-      else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry)) imageFiles.push(entry);
+      else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry))
+        imageFiles.push(entry);
     }
 
     const linkMap = buildLinkMap(mdFiles, imageFiles);
+    const slugSet = buildSlugSet(mdFiles);
 
     // Second pass: process files
     let mdCount = 0;
@@ -369,9 +500,9 @@ function syncRepo(repo) {
     for (const entry of mdFiles) {
       const srcPath = path.join(sourceDir, entry);
       let content = fs.readFileSync(srcPath, "utf-8");
-      content = rewriteLinks(content, linkMap);
+      content = rewriteLinks(content, linkMap, slugSet);
       content = injectNotes(content);
-      content = addFrontmatter(content, entry);
+      content = addFrontmatter(content, entry, name);
       const normalName = normalizeFilename(entry);
       fs.writeFileSync(path.join(paths.contentDir, normalName), content);
       mdCount++;
@@ -393,7 +524,9 @@ function syncRepo(repo) {
     saveMediaConfig(paths.mediaConfigFile, newMediaConfig);
     fs.writeFileSync(paths.syncHashFile, remoteHash + "\n");
 
-    console.log(`  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
+    console.log(
+      `  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`,
+    );
 
     if (imgCount > 0) {
       if (imagesChanged) {
@@ -432,10 +565,12 @@ function syncLocal(source) {
     const srcPath = path.join(sourceDir, entry);
     if (!fs.statSync(srcPath).isFile()) continue;
     if (entry.endsWith(".md")) mdFiles.push(entry);
-    else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry)) imageFiles.push(entry);
+    else if (/\.(png|jpg|jpeg|gif|svg|webp)$/i.test(entry))
+      imageFiles.push(entry);
   }
 
   const linkMap = buildLinkMap(mdFiles, imageFiles);
+  const slugSet = buildSlugSet(mdFiles);
 
   let mdCount = 0;
   let imgCount = 0;
@@ -443,9 +578,9 @@ function syncLocal(source) {
   for (const entry of mdFiles) {
     const srcPath = path.join(sourceDir, entry);
     let content = fs.readFileSync(srcPath, "utf-8");
-    content = rewriteLinks(content, linkMap);
+    content = rewriteLinks(content, linkMap, slugSet);
     content = injectNotes(content);
-    content = addFrontmatter(content, entry);
+    content = addFrontmatter(content, entry, name);
     const normalName = normalizeFilename(entry);
     fs.writeFileSync(path.join(paths.contentDir, normalName), content);
     mdCount++;
@@ -461,7 +596,9 @@ function syncLocal(source) {
     }
   }
 
-  console.log(`  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`);
+  console.log(
+    `  ${colors.green}Synced:${colors.reset} ${mdCount} markdown files, ${imgCount} images`,
+  );
 }
 
 // ── Main ──
@@ -480,4 +617,8 @@ function main() {
   console.log(`\n${colors.green}Done${colors.reset}`);
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { normalizeSlug, buildLinkMap, buildSlugSet, rewriteLinks };

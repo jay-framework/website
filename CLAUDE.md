@@ -10,7 +10,18 @@ Read `agent-kit/` for contracts, plugin references, and role guides. See the `/j
 
 Before making changes, read `agent-kit/plugins-index.yaml` and the relevant role guide (`agent-kit/designer/`, `agent-kit/developer/`, etc.).
 
-Run `npm run validate` after changes.
+Run `npm run validate` after changes. There are two passes: `npm run validate` checks the page templates, and `npm run validate -- --from-build` validates the final rendered content (dynamic `[slug]` routes expanded) — run a build first, and see the SEO Metadata section below.
+
+## SEO Metadata
+
+Markdown-synced pages (`/design-log/*`, `/docs/*`) get their `<title>` and `<meta name="description">` from frontmatter via `@jay-framework/markdown`. Source markdown mostly lacks descriptions and has long titles, which fails the `--from-build` SEO validation.
+
+This is handled by a two-layer pipeline (see Design Log #06):
+
+- **Deterministic baseline** — the sync scripts (`sync:design-log`, `sync:docs`) inject a `description` (first-paragraph excerpt) and a length-budgeted `title` into frontmatter via `scripts/seo-meta.cjs`. Always valid, zero-cost, offline.
+- **Agent overrides** — `npm run generate:seo` asks Claude for higher-quality titles/descriptions, cached in `config/seo-meta.json` (keyed by content hash, committed to git). It only (re)generates new or changed docs and runs as part of `build:production`. It uses `@anthropic-ai/claude-agent-sdk`, which authenticates with your `claude login` credentials (same as the `claude` CLI) — no `ANTHROPIC_API_KEY` needed, though one is honored if set. If the agent is unavailable (not logged in / offline) it degrades gracefully to the baseline.
+
+When editing the `<title>` suffix in a `[slug]` template, keep it in sync with the per-section suffix map in `scripts/seo-meta.cjs` (it sets the title length budget). Never put literal `{...}` in metadata — it's parsed as a binding; `seo-meta.cjs` strips braces for this reason.
 
 ## Design Log
 
@@ -22,7 +33,7 @@ Run `npm run sync:design-log` to pull the latest design log. This clones the des
 
 ### Reading Design Logs
 
-Before searching the codebase or guessing at how things work, check the design log index at `content/design-log/index.md` to find relevant entries. Design logs explain architecture, patterns, and rationale — use them as your starting point.
+Before searching the codebase or guessing at how things work, check the per-repo design log indexes to find relevant entries: `content/design-log/jay/index.md` (framework) and `content/design-log/website/index.md` (this site); Wix entries live under `content/design-log/wix/`. Design logs explain architecture, patterns, and rationale — use them as your starting point.
 
 ### Design Log Methodology
 

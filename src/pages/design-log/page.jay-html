@@ -3,7 +3,7 @@
 <head>
   <title>Design Log Methodology | Jay Framework</title>
   <meta name="description"
-    content="The Jay Framework is built using the Design Log methodology — a rigorous, document-first approach to software architecture that keeps AI agents and human developers aligned.">
+    content="The Design Log methodology — a rigorous, document-first approach to software architecture that keeps AI agents and human developers aligned.">
   <script type="application/jay-data" contract="./page.jay-contract"></script>
   <script type="application/jay-headless" src="../../components/site-header/site-header"
     contract="../../components/site-header/site-header.jay-contract"

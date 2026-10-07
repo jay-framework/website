@@ -2,43 +2,57 @@
 
 const fs = require("fs");
 const path = require("path");
+const { loadCache, resolveSeo } = require("./seo-meta.cjs");
+
+const SEO_CACHE = loadCache();
 
 const ROOT_DIR = path.resolve(path.join(__dirname, ".."));
 const AGENT_KIT_DIR = path.join(ROOT_DIR, "agent-kit");
 const CONTENT_DIR = path.join(ROOT_DIR, "content", "docs");
 
 const ROLES = ["contracts", "designer", "developer", "devops", "plugin"];
-const SIDEBAR_ROLE_ORDER = ["designer", "developer", "plugin", "devops", "contracts"];
+const SIDEBAR_ROLE_ORDER = [
+  "designer",
+  "developer",
+  "plugin",
+  "devops",
+  "contracts",
+];
 const SIDEBAR_DIR = path.join(ROOT_DIR, "src", "components", "docs-sidebar");
 
 const ROLE_META = {
   contracts: {
     label: "Contracts",
-    image: "https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp",
+    image:
+      "https://static.wixstatic.com/media/c569b3_28d5b6b49bd14042b0eae9070028acf6~mv2.png/v1/fill/w_24,h_24/file.webp",
     entryFile: "GUIDE.md",
     entryTitle: "Guide",
   },
   designer: {
     label: "Designer",
-    image: "https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp",
+    image:
+      "https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp",
     entryFile: "INSTRUCTIONS.md",
     entryTitle: "Instructions",
   },
   developer: {
     label: "Developer",
-    image: "https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp",
+    image:
+      "https://static.wixstatic.com/media/c569b3_838a1a4885714dae9579fe0b4d1a2293~mv2.png/v1/fill/w_24,h_24/file.webp",
     entryFile: "INSTRUCTIONS.md",
     entryTitle: "Instructions",
   },
   devops: {
     label: "DevOps",
-    image: "https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp",
+    image:
+      "https://static.wixstatic.com/media/c569b3_eaf3402bcc7c4fc784b5ae848a04af28~mv2.png/v1/fill/w_24,h_24/file.webp",
     entryFile: "INSTRUCTIONS.md",
     entryTitle: "Instructions",
   },
   plugin: {
     label: "Plugin Developer",
-    image: "https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp",
+    image:
+      "https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp",
     entryFile: "INSTRUCTIONS.md",
     entryTitle: "Instructions",
   },
@@ -74,7 +88,9 @@ function injectNotes(content, role) {
   }
   const before = content.slice(0, afterHeading + 1);
   const after = content.slice(afterHeading + 1);
-  return before + "\n" + shortNote + "\n" + after + "\n" + AGENT_KIT_NOTE_FULL + "\n";
+  return (
+    before + "\n" + shortNote + "\n" + after + "\n" + AGENT_KIT_NOTE_FULL + "\n"
+  );
 }
 
 function clearDir(dir) {
@@ -96,6 +112,93 @@ function fileToSlug(file) {
   return path.basename(file, ".md").toLowerCase();
 }
 
+// Collect every published doc route as a "role/slug" key, so link rewriting can
+// verify a target exists before touching it.
+function collectRouteSet() {
+  const routes = new Set();
+  for (const role of ROLES) {
+    const sourceDir = path.join(AGENT_KIT_DIR, role);
+    if (!fs.existsSync(sourceDir)) continue;
+    for (const file of fs.readdirSync(sourceDir)) {
+      if (file.endsWith(".md")) routes.add(`${role}/${fileToSlug(file)}`);
+    }
+  }
+  return routes;
+}
+
+// Rewrite relative cross-doc links to canonical "/docs/{role}/{slug}" routes.
+// Docs live in a flat two-level space (role/slug), and the route slug is the
+// filename lowercased without ".md". Authored links drift on three axes — wrong
+// case (GUIDE vs guide), a stale ".md" suffix, and the wrong number of "../" —
+// all of which resolve to the same role+slug. We read the role+slug off the tail
+// of the (decoded) path and rebuild an absolute route, but only when that route
+// actually exists, so cross-repo links, source-file links, and anchors are left
+// untouched.
+function rewriteDocLinks(content, currentRole, routeSet) {
+  return content.replace(
+    /(!?\[[^\]]*\])\(([^)]+)\)/g,
+    (match, bracket, inside) => {
+      const titleMatch = inside.match(/^(.+?)\s+(['"])(.+?)\2$/);
+      let target = titleMatch ? titleMatch[1] : inside.trim();
+      const title = titleMatch
+        ? ` ${titleMatch[2]}${titleMatch[3]}${titleMatch[2]}`
+        : "";
+
+      if (target.startsWith("<") && target.endsWith(">"))
+        target = target.slice(1, -1);
+      if (/^(https?:|#|mailto:|\/)/.test(target)) return match;
+
+      const hashIdx = target.indexOf("#");
+      const frag = hashIdx >= 0 ? target.slice(hashIdx) : "";
+      const pathPart = hashIdx >= 0 ? target.slice(0, hashIdx) : target;
+      let decoded;
+      try {
+        decoded = decodeURIComponent(pathPart);
+      } catch {
+        decoded = pathPart;
+      }
+
+      const segs = decoded
+        .split("/")
+        .filter((s) => s && s !== "." && s !== "..");
+      if (segs.length === 0) return match;
+      const slug = segs[segs.length - 1].replace(/\.md$/i, "").toLowerCase();
+      const role =
+        segs.length >= 2 ? segs[segs.length - 2].toLowerCase() : currentRole;
+      const key = `${role}/${slug}`;
+      if (routeSet.has(key)) {
+        return `${bracket}(/docs/${role}/${slug}${frag}${title})`;
+      }
+      return match;
+    },
+  );
+}
+
+function escapeYaml(s) {
+  return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
+// Prepend SEO frontmatter (synced docs have none) so markdown-pages emits a
+// non-empty <meta description> and a <title> within the length budget.
+function addDocsFrontmatter(content, role, file, title) {
+  if (content.trimStart().startsWith("---")) return content;
+  const key = `docs/${role}/${fileToSlug(file)}`;
+  const seo = resolveSeo({
+    cache: SEO_CACHE,
+    key,
+    markdown: content,
+    rawTitle: title,
+  });
+  return [
+    "---",
+    `title: "${escapeYaml(seo.title)}"`,
+    `description: "${escapeYaml(seo.description)}"`,
+    "---",
+    "",
+    content,
+  ].join("\n");
+}
+
 function toEnumId(role, slug) {
   return `${role}_${slug}`.replace(/-/g, "_");
 }
@@ -112,7 +215,9 @@ function collectSidebarData() {
     for (const file of files) {
       const slug = fileToSlug(file);
       const isEntry = file.toUpperCase() === meta.entryFile.toUpperCase();
-      const title = isEntry ? meta.entryTitle : extractTitle(path.join(contentDir, file));
+      const title = isEntry
+        ? meta.entryTitle
+        : extractTitle(path.join(contentDir, file));
       guides.push({ slug, title, href: `/docs/${role}/${slug}`, isEntry });
     }
     guides.sort((a, b) => {
@@ -169,13 +274,15 @@ function generateSidebarHtml(roles) {
   const mobileRoleBlocks = [];
   for (const r of roles) {
     const sectionPath = `/docs/${r.role}`;
-    const entryGuide = r.guides.find(g => g.isEntry);
-    const entryHref = entryGuide ? entryGuide.href : `${sectionPath}/instructions`;
-    const nonEntryGuides = r.guides.filter(g => !g.isEntry);
+    const entryGuide = r.guides.find((g) => g.isEntry);
+    const entryHref = entryGuide
+      ? entryGuide.href
+      : `${sectionPath}/instructions`;
+    const nonEntryGuides = r.guides.filter((g) => !g.isEntry);
     const guideItems = nonEntryGuides
       .map(
         (g) =>
-          `          <li><a href="${g.href}" class="sidebar-link {currentPath === '${g.href}' ? active}">${escapeHtml(g.title)}</a></li>`
+          `          <li><a href="${g.href}" class="sidebar-link {currentPath === '${g.href}' ? active}">${escapeHtml(g.title)}</a></li>`,
       )
       .join("\n");
     const block = `
@@ -198,7 +305,7 @@ ${guideItems}
   const mobileSummaryLabels = roles
     .map(
       (r) =>
-        `        <img if="currentPath ^= '/docs/${r.role}'" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy">\n        <span if="currentPath ^= '/docs/${r.role}'" class="mobile-nav-label">${escapeHtml(r.label)}</span>`
+        `        <img if="currentPath ^= '/docs/${r.role}'" src="${r.image}" alt="" width="18" height="18" class="mobile-nav-icon" loading="lazy">\n        <span if="currentPath ^= '/docs/${r.role}'" class="mobile-nav-label">${escapeHtml(r.label)}</span>`,
     )
     .join("\n");
 
@@ -422,23 +529,39 @@ ${roleBlocks.join("\n")}
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function generateSidebarComponent() {
   const roles = collectSidebarData();
   const totalGuides = roles.reduce((sum, r) => sum + r.guides.length, 0);
   fs.mkdirSync(SIDEBAR_DIR, { recursive: true });
-  fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.jay-contract"), generateSidebarContract());
-  fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.ts"), generateSidebarTs());
-  fs.writeFileSync(path.join(SIDEBAR_DIR, "docs-sidebar.jay-html"), generateSidebarHtml(roles));
-  console.log(`\n${colors.cyan}[sidebar]${colors.reset} generated component (${totalGuides} pages across ${roles.length} roles)`);
+  fs.writeFileSync(
+    path.join(SIDEBAR_DIR, "docs-sidebar.jay-contract"),
+    generateSidebarContract(),
+  );
+  fs.writeFileSync(
+    path.join(SIDEBAR_DIR, "docs-sidebar.ts"),
+    generateSidebarTs(),
+  );
+  fs.writeFileSync(
+    path.join(SIDEBAR_DIR, "docs-sidebar.jay-html"),
+    generateSidebarHtml(roles),
+  );
+  console.log(
+    `\n${colors.cyan}[sidebar]${colors.reset} generated component (${totalGuides} pages across ${roles.length} roles)`,
+  );
 }
 
 function main() {
   console.log(`${colors.yellow}Agent Kit Docs Sync${colors.reset}\n`);
 
   let totalFiles = 0;
+  const routeSet = collectRouteSet();
 
   for (const role of ROLES) {
     const sourceDir = path.join(AGENT_KIT_DIR, role);
@@ -459,7 +582,10 @@ function main() {
       if (!fs.statSync(srcPath).isFile()) continue;
 
       let content = fs.readFileSync(srcPath, "utf-8");
+      const title = extractTitle(srcPath);
+      content = rewriteDocLinks(content, role, routeSet);
       content = injectNotes(content, role);
+      content = addDocsFrontmatter(content, role, file, title);
       fs.writeFileSync(path.join(destDir, file.toLowerCase()), content);
       count++;
     }
@@ -468,9 +594,15 @@ function main() {
     totalFiles += count;
   }
 
-  console.log(`\n${colors.green}Done:${colors.reset} ${totalFiles} files across ${ROLES.length} roles`);
+  console.log(
+    `\n${colors.green}Done:${colors.reset} ${totalFiles} files across ${ROLES.length} roles`,
+  );
 
   generateSidebarComponent();
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { fileToSlug, rewriteDocLinks };

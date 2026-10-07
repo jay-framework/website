@@ -216,7 +216,7 @@
             <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy">
             <span class="sidebar-role-label">Designer</span>
           </a>
-          <span class="sidebar-role-count">28</span>
+          <span class="sidebar-role-count">31</span>
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/designer/a11y-patterns" class="sidebar-link {currentPath === '/docs/designer/a11y-patterns' ? active}">Accessible Patterns for Jay-HTML</a></li>
@@ -225,7 +225,9 @@
           <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
           <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard Copy</a></li>
           <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts and Plugins</a></li>
+          <li><a href="/docs/designer/data-files-usage" class="sidebar-link {currentPath === '/docs/designer/data-files-usage' ? active}">Data Files Plugin</a></li>
           <li><a href="/docs/designer/design-system" class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design System (DESIGN.md)</a></li>
+          <li><a href="/docs/designer/design-system-guide" class="sidebar-link {currentPath === '/docs/designer/design-system-guide' ? active}">Design-System Elements (Materialise, Drift, Sync)</a></li>
           <li><a href="/docs/designer/routing" class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based Routing</a></li>
           <li><a href="/docs/designer/font-fallback-patterns" class="sidebar-link {currentPath === '/docs/designer/font-fallback-patterns' ? active}">Font Fallback Patterns</a></li>
           <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML — AI Designer Instructions</a></li>
@@ -244,6 +246,7 @@
           <li><a href="/docs/designer/tabs" class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a></li>
           <li><a href="/docs/designer/toggle-switch" class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle Switch</a></li>
           <li><a href="/docs/designer/tooltip" class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a></li>
+          <li><a href="/docs/designer/validation-guide" class="sidebar-link {currentPath === '/docs/designer/validation-guide' ? active}">Understanding Validation Output</a></li>
           <li><a href="/docs/designer/wix-media" class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using Wix Media</a></li>
           <li><a href="/docs/designer/word-split" class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word Split</a></li>
         </ul>
@@ -279,11 +282,12 @@
             <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy">
             <span class="sidebar-role-label">Plugin Developer</span>
           </a>
-          <span class="sidebar-role-count">20</span>
+          <span class="sidebar-role-count">22</span>
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
           <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
+          <li><a href="/docs/plugin/aiditor-settings-guide" class="sidebar-link {currentPath === '/docs/plugin/aiditor-settings-guide' ? active}">AIditor Project Settings — Plugin Contributor Guide</a></li>
           <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
           <li><a href="/docs/plugin/component-context" class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component Context</a></li>
           <li><a href="/docs/plugin/component-refs" class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component Refs</a></li>
@@ -300,6 +304,7 @@
           <li><a href="/docs/plugin/seo-guide" class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO Head Tags</a></li>
           <li><a href="/docs/plugin/actions-guide" class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server Actions</a></li>
           <li><a href="/docs/plugin/services-guide" class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services and Initialization</a></li>
+          <li><a href="/docs/plugin/design-system-guide" class="sidebar-link {currentPath === '/docs/plugin/design-system-guide' ? active}">Shipping a Design-System Element</a></li>
           <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks &amp; Data Change Invalidation</a></li>
         </ul>
       </details>
@@ -331,7 +336,7 @@
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
-          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
+          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Full-Stack Component Contracts</a></li>
           <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>
           <li><a href="/docs/contracts/page-contracts" class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page Contracts</a></li>
         </ul>
@@ -348,7 +353,7 @@
             <img src="https://static.wixstatic.com/media/c569b3_ebd9e460d96049b195b5ef0b340cffc8~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy">
             <span class="sidebar-role-label">Designer</span>
           </a>
-          <span class="sidebar-role-count">28</span>
+          <span class="sidebar-role-count">31</span>
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/designer/a11y-patterns" class="sidebar-link {currentPath === '/docs/designer/a11y-patterns' ? active}">Accessible Patterns for Jay-HTML</a></li>
@@ -357,7 +362,9 @@
           <li><a href="/docs/designer/click-popover" class="sidebar-link {currentPath === '/docs/designer/click-popover' ? active}">Click Popover</a></li>
           <li><a href="/docs/designer/clipboard-copy" class="sidebar-link {currentPath === '/docs/designer/clipboard-copy' ? active}">Clipboard Copy</a></li>
           <li><a href="/docs/designer/contracts-and-plugins" class="sidebar-link {currentPath === '/docs/designer/contracts-and-plugins' ? active}">Contracts and Plugins</a></li>
+          <li><a href="/docs/designer/data-files-usage" class="sidebar-link {currentPath === '/docs/designer/data-files-usage' ? active}">Data Files Plugin</a></li>
           <li><a href="/docs/designer/design-system" class="sidebar-link {currentPath === '/docs/designer/design-system' ? active}">Design System (DESIGN.md)</a></li>
+          <li><a href="/docs/designer/design-system-guide" class="sidebar-link {currentPath === '/docs/designer/design-system-guide' ? active}">Design-System Elements (Materialise, Drift, Sync)</a></li>
           <li><a href="/docs/designer/routing" class="sidebar-link {currentPath === '/docs/designer/routing' ? active}">Directory-Based Routing</a></li>
           <li><a href="/docs/designer/font-fallback-patterns" class="sidebar-link {currentPath === '/docs/designer/font-fallback-patterns' ? active}">Font Fallback Patterns</a></li>
           <li><a href="/docs/designer/jay-html-syntax" class="sidebar-link {currentPath === '/docs/designer/jay-html-syntax' ? active}">Jay-HTML — AI Designer Instructions</a></li>
@@ -376,6 +383,7 @@
           <li><a href="/docs/designer/tabs" class="sidebar-link {currentPath === '/docs/designer/tabs' ? active}">Tabs</a></li>
           <li><a href="/docs/designer/toggle-switch" class="sidebar-link {currentPath === '/docs/designer/toggle-switch' ? active}">Toggle Switch</a></li>
           <li><a href="/docs/designer/tooltip" class="sidebar-link {currentPath === '/docs/designer/tooltip' ? active}">Tooltip</a></li>
+          <li><a href="/docs/designer/validation-guide" class="sidebar-link {currentPath === '/docs/designer/validation-guide' ? active}">Understanding Validation Output</a></li>
           <li><a href="/docs/designer/wix-media" class="sidebar-link {currentPath === '/docs/designer/wix-media' ? active}">Using Wix Media</a></li>
           <li><a href="/docs/designer/word-split" class="sidebar-link {currentPath === '/docs/designer/word-split' ? active}">Word Split</a></li>
         </ul>
@@ -411,11 +419,12 @@
             <img src="https://static.wixstatic.com/media/c569b3_e235dbf4943c4208aba88b4ed6ddd402~mv2.png/v1/fill/w_24,h_24/file.webp" alt="" width="20" height="20" class="sidebar-role-icon" loading="lazy">
             <span class="sidebar-role-label">Plugin Developer</span>
           </a>
-          <span class="sidebar-role-count">20</span>
+          <span class="sidebar-role-count">22</span>
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/plugin/aiditor-add-menu" class="sidebar-link {currentPath === '/docs/plugin/aiditor-add-menu' ? active}">AIditor Add Menu — plugin contributor guide</a></li>
           <li><a href="/docs/plugin/add-menu-guide" class="sidebar-link {currentPath === '/docs/plugin/add-menu-guide' ? active}">AIditor Add-Menu Items</a></li>
+          <li><a href="/docs/plugin/aiditor-settings-guide" class="sidebar-link {currentPath === '/docs/plugin/aiditor-settings-guide' ? active}">AIditor Project Settings — Plugin Contributor Guide</a></li>
           <li><a href="/docs/plugin/commands-guide" class="sidebar-link {currentPath === '/docs/plugin/commands-guide' ? active}">CLI Commands</a></li>
           <li><a href="/docs/plugin/component-context" class="sidebar-link {currentPath === '/docs/plugin/component-context' ? active}">Component Context</a></li>
           <li><a href="/docs/plugin/component-refs" class="sidebar-link {currentPath === '/docs/plugin/component-refs' ? active}">Component Refs</a></li>
@@ -432,6 +441,7 @@
           <li><a href="/docs/plugin/seo-guide" class="sidebar-link {currentPath === '/docs/plugin/seo-guide' ? active}">SEO Head Tags</a></li>
           <li><a href="/docs/plugin/actions-guide" class="sidebar-link {currentPath === '/docs/plugin/actions-guide' ? active}">Server Actions</a></li>
           <li><a href="/docs/plugin/services-guide" class="sidebar-link {currentPath === '/docs/plugin/services-guide' ? active}">Services and Initialization</a></li>
+          <li><a href="/docs/plugin/design-system-guide" class="sidebar-link {currentPath === '/docs/plugin/design-system-guide' ? active}">Shipping a Design-System Element</a></li>
           <li><a href="/docs/plugin/webhooks-guide" class="sidebar-link {currentPath === '/docs/plugin/webhooks-guide' ? active}">Webhooks &amp; Data Change Invalidation</a></li>
         </ul>
       </details>
@@ -463,7 +473,7 @@
         </summary>
         <ul class="sidebar-guides">
           <li><a href="/docs/contracts/syntax" class="sidebar-link {currentPath === '/docs/contracts/syntax' ? active}">Contract Syntax Reference</a></li>
-          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Headfull Component Contracts</a></li>
+          <li><a href="/docs/contracts/component-contracts" class="sidebar-link {currentPath === '/docs/contracts/component-contracts' ? active}">Full-Stack Component Contracts</a></li>
           <li><a href="/docs/contracts/linked-contracts" class="sidebar-link {currentPath === '/docs/contracts/linked-contracts' ? active}">Linked and Composed Contracts</a></li>
           <li><a href="/docs/contracts/page-contracts" class="sidebar-link {currentPath === '/docs/contracts/page-contracts' ? active}">Page Contracts</a></li>
         </ul>
